@@ -143,17 +143,17 @@ export function SitesOverviewExample() {
             </CardContent>
             {/* Controls positioned at card level */}
             <div className="absolute bottom-4 left-4 z-10">
-              <div className="flex flex-col bg-white dark:bg-[#141414] border border-sourceful-gray-200 dark:border-[#262626] rounded-lg shadow-sm overflow-hidden">
-                <button className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors">
+              <div className="flex flex-col bg-white dark:bg-[#141414] border border-rds-gray-200 dark:border-[#262626] rounded-lg shadow-sm overflow-hidden">
+                <button className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors">
                   <Plus className="h-4 w-4" />
                 </button>
-                <button className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-sourceful-gray-200 dark:border-[#262626]">
+                <button className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-rds-gray-200 dark:border-[#262626]">
                   <Minus className="h-4 w-4" />
                 </button>
-                <button className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-sourceful-gray-200 dark:border-[#262626]">
+                <button className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-rds-gray-200 dark:border-[#262626]">
                   <Maximize className="h-4 w-4" />
                 </button>
-                <button className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-sourceful-gray-200 dark:border-[#262626]">
+                <button className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-rds-gray-200 dark:border-[#262626]">
                   <Lock className="h-4 w-4" />
                 </button>
               </div>

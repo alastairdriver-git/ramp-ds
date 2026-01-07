@@ -23,13 +23,13 @@ export interface EMSScheduleProps {
 const modeConfig: Record<ScheduleMode, { label: string; color: string; bgColor: string }> = {
   idle: {
     label: "Idle",
-    color: "bg-sourceful-gray-200 dark:bg-sourceful-gray-700",
-    bgColor: "bg-sourceful-gray-200 dark:bg-sourceful-gray-700",
+    color: "bg-rds-gray-200 dark:bg-rds-gray-700",
+    bgColor: "bg-rds-gray-200 dark:bg-rds-gray-700",
   },
   "self-consumption": {
     label: "Self-Consumption",
-    color: "bg-sourceful-green-200 dark:bg-sourceful-green-800",
-    bgColor: "bg-sourceful-green-200 dark:bg-sourceful-green-800",
+    color: "bg-rds-green-200 dark:bg-rds-green-800",
+    bgColor: "bg-rds-green-200 dark:bg-rds-green-800",
   },
   charging: {
     label: "Charging",

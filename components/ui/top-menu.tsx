@@ -60,7 +60,7 @@ const TopMenu = React.forwardRef<HTMLElement, TopMenuProps>(
         ref={ref}
         className={cn(
           "sticky top-0 z-30 flex h-12 items-center gap-3",
-          "border-b border-sourceful-gray-200 dark:border-[#1a1a1a]",
+          "border-b border-rds-gray-200 dark:border-[#1a1a1a]",
           "bg-white dark:bg-[#141414] px-4",
           className
         )}
@@ -69,7 +69,7 @@ const TopMenu = React.forwardRef<HTMLElement, TopMenuProps>(
         {showMobileMenu && (
           <button
             onClick={onMobileMenuClick}
-            className="lg:hidden rounded-md p-1.5 text-sourceful-gray-600 hover:bg-sourceful-gray-100 dark:text-sourceful-gray-400 dark:hover:bg-sourceful-gray-800"
+            className="lg:hidden rounded-md p-1.5 text-rds-gray-600 hover:bg-rds-gray-100 dark:text-rds-gray-400 dark:hover:bg-rds-gray-800"
             aria-label="Toggle menu"
           >
             <Menu className="h-4 w-4" />
@@ -85,19 +85,19 @@ const TopMenu = React.forwardRef<HTMLElement, TopMenuProps>(
             {breadcrumbs.map((crumb, index) => (
               <React.Fragment key={index}>
                 {index > 0 && (
-                  <span className="text-sourceful-gray-400 dark:text-sourceful-gray-500 text-xs">
+                  <span className="text-rds-gray-400 dark:text-rds-gray-500 text-xs">
                     /
                   </span>
                 )}
                 {crumb.href ? (
                   <LinkComponent
                     href={crumb.href}
-                    className="text-sourceful-gray-600 dark:text-sourceful-gray-400 hover:text-sourceful-gray-900 dark:hover:text-white transition-colors text-sm"
+                    className="text-rds-gray-600 dark:text-rds-gray-400 hover:text-rds-gray-900 dark:hover:text-white transition-colors text-sm"
                   >
                     {crumb.label}
                   </LinkComponent>
                 ) : (
-                  <span className="text-sourceful-gray-900 dark:text-white font-medium text-sm">
+                  <span className="text-rds-gray-900 dark:text-white font-medium text-sm">
                     {crumb.label}
                   </span>
                 )}
@@ -181,14 +181,14 @@ const TopMenuUser = React.forwardRef<HTMLDivElement, TopMenuUserProps>(
         <div ref={menuRef}>
           <button
             onClick={() => setOpen(!open)}
-            className="flex items-center gap-1.5 rounded-full p-0.5 hover:ring-2 hover:ring-sourceful-green-500 hover:ring-offset-2 dark:hover:ring-offset-[#141414] transition-all"
+            className="flex items-center gap-1.5 rounded-full p-0.5 hover:ring-2 hover:ring-rds-green-500 hover:ring-offset-2 dark:hover:ring-offset-[#141414] transition-all"
             aria-label="Account menu"
           >
             <div
               className={cn(
                 "h-8 w-8 rounded-full overflow-hidden flex items-center justify-center",
                 avatarClassName ||
-                  "bg-gradient-to-br from-sourceful-yellow-400 to-sourceful-yellow-600"
+                  "bg-gradient-to-br from-rds-yellow-400 to-rds-yellow-600"
               )}
             >
               {avatarUrl ? (
@@ -205,16 +205,16 @@ const TopMenuUser = React.forwardRef<HTMLDivElement, TopMenuUserProps>(
 
           {/* Dropdown Menu */}
           {open && (
-            <div className="absolute right-0 mt-2 w-64 rounded-lg border border-sourceful-gray-200 dark:border-[#1a1a1a] bg-white dark:bg-[#141414] shadow-lg overflow-hidden z-50">
+            <div className="absolute right-0 mt-2 w-64 rounded-lg border border-rds-gray-200 dark:border-[#1a1a1a] bg-white dark:bg-[#141414] shadow-lg overflow-hidden z-50">
               {/* User Info */}
               {(name || email) && (
-                <div className="px-4 py-3 border-b border-sourceful-gray-200 dark:border-[#1a1a1a]">
+                <div className="px-4 py-3 border-b border-rds-gray-200 dark:border-[#1a1a1a]">
                   <div className="flex items-center gap-3">
                     <div
                       className={cn(
                         "h-10 w-10 rounded-full overflow-hidden flex items-center justify-center",
                         avatarClassName ||
-                          "bg-gradient-to-br from-sourceful-yellow-400 to-sourceful-yellow-600"
+                          "bg-gradient-to-br from-rds-yellow-400 to-rds-yellow-600"
                       )}
                     >
                       {avatarUrl ? (
@@ -229,12 +229,12 @@ const TopMenuUser = React.forwardRef<HTMLDivElement, TopMenuUserProps>(
                     </div>
                     <div className="flex-1 min-w-0">
                       {name && (
-                        <p className="text-sm font-medium text-sourceful-gray-900 dark:text-white truncate">
+                        <p className="text-sm font-medium text-rds-gray-900 dark:text-white truncate">
                           {name}
                         </p>
                       )}
                       {email && (
-                        <p className="text-xs text-sourceful-gray-500 dark:text-sourceful-gray-400 truncate">
+                        <p className="text-xs text-rds-gray-500 dark:text-rds-gray-400 truncate">
                           {email}
                         </p>
                       )}
@@ -276,11 +276,11 @@ const TopMenuUserItem = React.forwardRef<
 >(({ icon, children, onClick, href, variant = "default", className }, ref) => {
   const variantClasses = {
     default:
-      "text-sourceful-gray-700 dark:text-sourceful-gray-300 hover:bg-sourceful-gray-50 dark:hover:bg-[#1a1a1a]",
+      "text-rds-gray-700 dark:text-rds-gray-300 hover:bg-rds-gray-50 dark:hover:bg-[#1a1a1a]",
     danger:
       "text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20",
     success:
-      "text-sourceful-green-600 dark:text-sourceful-green-400 hover:bg-sourceful-green-50 dark:hover:bg-sourceful-green-950/20",
+      "text-rds-green-600 dark:text-rds-green-400 hover:bg-rds-green-50 dark:hover:bg-rds-green-950/20",
   }
 
   const Component = href ? "a" : "button"
@@ -311,7 +311,7 @@ const TopMenuUserSection = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "py-1 border-t border-sourceful-gray-200 dark:border-[#1a1a1a] first:border-t-0",
+      "py-1 border-t border-rds-gray-200 dark:border-[#1a1a1a] first:border-t-0",
       className
     )}
   >

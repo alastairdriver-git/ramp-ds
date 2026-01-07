@@ -66,7 +66,7 @@ export function MarketingFooter() {
             <a href="https://twitter.com/srcful" className="text-sm text-muted-foreground hover:text-foreground">
               Twitter
             </a>
-            <a href="https://linkedin.com/company/sourceful-energy" className="text-sm text-muted-foreground hover:text-foreground">
+            <a href="https://linkedin.com/company/rds-energy" className="text-sm text-muted-foreground hover:text-foreground">
               LinkedIn
             </a>
           </div>

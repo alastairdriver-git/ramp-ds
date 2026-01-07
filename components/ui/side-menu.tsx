@@ -132,7 +132,7 @@ const SideMenu = React.forwardRef<HTMLElement, SideMenuProps>(
             ref={ref}
             className={cn(
               "flex h-full flex-col transition-[width] duration-300 ease-in-out",
-              "bg-white dark:bg-[#141414] border-r border-sourceful-gray-200 dark:border-[#1a1a1a]",
+              "bg-white dark:bg-[#141414] border-r border-rds-gray-200 dark:border-[#1a1a1a]",
               collapsed ? "w-16" : "w-64",
               className
             )}
@@ -140,7 +140,7 @@ const SideMenu = React.forwardRef<HTMLElement, SideMenuProps>(
             {/* Header */}
             <div
               className={cn(
-                "flex items-center border-b border-sourceful-gray-200 dark:border-[#1a1a1a] flex-shrink-0 h-12",
+                "flex items-center border-b border-rds-gray-200 dark:border-[#1a1a1a] flex-shrink-0 h-12",
                 collapsed
                   ? "justify-center px-2"
                   : "justify-between px-3"
@@ -153,9 +153,9 @@ const SideMenu = React.forwardRef<HTMLElement, SideMenuProps>(
                   onClick={handleToggle}
                   className={cn(
                     "rounded-md h-5 w-5 flex items-center justify-center",
-                    "text-sourceful-gray-400 dark:text-sourceful-gray-500",
-                    "hover:text-sourceful-gray-600 dark:hover:text-sourceful-gray-300 transition-colors",
-                    "bg-white dark:bg-[#141414] border border-sourceful-gray-200 dark:border-sourceful-gray-700 shadow-sm",
+                    "text-rds-gray-400 dark:text-rds-gray-500",
+                    "hover:text-rds-gray-600 dark:hover:text-rds-gray-300 transition-colors",
+                    "bg-white dark:bg-[#141414] border border-rds-gray-200 dark:border-rds-gray-700 shadow-sm",
                     collapsed && "absolute left-[calc(4rem-10px)] top-6 -translate-y-1/2 z-50"
                   )}
                   aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
@@ -188,7 +188,7 @@ const SideMenu = React.forwardRef<HTMLElement, SideMenuProps>(
 
             {/* Footer */}
             {footer && (
-              <div className="flex-shrink-0 border-t border-sourceful-gray-200 dark:border-[#1a1a1a] p-2">
+              <div className="flex-shrink-0 border-t border-rds-gray-200 dark:border-[#1a1a1a] p-2">
                 {footer}
               </div>
             )}
@@ -224,9 +224,9 @@ function SideMenuSectionComponent({ section }: { section: SideMenuSection }) {
         onClick={() => setExpanded(!expanded)}
         className={cn(
           "flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm font-medium",
-          "text-sourceful-gray-700 dark:text-sourceful-gray-300",
-          "hover:bg-sourceful-gray-50 dark:hover:bg-sourceful-gray-900",
-          "hover:text-sourceful-gray-900 dark:hover:text-white transition-colors"
+          "text-rds-gray-700 dark:text-rds-gray-300",
+          "hover:bg-rds-gray-50 dark:hover:bg-rds-gray-900",
+          "hover:text-rds-gray-900 dark:hover:text-white transition-colors"
         )}
       >
         {section.icon && (
@@ -242,7 +242,7 @@ function SideMenuSectionComponent({ section }: { section: SideMenuSection }) {
 
       {expanded && (
         <div className="mt-0.5 space-y-0.5 relative pl-5">
-          <div className="absolute left-[1.1rem] top-0 bottom-0 w-px bg-sourceful-gray-200 dark:bg-sourceful-gray-700" />
+          <div className="absolute left-[1.1rem] top-0 bottom-0 w-px bg-rds-gray-200 dark:bg-rds-gray-700" />
           {section.items.map((item) => (
             <SideMenuItemComponent key={item.id} item={item} nested />
           ))}
@@ -268,9 +268,9 @@ function SideMenuItemComponent({
     collapsed ? "justify-center px-2 py-2.5" : "px-2 py-1.5",
     isActive
       ? nested
-        ? "bg-sourceful-gray-100 dark:bg-[#1a1a1a] text-sourceful-gray-900 dark:text-white"
-        : "bg-sourceful-green-50 dark:bg-sourceful-green-950 text-sourceful-green-700 dark:text-sourceful-green-400"
-      : "text-sourceful-gray-700 dark:text-sourceful-gray-300 hover:bg-sourceful-gray-50 dark:hover:bg-sourceful-gray-900 hover:text-sourceful-gray-900 dark:hover:text-white",
+        ? "bg-rds-gray-100 dark:bg-[#1a1a1a] text-rds-gray-900 dark:text-white"
+        : "bg-rds-green-50 dark:bg-rds-green-950 text-rds-green-700 dark:text-rds-green-400"
+      : "text-rds-gray-700 dark:text-rds-gray-300 hover:bg-rds-gray-50 dark:hover:bg-rds-gray-900 hover:text-rds-gray-900 dark:hover:text-white",
     item.disabled && "opacity-50 pointer-events-none"
   )
 
@@ -285,7 +285,7 @@ function SideMenuItemComponent({
       )}
       {!collapsed && <span>{item.label}</span>}
       {!collapsed && item.badge && (
-        <span className="ml-auto text-xs bg-sourceful-gray-100 dark:bg-sourceful-gray-800 px-1.5 py-0.5 rounded">
+        <span className="ml-auto text-xs bg-rds-gray-100 dark:bg-rds-gray-800 px-1.5 py-0.5 rounded">
           {item.badge}
         </span>
       )}

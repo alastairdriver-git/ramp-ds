@@ -87,7 +87,7 @@ const SimpleTabs = React.forwardRef<HTMLDivElement, SimpleTabsProps>(
       >
         <div ref={ref} className={cn("space-y-6", className)}>
           {/* Tab Navigation */}
-          <div className="border-b border-sourceful-gray-200 dark:border-sourceful-gray-800">
+          <div className="border-b border-rds-gray-200 dark:border-rds-gray-800">
             <nav
               className={cn(
                 "-mb-px flex gap-1 overflow-x-auto scrollbar-hide",
@@ -106,8 +106,8 @@ const SimpleTabs = React.forwardRef<HTMLDivElement, SimpleTabsProps>(
                     className={cn(
                       "relative flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap",
                       isActive
-                        ? "text-sourceful-green-600 dark:text-sourceful-green-400"
-                        : "text-sourceful-gray-500 dark:text-sourceful-gray-400 hover:text-sourceful-gray-700 dark:hover:text-sourceful-gray-300",
+                        ? "text-rds-green-600 dark:text-rds-green-400"
+                        : "text-rds-gray-500 dark:text-rds-gray-400 hover:text-rds-gray-700 dark:hover:text-rds-gray-300",
                       tab.disabled && "opacity-50 cursor-not-allowed"
                     )}
                   >
@@ -115,7 +115,7 @@ const SimpleTabs = React.forwardRef<HTMLDivElement, SimpleTabsProps>(
                     {tab.label}
                     {isActive && (
                       <span
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-sourceful-green-500"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-rds-green-500"
                         aria-hidden="true"
                       />
                     )}
@@ -209,7 +209,7 @@ const SimpleTabsList = React.forwardRef<HTMLDivElement, SimpleTabsListProps>(
     return (
       <div
         ref={ref}
-        className="border-b border-sourceful-gray-200 dark:border-sourceful-gray-800"
+        className="border-b border-rds-gray-200 dark:border-rds-gray-800"
       >
         <nav
           className={cn(
@@ -260,8 +260,8 @@ const SimpleTabsTrigger = React.forwardRef<
       className={cn(
         "relative flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap",
         isActive
-          ? "text-sourceful-green-600 dark:text-sourceful-green-400"
-          : "text-sourceful-gray-500 dark:text-sourceful-gray-400 hover:text-sourceful-gray-700 dark:hover:text-sourceful-gray-300",
+          ? "text-rds-green-600 dark:text-rds-green-400"
+          : "text-rds-gray-500 dark:text-rds-gray-400 hover:text-rds-gray-700 dark:hover:text-rds-gray-300",
         disabled && "opacity-50 cursor-not-allowed",
         className
       )}
@@ -270,7 +270,7 @@ const SimpleTabsTrigger = React.forwardRef<
       {children}
       {isActive && (
         <span
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-sourceful-green-500"
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-rds-green-500"
           aria-hidden="true"
         />
       )}

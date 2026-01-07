@@ -30,13 +30,13 @@ export function ComponentPreview({
           <TabsList className="h-10 bg-transparent p-0">
             <TabsTrigger
               value="preview"
-              className="rounded-none border-b-2 border-transparent data-[state=active]:border-sourceful-green-500 data-[state=active]:bg-transparent"
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-rds-green-500 data-[state=active]:bg-transparent"
             >
               Preview
             </TabsTrigger>
             <TabsTrigger
               value="code"
-              className="rounded-none border-b-2 border-transparent data-[state=active]:border-sourceful-green-500 data-[state=active]:bg-transparent"
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-rds-green-500 data-[state=active]:bg-transparent"
             >
               Code
             </TabsTrigger>
@@ -54,8 +54,8 @@ export function ComponentPreview({
           </div>
         </TabsContent>
         <TabsContent value="code" className="p-0">
-          <div className="rounded-b-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 p-4 overflow-x-auto">
-            <pre className="text-sm text-sourceful-gray-900 dark:text-white">
+          <div className="rounded-b-lg bg-rds-gray-100 dark:bg-rds-gray-800 p-4 overflow-x-auto">
+            <pre className="text-sm text-rds-gray-900 dark:text-white">
               <code>{code}</code>
             </pre>
           </div>

@@ -3,47 +3,47 @@ const brandColors = [
     name: "Green",
     description: "Primary brand color, used for actions and links",
     shades: [
-      { name: "50", value: "#f0fdf4", class: "bg-sourceful-green-50" },
-      { name: "100", value: "#dcfce7", class: "bg-sourceful-green-100" },
-      { name: "200", value: "#bbf7d0", class: "bg-sourceful-green-200" },
-      { name: "300", value: "#86efac", class: "bg-sourceful-green-300" },
-      { name: "400", value: "#4ade80", class: "bg-sourceful-green-400" },
-      { name: "500", value: "#22c55e", class: "bg-sourceful-green-500", primary: true },
-      { name: "600", value: "#16a34a", class: "bg-sourceful-green-600" },
-      { name: "700", value: "#15803d", class: "bg-sourceful-green-700" },
-      { name: "800", value: "#166534", class: "bg-sourceful-green-800" },
-      { name: "900", value: "#14532d", class: "bg-sourceful-green-900" },
+      { name: "50", value: "#f0fdf4", class: "bg-rds-green-50" },
+      { name: "100", value: "#dcfce7", class: "bg-rds-green-100" },
+      { name: "200", value: "#bbf7d0", class: "bg-rds-green-200" },
+      { name: "300", value: "#86efac", class: "bg-rds-green-300" },
+      { name: "400", value: "#4ade80", class: "bg-rds-green-400" },
+      { name: "500", value: "#22c55e", class: "bg-rds-green-500", primary: true },
+      { name: "600", value: "#16a34a", class: "bg-rds-green-600" },
+      { name: "700", value: "#15803d", class: "bg-rds-green-700" },
+      { name: "800", value: "#166534", class: "bg-rds-green-800" },
+      { name: "900", value: "#14532d", class: "bg-rds-green-900" },
     ],
   },
   {
     name: "Gray",
     description: "Neutral tones for text, backgrounds, and borders",
     shades: [
-      { name: "50", value: "#f9fafb", class: "bg-sourceful-gray-50" },
-      { name: "100", value: "#f3f4f6", class: "bg-sourceful-gray-100" },
-      { name: "200", value: "#e5e7eb", class: "bg-sourceful-gray-200" },
-      { name: "300", value: "#d1d5db", class: "bg-sourceful-gray-300" },
-      { name: "400", value: "#9ca3af", class: "bg-sourceful-gray-400" },
-      { name: "500", value: "#6b7280", class: "bg-sourceful-gray-500" },
-      { name: "600", value: "#4b5563", class: "bg-sourceful-gray-600" },
-      { name: "700", value: "#374151", class: "bg-sourceful-gray-700" },
-      { name: "800", value: "#1f2937", class: "bg-sourceful-gray-800" },
-      { name: "900", value: "#111827", class: "bg-sourceful-gray-900" },
-      { name: "950", value: "#0a0a0a", class: "bg-sourceful-gray-950" },
+      { name: "50", value: "#f9fafb", class: "bg-rds-gray-50" },
+      { name: "100", value: "#f3f4f6", class: "bg-rds-gray-100" },
+      { name: "200", value: "#e5e7eb", class: "bg-rds-gray-200" },
+      { name: "300", value: "#d1d5db", class: "bg-rds-gray-300" },
+      { name: "400", value: "#9ca3af", class: "bg-rds-gray-400" },
+      { name: "500", value: "#6b7280", class: "bg-rds-gray-500" },
+      { name: "600", value: "#4b5563", class: "bg-rds-gray-600" },
+      { name: "700", value: "#374151", class: "bg-rds-gray-700" },
+      { name: "800", value: "#1f2937", class: "bg-rds-gray-800" },
+      { name: "900", value: "#111827", class: "bg-rds-gray-900" },
+      { name: "950", value: "#0a0a0a", class: "bg-rds-gray-950" },
     ],
   },
   {
     name: "Yellow",
     description: "Energy accent color, used for highlights and warnings",
     shades: [
-      { name: "50", value: "#fffce8", class: "bg-sourceful-yellow-50" },
-      { name: "100", value: "#fff8c2", class: "bg-sourceful-yellow-100" },
-      { name: "200", value: "#fff089", class: "bg-sourceful-yellow-200" },
-      { name: "300", value: "#ffe545", class: "bg-sourceful-yellow-300" },
-      { name: "400", value: "#FFD500", class: "bg-sourceful-yellow-400", primary: true },
-      { name: "500", value: "#e6c000", class: "bg-sourceful-yellow-500" },
-      { name: "600", value: "#cc9f00", class: "bg-sourceful-yellow-600" },
-      { name: "700", value: "#a37700", class: "bg-sourceful-yellow-700" },
+      { name: "50", value: "#fffce8", class: "bg-rds-yellow-50" },
+      { name: "100", value: "#fff8c2", class: "bg-rds-yellow-100" },
+      { name: "200", value: "#fff089", class: "bg-rds-yellow-200" },
+      { name: "300", value: "#ffe545", class: "bg-rds-yellow-300" },
+      { name: "400", value: "#FFD500", class: "bg-rds-yellow-400", primary: true },
+      { name: "500", value: "#e6c000", class: "bg-rds-yellow-500" },
+      { name: "600", value: "#cc9f00", class: "bg-rds-yellow-600" },
+      { name: "700", value: "#a37700", class: "bg-rds-yellow-700" },
     ],
   },
 ];
@@ -148,19 +148,19 @@ export default function ColorsPage() {
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Usage
         </h2>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`{/* Semantic colors (theme-aware) */}
 <div className="bg-background text-foreground" />
 <div className="bg-primary text-primary-foreground" />
 
 {/* Brand colors (fixed) */}
-<div className="bg-sourceful-green-500" />
-<div className="text-sourceful-yellow-400" />
+<div className="bg-rds-green-500" />
+<div className="text-rds-yellow-400" />
 
 {/* With opacity */}
 <div className="bg-primary/50" />
-<div className="border-sourceful-green-500/20" />`}</code>
+<div className="border-rds-green-500/20" />`}</code>
           </pre>
         </div>
       </div>

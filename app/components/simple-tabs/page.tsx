@@ -64,7 +64,7 @@ export default function SimpleTabsPage() {
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Installation
         </h2>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`import { SimpleTabs, SimpleTabsPanel } from "@ramp-ds/ui"
 // Or use the compound component pattern:
@@ -289,7 +289,7 @@ import { SimpleTabsRoot, SimpleTabsList, SimpleTabsTrigger, SimpleTabsContent } 
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Type Definitions
         </h2>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`interface SimpleTab {
   id: string

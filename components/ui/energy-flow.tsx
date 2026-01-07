@@ -185,7 +185,7 @@ function CustomNode({ data, id }: { data: NodeData; id: string }) {
     <div
       className={cn(
         "rounded-xl shadow-sm transition-all relative bg-white dark:bg-[#141414] min-w-[180px]",
-        isOnline ? "border-travel-animation" : "border-2 border-sourceful-gray-300 dark:border-[#1a1a1a]"
+        isOnline ? "border-travel-animation" : "border-2 border-rds-gray-300 dark:border-[#1a1a1a]"
       )}
     >
       {getHandles()}
@@ -196,14 +196,14 @@ function CustomNode({ data, id }: { data: NodeData; id: string }) {
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-sourceful-gray-900 dark:text-white truncate">{data.label}</h3>
+          <h3 className="text-sm font-semibold text-rds-gray-900 dark:text-white truncate">{data.label}</h3>
           {data.power !== undefined && (
-            <p className="text-xs text-sourceful-gray-600 dark:text-sourceful-gray-400 mt-0.5">
+            <p className="text-xs text-rds-gray-600 dark:text-rds-gray-400 mt-0.5">
               {data.power > 0 ? "+" : ""}{formatPower(Math.abs(data.power))}
             </p>
           )}
           {data.type === "battery" && data.batterySoC !== undefined && (
-            <p className="text-xs text-sourceful-gray-600 dark:text-sourceful-gray-400 mt-0.5">
+            <p className="text-xs text-rds-gray-600 dark:text-rds-gray-400 mt-0.5">
               SoC: {Math.round(data.batterySoC)}%
             </p>
           )}
@@ -212,8 +212,8 @@ function CustomNode({ data, id }: { data: NodeData; id: string }) {
         <div className={cn(
           "px-2 py-0.5 rounded-full text-xs font-medium flex-shrink-0",
           isOnline
-            ? "bg-sourceful-green-100 dark:bg-sourceful-green-950 text-sourceful-green-700 dark:text-sourceful-green-400"
-            : "bg-sourceful-gray-100 dark:bg-sourceful-gray-800 text-sourceful-gray-600 dark:text-sourceful-gray-400"
+            ? "bg-rds-green-100 dark:bg-rds-green-950 text-rds-green-700 dark:text-rds-green-400"
+            : "bg-rds-gray-100 dark:bg-rds-gray-800 text-rds-gray-600 dark:text-rds-gray-400"
         )}>
           {isOnline ? "●" : "○"}
         </div>
@@ -260,8 +260,8 @@ export function EnergyFlow({
         type: "solar",
         power: solarPower,
         status: solarPower > 0 ? "online" : "offline",
-        icon: <Zap className="h-3 w-3 text-sourceful-green-600" />,
-        bgColor: "bg-sourceful-green-100 dark:bg-sourceful-green-950",
+        icon: <Zap className="h-3 w-3 text-rds-green-600" />,
+        bgColor: "bg-rds-green-100 dark:bg-rds-green-950",
       },
     },
     {
@@ -273,8 +273,8 @@ export function EnergyFlow({
         type: "battery",
         power: batteryPower,
         status: "online",
-        icon: <Battery className="h-3 w-3 text-sourceful-yellow-600 dark:text-yellow-400" />,
-        bgColor: "bg-sourceful-yellow-100 dark:bg-yellow-500/20",
+        icon: <Battery className="h-3 w-3 text-rds-yellow-600 dark:text-yellow-400" />,
+        bgColor: "bg-rds-yellow-100 dark:bg-yellow-500/20",
         batterySoC,
       },
     },
@@ -287,8 +287,8 @@ export function EnergyFlow({
         type: "grid",
         power: gridImport > 0 ? gridImport : -gridExport,
         status: "online",
-        icon: <ArrowRight className="h-3 w-3 text-sourceful-gray-600 dark:text-sourceful-gray-400" />,
-        bgColor: "bg-sourceful-gray-100 dark:bg-sourceful-gray-800",
+        icon: <ArrowRight className="h-3 w-3 text-rds-gray-600 dark:text-rds-gray-400" />,
+        bgColor: "bg-rds-gray-100 dark:bg-rds-gray-800",
       },
     },
     {
@@ -300,8 +300,8 @@ export function EnergyFlow({
         type: "home",
         power: homeConsumption,
         status: "online",
-        icon: <Home className="h-3 w-3 text-sourceful-gray-700 dark:text-sourceful-gray-300" />,
-        bgColor: "bg-sourceful-gray-100 dark:bg-sourceful-gray-800",
+        icon: <Home className="h-3 w-3 text-rds-gray-700 dark:text-rds-gray-300" />,
+        bgColor: "bg-rds-gray-100 dark:bg-rds-gray-800",
       },
     },
     {
@@ -493,7 +493,7 @@ export function EnergyFlow({
   return (
     <div
       ref={containerRef}
-      className={cn("w-full h-[500px] rounded-lg border border-sourceful-gray-200 dark:border-[#1a1a1a] relative", className)}
+      className={cn("w-full h-[500px] rounded-lg border border-rds-gray-200 dark:border-[#1a1a1a] relative", className)}
     >
       <ReactFlow
         key="energy-flow"
@@ -518,17 +518,17 @@ export function EnergyFlow({
       {/* Custom controls positioned outside ReactFlow */}
       {showControls && (
         <div className="absolute bottom-3 left-3 z-10">
-          <div className="flex flex-col bg-white dark:bg-[#141414] border border-sourceful-gray-200 dark:border-[#262626] rounded-lg shadow-sm overflow-hidden">
-            <button className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors">
+          <div className="flex flex-col bg-white dark:bg-[#141414] border border-rds-gray-200 dark:border-[#262626] rounded-lg shadow-sm overflow-hidden">
+            <button className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors">
               <Plus className="h-4 w-4" />
             </button>
-            <button className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-sourceful-gray-200 dark:border-[#262626]">
+            <button className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-rds-gray-200 dark:border-[#262626]">
               <Minus className="h-4 w-4" />
             </button>
-            <button className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-sourceful-gray-200 dark:border-[#262626]">
+            <button className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-rds-gray-200 dark:border-[#262626]">
               <Maximize className="h-4 w-4" />
             </button>
-            <button className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-sourceful-gray-200 dark:border-[#262626]">
+            <button className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-rds-gray-200 dark:border-[#262626]">
               <Lock className="h-4 w-4" />
             </button>
           </div>

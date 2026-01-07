@@ -158,28 +158,28 @@ export default function EnergyFlowPage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <div className="p-4 rounded-lg border">
             <div className="flex items-center gap-2 mb-2">
-              <div className="h-3 w-3 rounded-full bg-sourceful-green-500" />
+              <div className="h-3 w-3 rounded-full bg-rds-green-500" />
               <span className="font-medium">Solar</span>
             </div>
             <p className="text-sm text-muted-foreground">Source only - outputs energy to other nodes</p>
           </div>
           <div className="p-4 rounded-lg border">
             <div className="flex items-center gap-2 mb-2">
-              <div className="h-3 w-3 rounded-full bg-sourceful-yellow-500" />
+              <div className="h-3 w-3 rounded-full bg-rds-yellow-500" />
               <span className="font-medium">Battery</span>
             </div>
             <p className="text-sm text-muted-foreground">Bi-directional - can charge or discharge</p>
           </div>
           <div className="p-4 rounded-lg border">
             <div className="flex items-center gap-2 mb-2">
-              <div className="h-3 w-3 rounded-full bg-blue-500 dark:bg-sourceful-gray-500" />
+              <div className="h-3 w-3 rounded-full bg-blue-500 dark:bg-rds-gray-500" />
               <span className="font-medium">Grid</span>
             </div>
             <p className="text-sm text-muted-foreground">Bi-directional - import or export power</p>
           </div>
           <div className="p-4 rounded-lg border">
             <div className="flex items-center gap-2 mb-2">
-              <div className="h-3 w-3 rounded-full bg-sourceful-gray-500" />
+              <div className="h-3 w-3 rounded-full bg-rds-gray-500" />
               <span className="font-medium">Home</span>
             </div>
             <p className="text-sm text-muted-foreground">Sink - receives energy from multiple sources</p>
@@ -199,7 +199,7 @@ export default function EnergyFlowPage() {
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Usage
         </h2>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`import { EnergyFlow } from "@/components/ui/energy-flow"
 
@@ -221,7 +221,7 @@ export default function EnergyFlowPage() {
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Dependencies
         </h2>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`npm install @xyflow/react`}</code>
           </pre>

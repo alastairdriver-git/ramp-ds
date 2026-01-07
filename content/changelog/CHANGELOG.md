@@ -20,7 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Changed
 - **docs**: Update README with Ramp branding and new URLs
-- **component**: Rename package from @sourceful-energy/ui to @ramp-ds/ui
+- **component**: Rename package from @rds-energy/ui to @ramp-ds/ui
 - **docs**: Add troubleshooting for missing responsive utilities
 - **docs**: Add comprehensive AI integration guide for using design system
 
@@ -43,7 +43,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - **component**: Add community feedback system with GitHub OAuth
 
 ### Changed
-- **component**: Rename package from @sourceful-energy/ui to @ramp-ds/ui
+- **component**: Rename package from @rds-energy/ui to @ramp-ds/ui
 - **docs**: Add troubleshooting for missing responsive utilities
 - **docs**: Add comprehensive AI integration guide for using design system
 

@@ -11,8 +11,8 @@
 **Current state:** Basic platform page with text-heavy content describing the 3-layer architecture.
 
 **Questions:**
-- [ ] Do you have hero images/renders of the platform dashboard or architecture diagrams? Yes, use the dashboards that are on the home page - the actual code with dummy data so people can interact, rather than just boring image, you can also use elements from them for feature card etc, eg use a chart, table or component from one of the many examples on the home screen - but make sure they're repsonsive for mobile. We can also use these images for heroes - I want to animate them eventually but let's used these as placeholder: /Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images/dark-mode
-/Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images
+- [ ] Do you have hero images/renders of the platform dashboard or architecture diagrams? Yes, use the dashboards that are on the home page - the actual code with dummy data so people can interact, rather than just boring image, you can also use elements from them for feature card etc, eg use a chart, table or component from one of the many examples on the home screen - but make sure they're repsonsive for mobile. We can also use these images for heroes - I want to animate them eventually but let's used these as placeholder: /Users/paulcooper/Documents/Repos/rds-marketing-site/public/images/dark-mode
+/Users/paulcooper/Documents/Repos/rds-marketing-site/public/images
 - [ ] What style of animation? (Subtle micro-interactions vs bold motion graphics) - subtle micro animations, like hovers but also using the animated icons that we use on the design system home page, there's 3 there now, but we can use the whole set from https://www.itshover.com/icons
 - [ ] Should we use Lottie animations, CSS animations, or video backgrounds? I prefer CSS, but we can also use lottie and video. Can you make lotties? Leave placeholders for video, we can do that later. Don't make any lotties, we can do that later.
 - [ ] Any specific color treatments beyond the green/yellow brand palette? Keep colours to a minimum, just use the greens for accents, respect the dark and light theme. Use soft variants of components.
@@ -40,9 +40,9 @@
 
 ### 1.4 Partner Logos
 **Questions:**
-- [ ] Can you provide partner logo files? (SVG preferred) Yes  /Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images/partner-logos
-- [ ] Which partners to feature? (Kalmar Energi, NRGi, Elkedjan mentioned in site) Yes all those mentioned, here's the logos: /Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images/partner-logos
-- [ ] Any hardware partners? (Inverter brands, battery manufacturers) Yes, check the logo files:  /Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images/partner-logos
+- [ ] Can you provide partner logo files? (SVG preferred) Yes  /Users/paulcooper/Documents/Repos/rds-marketing-site/public/images/partner-logos
+- [ ] Which partners to feature? (Kalmar Energi, NRGi, Elkedjan mentioned in site) Yes all those mentioned, here's the logos: /Users/paulcooper/Documents/Repos/rds-marketing-site/public/images/partner-logos
+- [ ] Any hardware partners? (Inverter brands, battery manufacturers) Yes, check the logo files:  /Users/paulcooper/Documents/Repos/rds-marketing-site/public/images/partner-logos
 - [ ] Logo usage permissions confirmed? Yes
 - [ ] Tiered display? (Featured partners vs integration partners) Home page can show a slowly moving looping carousel of all logos - then show relevant logos on relevant pages
 
@@ -151,8 +151,8 @@
 
 ### 5.2 Header Animations
 **Questions:**
-- [ ] Hero section animations? (Parallax, particle effects, gradient motion?) Use these images /Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images/dark-mode
-/Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images as the base, or inspiration. I like the idea of particle effects and text reveals, but let's keep that to a minimum now, we'll work on each page indivually later. 
+- [ ] Hero section animations? (Parallax, particle effects, gradient motion?) Use these images /Users/paulcooper/Documents/Repos/rds-marketing-site/public/images/dark-mode
+/Users/paulcooper/Documents/Repos/rds-marketing-site/public/images as the base, or inspiration. I like the idea of particle effects and text reveals, but let's keep that to a minimum now, we'll work on each page indivually later. 
 - [ ] Reference sites you like the feel of? wingbits
 - [ ] Performance considerations? (Keep it light for mobile?) yes
 - [ ] Should headers have video backgrounds? no
@@ -214,7 +214,7 @@
 
 ### 7.1 Hardware Brand Pages (SolarEdge, GoodWe, etc.)
 **Questions:**
-- [ ] Which brands to start with? Priority order? Work through the logo files, thats the list /Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images/partner-logos
+- [ ] Which brands to start with? Priority order? Work through the logo files, thats the list /Users/paulcooper/Documents/Repos/rds-marketing-site/public/images/partner-logos
 - [ ] Content for each: Integration guide? Compatibility? Setup steps? Keep it light for now, just create a template for each and then explain the benefits of sourceful to owners of the respective inverter/battery/charger and a strong CTA to buy a Zap maybe include a use case example, highlight the multi-brand operability
 - [ ] Co-marketing arrangements with these brands? None really but we have permission
 - [ ] SEO play: "SolarEdge smart home integration" etc? yes
@@ -228,7 +228,7 @@
   - SMA
   - Enphase
   - Tesla
-  - Others? See here /Users/paulcooper/Documents/Repos/sourceful-marketing-site/public/images/partner-logos
+  - Others? See here /Users/paulcooper/Documents/Repos/rds-marketing-site/public/images/partner-logos
 
 ---
 

@@ -431,7 +431,7 @@ export default function SavingsCalculatorPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                       <Button asChild>
-                        <a href="https://store.sourceful.energy/products/sourceful-energy-zap" target="_blank" rel="noopener noreferrer">
+                        <a href="https://store.sourceful.energy/products/rds-energy-zap" target="_blank" rel="noopener noreferrer">
                           Get the Zap - €39
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </a>

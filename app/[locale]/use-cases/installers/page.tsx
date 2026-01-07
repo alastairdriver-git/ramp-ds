@@ -249,7 +249,7 @@ export default function InstallersPage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <a href="https://store.sourceful.energy/products/sourceful-energy-zap" target="_blank" rel="noopener noreferrer">
+                  <a href="https://store.sourceful.energy/products/rds-energy-zap" target="_blank" rel="noopener noreferrer">
                     {tCommon("buttons.orderNow")}
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>

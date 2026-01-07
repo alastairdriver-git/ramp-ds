@@ -11,12 +11,12 @@ const alertVariants = cva(
         destructive:
           "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
         success:
-          "border-sourceful-green-500/50 bg-sourceful-green-50 text-sourceful-green-900 dark:bg-sourceful-green-950/50 dark:text-sourceful-green-100 [&>svg]:text-sourceful-green-500",
+          "border-rds-green-500/50 bg-rds-green-50 text-rds-green-900 dark:bg-rds-green-950/50 dark:text-rds-green-100 [&>svg]:text-rds-green-500",
         warning:
-          "border-sourceful-yellow-500/50 bg-sourceful-yellow-50 text-sourceful-yellow-900 dark:bg-sourceful-yellow-950/50 dark:text-sourceful-yellow-100 [&>svg]:text-sourceful-yellow-500",
+          "border-rds-yellow-500/50 bg-rds-yellow-50 text-rds-yellow-900 dark:bg-rds-yellow-950/50 dark:text-rds-yellow-100 [&>svg]:text-rds-yellow-500",
         info: "border-blue-500/50 bg-blue-50 text-blue-900 dark:bg-blue-950/50 dark:text-blue-100 [&>svg]:text-blue-500",
         energy:
-          "border-sourceful-yellow-400/50 bg-sourceful-yellow-50 text-sourceful-gray-900 dark:bg-sourceful-yellow-950/50 dark:text-sourceful-yellow-100 [&>svg]:text-sourceful-yellow-400",
+          "border-rds-yellow-400/50 bg-rds-yellow-50 text-rds-gray-900 dark:bg-rds-yellow-950/50 dark:text-rds-yellow-100 [&>svg]:text-rds-yellow-400",
       },
     },
     defaultVariants: {

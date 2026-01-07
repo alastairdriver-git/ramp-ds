@@ -36,7 +36,7 @@ export default function ClaudeCodePage() {
         <div className="space-y-6">
           <div>
             <h3 className="font-semibold text-lg mb-2">1. Install the package</h3>
-            <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+            <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
               <code>npm install @ramp-ds/ui</code>
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function ClaudeCodePage() {
             <p className="text-muted-foreground mb-2">
               Import the styles in your root layout or app entry point:
             </p>
-            <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+            <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
               <pre><code>{`import "@ramp-ds/ui/styles.css"`}</code></pre>
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function ClaudeCodePage() {
             <p className="text-muted-foreground mb-2">
               Download the template to your project root:
             </p>
-            <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+            <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
               <code>curl -o CLAUDE.md https://raw.githubusercontent.com/alastairdriver-git/ramp-ds/main/CLAUDE.project-template.md</code>
             </div>
           </div>
@@ -124,7 +124,7 @@ export default function ClaudeCodePage() {
           <p className="text-muted-foreground">
             The design system CSS <strong>must</strong> be imported before your project&apos;s globals.css:
           </p>
-          <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+          <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
             <pre><code>{`// In your root layout - ORDER MATTERS
 import "@ramp-ds/ui/styles.css"  // FIRST
 import "./globals.css"                     // SECOND`}</code></pre>

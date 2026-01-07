@@ -391,7 +391,7 @@ export default function V2XPage() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button size="lg" asChild>
-                  <a href="https://store.sourceful.energy/products/sourceful-energy-zap" target="_blank" rel="noopener noreferrer">
+                  <a href="https://store.sourceful.energy/products/rds-energy-zap" target="_blank" rel="noopener noreferrer">
                     {tCommon("buttons.orderNow")}
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>

@@ -63,14 +63,14 @@ export default function EMSSchedulePage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <div className="p-4 rounded-lg border">
             <div className="flex items-center gap-2 mb-2">
-              <div className="h-3 w-3 rounded bg-sourceful-gray-200 dark:bg-sourceful-gray-700" />
+              <div className="h-3 w-3 rounded bg-rds-gray-200 dark:bg-rds-gray-700" />
               <span className="font-medium">Idle</span>
             </div>
             <p className="text-sm text-muted-foreground">System is inactive, no energy management</p>
           </div>
           <div className="p-4 rounded-lg border">
             <div className="flex items-center gap-2 mb-2">
-              <div className="h-3 w-3 rounded bg-sourceful-green-200 dark:bg-sourceful-green-800" />
+              <div className="h-3 w-3 rounded bg-rds-green-200 dark:bg-rds-green-800" />
               <span className="font-medium">Self-Consumption</span>
             </div>
             <p className="text-sm text-muted-foreground">Maximize use of self-generated solar power</p>
@@ -120,7 +120,7 @@ export default function EMSSchedulePage() {
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Usage
         </h2>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`import { EMSSchedule, generateDemoSchedule } from "@/components/ui/ems-schedule"
 

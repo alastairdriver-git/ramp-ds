@@ -61,7 +61,7 @@ export default function ThemingPage() {
         <p className="leading-7">
           Wrap your app with the ThemeProvider:
         </p>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`// app/layout.tsx
 import { ThemeProvider } from "next-themes"
@@ -95,7 +95,7 @@ export default function RootLayout({ children }) {
           The format uses HSL values without the <code className="bg-muted px-1 py-0.5 rounded text-sm">hsl()</code> wrapper
           for better composability with Tailwind&apos;s opacity utilities.
         </p>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`:root {
   --background: 0 0% 100%;
@@ -123,7 +123,7 @@ export default function RootLayout({ children }) {
         <p className="leading-7">
           Use Tailwind classes with semantic color names:
         </p>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`{/* Semantic colors - adapt to theme */}
 <div className="bg-background text-foreground" />
@@ -132,8 +132,8 @@ export default function RootLayout({ children }) {
 <div className="bg-accent text-accent-foreground" />
 
 {/* Brand colors - consistent across themes */}
-<div className="bg-sourceful-green-500" />
-<div className="text-sourceful-yellow-400" />`}</code>
+<div className="bg-rds-green-500" />
+<div className="text-rds-yellow-400" />`}</code>
           </pre>
         </div>
       </div>
@@ -145,7 +145,7 @@ export default function RootLayout({ children }) {
         <p className="leading-7">
           Override CSS variables to customize the theme:
         </p>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`/* In your globals.css */
 :root {

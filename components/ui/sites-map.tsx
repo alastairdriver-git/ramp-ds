@@ -196,11 +196,11 @@ export function SitesMap({
   }, []);
 
   return (
-    <div className={cn("relative w-full h-full overflow-hidden bg-sourceful-gray-100 dark:bg-[#0a0a0a] rounded-lg", className)}>
+    <div className={cn("relative w-full h-full overflow-hidden bg-rds-gray-100 dark:bg-[#0a0a0a] rounded-lg", className)}>
       {/* Loading state */}
       {!isMapLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-sourceful-gray-100 dark:bg-[#0a0a0a]">
-          <div className="text-sm text-sourceful-gray-500 dark:text-sourceful-gray-400">Loading map...</div>
+        <div className="absolute inset-0 flex items-center justify-center bg-rds-gray-100 dark:bg-[#0a0a0a]">
+          <div className="text-sm text-rds-gray-500 dark:text-rds-gray-400">Loading map...</div>
         </div>
       )}
 
@@ -265,11 +265,11 @@ export function SitesMap({
                       />
 
                       {/* Label box */}
-                      <div className="bg-white dark:bg-[#1a1a1a] px-2.5 py-1.5 rounded-md shadow-lg border border-sourceful-gray-200 dark:border-[#2a2a2a] whitespace-nowrap">
-                        <div className="text-xs font-medium text-sourceful-gray-900 dark:text-white">
+                      <div className="bg-white dark:bg-[#1a1a1a] px-2.5 py-1.5 rounded-md shadow-lg border border-rds-gray-200 dark:border-[#2a2a2a] whitespace-nowrap">
+                        <div className="text-xs font-medium text-rds-gray-900 dark:text-white">
                           {site.name}
                         </div>
-                        <div className="text-xs text-sourceful-gray-500 dark:text-sourceful-gray-400 flex items-center gap-1">
+                        <div className="text-xs text-rds-gray-500 dark:text-rds-gray-400 flex items-center gap-1">
                           <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: color }} />
                           {site.currentProduction !== undefined
                             ? `${(site.currentProduction / 1000).toFixed(1)} kW`
@@ -286,24 +286,24 @@ export function SitesMap({
 
         {/* Custom Controls */}
         <div className="absolute bottom-[10px] left-[10px] z-10">
-          <div className="flex flex-col bg-white dark:bg-[#141414] border border-sourceful-gray-200 dark:border-[#262626] rounded-lg shadow-sm overflow-hidden">
+          <div className="flex flex-col bg-white dark:bg-[#141414] border border-rds-gray-200 dark:border-[#262626] rounded-lg shadow-sm overflow-hidden">
             <button
               onClick={handleZoomIn}
-              className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors"
+              className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors"
               title="Zoom in"
             >
               <Plus className="h-4 w-4" />
             </button>
             <button
               onClick={handleZoomOut}
-              className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-sourceful-gray-200 dark:border-[#262626]"
+              className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-rds-gray-200 dark:border-[#262626]"
               title="Zoom out"
             >
               <Minus className="h-4 w-4" />
             </button>
             <button
               onClick={handleResetNorth}
-              className="p-2 hover:bg-sourceful-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-sourceful-gray-200 dark:border-[#262626]"
+              className="p-2 hover:bg-rds-gray-100 dark:hover:bg-[#262626] transition-colors border-t border-rds-gray-200 dark:border-[#262626]"
               title="Reset north"
             >
               <Compass className="h-4 w-4" />
@@ -312,25 +312,25 @@ export function SitesMap({
         </div>
 
         {/* Legend */}
-        <div className="absolute bottom-[10px] right-[16px] bg-white/95 dark:bg-[#1a1a1a]/95 backdrop-blur-sm rounded-lg shadow-lg border border-sourceful-gray-200 dark:border-[#2a2a2a] p-3">
-          <div className="text-xs font-medium text-sourceful-gray-900 dark:text-white mb-2">
+        <div className="absolute bottom-[10px] right-[16px] bg-white/95 dark:bg-[#1a1a1a]/95 backdrop-blur-sm rounded-lg shadow-lg border border-rds-gray-200 dark:border-[#2a2a2a] p-3">
+          <div className="text-xs font-medium text-rds-gray-900 dark:text-white mb-2">
             Sites ({sites.length})
           </div>
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-sourceful-green-500" />
-              <span className="text-xs text-sourceful-gray-600 dark:text-sourceful-gray-400">Online</span>
+              <div className="h-2 w-2 rounded-full bg-rds-green-500" />
+              <span className="text-xs text-rds-gray-600 dark:text-rds-gray-400">Online</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-red-500" />
-              <span className="text-xs text-sourceful-gray-600 dark:text-sourceful-gray-400">Offline</span>
+              <span className="text-xs text-rds-gray-600 dark:text-rds-gray-400">Offline</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-sourceful-yellow-500" />
-              <span className="text-xs text-sourceful-gray-600 dark:text-sourceful-gray-400">Setup</span>
+              <div className="h-2 w-2 rounded-full bg-rds-yellow-500" />
+              <span className="text-xs text-rds-gray-600 dark:text-rds-gray-400">Setup</span>
             </div>
           </div>
-          <div className="mt-2 pt-2 border-t border-sourceful-gray-200 dark:border-[#2a2a2a] text-xs text-sourceful-gray-500 dark:text-sourceful-gray-400">
+          <div className="mt-2 pt-2 border-t border-rds-gray-200 dark:border-[#2a2a2a] text-xs text-rds-gray-500 dark:text-rds-gray-400">
             Click a site to select
           </div>
         </div>

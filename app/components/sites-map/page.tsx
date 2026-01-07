@@ -103,8 +103,8 @@ export default function SitesMapPage() {
               onClick={() => setSelectedSiteId(site.id)}
               className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${
                 hoveredSiteId === site.id || selectedSiteId === site.id
-                  ? "border-sourceful-green-500 bg-sourceful-green-50 dark:bg-sourceful-green-950/20"
-                  : "border-sourceful-gray-200 dark:border-[#252525] hover:bg-muted/50"
+                  ? "border-rds-green-500 bg-rds-green-50 dark:bg-rds-green-950/20"
+                  : "border-rds-gray-200 dark:border-[#252525] hover:bg-muted/50"
               }`}
             >
               <div className="flex items-center gap-3">
@@ -156,7 +156,7 @@ export default function SitesMapPage() {
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Usage
         </h2>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`import { SitesMap, type Site } from "@/components/ui/sites-map"
 
@@ -186,7 +186,7 @@ const sites: Site[] = [
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Dependencies
         </h2>
-        <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
             <code>{`npm install react-map-gl mapbox-gl
 

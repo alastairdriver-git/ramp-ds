@@ -11,173 +11,173 @@
      Brand Colors - Neon Green (Primary)
      The signature Sourceful green
      ---------------------------------------- */
-  --sourceful-green: #00FF84;
-  --sourceful-green-50: #ecfff5;
-  --sourceful-green-100: #d1ffea;
-  --sourceful-green-200: #a6ffd6;
-  --sourceful-green-300: #6affbd;
-  --sourceful-green-400: #2bff9e;
-  --sourceful-green-500: #00FF84; /* Primary brand green */
-  --sourceful-green-600: #00cc6a;
-  --sourceful-green-700: #009950;
-  --sourceful-green-800: #007a40;
-  --sourceful-green-900: #006636;
-  --sourceful-green-950: #00331b;
+  --rds-green: #00FF84;
+  --rds-green-50: #ecfff5;
+  --rds-green-100: #d1ffea;
+  --rds-green-200: #a6ffd6;
+  --rds-green-300: #6affbd;
+  --rds-green-400: #2bff9e;
+  --rds-green-500: #00FF84; /* Primary brand green */
+  --rds-green-600: #00cc6a;
+  --rds-green-700: #009950;
+  --rds-green-800: #007a40;
+  --rds-green-900: #006636;
+  --rds-green-950: #00331b;
 
   /* ----------------------------------------
      Brand Colors - Yellow (Energy/Accent)
      ---------------------------------------- */
-  --sourceful-yellow: #FFD500;
-  --sourceful-yellow-50: #fffce8;
-  --sourceful-yellow-100: #fff8c2;
-  --sourceful-yellow-200: #fff089;
-  --sourceful-yellow-300: #ffe545;
-  --sourceful-yellow-400: #FFD500; /* Primary energy yellow */
-  --sourceful-yellow-500: #e6c000;
-  --sourceful-yellow-600: #cc9f00;
-  --sourceful-yellow-700: #a37700;
-  --sourceful-yellow-800: #865c00;
-  --sourceful-yellow-900: #704b00;
+  --rds-yellow: #FFD500;
+  --rds-yellow-50: #fffce8;
+  --rds-yellow-100: #fff8c2;
+  --rds-yellow-200: #fff089;
+  --rds-yellow-300: #ffe545;
+  --rds-yellow-400: #FFD500; /* Primary energy yellow */
+  --rds-yellow-500: #e6c000;
+  --rds-yellow-600: #cc9f00;
+  --rds-yellow-700: #a37700;
+  --rds-yellow-800: #865c00;
+  --rds-yellow-900: #704b00;
 
   /* ----------------------------------------
      Brand Colors - Orange (Warning)
      ---------------------------------------- */
-  --sourceful-orange: #FF6B00;
-  --sourceful-orange-50: #fff5eb;
-  --sourceful-orange-100: #ffe6cc;
-  --sourceful-orange-200: #ffc999;
-  --sourceful-orange-300: #ffa866;
-  --sourceful-orange-400: #ff8533;
-  --sourceful-orange-500: #FF6B00; /* Primary orange */
-  --sourceful-orange-600: #cc5600;
-  --sourceful-orange-700: #994000;
-  --sourceful-orange-800: #662b00;
-  --sourceful-orange-900: #4d2000;
+  --rds-orange: #FF6B00;
+  --rds-orange-50: #fff5eb;
+  --rds-orange-100: #ffe6cc;
+  --rds-orange-200: #ffc999;
+  --rds-orange-300: #ffa866;
+  --rds-orange-400: #ff8533;
+  --rds-orange-500: #FF6B00; /* Primary orange */
+  --rds-orange-600: #cc5600;
+  --rds-orange-700: #994000;
+  --rds-orange-800: #662b00;
+  --rds-orange-900: #4d2000;
 
   /* ----------------------------------------
      Brand Colors - Red (Error/Destructive)
      ---------------------------------------- */
-  --sourceful-red: #FF0D0D;
-  --sourceful-red-50: #fff0f0;
-  --sourceful-red-100: #ffd9d9;
-  --sourceful-red-200: #ffb3b3;
-  --sourceful-red-300: #ff8080;
-  --sourceful-red-400: #ff4d4d;
-  --sourceful-red-500: #FF0D0D; /* Primary red */
-  --sourceful-red-600: #cc0a0a;
-  --sourceful-red-700: #990808;
-  --sourceful-red-800: #660505;
-  --sourceful-red-900: #4d0404;
+  --rds-red: #FF0D0D;
+  --rds-red-50: #fff0f0;
+  --rds-red-100: #ffd9d9;
+  --rds-red-200: #ffb3b3;
+  --rds-red-300: #ff8080;
+  --rds-red-400: #ff4d4d;
+  --rds-red-500: #FF0D0D; /* Primary red */
+  --rds-red-600: #cc0a0a;
+  --rds-red-700: #990808;
+  --rds-red-800: #660505;
+  --rds-red-900: #4d0404;
 
   /* ----------------------------------------
      Brand Colors - Teal (Energetic Teal)
      Adjusted for light/dark mode
      ---------------------------------------- */
-  --sourceful-teal: #0D7377;
-  --sourceful-teal-50: #ecfeff;
-  --sourceful-teal-100: #cffafe;
-  --sourceful-teal-200: #a5f3fc;
-  --sourceful-teal-300: #67e8f9;
-  --sourceful-teal-400: #22d3ee;
-  --sourceful-teal-500: #14b8a6;
-  --sourceful-teal-600: #0D7377; /* Primary energetic teal */
-  --sourceful-teal-700: #0a5c5f;
-  --sourceful-teal-800: #084547;
-  --sourceful-teal-900: #052e2f;
-  --sourceful-teal-950: #021717;
+  --rds-teal: #0D7377;
+  --rds-teal-50: #ecfeff;
+  --rds-teal-100: #cffafe;
+  --rds-teal-200: #a5f3fc;
+  --rds-teal-300: #67e8f9;
+  --rds-teal-400: #22d3ee;
+  --rds-teal-500: #14b8a6;
+  --rds-teal-600: #0D7377; /* Primary energetic teal */
+  --rds-teal-700: #0a5c5f;
+  --rds-teal-800: #084547;
+  --rds-teal-900: #052e2f;
+  --rds-teal-950: #021717;
 
   /* ----------------------------------------
      Brand Colors - Navy (Deep Blue)
      ---------------------------------------- */
-  --sourceful-navy: #1E3A5F;
-  --sourceful-navy-50: #f0f5fa;
-  --sourceful-navy-100: #d9e4f0;
-  --sourceful-navy-200: #b3c9e0;
-  --sourceful-navy-300: #8daed1;
-  --sourceful-navy-400: #5c8bc2;
-  --sourceful-navy-500: #3a6ca3;
-  --sourceful-navy-600: #1E3A5F; /* Primary navy */
-  --sourceful-navy-700: #182e4c;
-  --sourceful-navy-800: #122339;
-  --sourceful-navy-900: #0c1726;
+  --rds-navy: #1E3A5F;
+  --rds-navy-50: #f0f5fa;
+  --rds-navy-100: #d9e4f0;
+  --rds-navy-200: #b3c9e0;
+  --rds-navy-300: #8daed1;
+  --rds-navy-400: #5c8bc2;
+  --rds-navy-500: #3a6ca3;
+  --rds-navy-600: #1E3A5F; /* Primary navy */
+  --rds-navy-700: #182e4c;
+  --rds-navy-800: #122339;
+  --rds-navy-900: #0c1726;
 
   /* ----------------------------------------
      Brand Colors - Blue (Info)
      ---------------------------------------- */
-  --sourceful-blue: #2196F3;
-  --sourceful-blue-50: #e8f4fd;
-  --sourceful-blue-100: #c5e3fa;
-  --sourceful-blue-200: #90c9f6;
-  --sourceful-blue-300: #5bb0f1;
-  --sourceful-blue-400: #2196F3; /* Primary blue */
-  --sourceful-blue-500: #1976d2;
-  --sourceful-blue-600: #1565c0;
-  --sourceful-blue-700: #0d47a1;
-  --sourceful-blue-800: #0a3880;
-  --sourceful-blue-900: #072960;
+  --rds-blue: #2196F3;
+  --rds-blue-50: #e8f4fd;
+  --rds-blue-100: #c5e3fa;
+  --rds-blue-200: #90c9f6;
+  --rds-blue-300: #5bb0f1;
+  --rds-blue-400: #2196F3; /* Primary blue */
+  --rds-blue-500: #1976d2;
+  --rds-blue-600: #1565c0;
+  --rds-blue-700: #0d47a1;
+  --rds-blue-800: #0a3880;
+  --rds-blue-900: #072960;
 
   /* ----------------------------------------
      Neutral Colors - Gray Scale (from Figma)
      ---------------------------------------- */
-  --sourceful-black: #000000;
-  --sourceful-gray-950: #0a0a0a;
-  --sourceful-gray-900: #171717;
-  --sourceful-gray-800: #262626;
-  --sourceful-gray-700: #3d3d3d;
-  --sourceful-gray-600: #525252;
-  --sourceful-gray-500: #737373;
-  --sourceful-gray-400: #a3a3a3;
-  --sourceful-gray-300: #d4d4d4;
-  --sourceful-gray-200: #e5e5e5;
-  --sourceful-gray-100: #f1f1f1;
-  --sourceful-gray-50: #fafafa;
-  --sourceful-white: #ffffff;
+  --rds-black: #000000;
+  --rds-gray-950: #0a0a0a;
+  --rds-gray-900: #171717;
+  --rds-gray-800: #262626;
+  --rds-gray-700: #3d3d3d;
+  --rds-gray-600: #525252;
+  --rds-gray-500: #737373;
+  --rds-gray-400: #a3a3a3;
+  --rds-gray-300: #d4d4d4;
+  --rds-gray-200: #e5e5e5;
+  --rds-gray-100: #f1f1f1;
+  --rds-gray-50: #fafafa;
+  --rds-white: #ffffff;
 
   /* ----------------------------------------
      Semantic Colors (Light Mode)
      ---------------------------------------- */
-  --sourceful-success: var(--sourceful-green-600);
-  --sourceful-warning: var(--sourceful-orange-500);
-  --sourceful-error: var(--sourceful-red-500);
-  --sourceful-info: var(--sourceful-blue-400);
-  --sourceful-energy: var(--sourceful-yellow-400);
-  --sourceful-teal-semantic: var(--sourceful-teal-700); /* Darker for light mode */
+  --rds-success: var(--rds-green-600);
+  --rds-warning: var(--rds-orange-500);
+  --rds-error: var(--rds-red-500);
+  --rds-info: var(--rds-blue-400);
+  --rds-energy: var(--rds-yellow-400);
+  --rds-teal-semantic: var(--rds-teal-700); /* Darker for light mode */
 
   /* ----------------------------------------
      Spacing Scale
      ---------------------------------------- */
-  --sourceful-space-1: 0.25rem;  /* 4px */
-  --sourceful-space-2: 0.5rem;   /* 8px */
-  --sourceful-space-3: 0.75rem;  /* 12px */
-  --sourceful-space-4: 1rem;     /* 16px */
-  --sourceful-space-5: 1.25rem;  /* 20px */
-  --sourceful-space-6: 1.5rem;   /* 24px */
-  --sourceful-space-8: 2rem;     /* 32px */
-  --sourceful-space-10: 2.5rem;  /* 40px */
-  --sourceful-space-12: 3rem;    /* 48px */
-  --sourceful-space-16: 4rem;    /* 64px */
-  --sourceful-space-20: 5rem;    /* 80px */
-  --sourceful-space-24: 6rem;    /* 96px */
+  --rds-space-1: 0.25rem;  /* 4px */
+  --rds-space-2: 0.5rem;   /* 8px */
+  --rds-space-3: 0.75rem;  /* 12px */
+  --rds-space-4: 1rem;     /* 16px */
+  --rds-space-5: 1.25rem;  /* 20px */
+  --rds-space-6: 1.5rem;   /* 24px */
+  --rds-space-8: 2rem;     /* 32px */
+  --rds-space-10: 2.5rem;  /* 40px */
+  --rds-space-12: 3rem;    /* 48px */
+  --rds-space-16: 4rem;    /* 64px */
+  --rds-space-20: 5rem;    /* 80px */
+  --rds-space-24: 6rem;    /* 96px */
 
   /* ----------------------------------------
      Border Radius
      ---------------------------------------- */
-  --sourceful-radius-sm: 0.25rem;   /* 4px */
-  --sourceful-radius-md: 0.5rem;    /* 8px */
-  --sourceful-radius-lg: 0.75rem;   /* 12px */
-  --sourceful-radius-xl: 1rem;      /* 16px */
-  --sourceful-radius-2xl: 1.5rem;   /* 24px */
-  --sourceful-radius-full: 9999px;
+  --rds-radius-sm: 0.25rem;   /* 4px */
+  --rds-radius-md: 0.5rem;    /* 8px */
+  --rds-radius-lg: 0.75rem;   /* 12px */
+  --rds-radius-xl: 1rem;      /* 16px */
+  --rds-radius-2xl: 1.5rem;   /* 24px */
+  --rds-radius-full: 9999px;
 
   /* ----------------------------------------
      Shadows
      ---------------------------------------- */
-  --sourceful-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --sourceful-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --sourceful-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --sourceful-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --sourceful-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --sourceful-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --rds-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --rds-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --rds-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --rds-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --rds-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --rds-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 
   /* ----------------------------------------
      Typography - Font Families
@@ -246,14 +246,14 @@
   /* ----------------------------------------
      Animation
      ---------------------------------------- */
-  --sourceful-transition-fast: 150ms;
-  --sourceful-transition-base: 200ms;
-  --sourceful-transition-slow: 300ms;
-  --sourceful-transition-slower: 500ms;
+  --rds-transition-fast: 150ms;
+  --rds-transition-base: 200ms;
+  --rds-transition-slow: 300ms;
+  --rds-transition-slower: 500ms;
 
-  --sourceful-ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --sourceful-ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --sourceful-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --rds-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --rds-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --rds-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ----------------------------------------
      ShadCN Semantic Tokens (Light Mode)

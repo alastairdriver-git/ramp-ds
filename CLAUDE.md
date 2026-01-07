@@ -42,12 +42,12 @@ import "@ramp-ds/ui/styles.css"
 ## Design Tokens
 
 ### Colors
-- **Primary (Green)**: `sourceful-green-500` (#22c55e) - Use for primary actions, links, success states
-- **Accent (Yellow)**: `sourceful-yellow-400` (#facc15) - Use for highlights, warnings, energy indicators
-- **Text Primary**: `sourceful-gray-900` (#111827)
-- **Text Secondary**: `sourceful-gray-600` (#4b5563)
+- **Primary (Green)**: `rds-green-500` (#22c55e) - Use for primary actions, links, success states
+- **Accent (Yellow)**: `rds-yellow-400` (#facc15) - Use for highlights, warnings, energy indicators
+- **Text Primary**: `rds-gray-900` (#111827)
+- **Text Secondary**: `rds-gray-600` (#4b5563)
 - **Background**: White (light) / `#0a0a0a` (dark)
-- **Borders**: `sourceful-gray-200` (#e5e7eb)
+- **Borders**: `rds-gray-200` (#e5e7eb)
 
 ### Typography
 - **Sans font**: Satoshi - Use for all UI text (modern geometric sans-serif)

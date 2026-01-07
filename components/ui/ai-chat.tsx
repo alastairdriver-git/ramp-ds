@@ -88,18 +88,18 @@ export function AIChat({
   };
 
   return (
-    <div className={cn("flex flex-col bg-white dark:bg-[#141414] rounded-lg border border-sourceful-gray-200 dark:border-[#252525] overflow-hidden", className)}>
+    <div className={cn("flex flex-col bg-white dark:bg-[#141414] rounded-lg border border-rds-gray-200 dark:border-[#252525] overflow-hidden", className)}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center justify-between px-4 py-3 border-b border-sourceful-gray-200 dark:border-[#252525]"
+        className="flex items-center justify-between px-4 py-3 border-b border-rds-gray-200 dark:border-[#252525]"
       >
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/80 to-primary flex items-center justify-center">
             <Sparkles className="w-4 h-4 text-primary-foreground" />
           </div>
-          <span className="text-sm font-medium text-sourceful-gray-900 dark:text-white">
+          <span className="text-sm font-medium text-rds-gray-900 dark:text-white">
             AI Assistant
           </span>
         </div>
@@ -139,10 +139,10 @@ export function AIChat({
                   <Sparkles className="w-8 h-8 text-primary-foreground" />
                 </motion.div>
 
-                <h3 className="text-lg font-semibold text-sourceful-gray-900 dark:text-white mb-2">
+                <h3 className="text-lg font-semibold text-rds-gray-900 dark:text-white mb-2">
                   Sourceful AI Assistant
                 </h3>
-                <p className="text-sm text-sourceful-gray-500 dark:text-sourceful-gray-400 max-w-xs mb-6">
+                <p className="text-sm text-rds-gray-500 dark:text-rds-gray-400 max-w-xs mb-6">
                   Ask me anything about your energy system. I can help you monitor, analyze, and control your devices.
                 </p>
 
@@ -159,10 +159,10 @@ export function AIChat({
                       onClick={() => setQuery(prompt.text)}
                       className={cn(
                         "flex items-center gap-2 px-3 py-2 rounded-xl",
-                        "bg-sourceful-gray-100 dark:bg-[#1a1a1a]",
-                        "text-sm text-sourceful-gray-700 dark:text-sourceful-gray-300",
-                        "hover:bg-sourceful-gray-200 dark:hover:bg-[#252525]",
-                        "border border-sourceful-gray-200 dark:border-[#252525]",
+                        "bg-rds-gray-100 dark:bg-[#1a1a1a]",
+                        "text-sm text-rds-gray-700 dark:text-rds-gray-300",
+                        "hover:bg-rds-gray-200 dark:hover:bg-[#252525]",
+                        "border border-rds-gray-200 dark:border-[#252525]",
                         "transition-colors duration-200"
                       )}
                     >
@@ -188,7 +188,7 @@ export function AIChat({
                   "w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0",
                   message.role === "user"
                     ? "bg-primary"
-                    : "bg-sourceful-gray-100 dark:bg-[#252525]"
+                    : "bg-rds-gray-100 dark:bg-[#252525]"
                 )}
               >
                 {message.role === "user" ? (
@@ -203,7 +203,7 @@ export function AIChat({
                   "max-w-[80%] rounded-2xl px-4 py-3 border",
                   message.role === "user"
                     ? "bg-primary text-primary-foreground border-primary rounded-tr-sm"
-                    : "bg-sourceful-gray-100 dark:bg-[#1a1a1a] border-sourceful-gray-200 dark:border-[#252525] rounded-tl-sm"
+                    : "bg-rds-gray-100 dark:bg-[#1a1a1a] border-rds-gray-200 dark:border-[#252525] rounded-tl-sm"
                 )}
               >
                 {message.role === "assistant" ? (
@@ -228,12 +228,12 @@ export function AIChat({
                 exit={{ opacity: 0, y: -10 }}
                 className="flex gap-3"
               >
-                <div className="w-8 h-8 rounded-full bg-sourceful-gray-100 dark:bg-[#252525] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-rds-gray-100 dark:bg-[#252525] flex items-center justify-center">
                   <Sparkles className="w-4 h-4 text-primary" />
                 </div>
-                <div className="bg-sourceful-gray-100 dark:bg-[#1a1a1a] rounded-2xl rounded-tl-sm px-4 py-3 border border-sourceful-gray-200 dark:border-[#252525]">
+                <div className="bg-rds-gray-100 dark:bg-[#1a1a1a] rounded-2xl rounded-tl-sm px-4 py-3 border border-rds-gray-200 dark:border-[#252525]">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-sourceful-gray-500 italic">Thinking</span>
+                    <span className="text-xs text-rds-gray-500 italic">Thinking</span>
                     <div className="flex gap-1">
                       {[0, 1, 2].map((i) => (
                         <motion.div
@@ -262,7 +262,7 @@ export function AIChat({
       </div>
 
       {/* Input Area */}
-      <div className="border-t border-sourceful-gray-200 dark:border-[#252525] p-3 sm:p-4">
+      <div className="border-t border-rds-gray-200 dark:border-[#252525] p-3 sm:p-4">
         <div className="flex items-start gap-2">
           <div className="flex-1 min-w-0">
             <input
@@ -274,10 +274,10 @@ export function AIChat({
               disabled={isLoading}
               className={cn(
                 "w-full rounded-xl px-3 sm:px-4 h-[46px]",
-                "bg-sourceful-gray-50 dark:bg-[#1a1a1a]",
-                "border border-sourceful-gray-200 dark:border-[#252525]",
-                "text-sm text-sourceful-gray-900 dark:text-white",
-                "placeholder:text-sourceful-gray-400",
+                "bg-rds-gray-50 dark:bg-[#1a1a1a]",
+                "border border-rds-gray-200 dark:border-[#252525]",
+                "text-sm text-rds-gray-900 dark:text-white",
+                "placeholder:text-rds-gray-400",
                 "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
                 "disabled:opacity-50 disabled:cursor-not-allowed"
               )}
@@ -293,7 +293,7 @@ export function AIChat({
                 ? "bg-red-500 hover:bg-red-600 text-white"
                 : query.trim()
                   ? "bg-primary hover:bg-primary/90 text-primary-foreground"
-                  : "bg-sourceful-gray-100 dark:bg-[#252525] text-sourceful-gray-400 cursor-not-allowed"
+                  : "bg-rds-gray-100 dark:bg-[#252525] text-rds-gray-400 cursor-not-allowed"
             )}
           >
             {isLoading ? (
@@ -304,7 +304,7 @@ export function AIChat({
           </button>
         </div>
 
-        <p className="text-xs text-sourceful-gray-400 mt-2 text-center hidden sm:block">
+        <p className="text-xs text-rds-gray-400 mt-2 text-center hidden sm:block">
           Press Enter to send, Shift+Enter for new line
         </p>
       </div>

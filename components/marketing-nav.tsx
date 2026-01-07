@@ -197,7 +197,7 @@ export function MarketingNav() {
               </a>
             </Button>
             <Button asChild>
-              <a href="https://store.sourceful.energy/products/sourceful-energy-zap" target="_blank" rel="noopener noreferrer">
+              <a href="https://store.sourceful.energy/products/rds-energy-zap" target="_blank" rel="noopener noreferrer">
                 {tButtons("getTheZap")}
               </a>
             </Button>
@@ -306,7 +306,7 @@ export function MarketingNav() {
                     </a>
                   </Button>
                   <Button className="w-full" asChild>
-                    <a href="https://store.sourceful.energy/products/sourceful-energy-zap" target="_blank" rel="noopener noreferrer">
+                    <a href="https://store.sourceful.energy/products/rds-energy-zap" target="_blank" rel="noopener noreferrer">
                       {tButtons("getTheZap")}
                     </a>
                   </Button>
