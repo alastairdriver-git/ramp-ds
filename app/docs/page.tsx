@@ -6,7 +6,7 @@ export default function DocsPage() {
           Introduction
         </h1>
         <p className="text-lg text-muted-foreground mt-2">
-          Welcome to the Sourceful Design System documentation.
+          Welcome to the Ramp Design System documentation.
         </p>
       </div>
 
@@ -15,9 +15,9 @@ export default function DocsPage() {
           What is this?
         </h2>
         <p className="leading-7">
-          The Sourceful Design System is a collection of reusable components, design tokens,
-          and guidelines for building consistent, accessible interfaces across all Sourceful
-          Energy products.
+          The Ramp Design System is a collection of reusable components, design tokens,
+          and guidelines for building consistent, accessible interfaces across all Ramp
+          products.
         </p>
       </div>
 
