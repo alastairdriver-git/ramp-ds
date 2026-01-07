@@ -111,10 +111,9 @@ const componentsNav: NavSection[] = [
     ],
   },
   {
-    title: "Sourceful",
+    title: "Blocks",
     items: [
       { title: "Sites Map", href: "/components/sites-map" },
-      { title: "Energy Flow", href: "/components/energy-flow" },
       { title: "AI Chat", href: "/components/ai-chat" },
     ],
   },
