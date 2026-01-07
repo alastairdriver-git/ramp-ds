@@ -6,7 +6,7 @@ export default function InstallationPage() {
           Installation
         </h1>
         <p className="text-lg text-muted-foreground mt-2">
-          Get started with the Sourceful Design System in your project.
+          Get started with the Ramp Design System in your project.
         </p>
       </div>
 
@@ -15,7 +15,7 @@ export default function InstallationPage() {
           Install the package
         </h2>
         <p className="leading-7">
-          Install the Sourceful UI package using npm, yarn, or pnpm:
+          Install the Ramp UI package using npm, yarn, or pnpm:
         </p>
         <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
           <pre>

@@ -3,7 +3,7 @@ import { parseChangelog } from "@/lib/changelog";
 import { ChangelogContent } from "./changelog-content";
 
 export const metadata = {
-  title: "Changelog | Sourceful Design System",
+  title: "Changelog | Ramp Design System",
   description: "All notable changes to @ramp-ds/ui",
 };
 

@@ -1,7 +1,7 @@
 import { Feed } from "feed";
 import { parseChangelog, type ChangelogEntry, type Change } from "./changelog";
 
-const SITE_URL = "https://design.sourceful.energy";
+const SITE_URL = "https://ramp-ds.vercel.app";
 
 function formatChangeAsHTML(change: Change): string {
   const typeLabel = change.type.charAt(0).toUpperCase() + change.type.slice(1);
@@ -42,19 +42,19 @@ export function generateRSSFeed(): string {
   const changelog = parseChangelog();
 
   const feed = new Feed({
-    title: "Sourceful Design System Changelog",
-    description: "Latest updates to @ramp-ds/ui - the official design system for Sourceful Energy",
+    title: "Ramp Design System Changelog",
+    description: "Latest updates to @ramp-ds/ui - the official Ramp Design System",
     id: `${SITE_URL}/changelog`,
     link: `${SITE_URL}/changelog`,
     language: "en",
     favicon: `${SITE_URL}/favicon.ico`,
-    copyright: `Copyright ${new Date().getFullYear()} Sourceful Energy`,
+    copyright: `Copyright ${new Date().getFullYear()} Ramp`,
     feedLinks: {
       rss2: `${SITE_URL}/changelog.xml`,
     },
     author: {
-      name: "Sourceful Energy",
-      link: "https://sourceful.energy",
+      name: "Ramp",
+      link: "https://ramp-ds.vercel.app",
     },
   });
 
@@ -78,19 +78,19 @@ export function generateAtomFeed(): string {
   const changelog = parseChangelog();
 
   const feed = new Feed({
-    title: "Sourceful Design System Changelog",
-    description: "Latest updates to @ramp-ds/ui - the official design system for Sourceful Energy",
+    title: "Ramp Design System Changelog",
+    description: "Latest updates to @ramp-ds/ui - the official Ramp Design System",
     id: `${SITE_URL}/changelog`,
     link: `${SITE_URL}/changelog`,
     language: "en",
     favicon: `${SITE_URL}/favicon.ico`,
-    copyright: `Copyright ${new Date().getFullYear()} Sourceful Energy`,
+    copyright: `Copyright ${new Date().getFullYear()} Ramp`,
     feedLinks: {
       atom: `${SITE_URL}/changelog.atom`,
     },
     author: {
-      name: "Sourceful Energy",
-      link: "https://sourceful.energy",
+      name: "Ramp",
+      link: "https://ramp-ds.vercel.app",
     },
   });
 

@@ -4,9 +4,9 @@ import { getRoadmapItems } from "@/lib/roadmap";
 import { RoadmapContent } from "./roadmap-content";
 
 export const metadata: Metadata = {
-  title: "Roadmap - Sourceful Design System",
+  title: "Roadmap - Ramp Design System",
   description:
-    "See what's planned for the Sourceful Design System. Vote on features and track progress.",
+    "See what's planned for the Ramp Design System. Vote on features and track progress.",
 };
 
 export const revalidate = 60;

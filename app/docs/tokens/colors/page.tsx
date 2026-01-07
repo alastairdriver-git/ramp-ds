@@ -64,7 +64,7 @@ export default function ColorsPage() {
       <div>
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Colors</h1>
         <p className="text-lg text-muted-foreground mt-2">
-          Color tokens for the Sourceful Design System.
+          Color tokens for the Ramp Design System.
         </p>
       </div>
 

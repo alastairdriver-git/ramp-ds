@@ -8,7 +8,7 @@ export default function ClaudeCodePage() {
           Claude Code Setup
         </h1>
         <p className="text-lg text-muted-foreground mt-2">
-          Configure your project to use the Sourceful Design System with Claude Code.
+          Configure your project to use the Ramp Design System with Claude Code.
         </p>
       </div>
 
@@ -22,7 +22,7 @@ export default function ClaudeCodePage() {
         </p>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
           <li>Use components from <code className="bg-muted px-1.5 py-0.5 rounded text-sm">@ramp-ds/ui</code></li>
-          <li>Follow Sourceful design patterns and color tokens</li>
+          <li>Follow Ramp design patterns and color tokens</li>
           <li>Avoid creating custom components when design system components exist</li>
           <li>Apply correct dark mode and accessibility practices</li>
         </ul>
