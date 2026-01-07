@@ -99,9 +99,6 @@ export default function ClaudeCodePage() {
             <p className="text-sm italic text-muted-foreground">&quot;Create a form for adding a new site with name, location, and capacity fields&quot;</p>
           </div>
           <div className="rounded-lg border bg-card p-4">
-            <p className="text-sm italic text-muted-foreground">&quot;Add a card showing battery status with a progress bar&quot;</p>
-          </div>
-          <div className="rounded-lg border bg-card p-4">
             <p className="text-sm italic text-muted-foreground">&quot;Create a data table for displaying device list with sorting&quot;</p>
           </div>
         </div>
