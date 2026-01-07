@@ -10,7 +10,6 @@ import { useEffect, useState, useCallback } from "react";
 import { Logo } from "@/components/logo";
 import { SearchCommand, SearchTrigger } from "@/components/search-command";
 import { MobileNav } from "@/components/mobile-nav";
-import { FeedbackButton } from "@/components/feedback-button";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -77,7 +76,6 @@ export function SiteHeader() {
             <SearchTrigger onClick={() => setSearchOpen(true)} />
 
             <div className="hidden md:flex items-center gap-2">
-              <FeedbackButton />
               {mounted && (
                 <Button variant="ghost" size="icon" onClick={toggleTheme}>
                   {theme === "light" ? (
