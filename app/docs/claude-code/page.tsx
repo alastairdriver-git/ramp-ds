@@ -57,7 +57,7 @@ export default function ClaudeCodePage() {
               Download the template to your project root:
             </p>
             <div className="rounded-lg bg-sourceful-gray-100 dark:bg-sourceful-gray-800 border border-sourceful-gray-200 dark:border-transparent p-4 font-mono text-sm text-sourceful-gray-900 dark:text-white overflow-x-auto">
-              <code>curl -o CLAUDE.md https://raw.githubusercontent.com/srcfl/srcful-design-system/main/CLAUDE.project-template.md</code>
+              <code>curl -o CLAUDE.md https://raw.githubusercontent.com/alastairdriver-git/ramp-ds/main/CLAUDE.project-template.md</code>
             </div>
           </div>
 
@@ -182,7 +182,7 @@ import "./globals.css"                     // SECOND`}</code></pre>
         <p className="text-sm">
           <strong>View the template:</strong>{" "}
           <a
-            href="https://github.com/srcfl/srcful-design-system/blob/main/CLAUDE.project-template.md"
+            href="https://github.com/alastairdriver-git/ramp-ds/blob/main/CLAUDE.project-template.md"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
