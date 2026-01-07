@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 /* ============================================
-   SOURCEFUL DESIGN SYSTEM - DESIGN TOKENS
+   RAMP DESIGN SYSTEM - DESIGN TOKENS
    ============================================ */
 
 :root {
   /* ----------------------------------------
      Brand Colors - Neon Green (Primary)
-     The signature Sourceful green
+     The signature RDS green
      ---------------------------------------- */
   --rds-green: #00FF84;
   --rds-green-50: #ecfff5;

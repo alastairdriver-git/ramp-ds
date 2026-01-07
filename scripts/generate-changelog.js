@@ -201,7 +201,7 @@ function main() {
   } else {
     header = `# Changelog
 
-All notable changes to the Sourceful Design System (\`@ramp-ds/ui\`) are documented here.
+All notable changes to the Ramp Design System (\`@ramp-ds/ui\`) are documented here.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).`;
     rest = "";

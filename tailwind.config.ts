@@ -130,7 +130,7 @@ const config: Config = {
           black: "var(--rds-black)",
           white: "var(--rds-white)",
         },
-        // ShadCN semantic colors mapped to Sourceful tokens
+        // ShadCN semantic colors mapped to RDS tokens
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -37,13 +37,13 @@ export const componentsList = [
   { name: "Collapsible", href: "/components/collapsible", category: "Navigation" },
   { name: "Sheet", href: "/components/sheet", category: "Navigation" },
   { name: "Scroll Area", href: "/components/scroll-area", category: "Navigation" },
-  // Sourceful
-  { name: "Sites Map", href: "/components/sites-map", category: "Sourceful" },
-  { name: "Energy Flow", href: "/components/energy-flow", category: "Sourceful" },
-  { name: "AI Chat", href: "/components/ai-chat", category: "Sourceful" },
-  { name: "EMS Schedule", href: "/components/ems-schedule", category: "Sourceful" },
-  { name: "Electricity Price", href: "/components/electricity-price", category: "Sourceful" },
-  { name: "Weather Card", href: "/components/weather-card", category: "Sourceful" },
+  // Blocks
+  { name: "Sites Map", href: "/components/sites-map", category: "Blocks" },
+  { name: "Energy Flow", href: "/components/energy-flow", category: "Blocks" },
+  { name: "AI Chat", href: "/components/ai-chat", category: "Blocks" },
+  { name: "EMS Schedule", href: "/components/ems-schedule", category: "Blocks" },
+  { name: "Electricity Price", href: "/components/electricity-price", category: "Blocks" },
+  { name: "Weather Card", href: "/components/weather-card", category: "Blocks" },
 ];
 
 export function getComponentNav(currentHref: string) {

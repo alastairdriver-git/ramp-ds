@@ -46,10 +46,10 @@ const categoryIcons: Record<string, React.ElementType> = {
   "Data Display": FileText,
   Feedback: Activity,
   Navigation: Settings,
-  Sourceful: Zap,
+  Blocks: Zap,
 };
 
-const sourcefulIcons: Record<string, React.ElementType> = {
+const blocksIcons: Record<string, React.ElementType> = {
   "Sites Map": Map,
   "Energy Flow": Activity,
   "AI Chat": MessageSquare,
@@ -137,8 +137,8 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
             <CommandGroup key={category} heading={category}>
               {components.map((component) => {
                 const Icon =
-                  category === "Sourceful"
-                    ? sourcefulIcons[component.name] || Zap
+                  category === "Blocks"
+                    ? blocksIcons[component.name] || Zap
                     : CategoryIcon;
                 return (
                   <CommandItem
@@ -150,7 +150,7 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
                     <Icon
                       className={cn(
                         "mr-2 h-4 w-4",
-                        category === "Sourceful"
+                        category === "Blocks"
                           ? "text-primary"
                           : "text-muted-foreground"
                       )}
