@@ -26,24 +26,40 @@ export function Logo({
 }: LogoProps) {
   const sizeConfig = sizes[size];
 
-  // Symbol-only variant - simple "R" in a circle
+  // Symbol-only variant - circle in a circle
   if (variant === "symbol") {
     const symbolSize = sizeConfig.height;
+    const innerSize = symbolSize * 0.45;
+    const strokeWidth = symbolSize * 0.12;
 
     return (
-      <div
-        className={cn(
-          "flex-shrink-0 rounded-full bg-primary flex items-center justify-center font-bold text-primary-foreground",
-          className
-        )}
-        style={{
-          width: symbolSize,
-          height: symbolSize,
-          fontSize: symbolSize * 0.5,
-        }}
+      <svg
+        width={symbolSize}
+        height={symbolSize}
+        viewBox="0 0 40 40"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={cn("flex-shrink-0", className)}
       >
-        R
-      </div>
+        {/* Outer circle (ring) */}
+        <circle
+          cx="20"
+          cy="20"
+          r="16"
+          stroke="currentColor"
+          strokeWidth="5"
+          fill="none"
+          className="text-primary"
+        />
+        {/* Inner circle (filled) */}
+        <circle
+          cx="20"
+          cy="20"
+          r="7"
+          fill="currentColor"
+          className="text-primary"
+        />
+      </svg>
     );
   }
 

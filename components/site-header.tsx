@@ -43,8 +43,6 @@ export function SiteHeader() {
     { href: "/docs", label: "Docs" },
     { href: "/components", label: "Components" },
     { href: "/brand", label: "Brand" },
-    { href: "/changelog", label: "Changelog" },
-    { href: "/roadmap", label: "Roadmap" },
   ];
 
   return (
@@ -91,7 +89,7 @@ export function SiteHeader() {
               )}
               <Button variant="ghost" size="icon" asChild>
                 <a
-                  href="https://github.com/srcfl/srcful-design-system"
+                  href="https://github.com/alastairdriver-git/ramp-ds"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

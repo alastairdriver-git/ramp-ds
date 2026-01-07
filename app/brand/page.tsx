@@ -1,7 +1,7 @@
 "use client";
 
 import { SiteHeader } from "@/components/site-header";
-import Image from "next/image";
+import { Logo } from "@/components/logo";
 
 // Primary brand colors
 const brandColors = [
@@ -149,7 +149,7 @@ export default function BrandPage() {
               Brand Guidelines
             </h1>
             <p className="text-lg text-muted-foreground mt-2">
-              Visual identity, colors, typography, and voice guidelines for Sourceful Energy.
+              Visual identity, colors, typography, and voice guidelines for Ramp.
             </p>
           </div>
 
@@ -159,55 +159,31 @@ export default function BrandPage() {
               Logo
             </h2>
 
-            {/* Full Logo */}
+            {/* Full Logo (Wordmark) */}
             <div>
-              <h3 className="text-lg font-medium mb-3">Full Logo</h3>
+              <h3 className="text-lg font-medium mb-3">Wordmark</h3>
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="rounded-lg border p-8 flex items-center justify-center bg-white">
-                  <Image
-                    src="/assets/sourceful-logo-light-mode.svg"
-                    alt="Sourceful Logo - Light Mode"
-                    width={320}
-                    height={42}
-                    className="h-10 w-auto"
-                  />
+                  <Logo variant="full" size="xl" className="text-sourceful-gray-900" />
                 </div>
                 <div className="rounded-lg border p-8 flex items-center justify-center bg-sourceful-gray-950">
-                  <Image
-                    src="/assets/sourceful-logo-dark-mode.svg"
-                    alt="Sourceful Logo - Dark Mode"
-                    width={320}
-                    height={42}
-                    className="h-10 w-auto"
-                  />
+                  <Logo variant="full" size="xl" className="text-white" />
                 </div>
               </div>
             </div>
 
-            {/* Bolt Symbol */}
+            {/* Symbol */}
             <div>
-              <h3 className="text-lg font-medium mb-3">Bolt Symbol</h3>
+              <h3 className="text-lg font-medium mb-3">Symbol</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                The bolt symbol can be used independently as an icon or favicon at various sizes.
+                The symbol can be used independently as an icon or favicon at various sizes.
               </p>
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="rounded-lg border p-8 bg-white">
                   <div className="flex items-end gap-6">
-                    {[48, 32, 24, 20, 16, 12].map((size) => (
+                    {[48, 32, 24, 20, 16].map((size) => (
                       <div key={size} className="flex flex-col items-center gap-2">
-                        <svg
-                          width={size}
-                          height={size}
-                          viewBox="0 0 53 53"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <circle cx="26.4506" cy="26.4506" r="26.4506" fill="#2B2B2B" />
-                          <path
-                            d="M15.7938 25.7992L28.1412 10.8125C29.0232 9.74191 30.7487 10.5768 30.4567 11.9328L28.0388 23.1595C27.8529 24.0229 28.5485 24.8227 29.4294 24.7583L35.6745 24.3013C36.8624 24.2144 37.5517 25.618 36.7568 26.5049L22.8964 41.9686C21.9519 43.0224 20.2353 42.0583 20.6434 40.7034L24.2924 28.5905C24.5775 27.6441 23.7623 26.7304 22.7896 26.9062L17.0507 27.9434C15.8377 28.1626 15.01 26.7505 15.7938 25.7992Z"
-                            fill="#00FF84"
-                          />
-                        </svg>
+                        <Logo variant="symbol" size={size <= 20 ? "xs" : size <= 28 ? "sm" : size <= 36 ? "md" : size <= 44 ? "lg" : "xl"} />
                         <span className="text-xs text-muted-foreground font-mono">{size}px</span>
                       </div>
                     ))}
@@ -215,20 +191,9 @@ export default function BrandPage() {
                 </div>
                 <div className="rounded-lg border p-8 bg-sourceful-gray-950">
                   <div className="flex items-end gap-6">
-                    {[48, 32, 24, 20, 16, 12].map((size) => (
+                    {[48, 32, 24, 20, 16].map((size) => (
                       <div key={size} className="flex flex-col items-center gap-2">
-                        <svg
-                          width={size}
-                          height={size}
-                          viewBox="0 0 53 53"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M26.4502 0C41.0583 0 52.9012 11.8421 52.9014 26.4502C52.9014 41.0584 41.0584 52.9014 26.4502 52.9014C11.8421 52.9012 0 41.0583 0 26.4502C0.000191728 11.8422 11.8422 0.000191739 26.4502 0ZM30.457 11.9326C30.7487 10.5769 29.0236 9.74237 28.1416 10.8125L15.7939 25.7988C15.0101 26.7502 15.8378 28.1626 17.0508 27.9434L22.79 26.9062C23.7625 26.7308 24.5771 27.6445 24.292 28.5908L20.6436 40.7031C20.2354 42.0581 21.952 43.0225 22.8965 41.9688L36.7568 26.5049C37.5517 25.618 36.8625 24.2151 35.6748 24.3018L29.4297 24.7588C28.5489 24.8232 27.8531 24.0226 28.0391 23.1592L30.457 11.9326Z"
-                            fill="#00FF84"
-                          />
-                        </svg>
+                        <Logo variant="symbol" size={size <= 20 ? "xs" : size <= 28 ? "sm" : size <= 36 ? "md" : size <= 44 ? "lg" : "xl"} />
                         <span className="text-xs text-sourceful-gray-400 font-mono">{size}px</span>
                       </div>
                     ))}
@@ -241,50 +206,11 @@ export default function BrandPage() {
             <div className="rounded-lg border p-6 bg-muted/50">
               <h3 className="font-semibold mb-2">Usage Guidelines</h3>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• The logo consists of the energy bolt symbol and the &quot;Sourceful Energy&quot; wordmark</li>
-                <li>• Use light mode logo on light backgrounds, dark mode logo on dark backgrounds</li>
-                <li>• The light mode logo features a dark circle with green bolt and dark text</li>
-                <li>• The dark mode logo features a green circle with knockout bolt and green text</li>
+                <li>• The logo consists of the circle symbol and the &quot;Ramp&quot; wordmark</li>
+                <li>• Use dark text on light backgrounds, light text on dark backgrounds</li>
                 <li>• Maintain clear space around the logo equal to the height of the symbol</li>
                 <li>• Do not modify the logo colors or proportions</li>
               </ul>
-            </div>
-
-            {/* Download */}
-            <div>
-              <h3 className="text-lg font-medium mb-3">Logo Files</h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                <a
-                  href="/assets/sourceful-logo-light-mode.svg"
-                  download
-                  className="flex items-center gap-3 rounded-lg border p-4 hover:bg-muted/50 transition-colors"
-                >
-                  <div className="h-10 w-10 rounded bg-white border flex items-center justify-center">
-                    <svg className="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-medium text-sm">Light Mode Logo</p>
-                    <p className="text-xs text-muted-foreground">SVG format</p>
-                  </div>
-                </a>
-                <a
-                  href="/assets/sourceful-logo-dark-mode.svg"
-                  download
-                  className="flex items-center gap-3 rounded-lg border p-4 hover:bg-muted/50 transition-colors"
-                >
-                  <div className="h-10 w-10 rounded bg-sourceful-gray-950 border flex items-center justify-center">
-                    <svg className="h-5 w-5 text-sourceful-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-medium text-sm">Dark Mode Logo</p>
-                    <p className="text-xs text-muted-foreground">SVG format</p>
-                  </div>
-                </a>
-              </div>
             </div>
           </section>
 
@@ -893,13 +819,12 @@ export default function BrandPage() {
               Mission Statement
             </h2>
             <blockquote className="border-l-4 border-primary pl-6 py-2 text-xl italic">
-              &ldquo;Building local energy coordination infrastructure — the physical rails
-              that make distributed energy work.&rdquo;
+              &ldquo;Building beautiful, accessible interfaces with a comprehensive design system.&rdquo;
             </blockquote>
             <p className="text-muted-foreground">
-              We believe in physics before code, simple over clever, and local over cloud.
-              Our technology enables sub-200ms edge control because grid frequency must
-              balance every second — and cloud APIs simply cannot meet this requirement.
+              We believe in consistency, accessibility, and developer experience.
+              Our components are built with Radix UI primitives and styled with Tailwind CSS
+              to provide a solid foundation for any application.
             </p>
           </section>
         </div>
