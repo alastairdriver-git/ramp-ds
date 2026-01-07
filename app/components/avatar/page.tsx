@@ -20,7 +20,7 @@ export default function AvatarPage() {
         </h2>
         <div className="flex items-center gap-4">
           <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarImage src="https://lh3.googleusercontent.com/a/ACg8ocIOGXmSXQygzZNdbYW7PFimVyzO1QchFzKEjIZZvS1CVTL4DTRa=s400-c" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <Avatar>
@@ -65,7 +65,7 @@ export default function AvatarPage() {
         <div className="flex items-center gap-4">
           <div className="relative">
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarImage src="https://lh3.googleusercontent.com/a/ACg8ocIOGXmSXQygzZNdbYW7PFimVyzO1QchFzKEjIZZvS1CVTL4DTRa=s400-c" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-500 ring-2 ring-background" />
@@ -92,7 +92,7 @@ export default function AvatarPage() {
         </h2>
         <div className="flex -space-x-4">
           <Avatar className="ring-2 ring-background">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarImage src="https://lh3.googleusercontent.com/a/ACg8ocIOGXmSXQygzZNdbYW7PFimVyzO1QchFzKEjIZZvS1CVTL4DTRa=s400-c" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <Avatar className="ring-2 ring-background">
