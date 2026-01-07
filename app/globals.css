@@ -1,0 +1,763 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   SOURCEFUL DESIGN SYSTEM - DESIGN TOKENS
+   ============================================ */
+
+:root {
+  /* ----------------------------------------
+     Brand Colors - Neon Green (Primary)
+     The signature Sourceful green
+     ---------------------------------------- */
+  --sourceful-green: #00FF84;
+  --sourceful-green-50: #ecfff5;
+  --sourceful-green-100: #d1ffea;
+  --sourceful-green-200: #a6ffd6;
+  --sourceful-green-300: #6affbd;
+  --sourceful-green-400: #2bff9e;
+  --sourceful-green-500: #00FF84; /* Primary brand green */
+  --sourceful-green-600: #00cc6a;
+  --sourceful-green-700: #009950;
+  --sourceful-green-800: #007a40;
+  --sourceful-green-900: #006636;
+  --sourceful-green-950: #00331b;
+
+  /* ----------------------------------------
+     Brand Colors - Yellow (Energy/Accent)
+     ---------------------------------------- */
+  --sourceful-yellow: #FFD500;
+  --sourceful-yellow-50: #fffce8;
+  --sourceful-yellow-100: #fff8c2;
+  --sourceful-yellow-200: #fff089;
+  --sourceful-yellow-300: #ffe545;
+  --sourceful-yellow-400: #FFD500; /* Primary energy yellow */
+  --sourceful-yellow-500: #e6c000;
+  --sourceful-yellow-600: #cc9f00;
+  --sourceful-yellow-700: #a37700;
+  --sourceful-yellow-800: #865c00;
+  --sourceful-yellow-900: #704b00;
+
+  /* ----------------------------------------
+     Brand Colors - Orange (Warning)
+     ---------------------------------------- */
+  --sourceful-orange: #FF6B00;
+  --sourceful-orange-50: #fff5eb;
+  --sourceful-orange-100: #ffe6cc;
+  --sourceful-orange-200: #ffc999;
+  --sourceful-orange-300: #ffa866;
+  --sourceful-orange-400: #ff8533;
+  --sourceful-orange-500: #FF6B00; /* Primary orange */
+  --sourceful-orange-600: #cc5600;
+  --sourceful-orange-700: #994000;
+  --sourceful-orange-800: #662b00;
+  --sourceful-orange-900: #4d2000;
+
+  /* ----------------------------------------
+     Brand Colors - Red (Error/Destructive)
+     ---------------------------------------- */
+  --sourceful-red: #FF0D0D;
+  --sourceful-red-50: #fff0f0;
+  --sourceful-red-100: #ffd9d9;
+  --sourceful-red-200: #ffb3b3;
+  --sourceful-red-300: #ff8080;
+  --sourceful-red-400: #ff4d4d;
+  --sourceful-red-500: #FF0D0D; /* Primary red */
+  --sourceful-red-600: #cc0a0a;
+  --sourceful-red-700: #990808;
+  --sourceful-red-800: #660505;
+  --sourceful-red-900: #4d0404;
+
+  /* ----------------------------------------
+     Brand Colors - Teal (Energetic Teal)
+     Adjusted for light/dark mode
+     ---------------------------------------- */
+  --sourceful-teal: #0D7377;
+  --sourceful-teal-50: #ecfeff;
+  --sourceful-teal-100: #cffafe;
+  --sourceful-teal-200: #a5f3fc;
+  --sourceful-teal-300: #67e8f9;
+  --sourceful-teal-400: #22d3ee;
+  --sourceful-teal-500: #14b8a6;
+  --sourceful-teal-600: #0D7377; /* Primary energetic teal */
+  --sourceful-teal-700: #0a5c5f;
+  --sourceful-teal-800: #084547;
+  --sourceful-teal-900: #052e2f;
+  --sourceful-teal-950: #021717;
+
+  /* ----------------------------------------
+     Brand Colors - Navy (Deep Blue)
+     ---------------------------------------- */
+  --sourceful-navy: #1E3A5F;
+  --sourceful-navy-50: #f0f5fa;
+  --sourceful-navy-100: #d9e4f0;
+  --sourceful-navy-200: #b3c9e0;
+  --sourceful-navy-300: #8daed1;
+  --sourceful-navy-400: #5c8bc2;
+  --sourceful-navy-500: #3a6ca3;
+  --sourceful-navy-600: #1E3A5F; /* Primary navy */
+  --sourceful-navy-700: #182e4c;
+  --sourceful-navy-800: #122339;
+  --sourceful-navy-900: #0c1726;
+
+  /* ----------------------------------------
+     Brand Colors - Blue (Info)
+     ---------------------------------------- */
+  --sourceful-blue: #2196F3;
+  --sourceful-blue-50: #e8f4fd;
+  --sourceful-blue-100: #c5e3fa;
+  --sourceful-blue-200: #90c9f6;
+  --sourceful-blue-300: #5bb0f1;
+  --sourceful-blue-400: #2196F3; /* Primary blue */
+  --sourceful-blue-500: #1976d2;
+  --sourceful-blue-600: #1565c0;
+  --sourceful-blue-700: #0d47a1;
+  --sourceful-blue-800: #0a3880;
+  --sourceful-blue-900: #072960;
+
+  /* ----------------------------------------
+     Neutral Colors - Gray Scale (from Figma)
+     ---------------------------------------- */
+  --sourceful-black: #000000;
+  --sourceful-gray-950: #0a0a0a;
+  --sourceful-gray-900: #171717;
+  --sourceful-gray-800: #262626;
+  --sourceful-gray-700: #3d3d3d;
+  --sourceful-gray-600: #525252;
+  --sourceful-gray-500: #737373;
+  --sourceful-gray-400: #a3a3a3;
+  --sourceful-gray-300: #d4d4d4;
+  --sourceful-gray-200: #e5e5e5;
+  --sourceful-gray-100: #f1f1f1;
+  --sourceful-gray-50: #fafafa;
+  --sourceful-white: #ffffff;
+
+  /* ----------------------------------------
+     Semantic Colors (Light Mode)
+     ---------------------------------------- */
+  --sourceful-success: var(--sourceful-green-600);
+  --sourceful-warning: var(--sourceful-orange-500);
+  --sourceful-error: var(--sourceful-red-500);
+  --sourceful-info: var(--sourceful-blue-400);
+  --sourceful-energy: var(--sourceful-yellow-400);
+  --sourceful-teal-semantic: var(--sourceful-teal-700); /* Darker for light mode */
+
+  /* ----------------------------------------
+     Spacing Scale
+     ---------------------------------------- */
+  --sourceful-space-1: 0.25rem;  /* 4px */
+  --sourceful-space-2: 0.5rem;   /* 8px */
+  --sourceful-space-3: 0.75rem;  /* 12px */
+  --sourceful-space-4: 1rem;     /* 16px */
+  --sourceful-space-5: 1.25rem;  /* 20px */
+  --sourceful-space-6: 1.5rem;   /* 24px */
+  --sourceful-space-8: 2rem;     /* 32px */
+  --sourceful-space-10: 2.5rem;  /* 40px */
+  --sourceful-space-12: 3rem;    /* 48px */
+  --sourceful-space-16: 4rem;    /* 64px */
+  --sourceful-space-20: 5rem;    /* 80px */
+  --sourceful-space-24: 6rem;    /* 96px */
+
+  /* ----------------------------------------
+     Border Radius
+     ---------------------------------------- */
+  --sourceful-radius-sm: 0.25rem;   /* 4px */
+  --sourceful-radius-md: 0.5rem;    /* 8px */
+  --sourceful-radius-lg: 0.75rem;   /* 12px */
+  --sourceful-radius-xl: 1rem;      /* 16px */
+  --sourceful-radius-2xl: 1.5rem;   /* 24px */
+  --sourceful-radius-full: 9999px;
+
+  /* ----------------------------------------
+     Shadows
+     ---------------------------------------- */
+  --sourceful-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --sourceful-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --sourceful-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --sourceful-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --sourceful-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --sourceful-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* ----------------------------------------
+     Typography - Font Families
+     ---------------------------------------- */
+  --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* ----------------------------------------
+     Typography - Type Scale
+     ---------------------------------------- */
+  /* Display - Hero text */
+  --text-display: 3.75rem;      /* 60px */
+  --text-display-line: 1.1;
+  --text-display-tracking: -0.02em;
+
+  /* H1 */
+  --text-h1: 2.5rem;            /* 40px */
+  --text-h1-line: 1.2;
+  --text-h1-tracking: -0.02em;
+
+  /* H2 */
+  --text-h2: 2rem;              /* 32px */
+  --text-h2-line: 1.25;
+  --text-h2-tracking: -0.01em;
+
+  /* H3 */
+  --text-h3: 1.5rem;            /* 24px */
+  --text-h3-line: 1.3;
+  --text-h3-tracking: -0.01em;
+
+  /* H4 */
+  --text-h4: 1.25rem;           /* 20px */
+  --text-h4-line: 1.4;
+  --text-h4-tracking: 0;
+
+  /* H5 */
+  --text-h5: 1.125rem;          /* 18px */
+  --text-h5-line: 1.4;
+  --text-h5-tracking: 0;
+
+  /* H6 */
+  --text-h6: 1rem;              /* 16px */
+  --text-h6-line: 1.5;
+  --text-h6-tracking: 0;
+
+  /* Body */
+  --text-body-lg: 1.125rem;     /* 18px */
+  --text-body: 1rem;            /* 16px */
+  --text-body-sm: 0.875rem;     /* 14px */
+  --text-body-line: 1.6;
+
+  /* Label */
+  --text-label-lg: 0.875rem;    /* 14px */
+  --text-label: 0.75rem;        /* 12px */
+  --text-label-line: 1.4;
+  --text-label-tracking: 0.01em;
+
+  /* Caption */
+  --text-caption: 0.75rem;      /* 12px */
+  --text-caption-line: 1.4;
+
+  /* Overline */
+  --text-overline: 0.75rem;     /* 12px */
+  --text-overline-tracking: 0.1em;
+
+  /* ----------------------------------------
+     Animation
+     ---------------------------------------- */
+  --sourceful-transition-fast: 150ms;
+  --sourceful-transition-base: 200ms;
+  --sourceful-transition-slow: 300ms;
+  --sourceful-transition-slower: 500ms;
+
+  --sourceful-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --sourceful-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --sourceful-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ----------------------------------------
+     ShadCN Semantic Tokens (Light Mode)
+     ---------------------------------------- */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%; /* Gray 900 */
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 9%;
+  --primary: 142 76% 36%; /* Green #16a34a for light mode */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 95%; /* Gray 100 */
+  --secondary-foreground: 0 0% 32%; /* Gray 600 */
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 45%; /* Gray 500 */
+  --accent: 142 40% 94%; /* Light green tint */
+  --accent-foreground: 142 76% 30%;
+  --destructive: 0 97% 53%; /* Red #FF0D0D */
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 90%; /* Gray 200 */
+  --input: 0 0% 90%;
+  --ring: 142 76% 36%; /* Green #16a34a */
+  --radius: 0.5rem;
+
+  /* Semantic color tokens for light mode */
+  --success: 142 76% 36%; /* #16a34a for light bg */
+  --warning: 25 100% 50%; /* Orange */
+  --info: 207 90% 54%; /* Blue */
+  --energy: 50 100% 50%; /* Yellow */
+  --teal: 181 80% 26%; /* Darker teal for light bg */
+}
+
+.dark {
+  /* ----------------------------------------
+     ShadCN Semantic Tokens (Dark Mode)
+     ---------------------------------------- */
+  --background: 0 0% 4%; /* Gray 950 */
+  --foreground: 0 0% 100%;
+  --card: 0 0% 9%; /* Gray 900 */
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 151 100% 50%; /* Neon Green #00FF84 */
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 15%; /* Gray 800 */
+  --secondary-foreground: 0 0% 83%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 64%;
+  --accent: 142 30% 15%; /* Dark green tint */
+  --accent-foreground: 142 76% 70%;
+  --destructive: 0 97% 53%; /* Red #FF0D0D */
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 151 100% 50%; /* Neon Green */
+
+  /* Semantic color tokens for dark mode */
+  --success: 151 100% 50%; /* Bright neon green for dark bg */
+  --warning: 25 100% 50%; /* Orange */
+  --info: 207 90% 54%; /* Blue */
+  --energy: 50 100% 50%; /* Yellow */
+  --teal: 181 80% 40%; /* Brighter teal for dark bg */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Smooth theme transitions */
+  html {
+    transition-property: background-color, border-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-size: var(--text-body);
+    line-height: var(--text-body-line);
+  }
+
+  /* Link styles */
+  a:not([class]) {
+    @apply text-primary underline-offset-4 hover:underline;
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+
+@layer utilities {
+  /* Display */
+  .text-display {
+    font-size: var(--text-display);
+    line-height: var(--text-display-line);
+    letter-spacing: var(--text-display-tracking);
+    font-weight: 700;
+  }
+
+  /* Headings */
+  .text-h1 {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1-line);
+    letter-spacing: var(--text-h1-tracking);
+    font-weight: 700;
+  }
+
+  .text-h2 {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2-line);
+    letter-spacing: var(--text-h2-tracking);
+    font-weight: 600;
+  }
+
+  .text-h3 {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3-line);
+    letter-spacing: var(--text-h3-tracking);
+    font-weight: 600;
+  }
+
+  .text-h4 {
+    font-size: var(--text-h4);
+    line-height: var(--text-h4-line);
+    letter-spacing: var(--text-h4-tracking);
+    font-weight: 600;
+  }
+
+  .text-h5 {
+    font-size: var(--text-h5);
+    line-height: var(--text-h5-line);
+    letter-spacing: var(--text-h5-tracking);
+    font-weight: 500;
+  }
+
+  .text-h6 {
+    font-size: var(--text-h6);
+    line-height: var(--text-h6-line);
+    letter-spacing: var(--text-h6-tracking);
+    font-weight: 500;
+  }
+
+  /* Body */
+  .text-body-lg {
+    font-size: var(--text-body-lg);
+    line-height: var(--text-body-line);
+  }
+
+  .text-body {
+    font-size: var(--text-body);
+    line-height: var(--text-body-line);
+  }
+
+  .text-body-sm {
+    font-size: var(--text-body-sm);
+    line-height: var(--text-body-line);
+  }
+
+  /* Label */
+  .text-label-lg {
+    font-size: var(--text-label-lg);
+    line-height: var(--text-label-line);
+    letter-spacing: var(--text-label-tracking);
+    font-weight: 500;
+  }
+
+  .text-label {
+    font-size: var(--text-label);
+    line-height: var(--text-label-line);
+    letter-spacing: var(--text-label-tracking);
+    font-weight: 500;
+  }
+
+  /* Caption */
+  .text-caption {
+    font-size: var(--text-caption);
+    line-height: var(--text-caption-line);
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Overline */
+  .text-overline {
+    font-size: var(--text-overline);
+    letter-spacing: var(--text-overline-tracking);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Code */
+  .text-code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: hsl(var(--muted));
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  /* Lead paragraph */
+  .text-lead {
+    font-size: var(--text-body-lg);
+    line-height: var(--text-body-line);
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Muted text */
+  .text-muted {
+    color: hsl(var(--muted-foreground));
+  }
+}
+
+/* ============================================
+   ANIMATION UTILITIES
+   ============================================ */
+
+@layer utilities {
+  /* Hide scrollbar */
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+
+  /* Fade animations */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .animate-fade-out {
+    animation: fadeOut 0.2s ease-in;
+  }
+
+  /* Scale animations */
+  .animate-scale-in {
+    animation: scaleIn 0.15s ease-out;
+  }
+
+  /* Slide animations */
+  .animate-slide-in-from-top {
+    animation: slideInFromTop 0.2s ease-out;
+  }
+
+  .animate-slide-in-from-bottom {
+    animation: slideInFromBottom 0.2s ease-out;
+  }
+
+  .animate-slide-in-from-left {
+    animation: slideInFromLeft 0.2s ease-out;
+  }
+
+  .animate-slide-in-from-right {
+    animation: slideInFromRight 0.2s ease-out;
+  }
+
+  /* Pulse animation for energy indicators */
+  .animate-energy-pulse {
+    animation: energyPulse 2s ease-in-out infinite;
+  }
+
+  /* Shimmer effect for loading states */
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted-foreground) / 0.1) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes energyPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 hsl(var(--accent) / 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 8px hsl(var(--accent) / 0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 4px 1px hsl(var(--primary) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 8px 2px hsl(var(--primary) / 0.35);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* CSS Houdini property for animating conic-gradient angle */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-border {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+/* Border travel animation for energy flow nodes */
+.border-travel-animation {
+  position: relative;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(white, white) padding-box,
+    conic-gradient(
+      from var(--angle, 0deg),
+      rgba(34, 197, 94, 0.15) 0deg,
+      rgba(34, 197, 94, 0.15) 350deg,
+      #22c55e 353deg,
+      #16a34a 356deg,
+      #22c55e 359deg,
+      rgba(34, 197, 94, 0.15) 360deg
+    ) border-box;
+  animation: rotate-border 3s linear infinite;
+  border-radius: 0.75rem;
+}
+
+.border-travel-animation.rounded-full {
+  border-radius: 9999px;
+}
+
+.dark .border-travel-animation {
+  background:
+    linear-gradient(#141414, #141414) padding-box,
+    conic-gradient(
+      from var(--angle, 0deg),
+      rgba(34, 197, 94, 0.1) 0deg,
+      rgba(34, 197, 94, 0.1) 350deg,
+      #22c55e 353deg,
+      #16a34a 356deg,
+      #22c55e 359deg,
+      rgba(34, 197, 94, 0.1) 360deg
+    ) border-box;
+}
+
+/* React Flow controls positioning */
+.react-flow__controls {
+  bottom: 10px !important;
+  top: auto !important;
+  left: 10px !important;
+}
+
+/* React Flow dark mode styles */
+.dark .react-flow__controls {
+  background: #141414;
+  border: 1px solid #262626;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark .react-flow__controls-button {
+  background: #141414;
+  border-bottom: 1px solid #262626;
+  fill: #a3a3a3;
+}
+
+.dark .react-flow__controls-button:hover {
+  background: #262626;
+}
+
+.dark .react-flow__controls-button svg {
+  fill: #a3a3a3;
+}
+
+.dark .react-flow__controls-button:hover svg {
+  fill: #ffffff;
+}
+
+/* Dotted background pattern */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+}
+
+/* Gradient fade for hero */
+.hero-gradient {
+  background: linear-gradient(to bottom, transparent 0%, hsl(var(--background)) 70%, hsl(var(--background)) 100%);
+}
+
+/* ============================================
+   INFINITE SCROLL ANIMATION (Partner Logos)
+   ============================================ */
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scrollRight linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
+  animation-play-state: paused;
+}
