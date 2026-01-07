@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Github, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { useEffect, useState, useCallback } from "react";
@@ -85,15 +85,6 @@ export function SiteHeader() {
                   )}
                 </Button>
               )}
-              <Button variant="ghost" size="icon" asChild>
-                <a
-                  href="https://github.com/alastairdriver-git/ramp-ds"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="h-4 w-4" />
-                </a>
-              </Button>
             </div>
             <MobileNav />
           </div>
