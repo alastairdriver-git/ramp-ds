@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +15,18 @@ import { EnergyMonitorExample } from "@/components/examples/energy-monitor";
 import { EMSDashboardExample } from "@/components/examples/ems-dashboard";
 import { SavingsRewardsExample } from "@/components/examples/savings-rewards";
 
+// Toggle to show/hide the dashboard demo section
+// Set to true to show on production, false to hide (will still show on localhost)
+const SHOW_DASHBOARD_DEMO = false;
+
 export default function Home() {
+  const [showDemo, setShowDemo] = useState(false);
+
+  useEffect(() => {
+    // Show demo on localhost regardless of toggle, or if toggle is true
+    const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    setShowDemo(SHOW_DASHBOARD_DEMO || isLocalhost);
+  }, []);
   const resources = [
     {
       icon: Code,
@@ -78,76 +90,78 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Dashboard Demo */}
-        <section className="border-t bg-muted/30">
-          <div className="max-w-7xl mx-auto py-16 md:py-24 px-4 md:px-8">
-            <div className="text-center mb-12">
-              <Badge variant="secondary" className="mb-4">Interactive Examples</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                See the components in action
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Explore interactive dashboard examples built entirely with Ramp components.
-              </p>
-            </div>
-
-            <Tabs defaultValue="sites" className="w-full">
-              <div className="flex items-center justify-center mb-6 overflow-x-auto">
-                <TabsList className="h-10">
-                  <TabsTrigger value="sites" className="gap-2">
-                    <Map className="hidden sm:block h-4 w-4" />
-                    <span className="hidden sm:inline">Sites</span>
-                    <span className="sm:hidden">Sites</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="analytics" className="gap-2">
-                    <BarChart3 className="hidden sm:block h-4 w-4" />
-                    <span className="hidden sm:inline">Analytics</span>
-                    <span className="sm:hidden">Charts</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="fleet" className="gap-2">
-                    <Table2 className="hidden sm:block h-4 w-4" />
-                    <span className="hidden sm:inline">Fleet</span>
-                    <span className="sm:hidden">Table</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="monitor" className="gap-2">
-                    <Activity className="hidden sm:block h-4 w-4" />
-                    <span className="hidden sm:inline">Monitor</span>
-                    <span className="sm:hidden">Monitor</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="ems" className="gap-2">
-                    <Cpu className="hidden sm:block h-4 w-4" />
-                    <span className="hidden sm:inline">Automation</span>
-                    <span className="sm:hidden">Auto</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="savings" className="gap-2">
-                    <Coins className="hidden sm:block h-4 w-4" />
-                    <span className="hidden sm:inline">Savings</span>
-                    <span className="sm:hidden">Save</span>
-                  </TabsTrigger>
-                </TabsList>
+        {/* Dashboard Demo - only shown on localhost or if SHOW_DASHBOARD_DEMO is true */}
+        {showDemo && (
+          <section className="border-t bg-muted/30">
+            <div className="max-w-7xl mx-auto py-16 md:py-24 px-4 md:px-8">
+              <div className="text-center mb-12">
+                <Badge variant="secondary" className="mb-4">Interactive Examples</Badge>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                  See the components in action
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Explore interactive dashboard examples built entirely with Ramp components.
+                </p>
               </div>
 
-              <TabsContent value="sites" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
-                <SitesOverviewExample />
-              </TabsContent>
-              <TabsContent value="analytics" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
-                <AnalyticsDashboardExample />
-              </TabsContent>
-              <TabsContent value="fleet" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
-                <FleetDashboardExample />
-              </TabsContent>
-              <TabsContent value="monitor" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
-                <EnergyMonitorExample />
-              </TabsContent>
-              <TabsContent value="ems" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
-                <EMSDashboardExample />
-              </TabsContent>
-              <TabsContent value="savings" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
-                <SavingsRewardsExample />
-              </TabsContent>
-            </Tabs>
-          </div>
-        </section>
+              <Tabs defaultValue="sites" className="w-full">
+                <div className="flex items-center justify-center mb-6 overflow-x-auto">
+                  <TabsList className="h-10">
+                    <TabsTrigger value="sites" className="gap-2">
+                      <Map className="hidden sm:block h-4 w-4" />
+                      <span className="hidden sm:inline">Sites</span>
+                      <span className="sm:hidden">Sites</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="analytics" className="gap-2">
+                      <BarChart3 className="hidden sm:block h-4 w-4" />
+                      <span className="hidden sm:inline">Analytics</span>
+                      <span className="sm:hidden">Charts</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="fleet" className="gap-2">
+                      <Table2 className="hidden sm:block h-4 w-4" />
+                      <span className="hidden sm:inline">Fleet</span>
+                      <span className="sm:hidden">Table</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="monitor" className="gap-2">
+                      <Activity className="hidden sm:block h-4 w-4" />
+                      <span className="hidden sm:inline">Monitor</span>
+                      <span className="sm:hidden">Monitor</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="ems" className="gap-2">
+                      <Cpu className="hidden sm:block h-4 w-4" />
+                      <span className="hidden sm:inline">Automation</span>
+                      <span className="sm:hidden">Auto</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="savings" className="gap-2">
+                      <Coins className="hidden sm:block h-4 w-4" />
+                      <span className="hidden sm:inline">Savings</span>
+                      <span className="sm:hidden">Save</span>
+                    </TabsTrigger>
+                  </TabsList>
+                </div>
+
+                <TabsContent value="sites" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
+                  <SitesOverviewExample />
+                </TabsContent>
+                <TabsContent value="analytics" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
+                  <AnalyticsDashboardExample />
+                </TabsContent>
+                <TabsContent value="fleet" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
+                  <FleetDashboardExample />
+                </TabsContent>
+                <TabsContent value="monitor" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
+                  <EnergyMonitorExample />
+                </TabsContent>
+                <TabsContent value="ems" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
+                  <EMSDashboardExample />
+                </TabsContent>
+                <TabsContent value="savings" className="mt-0 focus-visible:outline-none focus-visible:ring-0 data-[state=inactive]:hidden" tabIndex={-1} forceMount>
+                  <SavingsRewardsExample />
+                </TabsContent>
+              </Tabs>
+            </div>
+          </section>
+        )}
 
         {/* Resources */}
         <section className="border-t">
