@@ -41,6 +41,7 @@ export function SiteHeader() {
   const navItems = [
     { href: "/docs", label: "Docs" },
     { href: "/components", label: "Components" },
+    { href: "/play", label: "Playground" },
     { href: "/brand", label: "Brand" },
   ];
 
