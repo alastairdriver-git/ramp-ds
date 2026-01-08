@@ -369,7 +369,7 @@ export default function BrandPage() {
                   <span className="text-label-lg text-muted-foreground">Display</span>
                   <p className="text-caption">60px / 700 / -0.02em</p>
                 </div>
-                <p className="text-display">Powering energy</p>
+                <p className="text-display">Display heading</p>
               </div>
 
               {/* H1 */}
