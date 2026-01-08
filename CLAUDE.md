@@ -1,10 +1,10 @@
-# Sourceful Design System
+# Ramp Design System
 
-This is the official design system for Sourceful Energy. It contains React components, design tokens, and brand guidelines.
+This is a design system  by Ramp Design Systems. It contains React components, design tokens, and brand guidelines.
 
 ## Quick Reference for AI Assistants
 
-When building UIs for Sourceful projects, use components from this design system:
+When building UIs using Ramp Design Systems, use components from this design system:
 
 ```tsx
 // Core components

@@ -2,7 +2,7 @@
 
 ## UI Framework
 
-This project uses the **Sourceful Design System**. All UI components must come from `@ramp-ds/ui`.
+This project uses the **Ramp Design System**. All UI components must come from `@ramp-ds/ui`.
 
 ### Critical Setup Requirements
 
