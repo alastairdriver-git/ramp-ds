@@ -175,7 +175,29 @@ import "./globals.css"                     // SECOND`}</code></pre>
         </div>
       </div>
 
-      <div className="rounded-lg border bg-primary/5 p-4">
+      <div className="space-y-4">
+        <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
+          Design System Automation
+        </h2>
+        <p className="leading-7">
+          Take your design system to the next level with automated quality checks and Figma sync.
+        </p>
+        <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+          <h3 className="font-semibold text-lg mb-2">Subagents for Design System Health</h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Automated tools that maintain perfect sync between Figma, code, and documentation.
+            Catch drift early with visual regression testing, token validation, and doc checks.
+          </p>
+          <Link
+            href="/docs/claude-code/subagents"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+          >
+            Learn about Subagents →
+          </Link>
+        </div>
+      </div>
+
+      <div className="rounded-lg border bg-muted/50 p-4">
         <p className="text-sm">
           <strong>View the template:</strong>{" "}
           <a

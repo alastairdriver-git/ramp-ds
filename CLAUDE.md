@@ -650,6 +650,93 @@ export default {
 - Design system uses Tailwind - if project also uses Tailwind, ensure configs don't conflict
 - Check for duplicate `@tailwind base` directives
 
+## Subagents for Design System Automation
+
+This project includes specialized subagents for maintaining design system quality and sync with Figma. All subagent specifications are in `.claude/subagents/`.
+
+### Available Subagents
+
+1. **Component Screenshot Generator** (`.claude/subagents/01-component-screenshot-generator.md`)
+   - Generates visual screenshots of all component variants
+   - Creates baseline for visual regression testing
+   - Outputs to `public/screenshots/code/`
+   - Usage: `claude --subagent component-screenshot-generator --all`
+
+2. **Figma Drift Detection** (`.claude/subagents/02-figma-drift-detection.md`)
+   - Compares Figma designs vs React implementations
+   - Visual pixel-diff comparison
+   - Structural property comparison (spacing, colors, typography)
+   - Token usage validation
+   - Usage: `claude --subagent figma-drift-check --all`
+
+3. **Token Sync & Diff** (`.claude/subagents/03-token-sync-diff.md`)
+   - Extracts design tokens from Figma and code
+   - Compares and identifies mismatches
+   - Handles unit conversions (px vs rem)
+   - Supports Figma `@code-value` annotations
+   - Usage: `claude --subagent token-sync --compare`
+
+4. **Dashboard Generator** (`.claude/subagents/04-dashboard-generator.md`)
+   - Creates interactive health dashboard
+   - Shows overall design system health score
+   - Visualizes token sync and component drift
+   - Provides actionable recommendations
+   - Usage: `claude --subagent dashboard-generator`
+
+5. **Documentation Validator** (`.claude/subagents/05-documentation-validator.md`)
+   - Validates component docs against actual code
+   - Detects missing props, variants, examples
+   - Auto-update mode to keep docs in sync
+   - Quality scoring
+   - Usage: `claude --subagent doc-validator --all`
+
+### Master Health Check
+
+Run all quality checks in sequence:
+
+```bash
+# Run complete design system health check
+claude --subagent token-sync --compare
+claude --subagent component-screenshot-generator --all
+claude --subagent figma-drift-check --all
+claude --subagent doc-validator --all
+claude --subagent dashboard-generator
+
+# Then open: public/design-system-dashboard.html
+```
+
+### Three Levels of Verification
+
+1. **Token Level**: Are base design tokens aligned between Figma and code?
+2. **Component Structure Level**: Are properties and tokens used correctly?
+3. **Visual Level**: Does it actually look right?
+4. **Documentation Level**: Are docs accurate and up-to-date?
+
+### Output Structure
+
+```
+project/
+├── .claude/
+│   └── subagents/              # Subagent specifications
+├── public/
+│   ├── design-system-dashboard.html
+│   └── screenshots/
+│       ├── code/               # Component screenshots
+│       ├── figma/              # Figma exports
+│       ├── diff/               # Visual diffs
+│       └── reports/
+│           └── drift-report.json
+├── src/tokens/
+│   ├── figma/                  # Figma token exports
+│   ├── code/                   # Code token exports
+│   └── reports/
+│       ├── token-diff.json
+│       └── history/            # Historical reports
+└── docs/
+    └── reports/
+        └── doc-validation.json
+```
+
 ## Links
 - Docs: https://design.sourceful.energy
 - GitHub: https://github.com/srcfl/srcful-design-system

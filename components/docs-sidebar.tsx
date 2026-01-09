@@ -21,6 +21,7 @@ const docsNav: NavSection[] = [
       { title: "Introduction", href: "/docs" },
       { title: "Installation", href: "/docs/installation" },
       { title: "Claude Code", href: "/docs/claude-code" },
+      { title: "Subagents", href: "/docs/claude-code/subagents" },
       { title: "Theming", href: "/docs/theming" },
     ],
   },
