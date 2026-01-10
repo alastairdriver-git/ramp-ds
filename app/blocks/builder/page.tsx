@@ -308,17 +308,17 @@ export default function BlockBuilderPage() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
         <div className="grid gap-6 lg:grid-cols-[280px,1fr]">
           {/* Controls Sidebar */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             {/* Blocks List */}
-            <Card className="p-4">
-              <div className="flex items-center justify-between mb-3">
+            <Card className="p-3">
+              <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold text-sm">Blocks ({blocks.length})</h3>
                 <Button size="sm" variant="outline" onClick={addBlock}>
                   <Plus className="h-3.5 w-3.5 mr-1" />
                   Add
                 </Button>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 {blocks.map((block, index) => (
                   <div
                     key={block.id}
@@ -386,10 +386,10 @@ export default function BlockBuilderPage() {
             </Card>
 
             {/* Block Settings */}
-            <Card className="p-4 space-y-4 max-h-[calc(100vh-300px)] overflow-y-auto">
+            <Card className="p-3 space-y-3 max-h-[calc(100vh-300px)] overflow-y-auto">
               <div>
-                <h3 className="font-semibold mb-3 text-sm">Layout</h3>
-                <div className="space-y-3">
+                <h3 className="font-semibold mb-2 text-sm">Layout</h3>
+                <div className="space-y-2">
                   <div className="space-y-2">
                     <Label className="text-xs">Padding</Label>
                     <Select
@@ -436,8 +436,8 @@ export default function BlockBuilderPage() {
               <Separator />
 
               <div>
-                <h3 className="font-semibold mb-3 text-sm">Visual</h3>
-                <div className="space-y-3">
+                <h3 className="font-semibold mb-2 text-sm">Visual</h3>
+                <div className="space-y-2">
                   <div className="space-y-2">
                     <Label className="text-xs">Background</Label>
                     <Select
@@ -503,8 +503,8 @@ export default function BlockBuilderPage() {
               <Separator />
 
               <div>
-                <h3 className="font-semibold mb-3 text-sm">Content</h3>
-                <div className="space-y-3">
+                <h3 className="font-semibold mb-2 text-sm">Content</h3>
+                <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label className="text-xs">Show Title</Label>
                     <Switch
