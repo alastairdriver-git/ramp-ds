@@ -11,7 +11,7 @@ import {
   blockCategories,
   getBlocksByCategory,
 } from "@/lib/blocks-list";
-import { ArrowRight, Blocks, Copy, Check } from "lucide-react";
+import { ArrowRight, Blocks, Copy, Check, Play } from "lucide-react";
 
 export default function BlocksPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -34,17 +34,33 @@ export default function BlocksPage() {
       <div className="space-y-8">
         {/* Header */}
         <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Blocks className="h-8 w-8 text-primary" />
-            <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
-              Blocks
-            </h1>
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-2">
+                <Blocks className="h-8 w-8 text-primary" />
+                <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+                  Blocks
+                </h1>
+              </div>
+              <p className="text-lg text-muted-foreground max-w-3xl mt-2">
+                Flexible marketing sections built with the SectionBlock component.
+                Configure with props, add custom content, and maintain consistency
+                across your site.
+              </p>
+            </div>
+            <Link href="/blocks/play">
+              <Button size="lg" className="hidden md:flex">
+                <Play className="h-4 w-4 mr-2" />
+                Try Playground
+              </Button>
+            </Link>
           </div>
-          <p className="text-lg text-muted-foreground max-w-3xl">
-            Flexible marketing sections built with the SectionBlock component.
-            Configure with props, add custom content, and maintain consistency
-            across your site.
-          </p>
+          <Link href="/blocks/play" className="md:hidden">
+            <Button size="sm" className="w-full">
+              <Play className="h-4 w-4 mr-2" />
+              Try Playground
+            </Button>
+          </Link>
         </div>
 
         {/* Category Filter */}
