@@ -11,7 +11,7 @@ import {
   blockCategories,
   getBlocksByCategory,
 } from "@/lib/blocks-list";
-import { ArrowRight, Blocks, Copy, Check, Play } from "lucide-react";
+import { ArrowRight, Blocks, Copy, Check, Play, Layout } from "lucide-react";
 
 export default function BlocksPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -48,19 +48,35 @@ export default function BlocksPage() {
                 across your site.
               </p>
             </div>
-            <Link href="/blocks/play">
-              <Button size="lg" className="hidden md:flex">
+            <div className="flex gap-2">
+              <Link href="/blocks/play">
+                <Button size="lg" variant="outline" className="hidden md:flex">
+                  <Play className="h-4 w-4 mr-2" />
+                  Playground
+                </Button>
+              </Link>
+              <Link href="/blocks/builder">
+                <Button size="lg" className="hidden md:flex">
+                  <Layout className="h-4 w-4 mr-2" />
+                  Page Builder
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <div className="flex gap-2 md:hidden">
+            <Link href="/blocks/play" className="flex-1">
+              <Button size="sm" variant="outline" className="w-full">
                 <Play className="h-4 w-4 mr-2" />
-                Try Playground
+                Playground
+              </Button>
+            </Link>
+            <Link href="/blocks/builder" className="flex-1">
+              <Button size="sm" className="w-full">
+                <Layout className="h-4 w-4 mr-2" />
+                Builder
               </Button>
             </Link>
           </div>
-          <Link href="/blocks/play" className="md:hidden">
-            <Button size="sm" className="w-full">
-              <Play className="h-4 w-4 mr-2" />
-              Try Playground
-            </Button>
-          </Link>
         </div>
 
         {/* Category Filter */}
