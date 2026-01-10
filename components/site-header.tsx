@@ -42,6 +42,7 @@ export function SiteHeader() {
     { href: "/docs", label: "Docs" },
     { href: "/components", label: "Components" },
     { href: "/templates", label: "Templates" },
+    { href: "/blocks", label: "Blocks" },
     { href: "/play", label: "Playground" },
     { href: "/brand", label: "Brand" },
   ];

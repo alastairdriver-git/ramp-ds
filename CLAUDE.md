@@ -18,6 +18,7 @@ import { Checkbox, RadioGroup, RadioGroupItem, Switch, Textarea, Slider } from "
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@ramp-ds/ui"
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@ramp-ds/ui"
 import { Separator, ScrollArea } from "@ramp-ds/ui"
+import { SectionBlock } from "@ramp-ds/ui"
 
 // Navigation components
 import { SideMenu } from "@ramp-ds/ui"
@@ -381,6 +382,69 @@ import { SimpleTabsRoot, SimpleTabsList, SimpleTabsTrigger, SimpleTabsContent } 
   <SimpleTabsContent value="tab1">Account settings...</SimpleTabsContent>
   <SimpleTabsContent value="tab2">Password settings...</SimpleTabsContent>
 </SimpleTabsRoot>
+```
+
+### SectionBlock (Marketing Sections)
+```tsx
+import { SectionBlock } from "@ramp-ds/ui"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@ramp-ds/ui"
+
+// Hero pattern - Centered
+<SectionBlock
+  padding="xl"
+  alignment="center"
+  titleSize="xl"
+  title="Welcome to Ramp"
+  subtitle="Modern energy management platform for monitoring, optimizing, and controlling your energy systems"
+  cta1={{ text: "Get Started", variant: "default", href: "/signup" }}
+  cta2={{ text: "Learn More", variant: "outline", href: "/docs" }}
+/>
+
+// Hero pattern - With image
+<SectionBlock
+  padding="lg"
+  container="wide"
+  title="Energy Management Simplified"
+  subtitle="Monitor, optimize, and control your energy systems"
+  cta1="Get Started"
+>
+  <img src="/hero-dashboard.png" alt="Dashboard" className="rounded-lg shadow-xl" />
+</SectionBlock>
+
+// FAQ pattern
+<SectionBlock
+  padding="lg"
+  alignment="center"
+  title="Frequently Asked Questions"
+  subtitle="Everything you need to know about Ramp"
+>
+  <Accordion type="single" collapsible className="max-w-3xl mx-auto">
+    <AccordionItem value="1">
+      <AccordionTrigger>What is Ramp?</AccordionTrigger>
+      <AccordionContent>Ramp is a comprehensive energy management platform...</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</SectionBlock>
+
+// CTA pattern
+<SectionBlock
+  padding="xl"
+  background="primary"
+  alignment="center"
+  title="Ready to get started?"
+  subtitle="Join thousands of energy managers using Ramp"
+  cta1={{ text: "Start Free Trial", variant: "secondary" }}
+/>
+
+// Props
+// - padding: "none" | "sm" | "md" | "lg" | "xl"
+// - background: "transparent" | "muted" | "card" | "gradient" | "primary"
+// - container: "default" | "wide" | "narrow" | "full"
+// - alignment: "left" | "center" | "right"
+// - titleSize: "sm" | "md" | "lg" | "xl"
+// - fullBleed: boolean (full-width background)
+// - cta1/cta2: string or { text, variant, href, onClick }
+// - children: React.ReactNode (custom content slot)
 ```
 
 ## Patterns
