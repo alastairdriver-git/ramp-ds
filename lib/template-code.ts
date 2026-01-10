@@ -1,0 +1,892 @@
+// Template code for each template
+export const templateCode: Record<string, string> = {
+  "energy-dashboard": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+import { Badge } from "./components/ui/badge"
+import { Zap, TrendingUp, ArrowDown, ArrowUp } from "lucide-react"
+
+const energyData = [
+  { time: "00:00", value: 20, height: 20 },
+  { time: "03:00", value: 15, height: 15 },
+  { time: "06:00", value: 45, height: 45 },
+  { time: "09:00", value: 65, height: 65 },
+  { time: "12:00", value: 80, height: 80 },
+  { time: "15:00", value: 70, height: 70 },
+  { time: "18:00", value: 35, height: 35 },
+  { time: "21:00", value: 25, height: 25 },
+  { time: "24:00", value: 15, height: 15 },
+]
+
+export default function EnergyDashboard() {
+  return (
+    <div className="p-6 space-y-6 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center">
+            <Zap className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold">Energy Dashboard</h1>
+            <p className="text-sm text-muted-foreground">Real-time monitoring</p>
+          </div>
+        </div>
+        <Badge variant="success">Live</Badge>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Production</CardTitle>
+            <Zap className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">4.2 kW</div>
+            <p className="text-xs text-muted-foreground">+12% from yesterday</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Storage</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">85%</div>
+            <p className="text-xs text-muted-foreground">13.6 kWh available</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Grid</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">0.8 kW</div>
+            <p className="text-xs text-muted-foreground">Importing</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Energy Flow Chart */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Energy Flow (24h)</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[250px] flex items-end justify-between gap-2 px-2">
+            {energyData.map((item, i) => (
+              <div key={i} className="flex-1 flex flex-col items-center gap-2">
+                <div
+                  className="w-full bg-primary/20 rounded-t-sm relative group cursor-pointer hover:bg-primary/30 transition-colors"
+                  style={{ height: \`\${item.height}%\` }}
+                >
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-popover border rounded px-2 py-1 text-xs whitespace-nowrap">
+                      {item.value} kW
+                    </div>
+                  </div>
+                </div>
+                <span className="text-xs text-muted-foreground">{item.time}</span>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Metrics */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Performance Metrics</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex justify-between">
+            <span className="text-sm text-muted-foreground">Total Energy Today</span>
+            <span className="font-medium">32.4 kWh</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-sm text-muted-foreground">Peak Power</span>
+            <span className="font-medium">8.2 kW</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-sm text-muted-foreground">Efficiency</span>
+            <span className="font-medium">94.2%</span>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}`,
+
+  "site-overview": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+import { Badge } from "./components/ui/badge"
+import { Button } from "./components/ui/button"
+import { MapPin, Zap, Battery } from "lucide-react"
+
+export default function SiteOverview() {
+  return (
+    <div className="p-6 space-y-6 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <MapPin className="h-8 w-8 text-primary" />
+          <div>
+            <h1 className="text-2xl font-bold">Stockholm Home</h1>
+            <p className="text-sm text-muted-foreground">Stockholm, SE</p>
+          </div>
+        </div>
+        <Button>Manage Site</Button>
+      </div>
+
+      {/* Map Placeholder */}
+      <Card>
+        <CardContent className="p-0">
+          <div className="h-[300px] bg-muted rounded-lg flex items-center justify-center">
+            <div className="text-center text-muted-foreground">
+              <MapPin className="h-12 w-12 mx-auto mb-2" />
+              <p>Map View</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Devices */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Devices</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="flex items-center justify-between p-3 border rounded-lg">
+            <div className="flex items-center gap-3">
+              <Zap className="h-5 w-5" />
+              <div>
+                <div className="font-medium">Solar Inverter</div>
+                <div className="text-sm text-muted-foreground">ID: 1001</div>
+              </div>
+            </div>
+            <Badge variant="success">Online</Badge>
+          </div>
+
+          <div className="flex items-center justify-between p-3 border rounded-lg">
+            <div className="flex items-center gap-3">
+              <Battery className="h-5 w-5" />
+              <div>
+                <div className="font-medium">Battery Storage</div>
+                <div className="text-sm text-muted-foreground">ID: 1002</div>
+              </div>
+            </div>
+            <Badge variant="success">Online</Badge>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}`,
+
+  "analytics-dashboard": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+import { Badge } from "./components/ui/badge"
+import { TrendingUp, Users, DollarSign, Activity } from "lucide-react"
+
+export default function AnalyticsDashboard() {
+  const metrics = [
+    { label: "Total Users", value: "2,543", change: "+12.5%", icon: Users },
+    { label: "Revenue", value: "$45,231", change: "+8.2%", icon: DollarSign },
+    { label: "Active Sessions", value: "573", change: "+23.1%", icon: Activity },
+    { label: "Growth Rate", value: "12.5%", change: "+4.1%", icon: TrendingUp },
+  ]
+
+  return (
+    <div className="p-6 space-y-6 max-w-7xl mx-auto">
+      <div>
+        <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
+        <p className="text-muted-foreground">Track your key performance metrics</p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {metrics.map((metric, i) => {
+          const Icon = metric.icon
+          return (
+            <Card key={i}>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">{metric.label}</CardTitle>
+                <Icon className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{metric.value}</div>
+                <p className="text-xs text-green-600 flex items-center gap-1">
+                  <TrendingUp className="h-3 w-3" />
+                  {metric.change} from last month
+                </p>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent Activity</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="h-2 w-2 bg-primary rounded-full" />
+                <div className="flex-1">
+                  <p className="text-sm font-medium">User action {i}</p>
+                  <p className="text-xs text-muted-foreground">{i} hours ago</p>
+                </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Top Performers</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {["Alice Johnson", "Bob Smith", "Carol White", "David Brown"].map((name, i) => (
+              <div key={i} className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-medium">
+                    {name.split(" ").map(n => n[0]).join("")}
+                  </div>
+                  <span className="text-sm font-medium">{name}</span>
+                </div>
+                <Badge variant="secondary">{95 - i * 2}%</Badge>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  )
+}`,
+
+  "settings-page": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+import { Input } from "./components/ui/input"
+import { Label } from "./components/ui/label"
+import { Button } from "./components/ui/button"
+import { User, Bell, Shield } from "lucide-react"
+
+export default function SettingsPage() {
+  return (
+    <div className="p-6 space-y-6 max-w-4xl mx-auto">
+      <div>
+        <h1 className="text-3xl font-bold">Settings</h1>
+        <p className="text-muted-foreground">Manage your account and preferences</p>
+      </div>
+
+      <div className="space-y-4">
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <User className="h-5 w-5" />
+              <CardTitle>Profile Information</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="firstName">First Name</Label>
+                <Input id="firstName" defaultValue="John" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lastName">Last Name</Label>
+                <Input id="lastName" defaultValue="Doe" />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type="email" defaultValue="john.doe@example.com" />
+            </div>
+            <Button>Save Changes</Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Bell className="h-5 w-5" />
+              <CardTitle>Notifications</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {["Email notifications", "Push notifications", "SMS alerts"].map((item) => (
+              <div key={item} className="flex items-center justify-between">
+                <span className="text-sm">{item}</span>
+                <div className="h-6 w-11 bg-primary rounded-full" />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              <CardTitle>Security</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Button variant="outline">Change Password</Button>
+            <Button variant="outline">Enable Two-Factor Authentication</Button>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  )
+}`,
+
+  "user-profile": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+import { Badge } from "./components/ui/badge"
+import { Input } from "./components/ui/input"
+import { Label } from "./components/ui/label"
+import { Button } from "./components/ui/button"
+import { Mail, MapPin, Calendar, Edit } from "lucide-react"
+
+export default function UserProfile() {
+  return (
+    <div className="p-6 space-y-6 max-w-4xl mx-auto">
+      <Card>
+        <CardContent className="pt-6">
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex flex-col items-center gap-4">
+              <div className="h-32 w-32 rounded-full bg-primary/20 flex items-center justify-center text-4xl font-bold">
+                JD
+              </div>
+              <Button variant="outline" size="sm">
+                <Edit className="h-4 w-4 mr-2" />
+                Change Photo
+              </Button>
+            </div>
+
+            <div className="flex-1 space-y-4">
+              <div>
+                <h2 className="text-2xl font-bold">John Doe</h2>
+                <p className="text-muted-foreground">Product Designer</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                <Badge>Pro Member</Badge>
+                <Badge variant="secondary">Verified</Badge>
+              </div>
+
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Mail className="h-4 w-4" />
+                  john.doe@example.com
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <MapPin className="h-4 w-4" />
+                  San Francisco, CA
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Calendar className="h-4 w-4" />
+                  Joined March 2024
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Edit Profile</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="space-y-2">
+              <Label htmlFor="name">Full Name</Label>
+              <Input id="name" defaultValue="John Doe" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="title">Job Title</Label>
+              <Input id="title" defaultValue="Product Designer" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="bio">Bio</Label>
+            <Input id="bio" defaultValue="Passionate about creating beautiful user experiences" />
+          </div>
+          <Button>Update Profile</Button>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}`,
+
+  "login-page": `import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./components/ui/card"
+import { Input } from "./components/ui/input"
+import { Label } from "./components/ui/label"
+import { Button } from "./components/ui/button"
+import { Zap } from "lucide-react"
+
+export default function LoginPage() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-muted/30 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="space-y-1 text-center">
+          <div className="flex justify-center mb-4">
+            <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center">
+              <Zap className="h-6 w-6 text-primary" />
+            </div>
+          </div>
+          <CardTitle className="text-2xl">Welcome back</CardTitle>
+          <CardDescription>Enter your credentials to access your account</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" placeholder="name@example.com" />
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="password">Password</Label>
+              <a href="#" className="text-sm text-primary hover:underline">
+                Forgot password?
+              </a>
+            </div>
+            <Input id="password" type="password" />
+          </div>
+          <Button className="w-full">Sign In</Button>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <Button variant="outline">Google</Button>
+            <Button variant="outline">GitHub</Button>
+          </div>
+          <p className="text-center text-sm text-muted-foreground">
+            Don't have an account?{" "}
+            <a href="#" className="text-primary hover:underline">
+              Sign up
+            </a>
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}`,
+
+  "signup-page": `import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./components/ui/card"
+import { Input } from "./components/ui/input"
+import { Label } from "./components/ui/label"
+import { Button } from "./components/ui/button"
+import { Zap } from "lucide-react"
+
+export default function SignupPage() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-muted/30 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="space-y-1 text-center">
+          <div className="flex justify-center mb-4">
+            <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center">
+              <Zap className="h-6 w-6 text-primary" />
+            </div>
+          </div>
+          <CardTitle className="text-2xl">Create an account</CardTitle>
+          <CardDescription>Enter your information to get started</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="space-y-2">
+              <Label htmlFor="firstName">First Name</Label>
+              <Input id="firstName" placeholder="John" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="lastName">Last Name</Label>
+              <Input id="lastName" placeholder="Doe" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" placeholder="name@example.com" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="password">Password</Label>
+            <Input id="password" type="password" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <Input id="confirmPassword" type="password" />
+          </div>
+          <Button className="w-full">Create Account</Button>
+          <p className="text-center text-sm text-muted-foreground">
+            Already have an account?{" "}
+            <a href="#" className="text-primary hover:underline">
+              Sign in
+            </a>
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}`,
+
+  "device-list": `import { Card, CardContent } from "./components/ui/card"
+import { Input } from "./components/ui/input"
+import { Badge } from "./components/ui/badge"
+import { Button } from "./components/ui/button"
+import { Search, Filter, MoreVertical, Power } from "lucide-react"
+
+export default function DeviceList() {
+  const devices = [
+    { id: "DEV-001", name: "Solar Panel Array A", type: "Solar", status: "Online", power: "4.2 kW" },
+    { id: "DEV-002", name: "Battery Storage Unit", type: "Battery", status: "Charging", power: "85%" },
+    { id: "DEV-003", name: "Solar Panel Array B", type: "Solar", status: "Online", power: "3.8 kW" },
+    { id: "DEV-004", name: "Inverter Unit 1", type: "Inverter", status: "Online", power: "8.0 kW" },
+    { id: "DEV-005", name: "Wind Turbine", type: "Wind", status: "Offline", power: "0 kW" },
+  ]
+
+  return (
+    <div className="p-6 space-y-6 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Devices</h1>
+          <p className="text-muted-foreground">Manage your connected devices</p>
+        </div>
+        <Button>Add Device</Button>
+      </div>
+
+      <Card>
+        <CardContent className="p-4">
+          <div className="flex gap-4">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input placeholder="Search devices..." className="pl-9" />
+            </div>
+            <Button variant="outline">
+              <Filter className="h-4 w-4 mr-2" />
+              Filters
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="space-y-2">
+        {devices.map((device) => (
+          <Card key={device.id}>
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <Power className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-medium">{device.name}</p>
+                    <p className="text-sm text-muted-foreground">{device.id} • {device.type}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="text-right">
+                    <p className="font-medium">{device.power}</p>
+                    <Badge variant={device.status === "Online" ? "success" : device.status === "Charging" ? "default" : "destructive"}>
+                      {device.status}
+                    </Badge>
+                  </div>
+                  <Button variant="ghost" size="icon">
+                    <MoreVertical className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  )
+}`,
+
+  "site-details": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+import { Badge } from "./components/ui/badge"
+import { Button } from "./components/ui/button"
+import { MapPin, Zap, TrendingUp, Settings } from "lucide-react"
+
+export default function SiteDetails() {
+  return (
+    <div className="p-6 space-y-6 max-w-7xl mx-auto">
+      <Card>
+        <CardContent className="pt-6">
+          <div className="flex items-start justify-between">
+            <div className="flex items-start gap-4">
+              <div className="h-16 w-16 rounded-lg bg-primary/20 flex items-center justify-center">
+                <MapPin className="h-8 w-8 text-primary" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold">Stockholm Energy Hub</h1>
+                <p className="text-muted-foreground">ID: SITE-001 • Stockholm, Sweden</p>
+                <div className="flex gap-2 mt-2">
+                  <Badge variant="success">Online</Badge>
+                  <Badge variant="secondary">Residential</Badge>
+                </div>
+              </div>
+            </div>
+            <Button>
+              <Settings className="h-4 w-4 mr-2" />
+              Settings
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Production</CardTitle>
+            <Zap className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">8.4 kW</div>
+            <p className="text-xs text-muted-foreground">+18% from yesterday</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Battery Level</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">92%</div>
+            <p className="text-xs text-muted-foreground">16.5 kWh available</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Grid Status</CardTitle>
+            <Zap className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">Exporting</div>
+            <p className="text-xs text-muted-foreground">1.2 kW to grid</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Connected Devices</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          {[
+            { name: "Solar Array A", status: "Online", value: "4.2 kW" },
+            { name: "Solar Array B", status: "Online", value: "4.2 kW" },
+            { name: "Battery Storage", status: "Charging", value: "92%" },
+          ].map((device, i) => (
+            <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
+              <div className="flex items-center gap-3">
+                <Zap className="h-5 w-5 text-primary" />
+                <div>
+                  <p className="font-medium">{device.name}</p>
+                  <Badge variant="success" className="mt-1">{device.status}</Badge>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="font-bold">{device.value}</p>
+              </div>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    </div>
+  )
+}`,
+
+  "ai-assistant": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+import { Input } from "./components/ui/input"
+import { Button } from "./components/ui/button"
+import { Send, Bot, User } from "lucide-react"
+
+export default function AIAssistant() {
+  const messages = [
+    { role: "assistant", content: "Hello! I'm your energy assistant. How can I help you today?" },
+    { role: "user", content: "What's my current energy production?" },
+    { role: "assistant", content: "Your current total energy production is 8.4 kW from solar panels. Battery storage is at 92% capacity." },
+    { role: "user", content: "How can I optimize my energy usage?" },
+    { role: "assistant", content: "Based on your consumption patterns, I recommend shifting heavy loads to peak solar production hours (11 AM - 3 PM). You could save up to 15% on your energy costs." },
+  ]
+
+  return (
+    <div className="flex flex-col h-screen max-w-4xl mx-auto p-4">
+      <Card className="mb-4">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Bot className="h-5 w-5 text-primary" />
+            AI Energy Assistant
+          </CardTitle>
+        </CardHeader>
+      </Card>
+
+      <Card className="flex-1 flex flex-col">
+        <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
+          {messages.map((message, i) => (
+            <div
+              key={i}
+              className={\`flex gap-3 \${message.role === "user" ? "flex-row-reverse" : ""}\`}
+            >
+              <div className={\`h-8 w-8 rounded-full flex items-center justify-center flex-shrink-0 \${
+                message.role === "user" ? "bg-primary/20" : "bg-secondary"
+              }\`}>
+                {message.role === "user" ? (
+                  <User className="h-4 w-4" />
+                ) : (
+                  <Bot className="h-4 w-4" />
+                )}
+              </div>
+              <div className={\`rounded-lg p-3 max-w-[80%] \${
+                message.role === "user"
+                  ? "bg-primary text-primary-foreground ml-auto"
+                  : "bg-muted"
+              }\`}>
+                <p className="text-sm">{message.content}</p>
+              </div>
+            </div>
+          ))}
+        </CardContent>
+
+        <CardContent className="p-4 border-t">
+          <div className="flex gap-2">
+            <Input placeholder="Ask me anything about your energy system..." />
+            <Button>
+              <Send className="h-4 w-4" />
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}`,
+
+  "notifications-center": `import { Card, CardContent } from "./components/ui/card"
+import { Badge } from "./components/ui/badge"
+import { Button } from "./components/ui/button"
+import { CheckCircle, AlertTriangle, Info, Trash2 } from "lucide-react"
+
+export default function NotificationsCenter() {
+  const notifications = [
+    {
+      type: "success",
+      title: "Energy goal achieved",
+      message: "You've produced 150% of your daily energy target!",
+      time: "2 hours ago",
+      unread: true
+    },
+    {
+      type: "warning",
+      title: "Low battery alert",
+      message: "Battery storage is below 20%. Consider reducing usage.",
+      time: "5 hours ago",
+      unread: true
+    },
+    {
+      type: "info",
+      title: "System update available",
+      message: "A new firmware update is available for your inverter.",
+      time: "1 day ago",
+      unread: false
+    },
+    {
+      type: "success",
+      title: "Grid export complete",
+      message: "Successfully exported 12.5 kWh to the grid today.",
+      time: "1 day ago",
+      unread: false
+    },
+  ]
+
+  const getIcon = (type: string) => {
+    switch (type) {
+      case "success": return CheckCircle
+      case "warning": return AlertTriangle
+      default: return Info
+    }
+  }
+
+  return (
+    <div className="p-6 space-y-6 max-w-4xl mx-auto">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Notifications</h1>
+          <p className="text-muted-foreground">Stay updated with your energy system</p>
+        </div>
+        <Button variant="outline">Mark all as read</Button>
+      </div>
+
+      <div className="space-y-2">
+        {notifications.map((notification, i) => {
+          const Icon = getIcon(notification.type)
+          return (
+            <Card key={i} className={notification.unread ? "border-primary/50" : ""}>
+              <CardContent className="p-4">
+                <div className="flex items-start gap-4">
+                  <div className={\`h-10 w-10 rounded-lg flex items-center justify-center flex-shrink-0 \${
+                    notification.type === "success" ? "bg-green-500/20" :
+                    notification.type === "warning" ? "bg-yellow-500/20" : "bg-blue-500/20"
+                  }\`}>
+                    <Icon className={\`h-5 w-5 \${
+                      notification.type === "success" ? "text-green-600" :
+                      notification.type === "warning" ? "text-yellow-600" : "text-blue-600"
+                    }\`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className="font-medium">{notification.title}</p>
+                          {notification.unread && (
+                            <div className="h-2 w-2 bg-primary rounded-full" />
+                          )}
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {notification.message}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-2">
+                          {notification.time}
+                        </p>
+                      </div>
+                      <Button variant="ghost" size="icon">
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </div>
+    </div>
+  )
+}`,
+};
+
+export function getTemplateCode(templateId: string): string {
+  return templateCode[templateId] || `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+
+export default function ComingSoon() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Coming Soon</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground">
+            The template code for "${templateId}" is coming soon. Check back later!
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}`;
+}

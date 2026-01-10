@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { componentsList } from "@/lib/components-list";
+import { ComponentScreenshot } from "@/components/component-screenshot";
 
 const componentDescriptions: Record<string, string> = {
   Button: "Displays a button or a component that looks like a button.",
@@ -40,6 +41,9 @@ const componentDescriptions: Record<string, string> = {
   "Sites Map": "Interactive Mapbox map for visualizing energy site locations.",
   "Energy Flow": "React Flow diagram showing real-time energy distribution.",
   "AI Chat": "Conversational AI interface for energy system management.",
+  "EMS Schedule": "Energy management system schedule visualization.",
+  "Electricity Price": "Real-time electricity pricing display.",
+  "Weather Card": "Weather information card component.",
 };
 
 export default function ComponentsPage() {
@@ -57,18 +61,21 @@ export default function ComponentsPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {componentsList.map((component) => (
           <Link key={component.name} href={component.href} className="group block">
-            <Card className="h-full transition-all duration-200 border-border group-hover:border-primary group-hover:bg-primary/5">
-              <CardHeader>
+            <Card className="overflow-hidden transition-all duration-200 border-border group-hover:border-primary group-hover:shadow-lg">
+              <div className="border-b border-border">
+                <ComponentScreenshot name={component.name} />
+              </div>
+              <div className="p-4">
                 <div className="text-xs text-muted-foreground mb-1">
                   {component.category}
                 </div>
-                <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                <h3 className="font-semibold text-base group-hover:text-primary transition-colors mb-1">
                   {component.name}
-                </CardTitle>
-                <CardDescription>
+                </h3>
+                <p className="text-sm text-muted-foreground line-clamp-2">
                   {componentDescriptions[component.name]}
-                </CardDescription>
-              </CardHeader>
+                </p>
+              </div>
             </Card>
           </Link>
         ))}

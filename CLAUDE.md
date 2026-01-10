@@ -737,6 +737,42 @@ project/
         └── doc-validation.json
 ```
 
+## Routing & Middleware
+
+This project uses `next-intl` for internationalization, which requires middleware configuration to control which routes are localized.
+
+### Adding New Top-Level Routes
+
+When adding new top-level sections (like `/templates`, `/components`, etc.), you must update `middleware.ts` to exclude them from internationalization.
+
+**File:** `middleware.ts`
+
+```ts
+export const config = {
+  matcher: [
+    // Exclude these routes from i18n middleware:
+    // - API routes, Next.js internals, static files
+    // - Non-localized sections: docs, components, templates, brand, changelog, roadmap, play
+    "/((?!api|_next|_vercel|.*\\..*|docs|components|templates|brand|changelog|roadmap|play).*)",
+    "/",
+  ],
+};
+```
+
+**IMPORTANT:** If you add a new section (e.g., `/examples`, `/blocks`) and get a 404 error, check `middleware.ts` and add the route to the exclusion list.
+
+### Why This Matters
+
+- Routes **NOT** in the exclusion list are redirected to `/[locale]/route` (e.g., `/en/about`)
+- Routes **IN** the exclusion list are accessed directly (e.g., `/components`)
+- The design system docs/components should NOT be localized, so they're excluded
+
+### Troubleshooting Routing Issues
+
+1. **404 on new route?** → Add it to the `matcher` exclusion in `middleware.ts`
+2. **Unexpected redirect to `/en/...`?** → Route is being internationalized, add to exclusion
+3. **Need a localized route?** → Remove from exclusion list (rare for design system docs)
+
 ## Links
 - Docs: https://design.sourceful.energy
 - GitHub: https://github.com/srcfl/srcful-design-system
