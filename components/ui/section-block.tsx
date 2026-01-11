@@ -161,10 +161,18 @@ const SectionBlock = React.forwardRef<HTMLElement, SectionBlockProps>(
           {(title || subtitle) && (
             <div className={headerVariants({ alignment })}>
               {title && (
-                <h2 className={titleVariants({ titleSize })}>{title}</h2>
+                <h2
+                  className={titleVariants({ titleSize })}
+                  style={{ fontFamily: "var(--font-heading, var(--font-sans))" }}
+                >
+                  {title}
+                </h2>
               )}
               {subtitle && (
-                <p className="text-lg md:text-xl text-muted-foreground">
+                <p
+                  className="text-lg md:text-xl text-muted-foreground"
+                  style={{ fontFamily: "var(--font-body, var(--font-sans))" }}
+                >
                   {subtitle}
                 </p>
               )}

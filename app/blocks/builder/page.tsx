@@ -918,7 +918,10 @@ export default function BlockBuilderPage() {
             {viewMode === "preview" ? (
               <div
                 className="border rounded-lg overflow-hidden bg-background"
-                style={themeStyles}
+                style={{
+                  ...themeStyles,
+                  fontFamily: bodyFont,
+                }}
               >
                 {blocks.map((block) => (
                   <div
