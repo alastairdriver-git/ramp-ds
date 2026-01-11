@@ -3,12 +3,9 @@
 import { useState } from "react";
 import { SectionBlock } from "@/components/ui/section-block";
 import type { SectionBlockProps } from "@/components/ui/section-block";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { MediaBlock } from "@/components/ui/media-block";
+import { CardBlock } from "@/components/ui/card-block";
+import { FAQBlock } from "@/components/ui/faq-block";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -31,6 +28,9 @@ import {
   ChevronDown,
   Eye,
   Code,
+  Zap,
+  Target,
+  Link as LinkIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -45,7 +45,9 @@ type BackgroundVariant =
 type ContainerVariant = "default" | "wide" | "narrow" | "full";
 type AlignmentVariant = "left" | "center" | "right";
 type TitleSizeVariant = "sm" | "md" | "lg" | "xl";
-type ContentType = "none" | "image" | "accordion" | "grid" | "custom";
+type ContentBlockType = "none" | "media" | "cards" | "faq";
+type MediaLayoutType = "single" | "carousel" | "grid" | "bento" | "sideBySide";
+type CardLayoutType = "single" | "carousel" | "grid" | "bento" | "sideBySide";
 
 interface BlockConfig {
   id: string;
@@ -55,7 +57,9 @@ interface BlockConfig {
   alignment: AlignmentVariant;
   titleSize: TitleSizeVariant;
   fullBleed: boolean;
-  contentType: ContentType;
+  contentBlockType: ContentBlockType;
+  mediaLayout?: MediaLayoutType;
+  cardLayout?: CardLayoutType;
   title: string;
   subtitle: string;
   showTitle: boolean;
@@ -74,7 +78,9 @@ export default function BlockBuilderPage() {
       alignment: "center",
       titleSize: "xl",
       fullBleed: false,
-      contentType: "none",
+      contentBlockType: "none",
+      mediaLayout: "grid",
+      cardLayout: "grid",
       title: "Welcome to Ramp",
       subtitle: "Modern energy management platform",
       showTitle: true,
@@ -107,7 +113,9 @@ export default function BlockBuilderPage() {
       alignment: "left",
       titleSize: "lg",
       fullBleed: false,
-      contentType: "none",
+      contentBlockType: "none",
+      mediaLayout: "grid",
+      cardLayout: "grid",
       title: "New Section",
       subtitle: "Add your content here",
       showTitle: true,
@@ -147,76 +155,78 @@ export default function BlockBuilderPage() {
   };
 
   // Render content based on type
-  const renderContent = (contentType: ContentType) => {
-    switch (contentType) {
-      case "image":
+  const renderContent = (block: BlockConfig) => {
+    switch (block.contentBlockType) {
+      case "media":
         return (
-          <div className="mt-8 rounded-lg overflow-hidden border bg-muted/30">
-            <div className="w-full aspect-[2/1] bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-              <svg
-                className="w-32 h-32 text-muted-foreground/40"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-          </div>
+          <MediaBlock
+            layout={block.mediaLayout || "grid"}
+            items={[
+              {
+                type: "image",
+                src: "https://placehold.co/800x600/e5e7eb/6b7280?text=Image+1",
+                aspectRatio: "video"
+              },
+              {
+                type: "image",
+                src: "https://placehold.co/800x600/e5e7eb/6b7280?text=Image+2",
+                aspectRatio: "video"
+              },
+              {
+                type: "image",
+                src: "https://placehold.co/800x600/e5e7eb/6b7280?text=Image+3",
+                aspectRatio: "video"
+              },
+            ]}
+            rounded="lg"
+            showBorder
+          />
         );
 
-      case "accordion":
+      case "cards":
         return (
-          <Accordion
+          <CardBlock
+            layout={block.cardLayout || "grid"}
+            columns={3}
+            items={[
+              {
+                icon: <Zap className="h-5 w-5 text-primary" />,
+                title: "Real-time Monitoring",
+                description: "Track energy usage as it happens",
+              },
+              {
+                icon: <Target className="h-5 w-5 text-primary" />,
+                title: "Smart Optimization",
+                description: "AI-powered cost reduction",
+              },
+              {
+                icon: <LinkIcon className="h-5 w-5 text-primary" />,
+                title: "Easy Integration",
+                description: "Connect existing systems",
+              },
+            ]}
+          />
+        );
+
+      case "faq":
+        return (
+          <FAQBlock
             type="single"
-            collapsible
-            className="w-full max-w-3xl mx-auto"
-          >
-            <AccordionItem value="1">
-              <AccordionTrigger>What is Ramp?</AccordionTrigger>
-              <AccordionContent>
-                Ramp is a comprehensive energy management platform.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="2">
-              <AccordionTrigger>How does it work?</AccordionTrigger>
-              <AccordionContent>
-                Our platform integrates with your existing infrastructure.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        );
-
-      case "grid":
-        return (
-          <div className="grid gap-6 md:grid-cols-3 mt-8">
-            {[
-              { title: "Real-time", desc: "Track energy usage" },
-              { title: "Smart AI", desc: "Cost reduction" },
-              { title: "Integration", desc: "Connect systems" },
-            ].map((feature, i) => (
-              <div key={i} className="p-6 rounded-lg border bg-card space-y-3">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <div className="w-6 h-6 rounded bg-primary/30" />
-                </div>
-                <h3 className="font-semibold">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        );
-
-      case "custom":
-        return (
-          <div className="mt-8 p-8 rounded-lg border-2 border-dashed border-muted-foreground/20 text-center text-muted-foreground">
-            <p className="text-sm">Custom content slot</p>
-            <p className="text-xs mt-1">Add your own components here</p>
-          </div>
+            items={[
+              {
+                question: "What is Ramp?",
+                answer: "Ramp is a comprehensive energy management platform that helps you monitor, optimize, and control your energy systems.",
+              },
+              {
+                question: "How does pricing work?",
+                answer: "We offer flexible pricing based on your usage and requirements. Contact our sales team for a custom quote.",
+              },
+              {
+                question: "Is there a free trial?",
+                answer: "Yes! We offer a 14-day free trial with full access to all features.",
+              },
+            ]}
+          />
         );
 
       default:
@@ -250,10 +260,15 @@ export default function BlockBuilderPage() {
 
         const propsString =
           props.length > 0 ? "\n  " + props.join("\n  ") + "\n" : "";
-        const contentString =
-          block.contentType !== "none"
-            ? `\n  {/* Add your ${block.contentType} content */}\n`
-            : "";
+
+        let contentString = "";
+        if (block.contentBlockType === "media") {
+          contentString = `\n  <MediaBlock\n    layout="${block.mediaLayout}"\n    items={[/* your media items */]}\n  />\n`;
+        } else if (block.contentBlockType === "cards") {
+          contentString = `\n  <CardBlock\n    layout="${block.cardLayout}"\n    items={[/* your card items */]}\n  />\n`;
+        } else if (block.contentBlockType === "faq") {
+          contentString = `\n  <FAQBlock\n    items={[/* your FAQ items */]}\n  />\n`;
+        }
 
         return `<SectionBlock${propsString}>${contentString}</SectionBlock>`;
       })
@@ -390,7 +405,7 @@ export default function BlockBuilderPage() {
               <div>
                 <h3 className="font-semibold mb-2 text-sm">Layout</h3>
                 <div className="space-y-2">
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     <Label className="text-xs">Padding</Label>
                     <Select
                       value={selectedBlock.padding}
@@ -411,7 +426,7 @@ export default function BlockBuilderPage() {
                     </Select>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     <Label className="text-xs">Container</Label>
                     <Select
                       value={selectedBlock.container}
@@ -565,12 +580,12 @@ export default function BlockBuilderPage() {
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-xs">Content Slot</Label>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Content Block</Label>
                     <Select
-                      value={selectedBlock.contentType}
+                      value={selectedBlock.contentBlockType}
                       onValueChange={(v) =>
-                        updateBlock({ contentType: v as ContentType })
+                        updateBlock({ contentBlockType: v as ContentBlockType })
                       }
                     >
                       <SelectTrigger className="h-8 text-xs">
@@ -578,13 +593,58 @@ export default function BlockBuilderPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="none">None</SelectItem>
-                        <SelectItem value="image">Image</SelectItem>
-                        <SelectItem value="accordion">Accordion</SelectItem>
-                        <SelectItem value="grid">Feature Grid</SelectItem>
-                        <SelectItem value="custom">Custom</SelectItem>
+                        <SelectItem value="media">Media</SelectItem>
+                        <SelectItem value="cards">Cards</SelectItem>
+                        <SelectItem value="faq">FAQ</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
+
+                  {selectedBlock.contentBlockType === "media" && (
+                    <div className="space-y-1">
+                      <Label className="text-xs">Media Layout</Label>
+                      <Select
+                        value={selectedBlock.mediaLayout}
+                        onValueChange={(v) =>
+                          updateBlock({ mediaLayout: v as MediaLayoutType })
+                        }
+                      >
+                        <SelectTrigger className="h-8 text-xs">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="single">Single</SelectItem>
+                          <SelectItem value="grid">Grid</SelectItem>
+                          <SelectItem value="carousel">Carousel</SelectItem>
+                          <SelectItem value="bento">Bento</SelectItem>
+                          <SelectItem value="sideBySide">Side by Side</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
+
+                  {selectedBlock.contentBlockType === "cards" && (
+                    <div className="space-y-1">
+                      <Label className="text-xs">Card Layout</Label>
+                      <Select
+                        value={selectedBlock.cardLayout}
+                        onValueChange={(v) =>
+                          updateBlock({ cardLayout: v as CardLayoutType })
+                        }
+                      >
+                        <SelectTrigger className="h-8 text-xs">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="single">Single</SelectItem>
+                          <SelectItem value="grid">Grid</SelectItem>
+                          <SelectItem value="carousel">Carousel</SelectItem>
+                          <SelectItem value="bento">Bento</SelectItem>
+                          <SelectItem value="sideBySide">Side by Side</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
                 </div>
               </div>
             </Card>
@@ -631,7 +691,7 @@ export default function BlockBuilderPage() {
                           : undefined
                       }
                     >
-                      {renderContent(block.contentType)}
+                      {renderContent(block)}
                     </SectionBlock>
                   </div>
                 ))}
