@@ -33,6 +33,8 @@ import {
   Zap,
   Target,
   Link as LinkIcon,
+  Sun,
+  Moon,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -77,8 +79,11 @@ interface BlockConfig {
 }
 
 export default function BlockBuilderPage() {
-  const { theme: systemTheme } = useTheme();
+  const { theme: systemTheme, setTheme } = useTheme();
   const [blockTheme, setBlockTheme] = useState<BlockThemeId>("default");
+  const [displayFont, setDisplayFont] = useState<string>("var(--font-sans)");
+  const [headingFont, setHeadingFont] = useState<string>("var(--font-sans)");
+  const [bodyFont, setBodyFont] = useState<string>("var(--font-sans)");
   const [blocks, setBlocks] = useState<BlockConfig[]>([
     {
       id: "1",
@@ -110,7 +115,12 @@ export default function BlockBuilderPage() {
 
   // Get current theme config and styles
   const currentTheme = getBlockTheme(blockTheme);
-  const themeStyles = applyBlockTheme(currentTheme, systemTheme === "dark");
+  const themeStyles = {
+    ...applyBlockTheme(currentTheme, systemTheme === "dark"),
+    "--font-display": displayFont,
+    "--font-heading": headingFont,
+    "--font-body": bodyFont,
+  } as React.CSSProperties;
 
   const selectedBlock = blocks.find((b) => b.id === selectedBlockId);
 
@@ -338,6 +348,17 @@ export default function BlockBuilderPage() {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setTheme(systemTheme === "dark" ? "light" : "dark")}
+              >
+                {systemTheme === "dark" ? (
+                  <Sun className="h-4 w-4" />
+                ) : (
+                  <Moon className="h-4 w-4" />
+                )}
+              </Button>
               <Select value={blockTheme} onValueChange={(v) => setBlockTheme(v as BlockThemeId)}>
                 <SelectTrigger className="h-9 w-[140px]">
                   <SelectValue />
@@ -561,6 +582,62 @@ export default function BlockBuilderPage() {
                         <SelectItem value="md">Medium</SelectItem>
                         <SelectItem value="lg">Large</SelectItem>
                         <SelectItem value="xl">Extra Large</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div>
+                <h3 className="font-semibold mb-2 text-sm">Typography</h3>
+                <div className="space-y-2">
+                  <div className="space-y-1">
+                    <Label className="text-xs">Display Font</Label>
+                    <Select value={displayFont} onValueChange={setDisplayFont}>
+                      <SelectTrigger className="h-8 text-xs">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="var(--font-sans)">Satoshi (Default)</SelectItem>
+                        <SelectItem value="'Inter', system-ui, sans-serif">Inter</SelectItem>
+                        <SelectItem value="'Fraunces', serif">Fraunces</SelectItem>
+                        <SelectItem value="'Space Grotesk', system-ui, sans-serif">Space Grotesk</SelectItem>
+                        <SelectItem value="'Plus Jakarta Sans', system-ui, sans-serif">Plus Jakarta Sans</SelectItem>
+                        <SelectItem value="'Outfit', system-ui, sans-serif">Outfit</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Heading Font</Label>
+                    <Select value={headingFont} onValueChange={setHeadingFont}>
+                      <SelectTrigger className="h-8 text-xs">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="var(--font-sans)">Satoshi (Default)</SelectItem>
+                        <SelectItem value="'Inter', system-ui, sans-serif">Inter</SelectItem>
+                        <SelectItem value="'Fraunces', serif">Fraunces</SelectItem>
+                        <SelectItem value="'Space Grotesk', system-ui, sans-serif">Space Grotesk</SelectItem>
+                        <SelectItem value="'Plus Jakarta Sans', system-ui, sans-serif">Plus Jakarta Sans</SelectItem>
+                        <SelectItem value="'Outfit', system-ui, sans-serif">Outfit</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Body Font</Label>
+                    <Select value={bodyFont} onValueChange={setBodyFont}>
+                      <SelectTrigger className="h-8 text-xs">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="var(--font-sans)">Satoshi (Default)</SelectItem>
+                        <SelectItem value="'Inter', system-ui, sans-serif">Inter</SelectItem>
+                        <SelectItem value="'Fraunces', serif">Fraunces</SelectItem>
+                        <SelectItem value="'Space Grotesk', system-ui, sans-serif">Space Grotesk</SelectItem>
+                        <SelectItem value="'Plus Jakarta Sans', system-ui, sans-serif">Plus Jakarta Sans</SelectItem>
+                        <SelectItem value="'Outfit', system-ui, sans-serif">Outfit</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
