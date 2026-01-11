@@ -1,8 +1,11 @@
+"use client";
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const cardBlockVariants = cva("w-full", {
   variants: {
@@ -51,18 +54,56 @@ const bentoSizeClasses = {
   lg: "md:col-span-3",
 };
 
+// Intelligent bento sizing
+const getBentoCardSize = (index: number, totalItems: number): string => {
+  if (totalItems <= 2) return "md:col-span-1";
+  if (totalItems === 3) {
+    if (index === 0) return "md:col-span-2";
+    return "md:col-span-1";
+  }
+  if (totalItems >= 4) {
+    if (index === 0) return "md:col-span-2";
+    if (index === 3) return "md:col-span-2";
+    return "md:col-span-1";
+  }
+  return "md:col-span-1";
+};
+
 const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
   ({ className, layout, columns, items, ...props }, ref) => {
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+    const scrollRef = React.useRef<HTMLDivElement>(null);
+
+    // Carousel navigation
+    const scrollToIndex = (index: number) => {
+      if (!scrollRef.current) return;
+      const cardElement = scrollRef.current.children[index] as HTMLElement;
+      if (cardElement) {
+        cardElement.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+        setCurrentIndex(index);
+      }
+    };
+
+    const handlePrev = () => {
+      const newIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+      scrollToIndex(newIndex);
+    };
+
+    const handleNext = () => {
+      const newIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+      scrollToIndex(newIndex);
+    };
+
     const renderCard = (item: CardItem, index: number) => {
-      const bentoSizeClass =
-        layout === "bento" && item.size ? bentoSizeClasses[item.size] : "";
+      const bentoSizeClass = layout === "bento"
+        ? getBentoCardSize(index, items.length)
+        : "";
 
       return (
         <Card
           key={index}
           className={cn(
-            layout === "carousel" &&
-              "flex-none w-[300px] md:w-[350px] snap-center",
+            layout === "carousel" && "flex-none w-[300px] md:w-[350px]",
             bentoSizeClass
           )}
         >
@@ -102,6 +143,47 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
       );
     };
 
+    // Carousel layout
+    if (layout === "carousel") {
+      return (
+        <div ref={ref} className={cn("relative", className)} {...props}>
+          <div
+            ref={scrollRef}
+            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide pb-4"
+          >
+            {items.map((item, index) => (
+              <div key={index} className="snap-start">
+                {renderCard(item, index)}
+              </div>
+            ))}
+          </div>
+
+          {items.length > 1 && (
+            <>
+              {/* Navigation Arrows */}
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm z-10"
+                onClick={handlePrev}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm z-10"
+                onClick={handleNext}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </>
+          )}
+        </div>
+      );
+    }
+
+    // Grid/Bento/SideBySide/Single layouts
     const containerClasses = cn(
       cardBlockVariants({ layout }),
       layout === "grid" && columns && `md:grid-cols-${columns}`,

@@ -1,20 +1,19 @@
+"use client";
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const mediaBlockVariants = cva("w-full", {
   variants: {
     layout: {
       single: "w-full",
-      carousel: "flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide",
+      carousel: "relative",
       grid: "grid gap-4",
       bento: "grid gap-4",
-      sideBySide: "grid gap-4",
-    },
-    columns: {
-      2: "md:grid-cols-2",
-      3: "md:grid-cols-3",
-      4: "md:grid-cols-4",
+      sideBySide: "grid gap-4 md:grid-cols-2",
     },
   },
   defaultVariants: {
@@ -36,6 +35,7 @@ export interface MediaBlockProps
   items: MediaItem[];
   rounded?: "none" | "sm" | "md" | "lg";
   showBorder?: boolean;
+  columns?: 2 | 3 | 4; // For grid layout
 }
 
 const aspectRatioClasses = {
@@ -45,11 +45,38 @@ const aspectRatioClasses = {
   wide: "aspect-[21/9]",
 };
 
-const bentoSizeClasses = {
-  sm: "md:col-span-1 md:row-span-1",
-  md: "md:col-span-2 md:row-span-1",
-  lg: "md:col-span-2 md:row-span-2",
-  xl: "md:col-span-3 md:row-span-2",
+// Intelligent bento sizing based on item count and position
+const getBentoSize = (index: number, totalItems: number): string => {
+  if (totalItems <= 2) {
+    return "md:col-span-1 md:row-span-1";
+  }
+
+  if (totalItems === 3) {
+    // First item large, others normal
+    if (index === 0) return "md:col-span-2 md:row-span-2";
+    return "md:col-span-1 md:row-span-1";
+  }
+
+  if (totalItems === 4) {
+    // First item large, others small
+    if (index === 0) return "md:col-span-2 md:row-span-2";
+    return "md:col-span-1 md:row-span-1";
+  }
+
+  if (totalItems === 5) {
+    // First item large, others small
+    if (index === 0) return "md:col-span-2 md:row-span-2";
+    return "md:col-span-1 md:row-span-1";
+  }
+
+  if (totalItems >= 6) {
+    // Mix of sizes for visual interest
+    if (index === 0) return "md:col-span-2 md:row-span-2";
+    if (index === 3) return "md:col-span-2 md:row-span-1";
+    return "md:col-span-1 md:row-span-1";
+  }
+
+  return "md:col-span-1 md:row-span-1";
 };
 
 const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
@@ -57,14 +84,17 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
     {
       className,
       layout,
-      columns,
       items,
       rounded = "lg",
       showBorder = false,
+      columns = 3,
       ...props
     },
     ref
   ) => {
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+    const scrollRef = React.useRef<HTMLDivElement>(null);
+
     const roundedClass = {
       none: "",
       sm: "rounded-sm",
@@ -72,14 +102,35 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
       lg: "rounded-lg",
     }[rounded];
 
+    // Carousel navigation
+    const scrollToIndex = (index: number) => {
+      if (!scrollRef.current) return;
+      const itemWidth = scrollRef.current.offsetWidth;
+      scrollRef.current.scrollTo({
+        left: index * itemWidth,
+        behavior: "smooth",
+      });
+      setCurrentIndex(index);
+    };
+
+    const handlePrev = () => {
+      const newIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+      scrollToIndex(newIndex);
+    };
+
+    const handleNext = () => {
+      const newIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+      scrollToIndex(newIndex);
+    };
+
     const renderMedia = (item: MediaItem, index: number) => {
       const aspectClass = item.aspectRatio
         ? aspectRatioClasses[item.aspectRatio]
         : "aspect-video";
-      const bentoSizeClass =
-        layout === "bento" && item.size
-          ? bentoSizeClasses[item.size]
-          : "";
+
+      const bentoSizeClass = layout === "bento"
+        ? getBentoSize(index, items.length)
+        : "";
 
       const containerClasses = cn(
         "relative overflow-hidden bg-muted",
@@ -87,7 +138,7 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
         showBorder && "border border-border",
         aspectClass,
         bentoSizeClass,
-        layout === "carousel" && "flex-none w-[300px] md:w-[400px] snap-center"
+        layout === "carousel" && "w-full flex-shrink-0"
       );
 
       if (item.type === "video") {
@@ -116,12 +167,64 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
       );
     };
 
-    // Apply column classes for grid/sideBySide
+    // Carousel layout
+    if (layout === "carousel") {
+      return (
+        <div ref={ref} className={cn("relative", className)} {...props}>
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-hidden scroll-smooth"
+          >
+            {items.map((item, index) => renderMedia(item, index))}
+          </div>
+
+          {items.length > 1 && (
+            <>
+              {/* Navigation Arrows */}
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm"
+                onClick={handlePrev}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm"
+                onClick={handleNext}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+
+              {/* Dots Indicator */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {items.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToIndex(index)}
+                    className={cn(
+                      "w-2 h-2 rounded-full transition-all",
+                      currentIndex === index
+                        ? "bg-primary w-4"
+                        : "bg-muted-foreground/30"
+                    )}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      );
+    }
+
+    // Grid/Bento/SideBySide/Single layouts
     const containerClasses = cn(
       mediaBlockVariants({ layout }),
-      layout === "grid" && columns && `md:grid-cols-${columns}`,
-      layout === "sideBySide" && "md:grid-cols-2",
-      layout === "bento" && "md:grid-cols-3 md:grid-rows-3",
+      layout === "grid" && `md:grid-cols-${columns}`,
+      layout === "bento" && "md:grid-cols-3 auto-rows-[200px]",
       className
     );
 
