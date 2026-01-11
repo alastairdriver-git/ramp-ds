@@ -60,6 +60,8 @@ interface BlockConfig {
   contentBlockType: ContentBlockType;
   mediaLayout?: MediaLayoutType;
   cardLayout?: CardLayoutType;
+  mediaItemCount?: number;
+  cardItemCount?: number;
   title: string;
   subtitle: string;
   showTitle: boolean;
@@ -81,6 +83,8 @@ export default function BlockBuilderPage() {
       contentBlockType: "none",
       mediaLayout: "grid",
       cardLayout: "grid",
+      mediaItemCount: 3,
+      cardItemCount: 3,
       title: "Welcome to Ramp",
       subtitle: "Modern energy management platform",
       showTitle: true,
@@ -116,6 +120,8 @@ export default function BlockBuilderPage() {
       contentBlockType: "none",
       mediaLayout: "grid",
       cardLayout: "grid",
+      mediaItemCount: 3,
+      cardItemCount: 3,
       title: "New Section",
       subtitle: "Add your content here",
       showTitle: true,
@@ -158,53 +164,63 @@ export default function BlockBuilderPage() {
   const renderContent = (block: BlockConfig) => {
     switch (block.contentBlockType) {
       case "media":
+        const mediaCount = block.mediaItemCount || 3;
+        const mediaItems = Array.from({ length: mediaCount }, (_, i) => ({
+          type: "image" as const,
+          src: `https://placehold.co/800x600/e5e7eb/6b7280?text=Image+${i + 1}`,
+          aspectRatio: "video" as const,
+        }));
         return (
           <MediaBlock
             layout={block.mediaLayout || "grid"}
-            items={[
-              {
-                type: "image",
-                src: "https://placehold.co/800x600/e5e7eb/6b7280?text=Image+1",
-                aspectRatio: "video"
-              },
-              {
-                type: "image",
-                src: "https://placehold.co/800x600/e5e7eb/6b7280?text=Image+2",
-                aspectRatio: "video"
-              },
-              {
-                type: "image",
-                src: "https://placehold.co/800x600/e5e7eb/6b7280?text=Image+3",
-                aspectRatio: "video"
-              },
-            ]}
+            items={mediaItems}
             rounded="lg"
             showBorder
           />
         );
 
       case "cards":
+        const cardCount = block.cardItemCount || 3;
+        const cardTitles = [
+          "Real-time Monitoring",
+          "Smart Optimization",
+          "Easy Integration",
+          "Energy Analytics",
+          "Cost Tracking",
+          "Custom Alerts",
+          "Device Management",
+          "Historical Data",
+        ];
+        const cardDescriptions = [
+          "Track energy usage as it happens",
+          "AI-powered cost reduction",
+          "Connect existing systems",
+          "Detailed insights and trends",
+          "Monitor spending patterns",
+          "Get notified of issues",
+          "Control all devices",
+          "Access complete history",
+        ];
+        const cardIcons = [
+          <Zap className="h-5 w-5 text-primary" />,
+          <Target className="h-5 w-5 text-primary" />,
+          <LinkIcon className="h-5 w-5 text-primary" />,
+          <Zap className="h-5 w-5 text-primary" />,
+          <Target className="h-5 w-5 text-primary" />,
+          <LinkIcon className="h-5 w-5 text-primary" />,
+          <Zap className="h-5 w-5 text-primary" />,
+          <Target className="h-5 w-5 text-primary" />,
+        ];
+        const cardItems = Array.from({ length: cardCount }, (_, i) => ({
+          icon: cardIcons[i % cardIcons.length],
+          title: cardTitles[i % cardTitles.length],
+          description: cardDescriptions[i % cardDescriptions.length],
+        }));
         return (
           <CardBlock
             layout={block.cardLayout || "grid"}
             columns={3}
-            items={[
-              {
-                icon: <Zap className="h-5 w-5 text-primary" />,
-                title: "Real-time Monitoring",
-                description: "Track energy usage as it happens",
-              },
-              {
-                icon: <Target className="h-5 w-5 text-primary" />,
-                title: "Smart Optimization",
-                description: "AI-powered cost reduction",
-              },
-              {
-                icon: <LinkIcon className="h-5 w-5 text-primary" />,
-                title: "Easy Integration",
-                description: "Connect existing systems",
-              },
-            ]}
+            items={cardItems}
           />
         );
 
@@ -601,49 +617,97 @@ export default function BlockBuilderPage() {
                   </div>
 
                   {selectedBlock.contentBlockType === "media" && (
-                    <div className="space-y-1">
-                      <Label className="text-xs">Media Layout</Label>
-                      <Select
-                        value={selectedBlock.mediaLayout}
-                        onValueChange={(v) =>
-                          updateBlock({ mediaLayout: v as MediaLayoutType })
-                        }
-                      >
-                        <SelectTrigger className="h-8 text-xs">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="single">Single</SelectItem>
-                          <SelectItem value="grid">Grid</SelectItem>
-                          <SelectItem value="carousel">Carousel</SelectItem>
-                          <SelectItem value="bento">Bento</SelectItem>
-                          <SelectItem value="sideBySide">Side by Side</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    <>
+                      <div className="space-y-1">
+                        <Label className="text-xs">Media Layout</Label>
+                        <Select
+                          value={selectedBlock.mediaLayout}
+                          onValueChange={(v) =>
+                            updateBlock({ mediaLayout: v as MediaLayoutType })
+                          }
+                        >
+                          <SelectTrigger className="h-8 text-xs">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="single">Single</SelectItem>
+                            <SelectItem value="grid">Grid</SelectItem>
+                            <SelectItem value="carousel">Carousel</SelectItem>
+                            <SelectItem value="bento">Bento</SelectItem>
+                            <SelectItem value="sideBySide">Side by Side</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-xs">Number of Images</Label>
+                        <Select
+                          value={String(selectedBlock.mediaItemCount || 3)}
+                          onValueChange={(v) =>
+                            updateBlock({ mediaItemCount: parseInt(v) })
+                          }
+                        >
+                          <SelectTrigger className="h-8 text-xs">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="1">1</SelectItem>
+                            <SelectItem value="2">2</SelectItem>
+                            <SelectItem value="3">3</SelectItem>
+                            <SelectItem value="4">4</SelectItem>
+                            <SelectItem value="5">5</SelectItem>
+                            <SelectItem value="6">6</SelectItem>
+                            <SelectItem value="8">8</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </>
                   )}
 
                   {selectedBlock.contentBlockType === "cards" && (
-                    <div className="space-y-1">
-                      <Label className="text-xs">Card Layout</Label>
-                      <Select
-                        value={selectedBlock.cardLayout}
-                        onValueChange={(v) =>
-                          updateBlock({ cardLayout: v as CardLayoutType })
-                        }
-                      >
-                        <SelectTrigger className="h-8 text-xs">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="single">Single</SelectItem>
-                          <SelectItem value="grid">Grid</SelectItem>
-                          <SelectItem value="carousel">Carousel</SelectItem>
-                          <SelectItem value="bento">Bento</SelectItem>
-                          <SelectItem value="sideBySide">Side by Side</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    <>
+                      <div className="space-y-1">
+                        <Label className="text-xs">Card Layout</Label>
+                        <Select
+                          value={selectedBlock.cardLayout}
+                          onValueChange={(v) =>
+                            updateBlock({ cardLayout: v as CardLayoutType })
+                          }
+                        >
+                          <SelectTrigger className="h-8 text-xs">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="single">Single</SelectItem>
+                            <SelectItem value="grid">Grid</SelectItem>
+                            <SelectItem value="carousel">Carousel</SelectItem>
+                            <SelectItem value="bento">Bento</SelectItem>
+                            <SelectItem value="sideBySide">Side by Side</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-xs">Number of Cards</Label>
+                        <Select
+                          value={String(selectedBlock.cardItemCount || 3)}
+                          onValueChange={(v) =>
+                            updateBlock({ cardItemCount: parseInt(v) })
+                          }
+                        >
+                          <SelectTrigger className="h-8 text-xs">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="1">1</SelectItem>
+                            <SelectItem value="2">2</SelectItem>
+                            <SelectItem value="3">3</SelectItem>
+                            <SelectItem value="4">4</SelectItem>
+                            <SelectItem value="5">5</SelectItem>
+                            <SelectItem value="6">6</SelectItem>
+                            <SelectItem value="8">8</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </>
                   )}
                 </div>
               </div>
