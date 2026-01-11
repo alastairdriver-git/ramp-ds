@@ -208,6 +208,8 @@ function getComponentsForTemplate(templateId: string): string[] {
     "site-details": ["Card", "Tabs", "Badge", "Progress", "EnergyFlow"],
     "ai-assistant": ["Card", "Input", "Badge", "AIChat", "Button"],
     "notifications-center": ["Card", "Badge", "Button", "Separator"],
+    "product-landing": ["SectionBlock", "CardBlock", "Button", "Badge"],
+    "pricing-page": ["SectionBlock", "CardBlock", "FAQBlock", "Button", "Badge"],
   };
 
   return componentMap[templateId] || ["Card", "Button"];
