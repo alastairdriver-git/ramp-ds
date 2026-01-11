@@ -601,11 +601,11 @@ export default function BlockBuilderPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="var(--font-sans)">Satoshi (Default)</SelectItem>
-                        <SelectItem value="'Inter', system-ui, sans-serif">Inter</SelectItem>
-                        <SelectItem value="'Fraunces', serif">Fraunces</SelectItem>
-                        <SelectItem value="'Space Grotesk', system-ui, sans-serif">Space Grotesk</SelectItem>
-                        <SelectItem value="'Plus Jakarta Sans', system-ui, sans-serif">Plus Jakarta Sans</SelectItem>
-                        <SelectItem value="'Outfit', system-ui, sans-serif">Outfit</SelectItem>
+                        <SelectItem value="var(--font-inter)">Inter</SelectItem>
+                        <SelectItem value="var(--font-fraunces)">Fraunces</SelectItem>
+                        <SelectItem value="var(--font-space-grotesk)">Space Grotesk</SelectItem>
+                        <SelectItem value="var(--font-plus-jakarta)">Plus Jakarta Sans</SelectItem>
+                        <SelectItem value="var(--font-outfit)">Outfit</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -617,11 +617,11 @@ export default function BlockBuilderPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="var(--font-sans)">Satoshi (Default)</SelectItem>
-                        <SelectItem value="'Inter', system-ui, sans-serif">Inter</SelectItem>
-                        <SelectItem value="'Fraunces', serif">Fraunces</SelectItem>
-                        <SelectItem value="'Space Grotesk', system-ui, sans-serif">Space Grotesk</SelectItem>
-                        <SelectItem value="'Plus Jakarta Sans', system-ui, sans-serif">Plus Jakarta Sans</SelectItem>
-                        <SelectItem value="'Outfit', system-ui, sans-serif">Outfit</SelectItem>
+                        <SelectItem value="var(--font-inter)">Inter</SelectItem>
+                        <SelectItem value="var(--font-fraunces)">Fraunces</SelectItem>
+                        <SelectItem value="var(--font-space-grotesk)">Space Grotesk</SelectItem>
+                        <SelectItem value="var(--font-plus-jakarta)">Plus Jakarta Sans</SelectItem>
+                        <SelectItem value="var(--font-outfit)">Outfit</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -633,11 +633,11 @@ export default function BlockBuilderPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="var(--font-sans)">Satoshi (Default)</SelectItem>
-                        <SelectItem value="'Inter', system-ui, sans-serif">Inter</SelectItem>
-                        <SelectItem value="'Fraunces', serif">Fraunces</SelectItem>
-                        <SelectItem value="'Space Grotesk', system-ui, sans-serif">Space Grotesk</SelectItem>
-                        <SelectItem value="'Plus Jakarta Sans', system-ui, sans-serif">Plus Jakarta Sans</SelectItem>
-                        <SelectItem value="'Outfit', system-ui, sans-serif">Outfit</SelectItem>
+                        <SelectItem value="var(--font-inter)">Inter</SelectItem>
+                        <SelectItem value="var(--font-fraunces)">Fraunces</SelectItem>
+                        <SelectItem value="var(--font-space-grotesk)">Space Grotesk</SelectItem>
+                        <SelectItem value="var(--font-plus-jakarta)">Plus Jakarta Sans</SelectItem>
+                        <SelectItem value="var(--font-outfit)">Outfit</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

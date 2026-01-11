@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Inter, Fraunces, Space_Grotesk, Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -26,6 +26,31 @@ const satoshi = localFont({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -68,7 +93,12 @@ export default function RootLayout({
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           satoshi.variable,
-          jetbrainsMono.variable
+          jetbrainsMono.variable,
+          inter.variable,
+          fraunces.variable,
+          spaceGrotesk.variable,
+          plusJakartaSans.variable,
+          outfit.variable
         )}
       >
         <AuthProvider>
