@@ -417,7 +417,7 @@ export default function BlockBuilderPage() {
             </Card>
 
             {/* Block Settings */}
-            <Card className="p-3 space-y-3 max-h-[calc(100vh-300px)] overflow-y-auto">
+            <Card className="p-3 space-y-3 max-h-[calc(100vh-300px)] overflow-y-auto" data-lenis-prevent>
               <div>
                 <h3 className="font-semibold mb-2 text-sm">Layout</h3>
                 <div className="space-y-2">

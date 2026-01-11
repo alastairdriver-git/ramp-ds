@@ -77,11 +77,12 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
     // Carousel navigation
     const scrollToIndex = (index: number) => {
       if (!scrollRef.current) return;
-      const cardElement = scrollRef.current.children[index] as HTMLElement;
-      if (cardElement) {
-        cardElement.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-        setCurrentIndex(index);
-      }
+      const containerWidth = scrollRef.current.offsetWidth;
+      scrollRef.current.scrollTo({
+        left: index * containerWidth,
+        behavior: "smooth",
+      });
+      setCurrentIndex(index);
     };
 
     const handlePrev = () => {
@@ -103,7 +104,7 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
         <Card
           key={index}
           className={cn(
-            layout === "carousel" && "flex-none w-[300px] md:w-[350px]",
+            layout === "carousel" && "flex-shrink-0 w-full",
             bentoSizeClass
           )}
         >
@@ -149,13 +150,9 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
         <div ref={ref} className={cn("relative", className)} {...props}>
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide pb-4"
+            className="flex overflow-x-hidden scroll-smooth"
           >
-            {items.map((item, index) => (
-              <div key={index} className="snap-start">
-                {renderCard(item, index)}
-              </div>
-            ))}
+            {items.map((item, index) => renderCard(item, index))}
           </div>
 
           {items.length > 1 && (
@@ -177,6 +174,23 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
               >
                 <ChevronRight className="h-4 w-4" />
               </Button>
+
+              {/* Dots Indicator */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {items.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToIndex(index)}
+                    className={cn(
+                      "w-2 h-2 rounded-full transition-all",
+                      currentIndex === index
+                        ? "bg-primary w-4"
+                        : "bg-muted-foreground/30"
+                    )}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </>
           )}
         </div>
