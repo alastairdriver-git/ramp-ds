@@ -62,6 +62,10 @@ interface BlockConfig {
   cardLayout?: CardLayoutType;
   mediaItemCount?: number;
   cardItemCount?: number;
+  mediaItemsPerPage?: number;
+  mediaScrollBy?: number;
+  cardItemsPerPage?: number;
+  cardScrollBy?: number;
   title: string;
   subtitle: string;
   showTitle: boolean;
@@ -85,6 +89,10 @@ export default function BlockBuilderPage() {
       cardLayout: "grid",
       mediaItemCount: 3,
       cardItemCount: 3,
+      mediaItemsPerPage: 1,
+      mediaScrollBy: 1,
+      cardItemsPerPage: 1,
+      cardScrollBy: 1,
       title: "Welcome to Ramp",
       subtitle: "Modern energy management platform",
       showTitle: true,
@@ -122,6 +130,10 @@ export default function BlockBuilderPage() {
       cardLayout: "grid",
       mediaItemCount: 3,
       cardItemCount: 3,
+      mediaItemsPerPage: 1,
+      mediaScrollBy: 1,
+      cardItemsPerPage: 1,
+      cardScrollBy: 1,
       title: "New Section",
       subtitle: "Add your content here",
       showTitle: true,
@@ -176,6 +188,8 @@ export default function BlockBuilderPage() {
             items={mediaItems}
             rounded="lg"
             showBorder
+            itemsPerPage={block.mediaItemsPerPage || 1}
+            scrollBy={block.mediaScrollBy || 1}
           />
         );
 
@@ -221,6 +235,8 @@ export default function BlockBuilderPage() {
             layout={block.cardLayout || "grid"}
             columns={3}
             items={cardItems}
+            itemsPerPage={block.cardItemsPerPage || 1}
+            scrollBy={block.cardScrollBy || 1}
           />
         );
 
@@ -660,6 +676,49 @@ export default function BlockBuilderPage() {
                           </SelectContent>
                         </Select>
                       </div>
+                      {selectedBlock.mediaLayout === "carousel" && (
+                        <>
+                          <div className="space-y-1">
+                            <Label className="text-xs">Items Per Page</Label>
+                            <Select
+                              value={String(selectedBlock.mediaItemsPerPage || 1)}
+                              onValueChange={(v) =>
+                                updateBlock({ mediaItemsPerPage: parseFloat(v) })
+                              }
+                            >
+                              <SelectTrigger className="h-8 text-xs">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="1">1 (full)</SelectItem>
+                                <SelectItem value="1.5">1.5 (glimpse)</SelectItem>
+                                <SelectItem value="2">2</SelectItem>
+                                <SelectItem value="2.33">2.33 (glimpse)</SelectItem>
+                                <SelectItem value="3">3</SelectItem>
+                                <SelectItem value="4">4</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-1">
+                            <Label className="text-xs">Scroll By</Label>
+                            <Select
+                              value={String(selectedBlock.mediaScrollBy || 1)}
+                              onValueChange={(v) =>
+                                updateBlock({ mediaScrollBy: parseInt(v) })
+                              }
+                            >
+                              <SelectTrigger className="h-8 text-xs">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="1">1 item</SelectItem>
+                                <SelectItem value="2">2 items</SelectItem>
+                                <SelectItem value="3">3 items</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </>
+                      )}
                     </>
                   )}
 
@@ -707,6 +766,49 @@ export default function BlockBuilderPage() {
                           </SelectContent>
                         </Select>
                       </div>
+                      {selectedBlock.cardLayout === "carousel" && (
+                        <>
+                          <div className="space-y-1">
+                            <Label className="text-xs">Items Per Page</Label>
+                            <Select
+                              value={String(selectedBlock.cardItemsPerPage || 1)}
+                              onValueChange={(v) =>
+                                updateBlock({ cardItemsPerPage: parseFloat(v) })
+                              }
+                            >
+                              <SelectTrigger className="h-8 text-xs">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="1">1 (full)</SelectItem>
+                                <SelectItem value="1.5">1.5 (glimpse)</SelectItem>
+                                <SelectItem value="2">2</SelectItem>
+                                <SelectItem value="2.33">2.33 (glimpse)</SelectItem>
+                                <SelectItem value="3">3</SelectItem>
+                                <SelectItem value="4">4</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-1">
+                            <Label className="text-xs">Scroll By</Label>
+                            <Select
+                              value={String(selectedBlock.cardScrollBy || 1)}
+                              onValueChange={(v) =>
+                                updateBlock({ cardScrollBy: parseInt(v) })
+                              }
+                            >
+                              <SelectTrigger className="h-8 text-xs">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="1">1 item</SelectItem>
+                                <SelectItem value="2">2 items</SelectItem>
+                                <SelectItem value="3">3 items</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </>
+                      )}
                     </>
                   )}
                 </div>

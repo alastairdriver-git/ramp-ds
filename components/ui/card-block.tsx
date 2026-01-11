@@ -46,6 +46,10 @@ export interface CardBlockProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof cardBlockVariants> {
   items: CardItem[];
+  // Carousel-specific props
+  itemsPerPage?: number; // How many items visible at once (default: 1)
+  scrollBy?: number; // How many items to scroll per navigation click (default: 1)
+  gap?: number; // Gap between items in pixels (default: 16)
 }
 
 const bentoSizeClasses = {
@@ -70,7 +74,7 @@ const getBentoCardSize = (index: number, totalItems: number): string => {
 };
 
 const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
-  ({ className, layout, columns, items, ...props }, ref) => {
+  ({ className, layout, columns, items, itemsPerPage = 1, scrollBy = 1, gap = 16, ...props }, ref) => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
     const scrollRef = React.useRef<HTMLDivElement>(null);
 
@@ -78,20 +82,23 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
     const scrollToIndex = (index: number) => {
       if (!scrollRef.current) return;
       const containerWidth = scrollRef.current.offsetWidth;
+      const itemWidth = (containerWidth + gap) / itemsPerPage;
       scrollRef.current.scrollTo({
-        left: index * containerWidth,
+        left: index * itemWidth * scrollBy,
         behavior: "smooth",
       });
       setCurrentIndex(index);
     };
 
     const handlePrev = () => {
-      const newIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+      const maxIndex = Math.ceil(items.length / scrollBy) - 1;
+      const newIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
       scrollToIndex(newIndex);
     };
 
     const handleNext = () => {
-      const newIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+      const maxIndex = Math.ceil(items.length / scrollBy) - 1;
+      const newIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
       scrollToIndex(newIndex);
     };
 
@@ -100,13 +107,19 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
         ? getBentoCardSize(index, items.length)
         : "";
 
+      // Calculate width for carousel items based on itemsPerPage
+      const carouselWidth = layout === "carousel"
+        ? `calc((100% - ${gap * (itemsPerPage - 1)}px) / ${itemsPerPage})`
+        : undefined;
+
       return (
         <Card
           key={index}
           className={cn(
-            layout === "carousel" && "flex-shrink-0 w-full",
+            layout === "carousel" && "flex-shrink-0",
             bentoSizeClass
           )}
+          style={carouselWidth ? { width: carouselWidth } : undefined}
         >
           <CardHeader>
             {item.icon && (
@@ -146,11 +159,13 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
 
     // Carousel layout
     if (layout === "carousel") {
+      const maxIndex = Math.ceil(items.length / scrollBy) - 1;
       return (
         <div ref={ref} className={cn("relative", className)} {...props}>
           <div
             ref={scrollRef}
             className="flex overflow-x-hidden scroll-smooth"
+            style={{ gap: `${gap}px` }}
           >
             {items.map((item, index) => renderCard(item, index))}
           </div>
@@ -177,7 +192,7 @@ const CardBlock = React.forwardRef<HTMLDivElement, CardBlockProps>(
 
               {/* Dots Indicator */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                {items.map((_, index) => (
+                {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToIndex(index)}

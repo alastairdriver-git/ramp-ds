@@ -36,6 +36,10 @@ export interface MediaBlockProps
   rounded?: "none" | "sm" | "md" | "lg";
   showBorder?: boolean;
   columns?: 2 | 3 | 4; // For grid layout
+  // Carousel-specific props
+  itemsPerPage?: number; // How many items visible at once (default: 1)
+  scrollBy?: number; // How many items to scroll per navigation click (default: 1)
+  gap?: number; // Gap between items in pixels (default: 16)
 }
 
 const aspectRatioClasses = {
@@ -88,6 +92,9 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
       rounded = "lg",
       showBorder = false,
       columns = 3,
+      itemsPerPage = 1,
+      scrollBy = 1,
+      gap = 16,
       ...props
     },
     ref
@@ -105,21 +112,24 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
     // Carousel navigation
     const scrollToIndex = (index: number) => {
       if (!scrollRef.current) return;
-      const itemWidth = scrollRef.current.offsetWidth;
+      const containerWidth = scrollRef.current.offsetWidth;
+      const itemWidth = (containerWidth + gap) / itemsPerPage;
       scrollRef.current.scrollTo({
-        left: index * itemWidth,
+        left: index * itemWidth * scrollBy,
         behavior: "smooth",
       });
       setCurrentIndex(index);
     };
 
     const handlePrev = () => {
-      const newIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+      const maxIndex = Math.ceil(items.length / scrollBy) - 1;
+      const newIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
       scrollToIndex(newIndex);
     };
 
     const handleNext = () => {
-      const newIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+      const maxIndex = Math.ceil(items.length / scrollBy) - 1;
+      const newIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
       scrollToIndex(newIndex);
     };
 
@@ -132,18 +142,27 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
         ? getBentoSize(index, items.length)
         : "";
 
+      // Calculate width for carousel items based on itemsPerPage
+      const carouselWidth = layout === "carousel"
+        ? `calc((100% - ${gap * (itemsPerPage - 1)}px) / ${itemsPerPage})`
+        : undefined;
+
       const containerClasses = cn(
         "relative overflow-hidden bg-muted",
         roundedClass,
         showBorder && "border border-border",
         aspectClass,
         bentoSizeClass,
-        layout === "carousel" && "w-full flex-shrink-0"
+        layout === "carousel" && "flex-shrink-0"
       );
 
       if (item.type === "video") {
         return (
-          <div key={index} className={containerClasses}>
+          <div
+            key={index}
+            className={containerClasses}
+            style={carouselWidth ? { width: carouselWidth } : undefined}
+          >
             <video
               src={item.src}
               controls
@@ -157,7 +176,11 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
       }
 
       return (
-        <div key={index} className={containerClasses}>
+        <div
+          key={index}
+          className={containerClasses}
+          style={carouselWidth ? { width: carouselWidth } : undefined}
+        >
           <img
             src={item.src}
             alt={item.alt || `Media ${index + 1}`}
@@ -169,11 +192,13 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
 
     // Carousel layout
     if (layout === "carousel") {
+      const maxIndex = Math.ceil(items.length / scrollBy) - 1;
       return (
         <div ref={ref} className={cn("relative", className)} {...props}>
           <div
             ref={scrollRef}
             className="flex overflow-x-hidden scroll-smooth"
+            style={{ gap: `${gap}px` }}
           >
             {items.map((item, index) => renderMedia(item, index))}
           </div>
@@ -200,7 +225,7 @@ const MediaBlock = React.forwardRef<HTMLDivElement, MediaBlockProps>(
 
               {/* Dots Indicator */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                {items.map((_, index) => (
+                {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToIndex(index)}
