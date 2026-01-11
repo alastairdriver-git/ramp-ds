@@ -23,7 +23,9 @@ import {
   MapPin,
   Calendar,
   TrendingUp,
-  Bell
+  Bell,
+  Star,
+  Check
 } from "lucide-react";
 
 const chartData = [
@@ -431,6 +433,97 @@ export function TemplatePreview({ templateId }: { templateId: string }) {
               </div>
             </Card>
           ))}
+        </div>
+      </div>
+    ),
+
+    "product-landing": (
+      <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 p-4 space-y-3 overflow-hidden">
+        {/* Hero */}
+        <div className="text-center space-y-2 pb-3 border-b">
+          <div className="text-sm font-bold">Transform Your Energy</div>
+          <div className="text-xs text-muted-foreground">Modern energy management platform</div>
+          <div className="flex gap-2 justify-center">
+            <Button size="sm" className="h-6 text-xs px-3">Get Started</Button>
+            <Button size="sm" variant="outline" className="h-6 text-xs px-3">Learn More</Button>
+          </div>
+        </div>
+
+        {/* Features */}
+        <div className="grid grid-cols-3 gap-2">
+          {[
+            { icon: Zap, title: "Real-time" },
+            { icon: BarChart, title: "Analytics" },
+            { icon: Bell, title: "Alerts" },
+          ].map((feature, i) => (
+            <Card key={i} className="p-2 text-center">
+              <feature.icon className="h-4 w-4 text-primary mx-auto mb-1" />
+              <div className="text-xs font-medium">{feature.title}</div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Testimonial */}
+        <Card className="p-2">
+          <div className="flex gap-0.5 mb-1">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-2 w-2 fill-primary text-primary" />
+            ))}
+          </div>
+          <div className="text-xs">
+            "Game-changing platform for energy management"
+          </div>
+          <div className="text-xs text-muted-foreground mt-1">- Sarah J.</div>
+        </Card>
+      </div>
+    ),
+
+    "pricing-page": (
+      <div className="w-full h-full bg-background p-4 space-y-3 overflow-hidden">
+        {/* Header */}
+        <div className="text-center pb-2 border-b">
+          <div className="text-sm font-bold">Simple Pricing</div>
+          <div className="text-xs text-muted-foreground">Choose your plan</div>
+        </div>
+
+        {/* Pricing tiers */}
+        <div className="grid grid-cols-3 gap-2">
+          {[
+            { name: "Starter", price: "$49", highlight: false },
+            { name: "Pro", price: "$149", highlight: true },
+            { name: "Enterprise", price: "Custom", highlight: false },
+          ].map((plan, i) => (
+            <Card
+              key={i}
+              className={`p-2 text-center ${plan.highlight ? "border-primary bg-primary/5" : ""}`}
+            >
+              <div className="text-xs font-medium">{plan.name}</div>
+              <div className="text-sm font-bold my-1">{plan.price}</div>
+              <div className="space-y-1 text-xs">
+                <div className="flex items-start gap-1">
+                  <Check className="h-3 w-3 text-primary flex-shrink-0" />
+                  <span className="text-left">Feature 1</span>
+                </div>
+                <div className="flex items-start gap-1">
+                  <Check className="h-3 w-3 text-primary flex-shrink-0" />
+                  <span className="text-left">Feature 2</span>
+                </div>
+              </div>
+              <Button
+                size="sm"
+                variant={plan.highlight ? "default" : "outline"}
+                className="w-full h-6 text-xs mt-2"
+              >
+                Select
+              </Button>
+            </Card>
+          ))}
+        </div>
+
+        {/* FAQ preview */}
+        <div className="text-xs">
+          <div className="font-medium mb-1">FAQs</div>
+          <div className="text-muted-foreground">Can I change plans later?</div>
         </div>
       </div>
     ),
