@@ -109,6 +109,25 @@ export const templatesList: Template[] = [
     tags: ["Notifications", "Alerts", "Inbox"],
     href: "/templates/notifications-center",
   },
+
+  // Marketing Templates
+  {
+    id: "product-landing",
+    name: "Product Landing Page",
+    description: "Modern landing page with hero, features, testimonials, and CTA sections using SectionBlocks.",
+    category: "Marketing",
+    tags: ["Landing", "Marketing", "Blocks"],
+    href: "/templates/product-landing",
+    featured: true,
+  },
+  {
+    id: "pricing-page",
+    name: "Pricing Page",
+    description: "Clean pricing page with pricing tiers, FAQs, and feature comparison using SectionBlocks.",
+    category: "Marketing",
+    tags: ["Pricing", "Marketing", "Blocks"],
+    href: "/templates/pricing-page",
+  },
 ];
 
 export const templateCategories = [
@@ -118,6 +137,7 @@ export const templateCategories = [
   "Authentication",
   "Data Display",
   "Communication",
+  "Marketing",
 ] as const;
 
 export const templateTags = [
@@ -146,6 +166,10 @@ export const templateTags = [
   "Notifications",
   "Alerts",
   "Inbox",
+  "Landing",
+  "Marketing",
+  "Blocks",
+  "Pricing",
 ] as const;
 
 export function getTemplatesByCategory(category: string): Template[] {
