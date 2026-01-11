@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import { SectionBlock } from "@/components/ui/section-block";
+import { getBlockTheme, getBlockThemeOptions, applyBlockTheme, type BlockThemeId } from "@/lib/block-themes";
 import type { SectionBlockProps } from "@/components/ui/section-block";
 import { MediaBlock } from "@/components/ui/media-block";
 import { CardBlock } from "@/components/ui/card-block";
@@ -75,6 +77,8 @@ interface BlockConfig {
 }
 
 export default function BlockBuilderPage() {
+  const { theme: systemTheme } = useTheme();
+  const [blockTheme, setBlockTheme] = useState<BlockThemeId>("default");
   const [blocks, setBlocks] = useState<BlockConfig[]>([
     {
       id: "1",
@@ -103,6 +107,10 @@ export default function BlockBuilderPage() {
   ]);
   const [selectedBlockId, setSelectedBlockId] = useState<string>("1");
   const [viewMode, setViewMode] = useState<"preview" | "code">("preview");
+
+  // Get current theme config and styles
+  const currentTheme = getBlockTheme(blockTheme);
+  const themeStyles = applyBlockTheme(currentTheme, systemTheme === "dark");
 
   const selectedBlock = blocks.find((b) => b.id === selectedBlockId);
 
@@ -330,6 +338,18 @@ export default function BlockBuilderPage() {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <Select value={blockTheme} onValueChange={(v) => setBlockTheme(v as BlockThemeId)}>
+                <SelectTrigger className="h-9 w-[140px]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {getBlockThemeOptions().map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <Button
                 variant={viewMode === "preview" ? "default" : "outline"}
                 size="sm"
@@ -819,7 +839,10 @@ export default function BlockBuilderPage() {
           {/* Preview/Code Area */}
           <div>
             {viewMode === "preview" ? (
-              <div className="border rounded-lg overflow-hidden bg-background">
+              <div
+                className="border rounded-lg overflow-hidden bg-background"
+                style={themeStyles}
+              >
                 {blocks.map((block) => (
                   <div
                     key={block.id}
