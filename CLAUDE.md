@@ -837,6 +837,180 @@ export const config = {
 2. **Unexpected redirect to `/en/...`?** → Route is being internationalized, add to exclusion
 3. **Need a localized route?** → Remove from exclusion list (rare for design system docs)
 
+## Template System
+
+The design system includes a template showcase at `/templates` with production-ready page templates. Templates are fully integrated with code viewing, copying, and preview functionality.
+
+### Adding a New Template
+
+**IMPORTANT**: Always use the dynamic template system. Never create standalone page files in `app/templates/[template-name]/page.tsx`.
+
+#### Step 1: Add Template Metadata
+
+Edit `lib/templates-list.ts`:
+
+```typescript
+export const templatesList: Template[] = [
+  // ... existing templates
+
+  {
+    id: "my-new-template",  // URL slug
+    name: "My New Template",  // Display name
+    description: "Brief description of what this template does",
+    category: "Marketing",  // Dashboard, Settings, Authentication, Data Display, Communication, Marketing
+    tags: ["Tag1", "Tag2", "Tag3"],  // For filtering
+    href: "/templates/my-new-template",
+    featured: true,  // Optional: shows on featured list
+  },
+];
+```
+
+If adding a new category, also update:
+```typescript
+export const templateCategories = [
+  "All",
+  "Dashboard",
+  // ... add your new category
+] as const;
+
+export const templateTags = [
+  // ... add your new tags
+] as const;
+```
+
+#### Step 2: Add Template Code
+
+Edit `lib/template-code.ts` and add your template code to the `templateCode` object (before the closing `};`):
+
+```typescript
+export const templateCode: Record<string, string> = {
+  // ... existing templates
+
+  "my-new-template": `import { SectionBlock } from "./components/ui/section-block"
+import { CardBlock } from "./components/ui/card-block"
+import { Button } from "./components/ui/button"
+
+export default function MyNewTemplate() {
+  return (
+    <div className="min-h-screen">
+      <SectionBlock
+        padding="xl"
+        background="gradient"
+        alignment="center"
+        titleSize="xl"
+        fullBleed
+        title="My Template Title"
+        subtitle="Template subtitle"
+        cta1={{ text: "Get Started", variant: "default", href: "#" }}
+      >
+        {/* Content blocks go here */}
+      </SectionBlock>
+    </div>
+  )
+}`,
+};
+```
+
+**Code Guidelines:**
+- Use `import { Component } from "./components/ui/component"` format
+- Export a default function with PascalCase name
+- Include all JSX content (no external data fetching in template code)
+- Use placeholder content (lorem ipsum, sample data, etc.)
+- Include comments for major sections
+- Escape template literals with backslashes: `\`string\`` → `\\`string\\``
+- Escape quotes in strings: `"text"` → `\\"text\\"`
+
+#### Step 3: Add Component Mapping
+
+Edit `app/templates/[id]/page.tsx` and add your template to the `componentMap`:
+
+```typescript
+function getComponentsForTemplate(templateId: string): string[] {
+  const componentMap: Record<string, string[]> = {
+    // ... existing mappings
+
+    "my-new-template": ["SectionBlock", "CardBlock", "Button", "Badge"],
+  };
+
+  return componentMap[templateId] || ["Card", "Button"];
+}
+```
+
+This determines which components appear in the "Components Used" section.
+
+#### Step 4: Test Your Template
+
+1. **Browse**: Visit `/templates` and find your template in the list
+2. **View Details**: Click on it to see `/templates/my-new-template`
+3. **Check Features**:
+   - Preview shows correctly
+   - "Copy Code" button works
+   - "View Full Page" opens `/templates/my-new-template/view`
+   - Component list is accurate
+   - Related templates appear
+4. **Test Code**: Copy the code and verify it compiles
+
+### Template Best Practices
+
+**DO:**
+- Use SectionBlock for marketing pages (landing, pricing, about, etc.)
+- Use existing design system components
+- Include multiple layout variations (grid, carousel, bento)
+- Add responsive design (`md:`, `lg:` breakpoints)
+- Follow existing template patterns
+- Use semantic HTML
+- Include accessibility attributes
+
+**DON'T:**
+- Create custom components in template code (use design system components)
+- Add external dependencies
+- Include API calls or data fetching
+- Use absolute imports (use relative: `./components/ui/...`)
+- Create standalone template page files
+
+### Template Categories
+
+**Dashboard**: Admin interfaces, analytics, monitoring
+**Settings**: User preferences, account management, configuration
+**Authentication**: Login, signup, password reset
+**Data Display**: Tables, lists, detail views
+**Communication**: Chat, notifications, messaging
+**Marketing**: Landing pages, pricing, about, feature showcases
+
+### Common Template Patterns
+
+**Landing Page**:
+- Hero with SectionBlock (gradient background, xl padding, centered)
+- Features grid with CardBlock
+- Social proof / testimonials
+- Stats section
+- Final CTA with primary background
+
+**Pricing Page**:
+- Hero section
+- 3-tier pricing cards (custom divs, not CardBlock for complex layouts)
+- Feature comparison table
+- FAQ with FAQBlock
+- CTA section
+
+**Dashboard**:
+- Stats cards grid
+- Charts and visualizations
+- Data tables
+- Real-time indicators
+
+### Troubleshooting
+
+**Template not appearing**: Check that `id` in templates-list.ts matches the key in template-code.ts
+
+**Code not displaying**: Verify template-code.ts has valid TypeScript string (check escaping)
+
+**Preview broken**: Test the JSX separately, check for syntax errors
+
+**Components not linking**: Update componentMap in [id]/page.tsx
+
+**404 error**: Ensure href in templates-list.ts is `/templates/{id}`, not `/templates/{id}/page`
+
 ## Links
 - Docs: https://design.sourceful.energy
 - GitHub: https://github.com/srcfl/srcful-design-system
