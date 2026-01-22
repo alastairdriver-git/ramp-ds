@@ -38,31 +38,43 @@ const FAQBlock = React.forwardRef<HTMLDivElement, FAQBlockProps>(
     },
     ref
   ) => {
+    const accordionItems = items.map((item, index) => (
+      <AccordionItem key={index} value={`item-${index}`}>
+        <AccordionTrigger>{item.question}</AccordionTrigger>
+        <AccordionContent>
+          {typeof item.answer === "string" ? (
+            <p>{item.answer}</p>
+          ) : (
+            item.answer
+          )}
+        </AccordionContent>
+      </AccordionItem>
+    ));
+
     return (
       <div
         ref={ref}
         className={cn("w-full mx-auto", maxWidthClasses[maxWidth], className)}
         {...props}
       >
-        <Accordion
-          type={type}
-          collapsible={type === "single"}
-          defaultValue={defaultOpen}
-          className="w-full"
-        >
-          {items.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger>{item.question}</AccordionTrigger>
-              <AccordionContent>
-                {typeof item.answer === "string" ? (
-                  <p>{item.answer}</p>
-                ) : (
-                  item.answer
-                )}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        {type === "single" ? (
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue={defaultOpen as string}
+            className="w-full"
+          >
+            {accordionItems}
+          </Accordion>
+        ) : (
+          <Accordion
+            type="multiple"
+            defaultValue={defaultOpen as string[]}
+            className="w-full"
+          >
+            {accordionItems}
+          </Accordion>
+        )}
       </div>
     );
   }
