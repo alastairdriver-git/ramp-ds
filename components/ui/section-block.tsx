@@ -140,7 +140,7 @@ const SectionBlock = React.forwardRef<HTMLElement, SectionBlockProps>(
 
     return (
       <Comp
-        ref={ref}
+        ref={ref as any}
         className={cn(
           sectionBlockVariants({ padding, background, fullBleed }),
           className
