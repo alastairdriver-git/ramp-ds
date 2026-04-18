@@ -33,17 +33,17 @@ const trafficData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
     icon: Monitor,
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
     icon: Smartphone,
   },
   tablet: {
     label: "Tablet",
-    color: "hsl(48, 100%, 50%)",
+    color: "oklch(var(--chart-3))",
     icon: Tablet,
   },
 } satisfies ChartConfig;
@@ -51,11 +51,11 @@ const chartConfig = {
 const simpleConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
   },
 } satisfies ChartConfig;
 
@@ -215,12 +215,12 @@ export default function TooltipPage() {
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
     icon: Monitor,  // Icons show in tooltip
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
     icon: Smartphone,
   },
 }`}</code>

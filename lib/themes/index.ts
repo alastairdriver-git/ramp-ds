@@ -20,6 +20,8 @@ export { generateTheme } from "./generator";
 export { themeToCSSVars, applyThemeToRoot } from "./apply";
 export type { ModeName } from "./oklch";
 export { BUILT_IN_INPUTS, calmInput, energyInput } from "./inputs";
+export { generateThemeMarkdown, downloadThemeMarkdown } from "./export-md";
+export { oklchToHex, useOklchHexes, formatOklch } from "./oklch-to-hex";
 
 /**
  * Generated built-in themes, keyed by id. These are pure — generated once

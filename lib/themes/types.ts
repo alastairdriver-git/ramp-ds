@@ -207,7 +207,7 @@ export const FONTS = {
   instrumentSerif: "var(--font-instrument-serif), Georgia, serif",
   sourceSerif: "var(--font-source-serif), Georgia, serif",
   // Mono
-  jetbrainsMono: "var(--font-mono), ui-monospace, monospace",
+  jetbrainsMono: "var(--font-jetbrains-mono), ui-monospace, monospace",
   geistMono: "var(--font-geist-mono), ui-monospace, monospace",
   ibmPlexMono: "var(--font-ibm-plex-mono), ui-monospace, monospace",
   // System fallbacks
@@ -274,6 +274,13 @@ export type RadiusStyle = "sharp" | "subtle" | "soft" | "round" | "pill";
 /** Shadow intensity preset. */
 export type ShadowIntensity = "none" | "subtle" | "default" | "dramatic";
 
+/**
+ * Chroma intensity — applied globally on top of per-ramp chroma multipliers.
+ * "muted" dials all ramps down (pastel / editorial feel).
+ * "vibrant" pushes them past the defaults (popping / marketing feel).
+ */
+export type ColorIntensity = "muted" | "default" | "vibrant";
+
 /** Button rendering shape (orthogonal to radius). */
 export type ButtonShape = "default" | "pill" | "square";
 
@@ -321,6 +328,13 @@ export interface ThemeInput {
 
   /** If true, the neutral ramp is pure gray regardless of neutral hue. */
   neutralPureGray?: boolean;
+
+  /**
+   * Global chroma intensity. Multiplies every ramp's chroma — a quick way to
+   * flip the whole theme between muted / default / vibrant without touching
+   * the per-ramp chroma values.
+   */
+  intensity?: ColorIntensity;
 
   typography: {
     display: FontKey;
@@ -449,6 +463,19 @@ export interface GeneratedEffects {
 }
 
 /**
+ * A 5-stop categorical chart palette derived from the theme hues. Each
+ * entry is an OKLCH triplet. Written to --chart-1 through --chart-5 at
+ * :root — chart components (recharts) read them via var(--chart-N).
+ */
+export interface ChartPalette {
+  1: OKLCHTriplet;
+  2: OKLCHTriplet;
+  3: OKLCHTriplet;
+  4: OKLCHTriplet;
+  5: OKLCHTriplet;
+}
+
+/**
  * The full output of the generator. This is what gets applied to :root by
  * the provider, written to CSS vars, and used for rendering previews.
  *
@@ -473,6 +500,9 @@ export interface GeneratedTheme {
 
   /** Semantic tokens for all four modes. */
   colors: Record<ModeName, GeneratedColorsMode>;
+
+  /** 5-stop palette for chart series. */
+  chart: ChartPalette;
 
   typography: GeneratedTypography;
   radius: GeneratedRadius;

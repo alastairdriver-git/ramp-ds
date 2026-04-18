@@ -172,6 +172,12 @@ const config: Config = {
         warning: "oklch(var(--warning) / <alpha-value>)",
         info: "oklch(var(--info) / <alpha-value>)",
         highlight: "oklch(var(--highlight) / <alpha-value>)",
+        // Chart series palette — derived from theme hues by the generator.
+        "chart-1": "oklch(var(--chart-1) / <alpha-value>)",
+        "chart-2": "oklch(var(--chart-2) / <alpha-value>)",
+        "chart-3": "oklch(var(--chart-3) / <alpha-value>)",
+        "chart-4": "oklch(var(--chart-4) / <alpha-value>)",
+        "chart-5": "oklch(var(--chart-5) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

@@ -39,19 +39,19 @@ const comparisonData = [
 const chartConfig = {
   current: {
     label: "Current",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   target: {
     label: "Target",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
   },
   siteA: {
     label: "Site A",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   siteB: {
     label: "Site B",
-    color: "hsl(48, 100%, 50%)",
+    color: "oklch(var(--chart-3))",
   },
 } satisfies ChartConfig;
 

@@ -1,108 +1,234 @@
-const brandColors = [
-  {
-    name: "Green",
-    description: "Primary brand color, used for actions and links",
-    shades: [
-      { name: "50", value: "#f0fdf4", class: "bg-rds-green-50" },
-      { name: "100", value: "#dcfce7", class: "bg-rds-green-100" },
-      { name: "200", value: "#bbf7d0", class: "bg-rds-green-200" },
-      { name: "300", value: "#86efac", class: "bg-rds-green-300" },
-      { name: "400", value: "#4ade80", class: "bg-rds-green-400" },
-      { name: "500", value: "#22c55e", class: "bg-rds-green-500", primary: true },
-      { name: "600", value: "#16a34a", class: "bg-rds-green-600" },
-      { name: "700", value: "#15803d", class: "bg-rds-green-700" },
-      { name: "800", value: "#166534", class: "bg-rds-green-800" },
-      { name: "900", value: "#14532d", class: "bg-rds-green-900" },
-    ],
-  },
-  {
-    name: "Gray",
-    description: "Neutral tones for text, backgrounds, and borders",
-    shades: [
-      { name: "50", value: "#f9fafb", class: "bg-rds-gray-50" },
-      { name: "100", value: "#f3f4f6", class: "bg-rds-gray-100" },
-      { name: "200", value: "#e5e7eb", class: "bg-rds-gray-200" },
-      { name: "300", value: "#d1d5db", class: "bg-rds-gray-300" },
-      { name: "400", value: "#9ca3af", class: "bg-rds-gray-400" },
-      { name: "500", value: "#6b7280", class: "bg-rds-gray-500" },
-      { name: "600", value: "#4b5563", class: "bg-rds-gray-600" },
-      { name: "700", value: "#374151", class: "bg-rds-gray-700" },
-      { name: "800", value: "#1f2937", class: "bg-rds-gray-800" },
-      { name: "900", value: "#111827", class: "bg-rds-gray-900" },
-      { name: "950", value: "#0a0a0a", class: "bg-rds-gray-950" },
-    ],
-  },
-  {
-    name: "Yellow",
-    description: "Energy accent color, used for highlights and warnings",
-    shades: [
-      { name: "50", value: "#fffce8", class: "bg-rds-yellow-50" },
-      { name: "100", value: "#fff8c2", class: "bg-rds-yellow-100" },
-      { name: "200", value: "#fff089", class: "bg-rds-yellow-200" },
-      { name: "300", value: "#ffe545", class: "bg-rds-yellow-300" },
-      { name: "400", value: "#FFD500", class: "bg-rds-yellow-400", primary: true },
-      { name: "500", value: "#e6c000", class: "bg-rds-yellow-500" },
-      { name: "600", value: "#cc9f00", class: "bg-rds-yellow-600" },
-      { name: "700", value: "#a37700", class: "bg-rds-yellow-700" },
-    ],
-  },
+"use client";
+
+import { useRampTheme } from "@/components/ramp-theme-provider";
+import type { Ramp } from "@/lib/themes";
+import { useOklchHexes, formatOklch } from "@/lib/themes/oklch-to-hex";
+
+/**
+ * Color tokens page — fully theme-aware. Pulls ramps + semantic tokens
+ * from the active theme via useRampTheme(). Swap themes in the nav and
+ * every swatch + table row re-renders with the new palette.
+ */
+
+const RAMP_STEPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
+
+interface SemanticRow {
+  token: string;
+  usage: string;
+  cssVar: string;
+}
+
+const semanticRows: SemanticRow[] = [
+  { token: "background", usage: "Page background", cssVar: "--background" },
+  { token: "foreground", usage: "Primary text", cssVar: "--foreground" },
+  { token: "card", usage: "Elevated surface background", cssVar: "--card" },
+  { token: "card-foreground", usage: "Text on card", cssVar: "--card-foreground" },
+  { token: "primary", usage: "Primary actions, links", cssVar: "--primary" },
+  { token: "primary-foreground", usage: "Text on primary", cssVar: "--primary-foreground" },
+  { token: "secondary", usage: "Secondary surfaces", cssVar: "--secondary" },
+  { token: "secondary-foreground", usage: "Text on secondary", cssVar: "--secondary-foreground" },
+  { token: "muted", usage: "Muted backgrounds", cssVar: "--muted" },
+  { token: "muted-foreground", usage: "Subtle text", cssVar: "--muted-foreground" },
+  { token: "accent", usage: "Hover states, highlights", cssVar: "--accent" },
+  { token: "accent-foreground", usage: "Text on accent", cssVar: "--accent-foreground" },
+  { token: "border", usage: "Default borders", cssVar: "--border" },
+  { token: "input", usage: "Form input borders", cssVar: "--input" },
+  { token: "ring", usage: "Focus ring", cssVar: "--ring" },
 ];
 
-const semanticColors = [
-  { name: "background", description: "Page background", light: "#ffffff", dark: "#0a0a0a" },
-  { name: "foreground", description: "Primary text", light: "#111827", dark: "#ffffff" },
-  { name: "primary", description: "Primary actions, links", light: "#16a34a", dark: "#00FF84" },
-  { name: "secondary", description: "Secondary elements", light: "#f3f4f6", dark: "#1f2937" },
-  { name: "muted", description: "Muted backgrounds", light: "#f3f4f6", dark: "#1f2937" },
-  { name: "accent", description: "Hover states", light: "#e8f5e9", dark: "#1a3d1a" },
-  { name: "destructive", description: "Error states", light: "#FF0D0D", dark: "#FF0D0D" },
+const fixedSemanticRows: SemanticRow[] = [
+  { token: "destructive", usage: "Destructive actions, errors", cssVar: "--destructive" },
+  { token: "success", usage: "Success states", cssVar: "--success" },
+  { token: "warning", usage: "Warning states", cssVar: "--warning" },
+  { token: "info", usage: "Informational states", cssVar: "--info" },
+  { token: "highlight", usage: "Emphasis, new features", cssVar: "--highlight" },
 ];
+
+function RampSwatches({
+  name,
+  description,
+  ramp,
+  hue,
+}: {
+  name: string;
+  description: string;
+  ramp: Ramp;
+  hue: number;
+}) {
+  const triplets = RAMP_STEPS.map((step) => ramp[step]);
+  const hexes = useOklchHexes(triplets);
+  return (
+    <div className="space-y-3">
+      <div className="flex items-baseline gap-2">
+        <h3 className="text-lg font-medium">{name}</h3>
+        <span className="text-xs text-muted-foreground font-mono">
+          hue {Math.round(hue)}°
+        </span>
+      </div>
+      <p className="text-sm text-muted-foreground">{description}</p>
+      <div className="grid grid-cols-6 md:grid-cols-11 gap-2">
+        {RAMP_STEPS.map((step, i) => {
+          const triplet = triplets[i];
+          const hex = hexes[i] ?? "";
+          return (
+            <div key={step} className="space-y-1.5">
+              <div
+                className="h-10 w-full rounded-md border border-border cursor-help"
+                style={{ background: `oklch(${triplet})` }}
+                title={`oklch(${formatOklch(triplet)})${hex ? ` · ${hex}` : ""}`}
+              />
+              <div className="text-xs">
+                <div className="font-medium">{step}</div>
+                <div className="text-muted-foreground font-mono text-[10px]">
+                  {hex || "—"}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * 5-stop chart palette swatch row with hex readout + OKLCH tooltip.
+ */
+function ChartPaletteSwatches({
+  chart,
+}: {
+  chart: { 1: string; 2: string; 3: string; 4: string; 5: string };
+}) {
+  const triplets = [1, 2, 3, 4, 5].map((i) => chart[i as 1]);
+  const hexes = useOklchHexes(triplets);
+  return (
+    <div className="grid grid-cols-5 gap-2">
+      {[1, 2, 3, 4, 5].map((i, idx) => {
+        const triplet = triplets[idx];
+        const hex = hexes[idx] ?? "";
+        return (
+          <div key={i} className="space-y-1.5">
+            <div
+              className="h-12 w-full rounded-md border border-border cursor-help"
+              style={{ background: `oklch(${triplet})` }}
+              title={`oklch(${formatOklch(triplet)})${hex ? ` · ${hex}` : ""}`}
+            />
+            <div className="text-xs">
+              <div className="font-medium">chart-{i}</div>
+              <div className="text-muted-foreground font-mono text-[10px]">
+                {hex || "—"}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/**
+ * Semantic-token / fixed-semantic table row with hex lookup + tooltip.
+ */
+function SemanticRows({ rows, tokens }: { rows: SemanticRow[]; tokens: Record<string, string> }) {
+  const triplets = rows.map((r) => tokens[r.token] ?? "");
+  const hexes = useOklchHexes(triplets);
+  return (
+    <>
+      {rows.map((row, i) => {
+        const triplet = triplets[i];
+        const hex = hexes[i] ?? "";
+        return (
+          <tr key={row.token} className="border-t">
+            <td className="p-3 font-mono text-xs">{row.cssVar}</td>
+            <td className="p-3 text-muted-foreground">{row.usage}</td>
+            <td className="p-3">
+              <div
+                className="h-6 w-6 rounded border border-border cursor-help"
+                style={{ background: `oklch(${triplet})` }}
+                title={`oklch(${formatOklch(triplet)})${hex ? ` · ${hex}` : ""}`}
+              />
+            </td>
+            <td className="p-3 font-mono text-xs text-muted-foreground">
+              {hex || "—"}
+            </td>
+          </tr>
+        );
+      })}
+    </>
+  );
+}
 
 export default function ColorsPage() {
+  const { theme } = useRampTheme();
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Colors</h1>
         <p className="text-lg text-muted-foreground mt-2">
-          Color tokens for the Ramp Design System.
+          Every color in Ramp DS comes from the active theme&apos;s three-hue
+          OKLCH generator. Switch themes in the top nav to see these update
+          live.
         </p>
       </div>
 
-      <div className="space-y-4">
-        <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
-          Brand colors
-        </h2>
-        <p className="leading-7">
-          Our core brand palette with full shade ranges.
-        </p>
-
-        {brandColors.map((color) => (
-          <div key={color.name} className="space-y-3">
-            <h3 className="text-lg font-medium">{color.name}</h3>
-            <p className="text-sm text-muted-foreground">{color.description}</p>
-            <div className="grid grid-cols-5 md:grid-cols-10 gap-2">
-              {color.shades.map((shade) => (
-                <div key={shade.name} className="space-y-1.5">
-                  <div
-                    className={`h-10 w-full rounded-md ${shade.class} ${shade.primary ? "ring-2 ring-primary ring-offset-2" : ""}`}
-                  />
-                  <div className="text-xs">
-                    <div className="font-medium">{shade.name}</div>
-                    <div className="text-muted-foreground font-mono">{shade.value}</div>
-                  </div>
-                </div>
-              ))}
+      {/* Active theme header */}
+      <div className="rounded-lg border bg-muted/40 p-4">
+        <div className="flex items-center gap-4">
+          <div className="flex shrink-0 overflow-hidden rounded-md border border-border">
+            <div className="h-10 w-4" style={{ background: `oklch(${theme.ramps.primary[500]})` }} />
+            <div className="h-10 w-4" style={{ background: `oklch(${theme.ramps.accent[500]})` }} />
+            <div className="h-10 w-4" style={{ background: `oklch(${theme.ramps.neutral[500]})` }} />
+          </div>
+          <div>
+            <div className="text-sm font-medium">{theme.name}</div>
+            <div className="text-xs text-muted-foreground">
+              {theme.description} · intensity: {theme.input.intensity ?? "default"}
             </div>
           </div>
-        ))}
+        </div>
       </div>
 
-      <div className="space-y-4">
+      {/* Ramps */}
+      <section className="space-y-6">
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
-          Semantic colors
+          Ramps
         </h2>
         <p className="leading-7">
-          Purpose-based colors that adapt between light and dark modes.
+          Three 11-stop OKLCH ramps are generated from the theme&apos;s hues.
+          Every component color resolves back to one of these stops.
+        </p>
+
+        <RampSwatches
+          name="Neutral"
+          description="Backgrounds, borders, text. Subtly tinted toward the neutral hue for warmth or coolness."
+          ramp={theme.ramps.neutral}
+          hue={theme.input.hues.neutral}
+        />
+
+        <RampSwatches
+          name="Primary"
+          description="Brand color. Used for primary actions, links, focus rings, and the default button."
+          ramp={theme.ramps.primary}
+          hue={theme.input.hues.primary}
+        />
+
+        <RampSwatches
+          name="Accent"
+          description="Secondary brand color. Used for accents, highlights, and a second visual thread."
+          ramp={theme.ramps.accent}
+          hue={theme.input.hues.accent}
+        />
+      </section>
+
+      {/* Semantic tokens */}
+      <section className="space-y-4">
+        <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
+          Semantic tokens
+        </h2>
+        <p className="leading-7">
+          Purpose-based tokens derived from the ramps above. These swap values
+          per brightness mode automatically.
         </p>
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
@@ -110,60 +236,100 @@ export default function ColorsPage() {
               <tr>
                 <th className="text-left p-3 font-medium">Token</th>
                 <th className="text-left p-3 font-medium">Usage</th>
-                <th className="text-left p-3 font-medium">Light</th>
-                <th className="text-left p-3 font-medium">Dark</th>
+                <th className="text-left p-3 font-medium">Swatch</th>
+                <th className="text-left p-3 font-medium">Hex</th>
               </tr>
             </thead>
             <tbody>
-              {semanticColors.map((color) => (
-                <tr key={color.name} className="border-t">
-                  <td className="p-3 font-mono text-xs">--{color.name}</td>
-                  <td className="p-3 text-muted-foreground">{color.description}</td>
-                  <td className="p-3">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="h-6 w-6 rounded border"
-                        style={{ backgroundColor: color.light }}
-                      />
-                      <span className="font-mono text-xs">{color.light}</span>
-                    </div>
-                  </td>
-                  <td className="p-3">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="h-6 w-6 rounded border"
-                        style={{ backgroundColor: color.dark }}
-                      />
-                      <span className="font-mono text-xs">{color.dark}</span>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              <SemanticRows
+                rows={semanticRows}
+                tokens={theme.colors.light as unknown as Record<string, string>}
+              />
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
 
-      <div className="space-y-4">
+      {/* Fixed semantic colors */}
+      <section className="space-y-4">
+        <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
+          Fixed semantic colors
+        </h2>
+        <p className="leading-7">
+          Status colors are deliberately <em>not</em> hue-derived — they stay
+          consistent across themes so users always read green as success, red
+          as destructive, etc. Accessibility wins over brand cohesion here.
+        </p>
+        <div className="rounded-lg border overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-muted">
+              <tr>
+                <th className="text-left p-3 font-medium">Token</th>
+                <th className="text-left p-3 font-medium">Usage</th>
+                <th className="text-left p-3 font-medium">Swatch</th>
+                <th className="text-left p-3 font-medium">Hex</th>
+              </tr>
+            </thead>
+            <tbody>
+              <SemanticRows
+                rows={fixedSemanticRows}
+                tokens={theme.colors.light as unknown as Record<string, string>}
+              />
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Chart palette */}
+      <section className="space-y-4">
+        <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
+          Chart palette
+        </h2>
+        <p className="leading-7">
+          A 5-stop categorical palette derived from the theme&apos;s hues.
+          Primary leads, then two well-separated hue rotations, neutral as a
+          quiet step, and accent closes — each adjacent slot is visibly
+          distinct. Use via{" "}
+          <code className="bg-muted px-1 py-0.5 rounded text-sm">
+            var(--chart-1)
+          </code>
+          …
+          <code className="bg-muted px-1 py-0.5 rounded text-sm">
+            var(--chart-5)
+          </code>{" "}
+          or Tailwind utilities{" "}
+          <code className="bg-muted px-1 py-0.5 rounded text-sm">bg-chart-1</code>.
+        </p>
+        <ChartPaletteSwatches chart={theme.chart} />
+      </section>
+
+      {/* Usage */}
+      <section className="space-y-4">
         <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
           Usage
         </h2>
-        <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
+        <div className="rounded-lg bg-muted border p-4 font-mono text-sm overflow-x-auto">
           <pre>
-            <code>{`{/* Semantic colors (theme-aware) */}
+            <code>{`{/* Semantic tokens — adapt to active theme + mode */}
 <div className="bg-background text-foreground" />
 <div className="bg-primary text-primary-foreground" />
+<div className="bg-card text-card-foreground" />
 
-{/* Brand colors (fixed) */}
-<div className="bg-rds-green-500" />
-<div className="text-rds-yellow-400" />
+{/* With opacity (Tailwind shortcut, works with any color) */}
+<div className="bg-primary/50 hover:bg-primary/80" />
+<div className="border-border/40" />
 
-{/* With opacity */}
-<div className="bg-primary/50" />
-<div className="border-rds-green-500/20" />`}</code>
+{/* Fixed semantic status colors */}
+<div className="bg-success text-success-foreground" />
+<div className="bg-destructive" />
+<div className="text-warning" />
+
+{/* Chart palette (generator-derived) */}
+<Bar dataKey="x" fill="var(--chart-1)" />
+<Bar dataKey="y" fill="var(--chart-2)" />`}</code>
           </pre>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

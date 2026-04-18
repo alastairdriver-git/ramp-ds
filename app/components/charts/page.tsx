@@ -37,9 +37,9 @@ const sampleData = [
 ];
 
 const pieData = [
-  { name: "desktop", value: 65, fill: "hsl(142, 76%, 36%)" },
-  { name: "mobile", value: 25, fill: "hsl(220, 14%, 50%)" },
-  { name: "tablet", value: 10, fill: "hsl(48, 100%, 50%)" },
+  { name: "desktop", value: 65, fill: "oklch(var(--chart-1))" },
+  { name: "mobile", value: 25, fill: "oklch(var(--chart-2))" },
+  { name: "tablet", value: 10, fill: "oklch(var(--chart-3))" },
 ];
 
 const radarData = [
@@ -51,7 +51,7 @@ const radarData = [
 ];
 
 const chartConfig = {
-  value: { label: "Value", color: "hsl(142, 76%, 36%)" },
+  value: { label: "Value", color: "oklch(var(--chart-1))" },
 } satisfies ChartConfig;
 
 const chartTypes = [
@@ -62,7 +62,7 @@ const chartTypes = [
     preview: (
       <ChartContainer config={chartConfig} className="h-[120px] w-full">
         <AreaChart data={sampleData}>
-          <Area type="monotone" dataKey="value" fill="hsl(142, 76%, 36%)" fillOpacity={0.3} stroke="hsl(142, 76%, 36%)" />
+          <Area type="monotone" dataKey="value" fill="oklch(var(--chart-1))" fillOpacity={0.3} stroke="oklch(var(--chart-1))" />
         </AreaChart>
       </ChartContainer>
     ),
@@ -74,7 +74,7 @@ const chartTypes = [
     preview: (
       <ChartContainer config={chartConfig} className="h-[120px] w-full">
         <BarChart data={sampleData}>
-          <Bar dataKey="value" fill="hsl(142, 76%, 36%)" radius={4} />
+          <Bar dataKey="value" fill="oklch(var(--chart-1))" radius={4} />
         </BarChart>
       </ChartContainer>
     ),
@@ -86,7 +86,7 @@ const chartTypes = [
     preview: (
       <ChartContainer config={chartConfig} className="h-[120px] w-full">
         <LineChart data={sampleData}>
-          <Line type="monotone" dataKey="value" stroke="hsl(142, 76%, 36%)" strokeWidth={2} dot={false} />
+          <Line type="monotone" dataKey="value" stroke="oklch(var(--chart-1))" strokeWidth={2} dot={false} />
         </LineChart>
       </ChartContainer>
     ),
@@ -112,7 +112,7 @@ const chartTypes = [
         <RadarChart data={radarData}>
           <PolarGrid />
           <PolarAngleAxis dataKey="metric" tick={false} />
-          <Radar dataKey="value" fill="hsl(142, 76%, 36%)" fillOpacity={0.3} stroke="hsl(142, 76%, 36%)" />
+          <Radar dataKey="value" fill="oklch(var(--chart-1))" fillOpacity={0.3} stroke="oklch(var(--chart-1))" />
         </RadarChart>
       </ChartContainer>
     ),
@@ -123,7 +123,7 @@ const chartTypes = [
     href: "/components/charts/radial",
     preview: (
       <ChartContainer config={chartConfig} className="h-[120px] w-full">
-        <RadialBarChart data={[{ value: 72, fill: "hsl(142, 76%, 36%)" }]} startAngle={90} endAngle={-270} innerRadius={30} outerRadius={50}>
+        <RadialBarChart data={[{ value: 72, fill: "oklch(var(--chart-1))" }]} startAngle={90} endAngle={-270} innerRadius={30} outerRadius={50}>
           <RadialBar background dataKey="value" cornerRadius={5} />
         </RadialBarChart>
       </ChartContainer>
@@ -208,7 +208,7 @@ import { Bar, BarChart, XAxis, YAxis } from "recharts"
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
 }
 

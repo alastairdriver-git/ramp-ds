@@ -203,6 +203,8 @@ export {
   type SpacingDensity,
   type RadiusStyle,
   type ShadowIntensity,
+  type ColorIntensity,
+  type ChartPalette,
   type ButtonShape,
   type InputStyle,
   type CardStyle,

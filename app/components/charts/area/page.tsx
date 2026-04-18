@@ -30,15 +30,15 @@ const trafficData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
   },
   tablet: {
     label: "Tablet",
-    color: "hsl(48, 100%, 50%)",
+    color: "oklch(var(--chart-3))",
   },
 } satisfies ChartConfig;
 
@@ -152,8 +152,8 @@ export default function AreaChartPage() {
               <AreaChart data={trafficData}>
                 <defs>
                   <linearGradient id="solarGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0.5} />
-                    <stop offset="100%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0} />
+                    <stop offset="0%" stopColor="oklch(var(--chart-1))" stopOpacity={0.5} />
+                    <stop offset="100%" stopColor="oklch(var(--chart-1))" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -218,7 +218,7 @@ export default function AreaChartPage() {
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const chartConfig = {
-  desktop: { label: "Desktop", color: "hsl(142, 76%, 36%)" },
+  desktop: { label: "Desktop", color: "oklch(var(--chart-1))" },
 }
 
 <ChartContainer config={chartConfig} className="min-h-[300px]">

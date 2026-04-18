@@ -41,15 +41,15 @@ const monthlyData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   consumption: {
     label: "Consumption",
-    color: "hsl(0, 84%, 60%)",
+    color: "oklch(var(--destructive))",
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
   },
 } satisfies ChartConfig;
 
@@ -197,7 +197,7 @@ export default function LineChartPage() {
                 <XAxis dataKey="time" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <ReferenceLine y={100} stroke="hsl(48, 100%, 50%)" strokeDasharray="5 5" label={{ value: "Target", fill: "hsl(48, 100%, 40%)", fontSize: 12 }} />
+                <ReferenceLine y={100} stroke="oklch(var(--chart-3))" strokeDasharray="5 5" label={{ value: "Target", fill: "oklch(var(--warning))", fontSize: 12 }} />
                 <Line
                   type="monotone"
                   dataKey="desktop"

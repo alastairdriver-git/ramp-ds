@@ -24,41 +24,41 @@ const energyMixData = [
 ];
 
 const detailedData = [
-  { name: "rooftop", value: 45, fill: "hsl(142, 76%, 36%)" },
-  { name: "community", value: 20, fill: "hsl(142, 60%, 50%)" },
-  { name: "gridPeak", value: 15, fill: "hsl(220, 14%, 40%)" },
-  { name: "gridOffPeak", value: 10, fill: "hsl(220, 14%, 60%)" },
-  { name: "tablet", value: 10, fill: "hsl(48, 100%, 50%)" },
+  { name: "rooftop", value: 45, fill: "oklch(var(--chart-1))" },
+  { name: "community", value: 20, fill: "oklch(var(--chart-1))" },
+  { name: "gridPeak", value: 15, fill: "oklch(var(--chart-4))" },
+  { name: "gridOffPeak", value: 10, fill: "oklch(var(--chart-5))" },
+  { name: "tablet", value: 10, fill: "oklch(var(--chart-3))" },
 ];
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
   },
   tablet: {
     label: "Tablet",
-    color: "hsl(48, 100%, 50%)",
+    color: "oklch(var(--chart-3))",
   },
   rooftop: {
     label: "Desktop Chrome",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   community: {
     label: "Desktop Safari",
-    color: "hsl(142, 60%, 50%)",
+    color: "oklch(var(--chart-1))",
   },
   gridPeak: {
     label: "Grid (Peak)",
-    color: "hsl(220, 14%, 40%)",
+    color: "oklch(var(--chart-4))",
   },
   gridOffPeak: {
     label: "Grid (Off-Peak)",
-    color: "hsl(220, 14%, 60%)",
+    color: "oklch(var(--chart-5))",
   },
 } satisfies ChartConfig;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Palette, Check, Trash2 } from "lucide-react";
+import { Palette, Check, Trash2, Download } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/popover";
 import { useMaybeRampTheme } from "@/components/ramp-theme-provider";
 import { cn } from "@/lib/utils";
-import { builtInThemes } from "@/lib/themes";
+import { builtInThemes, downloadThemeMarkdown } from "@/lib/themes";
 
 /**
  * Theme switcher — iterates every registered theme (built-in + user) and
@@ -40,11 +40,22 @@ export function RampThemeSwitcher({ className }: { className?: string }) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80 p-2" align="end">
-        <div className="px-2 py-1.5 mb-1">
-          <div className="text-xs font-medium text-muted-foreground">Theme</div>
-          <div className="text-xs text-muted-foreground/80">
-            Switch the skin applied site-wide.
+        <div className="flex items-start justify-between gap-2 px-2 py-1.5 mb-1">
+          <div>
+            <div className="text-xs font-medium text-muted-foreground">Theme</div>
+            <div className="text-xs text-muted-foreground/80">
+              Switch the skin applied site-wide.
+            </div>
           </div>
+          <button
+            type="button"
+            onClick={() => downloadThemeMarkdown(theme)}
+            className="flex items-center gap-1 rounded-md border border-border px-2 py-1 text-[10px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            title="Download the active theme as a markdown spec — paste into a fresh LLM prompt"
+          >
+            <Download className="h-3 w-3" />
+            .md
+          </button>
         </div>
         <div className="flex flex-col gap-0.5">
           {themes.map((t) => {
@@ -58,9 +69,12 @@ export function RampThemeSwitcher({ className }: { className?: string }) {
               <div
                 key={t.id}
                 className={cn(
+                  // Subtle muted hover, no accent-color tint — avoids the
+                  // problem where a strongly tinted background strands the
+                  // muted-foreground description text inside as grey-on-tint.
                   "group flex items-start gap-3 rounded-md px-2 py-2 text-left transition-colors",
-                  "hover:bg-accent hover:text-accent-foreground",
-                  active && "bg-accent/50"
+                  "hover:bg-muted",
+                  active && "bg-muted"
                 )}
               >
                 <button
@@ -88,7 +102,7 @@ export function RampThemeSwitcher({ className }: { className?: string }) {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium truncate">
+                      <span className="text-sm font-medium truncate text-foreground">
                         {t.name}
                       </span>
                       {t.tagline && (

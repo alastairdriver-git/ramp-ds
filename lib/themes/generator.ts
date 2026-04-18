@@ -24,6 +24,8 @@ import {
 } from "./oklch";
 import {
   FONTS,
+  type ChartPalette,
+  type ColorIntensity,
   type FontKey,
   type GeneratedColorsMode,
   type GeneratedEffects,
@@ -39,6 +41,45 @@ import {
 } from "./types";
 
 const ALL_MODES: ModeName[] = ["superLight", "light", "dark", "superDark"];
+
+/** Global chroma multipliers — applied on top of per-ramp chroma scales. */
+const INTENSITY_MULTIPLIER: Record<ColorIntensity, number> = {
+  muted: 0.6,
+  default: 1,
+  vibrant: 1.3,
+};
+
+/**
+ * Build the 5-stop chart palette derived from theme hues. The 5 stops are
+ * tuned to be visually distinct but tonally cohesive — they reuse the
+ * theme's primary, accent, and neutral, then fill the remaining slots with
+ * hue-rotated variants of the primary so the series stay in the theme's
+ * family. Lightness lands around 0.55 so colors read well in both light
+ * and dark mode without needing a dark variant (charts rarely swap per
+ * mode in practice).
+ */
+function buildChartPalette(
+  hues: { neutral: number; primary: number; accent: number },
+  chroma: { primary: number; accent: number },
+  intensity: number
+): ChartPalette {
+  const pC = chroma.primary * intensity;
+  const aC = chroma.accent * intensity;
+  // Baseline chroma for the derived slots — sits between primary + accent.
+  const dC = ((pC + aC) / 2) * 0.8;
+  const norm = (h: number) => ((h % 360) + 360) % 360;
+  // Order matters: chart-1 is the hero (primary), then two hue-rotated
+  // variants for maximum visual distinction, then neutral, and accent
+  // ends the series. Keeps adjacent series colors from blending —
+  // accent next to primary can look nearly identical when hues are close.
+  return {
+    1: `0.600 ${(0.17 * pC).toFixed(4)} ${hues.primary.toFixed(2)}`,
+    2: `0.640 ${(0.17 * dC).toFixed(4)} ${norm(hues.primary + 140).toFixed(2)}`,
+    3: `0.580 ${(0.17 * dC).toFixed(4)} ${norm(hues.primary + 220).toFixed(2)}`,
+    4: `0.510 0.0250 ${hues.neutral.toFixed(2)}`,
+    5: `0.620 ${(0.17 * aC).toFixed(4)} ${hues.accent.toFixed(2)}`,
+  };
+}
 
 /**
  * Per-mode mapping from semantic token → ramp step.
@@ -358,24 +399,29 @@ function resolveEffects(input: ThemeInput["effects"]): GeneratedEffects {
  * Pure function — safe to run on the client, server, or at build time.
  */
 export function generateTheme(input: ThemeInput): GeneratedTheme {
-  // 1. Build the three base ramps
+  // 0. Global intensity multiplier — flips everything muted/default/vibrant.
+  const intensity = INTENSITY_MULTIPLIER[input.intensity ?? "default"];
+
+  // 1. Build the three base ramps — per-ramp chroma scales multiply by the
+  // global intensity so muted/vibrant affect everything cohesively.
   const pureGray = input.neutralPureGray ?? false;
+  const neutralChroma = (input.chroma?.neutral ?? 0.08) * intensity;
+  const primaryChroma = (input.chroma?.primary ?? 1) * intensity;
+  const accentChroma = (input.chroma?.accent ?? 1) * intensity;
+
   const neutral = pureGray
     ? neutralRamp()
-    : hueToRamp({
-        hue: input.hues.neutral,
-        chromaScale: (input.chroma?.neutral ?? 0.08),
-      });
-  const primary = hueToRamp({
-    hue: input.hues.primary,
-    chromaScale: input.chroma?.primary ?? 1,
-  });
-  const accent = hueToRamp({
-    hue: input.hues.accent,
-    chromaScale: input.chroma?.accent ?? 1,
-  });
+    : hueToRamp({ hue: input.hues.neutral, chromaScale: neutralChroma });
+  const primary = hueToRamp({ hue: input.hues.primary, chromaScale: primaryChroma });
+  const accent = hueToRamp({ hue: input.hues.accent, chromaScale: accentChroma });
 
   const ramps = { neutral, primary, accent };
+
+  const chart = buildChartPalette(
+    input.hues,
+    { primary: primaryChroma, accent: accentChroma },
+    intensity
+  );
 
   // 2. Derive semantic tokens for all four modes
   const colors = Object.fromEntries(
@@ -403,6 +449,7 @@ export function generateTheme(input: ThemeInput): GeneratedTheme {
     input,
     ramps,
     colors,
+    chart,
     typography,
     radius,
     spacing,

@@ -52,10 +52,14 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
-// Legacy variable kept for Tailwind's `font-mono` default.
+// JetBrains Mono gets its own `--font-jetbrains-mono` var. The theme
+// system writes `--font-mono` to whatever var(--font-<name>) the user
+// picks; if this loader claimed --font-mono directly, a theme that
+// references var(--font-jetbrains-mono) inside `--font-mono` would
+// hit the same circular-reference issue Geist had.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-jetbrains-mono",
 });
 
 // Alternative sans options surfaced in the builder's font picker.

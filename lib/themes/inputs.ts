@@ -36,6 +36,8 @@ export const calmInput: ThemeInput = {
     primary: 0.75,
     accent: 0.8,
   },
+  // Calm leans muted — it's a quiet editorial theme by design.
+  intensity: "muted",
   typography: {
     // Fraunces has proper variable weights, so bold headings look like serif
     // bold (Instrument Serif only ships in 400 and synthesizes awkwardly when
@@ -63,26 +65,28 @@ export const calmInput: ThemeInput = {
 /**
  * Energy — bolder alternate theme.
  *
- * Single-hue teal (neutral, primary, accent all at 175°). Neutral gets a
- * whisper of chroma (0.08× default curve) so grays look cool against the
- * teal rather than clinical. Modern sans (Geist) with tighter spacing and
- * standard corners.
+ * Teal primary + indigo accent (complementary-cool pairing). Neutral gets
+ * a whisper of chroma (0.08× default curve) so grays read cool against
+ * both brand colors rather than clinical. Modern sans (Geist) with
+ * tighter spacing and standard corners.
  */
 export const energyInput: ThemeInput = {
   id: "energy",
   name: "Energy",
-  description: "Bold teal — single-hue brand, modern sans, punchy feel.",
+  description: "Teal + indigo — punchy, cool-tone, modern sans.",
   tagline: "Alternate",
   hues: {
     neutral: 175,
     primary: 175,
-    accent: 175,
+    accent: 235, // indigo — distinct from teal primary, stays cool-tone
   },
   chroma: {
     neutral: 0.08,
     primary: 1.0,
     accent: 1.0,
   },
+  // Energy is loud — bump intensity so the teal pops.
+  intensity: "vibrant",
   typography: {
     display: "geist",
     body: "geist",

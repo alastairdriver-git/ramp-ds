@@ -38,15 +38,15 @@ const horizontalData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
   },
   value: {
     label: "Traffic",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
 } satisfies ChartConfig;
 
@@ -166,7 +166,7 @@ export default function BarChartPage() {
                   {horizontalData.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
-                      fill={index === 0 ? "hsl(142, 76%, 36%)" : "hsl(220, 14%, 50%)"}
+                      fill={index === 0 ? "oklch(var(--chart-1))" : "oklch(var(--chart-2))"}
                     />
                   ))}
                 </Bar>
@@ -190,7 +190,7 @@ export default function BarChartPage() {
             <CardDescription>Positive = export, Negative = import</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={{ net: { label: "Net", color: "hsl(142, 76%, 36%)" } }} className="min-h-[300px] w-full">
+            <ChartContainer config={{ net: { label: "Net", color: "oklch(var(--chart-1))" } }} className="min-h-[300px] w-full">
               <BarChart data={[
                 { month: "Jan", net: -50 },
                 { month: "Feb", net: -20 },
@@ -214,7 +214,7 @@ export default function BarChartPage() {
                   ].map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
-                      fill={entry.net >= 0 ? "hsl(142, 76%, 36%)" : "hsl(0, 84%, 60%)"}
+                      fill={entry.net >= 0 ? "oklch(var(--chart-1))" : "oklch(var(--destructive))"}
                     />
                   ))}
                 </Bar>

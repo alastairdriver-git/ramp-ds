@@ -3,20 +3,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
+  // Each variant now uses the theme's semantic tokens instead of hard-coded
+  // rds-* classes. The pattern is: tinted background at low alpha, full
+  // color for border + text + icon. Works for any theme without touching
+  // this file — change the theme, the alerts follow.
+  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4",
   {
     variants: {
       variant: {
-        default: "bg-background text-foreground",
+        default: "bg-background text-foreground [&>svg]:text-foreground",
         destructive:
-          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+          "border-destructive/50 bg-destructive/10 text-destructive [&>svg]:text-destructive",
         success:
-          "border-rds-green-500/50 bg-rds-green-50 text-rds-green-900 dark:bg-rds-green-950/50 dark:text-rds-green-100 [&>svg]:text-rds-green-500",
+          "border-success/40 bg-success/10 text-success [&>svg]:text-success",
         warning:
-          "border-rds-yellow-500/50 bg-rds-yellow-50 text-rds-yellow-900 dark:bg-rds-yellow-950/50 dark:text-rds-yellow-100 [&>svg]:text-rds-yellow-500",
-        info: "border-blue-500/50 bg-blue-50 text-blue-900 dark:bg-blue-950/50 dark:text-blue-100 [&>svg]:text-blue-500",
+          "border-warning/40 bg-warning/10 text-warning [&>svg]:text-warning",
+        info:
+          "border-info/40 bg-info/10 text-info [&>svg]:text-info",
         highlight:
-          "border-rds-yellow-400/50 bg-rds-yellow-50 text-rds-gray-900 dark:bg-rds-yellow-950/50 dark:text-rds-yellow-100 [&>svg]:text-rds-yellow-400",
+          "border-highlight/40 bg-highlight/10 text-foreground [&>svg]:text-highlight",
       },
     },
     defaultVariants: {

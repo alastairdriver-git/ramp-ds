@@ -70,6 +70,13 @@ export function themeToCSSVars(
     ...flattenRamp("primary", theme.ramps.primary),
     ...flattenRamp("accent", theme.ramps.accent),
 
+    // --- Chart palette — 5 tonally-cohesive series colors derived from hues.
+    "--chart-1": theme.chart[1],
+    "--chart-2": theme.chart[2],
+    "--chart-3": theme.chart[3],
+    "--chart-4": theme.chart[4],
+    "--chart-5": theme.chart[5],
+
     // --- Typography ---
     "--font-sans": theme.typography.fontSans,
     "--font-mono": theme.typography.fontMono,

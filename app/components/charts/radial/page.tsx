@@ -16,31 +16,31 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ComponentNav } from "@/components/component-nav";
 
 const progressData = [
-  { name: "progress", value: 72, fill: "hsl(142, 76%, 36%)" },
+  { name: "progress", value: 72, fill: "oklch(var(--chart-1))" },
 ];
 
 const multiData = [
-  { name: "desktop", value: 85, fill: "hsl(142, 76%, 36%)" },
-  { name: "wind", value: 65, fill: "hsl(200, 80%, 50%)" },
-  { name: "mobile", value: 45, fill: "hsl(220, 14%, 50%)" },
+  { name: "desktop", value: 85, fill: "oklch(var(--chart-1))" },
+  { name: "wind", value: 65, fill: "oklch(var(--chart-5))" },
+  { name: "mobile", value: 45, fill: "oklch(var(--chart-2))" },
 ];
 
 const chartConfig = {
   progress: {
     label: "Progress",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   desktop: {
     label: "Desktop",
-    color: "hsl(142, 76%, 36%)",
+    color: "oklch(var(--chart-1))",
   },
   wind: {
     label: "Wind",
-    color: "hsl(200, 80%, 50%)",
+    color: "oklch(var(--chart-5))",
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(220, 14%, 50%)",
+    color: "oklch(var(--chart-2))",
   },
 } satisfies ChartConfig;
 
@@ -191,7 +191,7 @@ export default function RadialChartPage() {
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
               <RadialBarChart
-                data={[{ name: "efficiency", value: 88, fill: "hsl(142, 76%, 36%)" }]}
+                data={[{ name: "efficiency", value: 88, fill: "oklch(var(--chart-1))" }]}
                 startAngle={180}
                 endAngle={0}
                 innerRadius={80}
@@ -247,10 +247,10 @@ export default function RadialChartPage() {
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label: "Desktop", value: 92, color: "hsl(142, 76%, 36%)" },
-            { label: "Wind", value: 78, color: "hsl(200, 80%, 50%)" },
-            { label: "Tablet", value: 65, color: "hsl(48, 100%, 50%)" },
-            { label: "Mobile", value: 34, color: "hsl(220, 14%, 50%)" },
+            { label: "Desktop", value: 92, color: "oklch(var(--chart-1))" },
+            { label: "Wind", value: 78, color: "oklch(var(--chart-5))" },
+            { label: "Tablet", value: 65, color: "oklch(var(--chart-3))" },
+            { label: "Mobile", value: 34, color: "oklch(var(--chart-2))" },
           ].map((item) => (
             <Card key={item.label}>
               <CardContent className="pt-4">
@@ -294,7 +294,7 @@ export default function RadialChartPage() {
             <code>{`import { RadialBar, RadialBarChart, PolarAngleAxis, Label } from "recharts"
 import { ChartContainer } from "@/components/ui/chart"
 
-const data = [{ name: "progress", value: 72, fill: "hsl(142, 76%, 36%)" }]
+const data = [{ name: "progress", value: 72, fill: "oklch(var(--chart-1))" }]
 
 <ChartContainer config={chartConfig} className="min-h-[250px]">
   <RadialBarChart

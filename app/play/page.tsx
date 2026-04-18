@@ -670,7 +670,7 @@ const PLAYGROUND_FONTS_URL =
  */
 const PLAYGROUND_FONT_VARS = `
         --font-geist: "Geist", "Geist Fallback", system-ui, sans-serif;
-        --font-mono: "JetBrains Mono", ui-monospace, monospace;
+        --font-jetbrains-mono: "JetBrains Mono", ui-monospace, monospace;
         --font-geist-mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
         --font-inter: "Inter", system-ui, sans-serif;
         --font-manrope: "Manrope", system-ui, sans-serif;
