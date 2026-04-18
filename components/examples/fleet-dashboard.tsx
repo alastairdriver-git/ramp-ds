@@ -35,10 +35,10 @@ interface Device {
 }
 
 const devices: Device[] = [
-  { id: "INV-001", name: "Solar Inverter 1", type: "inverter", site: "Stockholm HQ", status: "online", lastSeen: "Just now", firmware: "v2.4.1", power: 4500 },
-  { id: "INV-002", name: "Solar Inverter 2", type: "inverter", site: "Stockholm HQ", status: "online", lastSeen: "Just now", firmware: "v2.4.1", power: 3800 },
-  { id: "BAT-001", name: "Home Battery", type: "battery", site: "Stockholm HQ", status: "online", lastSeen: "Just now", firmware: "v1.8.3", power: -1200 },
-  { id: "MTR-001", name: "Grid Meter", type: "meter", site: "Stockholm HQ", status: "online", lastSeen: "Just now", firmware: "v3.1.0", power: 2100 },
+  { id: "INV-001", name: "Solar Inverter 1", type: "inverter", site: "HQ", status: "online", lastSeen: "Just now", firmware: "v2.4.1", power: 4500 },
+  { id: "INV-002", name: "Solar Inverter 2", type: "inverter", site: "HQ", status: "online", lastSeen: "Just now", firmware: "v2.4.1", power: 3800 },
+  { id: "BAT-001", name: "Home Battery", type: "battery", site: "HQ", status: "online", lastSeen: "Just now", firmware: "v1.8.3", power: -1200 },
+  { id: "MTR-001", name: "Grid Meter", type: "meter", site: "HQ", status: "online", lastSeen: "Just now", firmware: "v3.1.0", power: 2100 },
   { id: "INV-003", name: "Solar Inverter 1", type: "inverter", site: "Gothenburg Office", status: "online", lastSeen: "2 min ago", firmware: "v2.4.0", power: 3200 },
   { id: "BAT-002", name: "Storage Unit", type: "battery", site: "Gothenburg Office", status: "warning", lastSeen: "5 min ago", firmware: "v1.8.2", power: 0 },
   { id: "EVC-001", name: "EV Charger A", type: "ev_charger", site: "Gothenburg Office", status: "online", lastSeen: "Just now", firmware: "v4.0.2", power: 7400 },

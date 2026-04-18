@@ -73,7 +73,7 @@ export default function TopMenuPage() {
           code={`<TopMenu
   breadcrumbs={[
     { label: "Sites", href: "/sites" },
-    { label: "Stockholm Home" },
+    { label: "Central Office" },
   ]}
   rightContent={
     <TopMenuUser
@@ -98,7 +98,7 @@ export default function TopMenuPage() {
             <TopMenu
               breadcrumbs={[
                 { label: "Sites", href: "#" },
-                { label: "Stockholm Home" },
+                { label: "Central Office" },
               ]}
               rightContent={
                 <TopMenuUser
@@ -151,7 +151,7 @@ export default function TopMenuPage() {
           code={`<TopMenu
   breadcrumbs={[
     { label: "Sites", href: "/sites" },
-    { label: "Stockholm Home" },
+    { label: "Central Office" },
   ]}
   showMobileMenu
   onMobileMenuClick={() => console.log("Toggle mobile menu")}
@@ -161,7 +161,7 @@ export default function TopMenuPage() {
             <TopMenu
               breadcrumbs={[
                 { label: "Sites", href: "#" },
-                { label: "Stockholm Home" },
+                { label: "Central Office" },
               ]}
               showMobileMenu
               onMobileMenuClick={() => {}}

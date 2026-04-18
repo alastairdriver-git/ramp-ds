@@ -10,21 +10,21 @@ import { SiteHeader } from "@/components/site-header";
 export default function Home() {
   const resources = [
     {
+      icon: Palette,
+      title: "Infinitely themeable",
+      description: "Three hues become a complete OKLCH design language. Pick a color, get a system. Save it, share it, ship it.",
+      href: "/docs/theming",
+    },
+    {
       icon: Code,
-      title: "50+ Components",
-      description: "Production-ready React components built with Radix UI and Tailwind CSS.",
+      title: "AI-native primitives",
+      description: "Every component is built to be generated, composed, and modified by AI. Clear types, predictable props, zero magic.",
       href: "/components",
     },
     {
-      icon: Palette,
-      title: "Design Tokens",
-      description: "Consistent colors, typography, and spacing across your application.",
-      href: "/docs/tokens/colors",
-    },
-    {
       icon: BookOpen,
-      title: "Documentation",
-      description: "Comprehensive guides and examples for every component.",
+      title: "Ship in minutes",
+      description: "One npm install, one provider, one theme object. Your product looks designed from the first paint.",
       href: "/docs",
     },
   ];
@@ -41,30 +41,30 @@ export default function Home() {
 
           <div className="relative max-w-7xl mx-auto flex flex-col items-center justify-center gap-6 pb-16 pt-24 md:pt-32 md:pb-24 text-center px-4 md:px-8">
             <Badge variant="outline" className="border-primary/50">
-              <span className="mr-2">🎨</span>
-              Design System
+              AI-native · Infinitely themeable
             </Badge>
 
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
-              Build beautiful interfaces with{" "}
-              <span className="text-primary">Ramp</span>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl text-balance">
+              The future is now.{" "}
+              <span className="text-primary">Build it</span> with Ramp.
             </h1>
 
-            <p className="max-w-[42rem] text-lg text-muted-foreground sm:text-xl">
-              A comprehensive design system with 50+ React components, design tokens,
-              and patterns. Built with Radix UI primitives and styled with Tailwind CSS.
+            <p className="max-w-[42rem] text-lg text-muted-foreground sm:text-xl text-pretty">
+              A design system built for the AI era. Pick three hues, get an entire
+              OKLCH-based design language. Every component adapts — from solo
+              prototypes to infinite themes, shipped by humans and agents alike.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
               <Button size="lg" asChild>
                 <Link href="/docs">
-                  Get Started
+                  Start Building
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/components">
-                  Browse Components
+                <Link href="/docs/theming">
+                  Explore Theming
                 </Link>
               </Button>
             </div>
@@ -76,10 +76,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto py-16 md:py-24 px-4 md:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                Everything you need
+                Built for what comes next
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Components, tokens, and documentation to build consistent interfaces.
+                Every primitive is designed to be understood, composed, and extended —
+                by your team, by your AI, by anyone shipping product in 2026.
               </p>
             </div>
 
@@ -114,10 +115,11 @@ export default function Home() {
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                  Quick Start
+                  One install. Infinite skins.
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Get up and running in minutes.
+                  A single npm package, a single provider — and every component
+                  re-skins when you swap your theme object.
                 </p>
               </div>
 

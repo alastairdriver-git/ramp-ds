@@ -38,11 +38,13 @@ import { AuthProvider } from "@/components/auth-provider";
    Source Serif 4.
    ═════════════════════════════════════════════════════════ */
 
-// Default sans — picks up --font-sans so `font-sans` Tailwind utility
-// resolves to it when no theme has overridden yet.
+// Geist gets its own `--font-geist` var so the theme system can reference
+// it explicitly (the theme-owned `--font-sans` gets set by globals.css and
+// the provider, which would cause a self-referencing cycle if Geist also
+// claimed `--font-sans`).
 const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-geist",
 });
 
 const geistMono = Geist_Mono({
@@ -139,7 +141,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    // Font-loader classes go on <html> (not <body>) so their --font-*
+    // custom properties live at :root level, where globals.css rules like
+    // `:root { --font-display: var(--font-fraunces), …; }` can actually
+    // resolve the nested var() reference. Putting them on <body> would
+    // leave --font-fraunces one level too low in the cascade and CSS would
+    // treat my --font-display declaration as computed-value-time invalid.
+    <html lang="en" className={cn(...FONT_VARS)} suppressHydrationWarning>
       <head>
         {/*
           Pre-hydration script. Runs before React mounts and sets the
@@ -152,10 +160,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          ...FONT_VARS
-        )}
+        className={cn("min-h-screen bg-background font-sans antialiased")}
       >
         <AuthProvider>
           <RampThemeProvider>

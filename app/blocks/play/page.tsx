@@ -45,7 +45,7 @@ export default function BlocksPlaygroundPage() {
   // Content state
   const [title, setTitle] = useState("Welcome to Ramp");
   const [subtitle, setSubtitle] = useState(
-    "Modern energy management platform for monitoring, optimizing, and controlling your energy systems"
+    "Modern design system — pick three hues, get an entire OKLCH-based design language"
   );
   const [showTitle, setShowTitle] = useState(true);
   const [showSubtitle, setShowSubtitle] = useState(true);
@@ -82,8 +82,8 @@ export default function BlocksPlaygroundPage() {
             <AccordionItem value="1">
               <AccordionTrigger>What is Ramp?</AccordionTrigger>
               <AccordionContent>
-                Ramp is a comprehensive energy management platform that helps you
-                monitor, optimize, and control your energy systems.
+                Ramp is a comprehensive design system that helps you
+                build beautiful, accessible interfaces faster.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="2">
@@ -106,7 +106,7 @@ export default function BlocksPlaygroundPage() {
         return (
           <div className="grid gap-6 md:grid-cols-3 mt-8">
             {[
-              { title: "Real-time Monitoring", desc: "Track energy usage in real-time" },
+              { title: "Beautiful by Default", desc: "Components re-skin instantly when you swap themes" },
               { title: "Smart Optimization", desc: "AI-powered cost reduction" },
               { title: "Easy Integration", desc: "Connect existing systems" },
             ].map((feature, i) => (

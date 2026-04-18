@@ -256,32 +256,37 @@
   --rds-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ----------------------------------------
-     Semantic Tokens (OKLCH)
+     Semantic Tokens (OKLCH) — CALM DEFAULTS.
      Values are bare "L C H" triplets, wrapped at call-time with
      oklch(var(--x) / <alpha-value>) via tailwind.config.ts.
-     These defaults mirror the Ramp built-in theme (hue 175, teal).
-     The RampThemeProvider overrides them at runtime for theme switching.
+     These defaults mirror the Calm built-in theme (warm neutrals,
+     terracotta primary, serif typography). The RampThemeProvider
+     overrides them at runtime for theme switching.
      ---------------------------------------- */
-  --background: 0.985 0.0012 175;         /* neutral 50 */
-  --foreground: 0.170 0.0032 175;         /* neutral 950 */
-  --card: 1 0 0;                           /* pure white */
-  --card-foreground: 0.170 0.0032 175;
+  --background: 0.985 0.00225 40;          /* neutral 50 */
+  --foreground: 0.170 0.00600 40;          /* neutral 950 */
+  --card: 1 0 0;                            /* pure white */
+  --card-foreground: 0.170 0.00600 40;
   --popover: 1 0 0;
-  --popover-foreground: 0.170 0.0032 175;
-  --primary: 0.610 0.170 175;              /* primary 500 — teal */
-  --primary-foreground: 0.985 0.015 175;
-  --secondary: 0.955 0.0032 175;           /* neutral 100 */
-  --secondary-foreground: 0.415 0.012 175; /* neutral 700 */
-  --muted: 0.955 0.0032 175;
-  --muted-foreground: 0.610 0.0136 175;    /* neutral 500 */
-  --accent: 0.610 0.170 175;               /* accent 500 */
-  --accent-foreground: 0.985 0.015 175;
+  --popover-foreground: 0.170 0.00600 40;
+  --primary: 0.610 0.128 20;                /* primary 500 — terracotta */
+  --primary-foreground: 0.985 0.0113 20;
+  --secondary: 0.955 0.006 40;              /* neutral 100 */
+  --secondary-foreground: 0.415 0.0225 40;  /* neutral 700 */
+  --muted: 0.955 0.006 40;
+  --muted-foreground: 0.610 0.0255 40;      /* neutral 500 */
+  --accent: 0.610 0.136 40;                 /* accent 500 — amber */
+  --accent-foreground: 0.985 0.012 40;
   --destructive: 0.560 0.220 27;
   --destructive-foreground: 0.990 0.005 27;
-  --border: 0.895 0.006 175;               /* neutral 200 */
-  --input: 0.895 0.006 175;
-  --ring: 0.610 0.170 175;
-  --radius: 0.5rem;
+  --border: 0.895 0.01125 40;               /* neutral 200 */
+  --input: 0.895 0.01125 40;
+  --ring: 0.610 0.128 20;
+  --radius: 0.875rem;                       /* Calm's round style base */
+
+  /* Typography defaults — Calm uses Fraunces for both display and body. */
+  --font-sans: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
 
   /* Fixed semantic colors (not hue-derived, for accessibility consistency) */
   --success: 0.610 0.180 145;
@@ -292,33 +297,82 @@
 
 .dark {
   /* ----------------------------------------
-     Semantic Tokens — dark mode defaults.
-     Also mirrors the Ramp theme. Provider overrides at runtime.
+     Semantic Tokens — Calm dark mode defaults.
      ---------------------------------------- */
-  --background: 0.170 0.0032 175;          /* neutral 950 */
-  --foreground: 0.985 0.0012 175;
-  --card: 0.245 0.0064 175;                /* neutral 900 */
-  --card-foreground: 0.985 0.0012 175;
-  --popover: 0.245 0.0064 175;
-  --popover-foreground: 0.985 0.0012 175;
-  --primary: 0.720 0.140 175;              /* primary 400 — brighter for dark */
-  --primary-foreground: 0.170 0.040 175;
-  --secondary: 0.325 0.0096 175;           /* neutral 800 */
-  --secondary-foreground: 0.895 0.006 175; /* neutral 200 */
-  --muted: 0.325 0.0096 175;
-  --muted-foreground: 0.720 0.0112 175;    /* neutral 400 */
-  --accent: 0.720 0.140 175;
-  --accent-foreground: 0.170 0.040 175;
+  --background: 0.170 0.00600 40;
+  --foreground: 0.985 0.00225 40;
+  --card: 0.245 0.0120 40;                  /* neutral 900 */
+  --card-foreground: 0.985 0.00225 40;
+  --popover: 0.245 0.0120 40;
+  --popover-foreground: 0.985 0.00225 40;
+  --primary: 0.720 0.105 20;                /* primary 400 */
+  --primary-foreground: 0.170 0.030 20;
+  --secondary: 0.325 0.0180 40;             /* neutral 800 */
+  --secondary-foreground: 0.895 0.01125 40;
+  --muted: 0.325 0.0180 40;
+  --muted-foreground: 0.720 0.0210 40;
+  --accent: 0.720 0.112 40;
+  --accent-foreground: 0.170 0.032 40;
   --destructive: 0.680 0.220 27;
   --destructive-foreground: 0.990 0.005 27;
-  --border: 0.325 0.0096 175;
-  --input: 0.325 0.0096 175;
-  --ring: 0.720 0.140 175;
+  --border: 0.325 0.0180 40;
+  --input: 0.325 0.0180 40;
+  --ring: 0.720 0.105 20;
 
   --success: 0.720 0.180 145;
   --warning: 0.800 0.180 60;
   --info: 0.700 0.200 240;
   --highlight: 0.880 0.180 95;
+}
+
+/* ============================================
+   ENERGY THEME — scoped overrides.
+   Engaged when data-ramp-theme="energy" is set on :root (either by the
+   pre-hydration inline script or RampThemeProvider). Mirrors the Energy
+   built-in (hues all at 175, teal primary, Geist sans).
+   ============================================ */
+:root[data-ramp-theme="energy"] {
+  --background: 0.985 0.0012 175;           /* neutral 50 */
+  --foreground: 0.170 0.0032 175;           /* neutral 950 */
+  --card: 1 0 0;
+  --card-foreground: 0.170 0.0032 175;
+  --popover: 1 0 0;
+  --popover-foreground: 0.170 0.0032 175;
+  --primary: 0.610 0.170 175;               /* primary 500 — teal */
+  --primary-foreground: 0.985 0.015 175;
+  --secondary: 0.955 0.0032 175;            /* neutral 100 */
+  --secondary-foreground: 0.415 0.012 175;  /* neutral 700 */
+  --muted: 0.955 0.0032 175;
+  --muted-foreground: 0.610 0.0136 175;
+  --accent: 0.610 0.170 175;
+  --accent-foreground: 0.985 0.015 175;
+  --border: 0.895 0.006 175;
+  --input: 0.895 0.006 175;
+  --ring: 0.610 0.170 175;
+  --radius: 0.5rem;
+
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-display: var(--font-geist), system-ui, sans-serif;
+}
+
+.dark[data-ramp-theme="energy"] {
+  --background: 0.170 0.0032 175;
+  --foreground: 0.985 0.0012 175;
+  --card: 0.245 0.0064 175;
+  --card-foreground: 0.985 0.0012 175;
+  --popover: 0.245 0.0064 175;
+  --popover-foreground: 0.985 0.0012 175;
+  --primary: 0.720 0.140 175;
+  --primary-foreground: 0.170 0.040 175;
+  --secondary: 0.325 0.0096 175;
+  --secondary-foreground: 0.895 0.006 175;
+  --muted: 0.325 0.0096 175;
+  --muted-foreground: 0.720 0.0112 175;
+  --accent: 0.720 0.140 175;
+  --accent-foreground: 0.170 0.040 175;
+  --border: 0.325 0.0096 175;
+  --input: 0.325 0.0096 175;
+  --ring: 0.720 0.140 175;
 }
 
 @layer base {

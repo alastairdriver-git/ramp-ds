@@ -230,7 +230,7 @@ export default function DialogPage() {
       </div>
       <div className="space-y-2">
         <Label htmlFor="timezone">Timezone</Label>
-        <Input id="timezone" defaultValue="Europe/Stockholm" />
+        <Input id="timezone" defaultValue="America/New_York" />
       </div>
     </div>
     <DialogFooter>
@@ -258,7 +258,7 @@ export default function DialogPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="timezone">Timezone</Label>
-                  <Input id="timezone" defaultValue="Europe/Stockholm" />
+                  <Input id="timezone" defaultValue="America/New_York" />
                 </div>
               </div>
               <DialogFooter>

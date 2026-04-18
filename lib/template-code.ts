@@ -1,6 +1,6 @@
 // Template code for each template
 export const templateCode: Record<string, string> = {
-  "energy-dashboard": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
+  "usage-dashboard": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
 import { Badge } from "./components/ui/badge"
 import { Zap, TrendingUp, ArrowDown, ArrowUp } from "lucide-react"
 
@@ -26,7 +26,7 @@ export default function EnergyDashboard() {
             <Zap className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold">Energy Dashboard</h1>
+            <h1 className="text-2xl font-bold">Usage Dashboard</h1>
             <p className="text-sm text-muted-foreground">Real-time monitoring</p>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function EnergyDashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">85%</div>
-            <p className="text-xs text-muted-foreground">13.6 kWh available</p>
+            <p className="text-xs text-muted-foreground">v2.4 deployed</p>
           </CardContent>
         </Card>
 
@@ -69,10 +69,10 @@ export default function EnergyDashboard() {
         </Card>
       </div>
 
-      {/* Energy Flow Chart */}
+      {/* Usage Chart */}
       <Card>
         <CardHeader>
-          <CardTitle>Energy Flow (24h)</CardTitle>
+          <CardTitle>Activity (24h)</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="h-[250px] flex items-end justify-between gap-2 px-2">
@@ -84,7 +84,7 @@ export default function EnergyDashboard() {
                 >
                   <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="bg-popover border rounded px-2 py-1 text-xs whitespace-nowrap">
-                      {item.value} kW
+                      {item.value}
                     </div>
                   </div>
                 </div>
@@ -102,8 +102,8 @@ export default function EnergyDashboard() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex justify-between">
-            <span className="text-sm text-muted-foreground">Total Energy Today</span>
-            <span className="font-medium">32.4 kWh</span>
+            <span className="text-sm text-muted-foreground">Total Visits Today</span>
+            <span className="font-medium">12,480</span>
           </div>
           <div className="flex justify-between">
             <span className="text-sm text-muted-foreground">Peak Power</span>
@@ -122,7 +122,7 @@ export default function EnergyDashboard() {
   "site-overview": `import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
 import { Badge } from "./components/ui/badge"
 import { Button } from "./components/ui/button"
-import { MapPin, Zap, Battery } from "lucide-react"
+import { MapPin, Activity, Package } from "lucide-react"
 
 export default function SiteOverview() {
   return (
@@ -132,8 +132,8 @@ export default function SiteOverview() {
         <div className="flex items-center gap-3">
           <MapPin className="h-8 w-8 text-primary" />
           <div>
-            <h1 className="text-2xl font-bold">Stockholm Home</h1>
-            <p className="text-sm text-muted-foreground">Stockholm, SE</p>
+            <h1 className="text-2xl font-bold">Central Office</h1>
+            <p className="text-sm text-muted-foreground">Remote</p>
           </div>
         </div>
         <Button>Manage Site</Button>
@@ -161,7 +161,7 @@ export default function SiteOverview() {
             <div className="flex items-center gap-3">
               <Zap className="h-5 w-5" />
               <div>
-                <div className="font-medium">Solar Inverter</div>
+                <div className="font-medium">Marketing Site</div>
                 <div className="text-sm text-muted-foreground">ID: 1001</div>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function SiteOverview() {
             <div className="flex items-center gap-3">
               <Battery className="h-5 w-5" />
               <div>
-                <div className="font-medium">Battery Storage</div>
+                <div className="font-medium">API Gateway</div>
                 <div className="text-sm text-muted-foreground">ID: 1002</div>
               </div>
             </div>
@@ -540,11 +540,11 @@ import { Search, Filter, MoreVertical, Power } from "lucide-react"
 
 export default function DeviceList() {
   const devices = [
-    { id: "DEV-001", name: "Solar Panel Array A", type: "Solar", status: "Online", power: "4.2 kW" },
-    { id: "DEV-002", name: "Battery Storage Unit", type: "Battery", status: "Charging", power: "85%" },
-    { id: "DEV-003", name: "Solar Panel Array B", type: "Solar", status: "Online", power: "3.8 kW" },
-    { id: "DEV-004", name: "Inverter Unit 1", type: "Inverter", status: "Online", power: "8.0 kW" },
-    { id: "DEV-005", name: "Wind Turbine", type: "Wind", status: "Offline", power: "0 kW" },
+    { id: "DEV-001", name: "Marketing Site", type: "Web", status: "Online", power: "v2.4" },
+    { id: "DEV-002", name: "API Gateway", type: "API", status: "Deploying", power: "85%" },
+    { id: "DEV-003", name: "Docs Portal", type: "Web", status: "Online", power: "v1.9" },
+    { id: "DEV-004", name: "Admin Dashboard", type: "Dashboard", status: "Online", power: "v3.1" },
+    { id: "DEV-005", name: "Feature Flags", type: "Service", status: "Live", power: "v4.0" },
   ]
 
   return (
@@ -589,7 +589,7 @@ export default function DeviceList() {
                 <div className="flex items-center gap-4">
                   <div className="text-right">
                     <p className="font-medium">{device.power}</p>
-                    <Badge variant={device.status === "Online" ? "success" : device.status === "Charging" ? "default" : "destructive"}>
+                    <Badge variant={device.status === "Online" ? "success" : device.status === "Deploying" ? "default" : "destructive"}>
                       {device.status}
                     </Badge>
                   </div>
@@ -622,8 +622,8 @@ export default function SiteDetails() {
                 <MapPin className="h-8 w-8 text-primary" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold">Stockholm Energy Hub</h1>
-                <p className="text-muted-foreground">ID: SITE-001 • Stockholm, Sweden</p>
+                <h1 className="text-2xl font-bold">Product Hub</h1>
+                <p className="text-muted-foreground">ID: SITE-001 • Remote team</p>
                 <div className="flex gap-2 mt-2">
                   <Badge variant="success">Online</Badge>
                   <Badge variant="secondary">Residential</Badge>
@@ -652,12 +652,12 @@ export default function SiteDetails() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Battery Level</CardTitle>
+            <CardTitle className="text-sm font-medium">API Latency</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">92%</div>
-            <p className="text-xs text-muted-foreground">16.5 kWh available</p>
+            <p className="text-xs text-muted-foreground">8,240 requests/min</p>
           </CardContent>
         </Card>
 
@@ -679,9 +679,9 @@ export default function SiteDetails() {
         </CardHeader>
         <CardContent className="space-y-3">
           {[
-            { name: "Solar Array A", status: "Online", value: "4.2 kW" },
-            { name: "Solar Array B", status: "Online", value: "4.2 kW" },
-            { name: "Battery Storage", status: "Charging", value: "92%" },
+            { name: "Marketing Site", status: "Online", value: "v2.4" },
+            { name: "Docs Portal", status: "Online", value: "v2.4" },
+            { name: "API Gateway", status: "Deploying", value: "92%" },
           ].map((device, i) => (
             <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
               <div className="flex items-center gap-3">
@@ -709,11 +709,11 @@ import { Send, Bot, User } from "lucide-react"
 
 export default function AIAssistant() {
   const messages = [
-    { role: "assistant", content: "Hello! I'm your energy assistant. How can I help you today?" },
-    { role: "user", content: "What's my current energy production?" },
-    { role: "assistant", content: "Your current total energy production is 8.4 kW from solar panels. Battery storage is at 92% capacity." },
-    { role: "user", content: "How can I optimize my energy usage?" },
-    { role: "assistant", content: "Based on your consumption patterns, I recommend shifting heavy loads to peak solar production hours (11 AM - 3 PM). You could save up to 15% on your energy costs." },
+    { role: "assistant", content: "Hello! I'm your DS assistant. How can I help you explore the design system today?" },
+    { role: "user", content: "Show me the Card component examples" },
+    { role: "assistant", content: "Sure — here are a few Card examples with different header, content, and footer layouts. Cards respect the active theme so they re-skin when you switch from Ramp to Paper." },
+    { role: "user", content: "How do I define a custom theme?" },
+    { role: "assistant", content: "A theme is a ThemeInput object — three hues plus a handful of typography, spacing, and radius presets. The generator turns those into a full OKLCH-based palette. You can save custom themes to localStorage from the theme builder." },
   ]
 
   return (
@@ -722,7 +722,7 @@ export default function AIAssistant() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Bot className="h-5 w-5 text-primary" />
-            AI Energy Assistant
+            AI Assistant
           </CardTitle>
         </CardHeader>
       </Card>
@@ -756,7 +756,7 @@ export default function AIAssistant() {
 
         <CardContent className="p-4 border-t">
           <div className="flex gap-2">
-            <Input placeholder="Ask me anything about your energy system..." />
+            <Input placeholder="Ask about components, tokens, or themes..." />
             <Button>
               <Send className="h-4 w-4" />
             </Button>
@@ -776,29 +776,29 @@ export default function NotificationsCenter() {
   const notifications = [
     {
       type: "success",
-      title: "Energy goal achieved",
-      message: "You've produced 150% of your daily energy target!",
+      title: "Milestone reached",
+      message: "Your project hit 10k monthly visits!",
       time: "2 hours ago",
       unread: true
     },
     {
       type: "warning",
-      title: "Low battery alert",
-      message: "Battery storage is below 20%. Consider reducing usage.",
+      title: "Low disk alert",
+      message: "Disk usage is above 80%. Consider archiving old data.",
       time: "5 hours ago",
       unread: true
     },
     {
       type: "info",
       title: "System update available",
-      message: "A new firmware update is available for your inverter.",
+      message: "A new version of @ramp-ds/ui is available for install.",
       time: "1 day ago",
       unread: false
     },
     {
       type: "success",
-      title: "Grid export complete",
-      message: "Successfully exported 12.5 kWh to the grid today.",
+      title: "Deploy complete",
+      message: "Successfully deployed to production.",
       time: "1 day ago",
       unread: false
     },
@@ -817,7 +817,7 @@ export default function NotificationsCenter() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Notifications</h1>
-          <p className="text-muted-foreground">Stay updated with your energy system</p>
+          <p className="text-muted-foreground">Stay updated with your projects</p>
         </div>
         <Button variant="outline">Mark all as read</Button>
       </div>
@@ -883,8 +883,8 @@ export default function ProductLanding() {
         alignment="center"
         titleSize="xl"
         fullBleed
-        title="Transform Your Energy Management"
-        subtitle="Monitor, optimize, and control your energy systems with our cutting-edge platform. Join thousands of businesses reducing costs and carbon footprint."
+        title="Ship Your Product Faster"
+        subtitle="Monitor, build beautiful, accessible interfaces with our cutting-edge platform. Join thousands of businesses reducing costs and carbon footprint."
         cta1={{ text: "Start Free Trial", variant: "default", href: "#" }}
         cta2={{ text: "Watch Demo", variant: "outline", href: "#" }}
       />
@@ -895,7 +895,7 @@ export default function ProductLanding() {
         background="transparent"
         alignment="center"
         title="Everything you need to succeed"
-        subtitle="Powerful features designed for modern energy management"
+        subtitle="Powerful features designed for teams shipping fast"
       >
         <CardBlock
           layout="grid"
@@ -903,8 +903,8 @@ export default function ProductLanding() {
           items={[
             {
               icon: <Zap className="h-5 w-5 text-primary" />,
-              title: "Real-time Monitoring",
-              description: "Track energy consumption, production, and storage across all your sites in real-time.",
+              title: "Beautiful by Default",
+              description: "Track requests, deploys, and errors across all your projects in real-time.",
             },
             {
               icon: <BarChart3 className="h-5 w-5 text-primary" />,
@@ -924,7 +924,7 @@ export default function ProductLanding() {
             {
               icon: <Zap className="h-5 w-5 text-primary" />,
               title: "Smart Automation",
-              description: "Automate energy optimization with AI-powered recommendations.",
+              description: "Automate your workflow with AI-powered suggestions.",
             },
             {
               icon: <BarChart3 className="h-5 w-5 text-primary" />,
@@ -968,7 +968,7 @@ export default function ProductLanding() {
             {
               icon: <Quote className="h-5 w-5 text-primary" />,
               title: "Game-changing platform",
-              description: "\\"This platform has completely transformed how we manage our energy portfolio. The insights are invaluable.\\"",
+              description: "\\"This design system has transformed how our team ships product. The generator is invaluable.\\"",
               footer: (
                 <div className="space-y-1">
                   <p className="font-semibold text-sm">Sarah Johnson</p>
@@ -984,7 +984,7 @@ export default function ProductLanding() {
             {
               icon: <Quote className="h-5 w-5 text-primary" />,
               title: "Incredible ROI",
-              description: "\\"We reduced our energy costs by 30% in the first quarter. The platform paid for itself immediately.\\"",
+              description: "\\"We cut design-to-ship time by 40% in the first quarter. Ramp DS paid for itself immediately.\\"",
               footer: (
                 <div className="space-y-1">
                   <p className="font-semibold text-sm">Michael Chen</p>
@@ -1044,7 +1044,7 @@ export default function ProductLanding() {
         background="primary"
         alignment="center"
         fullBleed
-        title="Ready to transform your energy management?"
+        title="Ready to ship faster?"
         subtitle="Join thousands of businesses already saving costs and reducing their carbon footprint"
         cta1={{ text: "Start Free Trial", variant: "secondary", href: "#" }}
         cta2={{ text: "Contact Sales", variant: "outline", href: "#" }}
@@ -1307,8 +1307,8 @@ export default function PricingPage() {
         background="primary"
         alignment="center"
         fullBleed
-        title="Start saving on energy costs today"
-        subtitle="Join thousands of businesses optimizing their energy management"
+        title="Start shipping faster today"
+        subtitle="Join teams shipping with Ramp DS"
         cta1={{ text: "Start Free Trial", variant: "secondary", href: "#" }}
         cta2={{ text: "Contact Sales", variant: "outline", href: "#" }}
       />

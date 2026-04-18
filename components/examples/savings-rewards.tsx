@@ -214,7 +214,7 @@ export function SavingsRewardsExample() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h2 className="text-lg sm:text-xl font-semibold">Savings & Rewards</h2>
-          <p className="text-sm text-muted-foreground">Stockholm Home - SE3 Price Area</p>
+          <p className="text-sm text-muted-foreground">Central Office - SE3 Price Area</p>
         </div>
         <Badge variant="success" className="gap-1 w-fit">
           <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />

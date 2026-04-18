@@ -103,7 +103,7 @@ export default function BlockBuilderPage() {
       cardItemsPerPage: 1,
       cardScrollBy: 1,
       title: "Welcome to Ramp",
-      subtitle: "Modern energy management platform",
+      subtitle: "Modern design system",
       showTitle: true,
       showSubtitle: true,
       showCTA1: true,
@@ -214,17 +214,17 @@ export default function BlockBuilderPage() {
       case "cards":
         const cardCount = block.cardItemCount || 3;
         const cardTitles = [
-          "Real-time Monitoring",
+          "Beautiful by Default",
           "Smart Optimization",
           "Easy Integration",
-          "Energy Analytics",
+          "Usage Analytics",
           "Cost Tracking",
           "Custom Alerts",
           "Device Management",
           "Historical Data",
         ];
         const cardDescriptions = [
-          "Track energy usage as it happens",
+          "Track usage as it happens",
           "AI-powered cost reduction",
           "Connect existing systems",
           "Detailed insights and trends",
@@ -265,7 +265,7 @@ export default function BlockBuilderPage() {
             items={[
               {
                 question: "What is Ramp?",
-                answer: "Ramp is a comprehensive energy management platform that helps you monitor, optimize, and control your energy systems.",
+                answer: "Ramp is a comprehensive design system that helps you build beautiful, accessible interfaces faster.",
               },
               {
                 question: "How does pricing work?",

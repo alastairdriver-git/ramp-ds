@@ -11,7 +11,7 @@
  */
 
 import { generateTheme } from "./generator";
-import { BUILT_IN_INPUTS, rampInput } from "./inputs";
+import { BUILT_IN_INPUTS, calmInput } from "./inputs";
 import type { GeneratedTheme, ThemeInput } from "./types";
 
 // Public re-exports
@@ -19,7 +19,7 @@ export * from "./types";
 export { generateTheme } from "./generator";
 export { themeToCSSVars, applyThemeToRoot } from "./apply";
 export type { ModeName } from "./oklch";
-export { BUILT_IN_INPUTS, rampInput, paperInput } from "./inputs";
+export { BUILT_IN_INPUTS, calmInput, energyInput } from "./inputs";
 
 /**
  * Generated built-in themes, keyed by id. These are pure — generated once
@@ -30,7 +30,7 @@ export const builtInThemes: Record<string, GeneratedTheme> = Object.fromEntries(
   BUILT_IN_INPUTS.map((input) => [input.id, generateTheme(input)])
 );
 
-export const defaultThemeId = rampInput.id;
+export const defaultThemeId = calmInput.id;
 
 /**
  * Look up a theme by id — built-in or user-built. User themes are read

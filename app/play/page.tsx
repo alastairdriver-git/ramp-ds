@@ -8,9 +8,11 @@ import {
   useSandpack,
 } from "@codesandbox/sandpack-react";
 import { SiteHeader } from "@/components/site-header";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { Save, FolderOpen, Trash2, X } from "lucide-react";
+import { useRampTheme } from "@/components/ramp-theme-provider";
+import { themeToCSSVars, type GeneratedTheme } from "@/lib/themes";
 
 interface SavedPlayground {
   id: string;
@@ -628,47 +630,122 @@ export function cn(...inputs: ClassValue[]) {
 }`,
 };
 
-// index.html with Tailwind CDN
-const indexHtml = `<!DOCTYPE html>
-<html lang="en">
+/**
+ * Build the Sandpack iframe's public/index.html. Injects the active theme's
+ * CSS variables inline so the first paint is already styled, plus a Tailwind
+ * config that wraps each var in oklch(var(--x) / <alpha-value>) — matching
+ * the real app so opacity shortcuts like bg-primary/50 work in the
+ * playground too.
+ */
+/**
+ * Google Fonts combined URL — loads every font the theme system can pick.
+ * Parent uses next/font; inside the Sandpack iframe we're a separate
+ * browsing context, so we have to load them directly from Google.
+ */
+const PLAYGROUND_FONTS_URL =
+  "https://fonts.googleapis.com/css2" +
+  "?family=Geist:wght@100..900" +
+  "&family=Geist+Mono:wght@100..900" +
+  "&family=Fraunces:ital,wght@0,100..900;1,100..900" +
+  "&family=Instrument+Serif:ital@0;1" +
+  "&family=Source+Serif+4:ital,wght@0,200..900;1,200..900" +
+  "&family=Inter:wght@100..900" +
+  "&family=Manrope:wght@200..800" +
+  "&family=Figtree:wght@300..900" +
+  "&family=DM+Sans:ital,wght@0,100..1000;1,100..1000" +
+  "&family=Lexend:wght@100..900" +
+  "&family=Outfit:wght@100..900" +
+  "&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800" +
+  "&family=Space+Grotesk:wght@300..700" +
+  "&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800" +
+  "&family=IBM+Plex+Mono:wght@400;500;600" +
+  "&display=swap";
+
+/**
+ * Base --font-* custom properties mapped to the real Google font-family
+ * names. Mirrors what next/font writes in the parent app, but with literal
+ * strings so the cascade resolves cleanly inside the iframe. These get
+ * injected into the iframe's <head> BEFORE the theme var block, so the
+ * theme's `--font-sans: var(--font-fraunces), …` chain actually resolves.
+ */
+const PLAYGROUND_FONT_VARS = `
+        --font-geist: "Geist", "Geist Fallback", system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, monospace;
+        --font-geist-mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+        --font-inter: "Inter", system-ui, sans-serif;
+        --font-manrope: "Manrope", system-ui, sans-serif;
+        --font-figtree: "Figtree", system-ui, sans-serif;
+        --font-dm-sans: "DM Sans", system-ui, sans-serif;
+        --font-lexend: "Lexend", system-ui, sans-serif;
+        --font-outfit: "Outfit", system-ui, sans-serif;
+        --font-plus-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
+        --font-space-grotesk: "Space Grotesk", system-ui, sans-serif;
+        --font-fraunces: "Fraunces", Georgia, serif;
+        --font-instrument-serif: "Instrument Serif", Georgia, serif;
+        --font-source-serif: "Source Serif 4", Georgia, serif;
+        --font-ibm-plex-mono: "IBM Plex Mono", ui-monospace, monospace;`;
+
+function buildPlaygroundIndexHtml(
+  lightVars: string,
+  darkVars: string,
+  mode: "light" | "dark",
+  components: { buttonShape: string; inputStyle: string; cardStyle: string }
+): string {
+  const htmlClass = mode === "dark" ? ' class="dark"' : "";
+  const dataAttrs = ` data-button-shape="${components.buttonShape}" data-input-style="${components.inputStyle}" data-card-style="${components.cardStyle}"`;
+  return `<!DOCTYPE html>
+<html lang="en"${htmlClass}${dataAttrs}>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="${PLAYGROUND_FONTS_URL}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramp DS Playground</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: "class",
         theme: {
           extend: {
             colors: {
-              border: "oklch(var(--border))",
-              input: "oklch(var(--input))",
-              ring: "oklch(var(--ring))",
-              background: "oklch(var(--background))",
-              foreground: "oklch(var(--foreground))",
+              border: "oklch(var(--border) / <alpha-value>)",
+              input: "oklch(var(--input) / <alpha-value>)",
+              ring: "oklch(var(--ring) / <alpha-value>)",
+              background: "oklch(var(--background) / <alpha-value>)",
+              foreground: "oklch(var(--foreground) / <alpha-value>)",
               primary: {
-                DEFAULT: "oklch(var(--primary))",
-                foreground: "oklch(var(--primary-foreground))",
+                DEFAULT: "oklch(var(--primary) / <alpha-value>)",
+                foreground: "oklch(var(--primary-foreground) / <alpha-value>)",
               },
               secondary: {
-                DEFAULT: "oklch(var(--secondary))",
-                foreground: "oklch(var(--secondary-foreground))",
+                DEFAULT: "oklch(var(--secondary) / <alpha-value>)",
+                foreground: "oklch(var(--secondary-foreground) / <alpha-value>)",
               },
               destructive: {
-                DEFAULT: "oklch(var(--destructive))",
-                foreground: "oklch(var(--destructive-foreground))",
+                DEFAULT: "oklch(var(--destructive) / <alpha-value>)",
+                foreground: "oklch(var(--destructive-foreground) / <alpha-value>)",
               },
               muted: {
-                DEFAULT: "oklch(var(--muted))",
-                foreground: "oklch(var(--muted-foreground))",
+                DEFAULT: "oklch(var(--muted) / <alpha-value>)",
+                foreground: "oklch(var(--muted-foreground) / <alpha-value>)",
               },
               accent: {
-                DEFAULT: "oklch(var(--accent))",
-                foreground: "oklch(var(--accent-foreground))",
+                DEFAULT: "oklch(var(--accent) / <alpha-value>)",
+                foreground: "oklch(var(--accent-foreground) / <alpha-value>)",
+              },
+              popover: {
+                DEFAULT: "oklch(var(--popover) / <alpha-value>)",
+                foreground: "oklch(var(--popover-foreground) / <alpha-value>)",
               },
               card: {
-                DEFAULT: "oklch(var(--card))",
-                foreground: "oklch(var(--card-foreground))",
+                DEFAULT: "oklch(var(--card) / <alpha-value>)",
+                foreground: "oklch(var(--card-foreground) / <alpha-value>)",
               },
+              success: "oklch(var(--success) / <alpha-value>)",
+              warning: "oklch(var(--warning) / <alpha-value>)",
+              info: "oklch(var(--info) / <alpha-value>)",
+              highlight: "oklch(var(--highlight) / <alpha-value>)",
             },
             borderRadius: {
               lg: "var(--radius)",
@@ -681,30 +758,25 @@ const indexHtml = `<!DOCTYPE html>
     </script>
     <style>
       :root {
-        --background: 0 0% 100%;
-        --foreground: 240 10% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 240 10% 3.9%;
-        --primary: 175 84% 32%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 240 4.8% 95.9%;
-        --secondary-foreground: 240 5.9% 10%;
-        --muted: 240 4.8% 95.9%;
-        --muted-foreground: 240 3.8% 46.1%;
-        --accent: 175 40% 94%;
-        --accent-foreground: 240 5.9% 10%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 240 5.9% 90%;
-        --input: 240 5.9% 90%;
-        --ring: 175 84% 32%;
-        --radius: 0.5rem;
+${PLAYGROUND_FONT_VARS}
+${lightVars}
+      }
+      .dark {
+${darkVars}
       }
       * { border-color: oklch(var(--border)); }
       body {
         background-color: oklch(var(--background));
         color: oklch(var(--foreground));
-        font-family: system-ui, -apple-system, sans-serif;
+        font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+        margin: 0;
+      }
+      /* Naked h1–h4 pick up the theme's display font, mirroring globals.css
+         in the parent. */
+      h1, h2, h3, h4 {
+        font-family: var(--font-display, var(--font-sans));
+        font-weight: var(--font-heading-weight, 600);
+        letter-spacing: var(--font-heading-tracking, -0.01em);
       }
     </style>
   </head>
@@ -712,61 +784,97 @@ const indexHtml = `<!DOCTYPE html>
     <div id="root"></div>
   </body>
 </html>`;
+}
 
-const baseStyles = `:root {
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
-  --primary: 175 84% 32%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
-  --accent: 175 40% 94%;
-  --accent-foreground: 240 5.9% 10%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
-  --ring: 175 84% 32%;
-  --radius: 0.5rem;
+/**
+ * Convert a GeneratedTheme's output into a CSS custom-property block suitable
+ * for dropping inside :root { … } or .dark { … }. Uses themeToCSSVars under
+ * the hood so the playground gets the same token shape as the real app.
+ */
+function formatThemeVars(
+  theme: GeneratedTheme,
+  mode: "light" | "dark"
+): string {
+  const vars = themeToCSSVars(theme, mode);
+  return Object.entries(vars)
+    .map(([key, value]) => `        ${key}: ${value};`)
+    .join("\n");
+}
+
+/**
+ * Build the /styles.css file for Sandpack. Contains :root + .dark blocks
+ * generated from the active theme, plus a small set of utility fallbacks so
+ * `bg-primary`, `text-muted-foreground` etc. still render even before
+ * Tailwind's JIT has finished processing the iframe's initial markup.
+ */
+function buildPlaygroundStylesCss(lightVars: string, darkVars: string): string {
+  return `:root {
+${PLAYGROUND_FONT_VARS}
+${lightVars}
 }
 
 .dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 175 80% 45%;
-  --primary-foreground: 240 10% 3.9%;
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --accent: 175 30% 15%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --ring: 175 80% 45%;
+${darkVars}
 }
 
-* {
+*, *::before, *::after {
+  box-sizing: border-box;
   border-color: oklch(var(--border));
 }
 
 body {
   background-color: oklch(var(--background));
   color: oklch(var(--foreground));
-  font-family: system-ui, -apple-system, sans-serif;
-}`;
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  margin: 0;
+}
+
+/* Component shape rules — mirror app/globals.css so buttonShape / cardStyle
+   / inputStyle on the theme apply inside the sandbox too. */
+[data-card-style="outlined"] .rds-card { box-shadow: none; }
+[data-card-style="flat"] .rds-card {
+  box-shadow: none;
+  border-color: transparent;
+  background-color: oklch(var(--muted));
+}
+[data-card-style="elevated"] .rds-card {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border-color: transparent;
+}
+[data-card-style="glass"] .rds-card {
+  background-color: oklch(var(--card) / 0.6);
+  backdrop-filter: blur(12px);
+  border-color: oklch(var(--border) / 0.5);
+}
+[data-button-shape="pill"] .rds-button { border-radius: 9999px; }
+[data-button-shape="square"] .rds-button,
+[data-button-shape="sharp"] .rds-button { border-radius: 0; }
+
+/* Utility fallbacks for components that ship semantic classnames. */
+.bg-primary { background-color: oklch(var(--primary)); }
+.bg-primary\\/90 { background-color: oklch(var(--primary) / 0.9); }
+.bg-primary\\/80 { background-color: oklch(var(--primary) / 0.8); }
+.text-primary { color: oklch(var(--primary)); }
+.text-primary-foreground { color: oklch(var(--primary-foreground)); }
+.bg-secondary { background-color: oklch(var(--secondary)); }
+.text-secondary-foreground { color: oklch(var(--secondary-foreground)); }
+.bg-destructive { background-color: oklch(var(--destructive)); }
+.text-destructive { color: oklch(var(--destructive)); }
+.text-destructive-foreground { color: oklch(var(--destructive-foreground)); }
+.bg-muted { background-color: oklch(var(--muted)); }
+.text-muted-foreground { color: oklch(var(--muted-foreground)); }
+.bg-accent { background-color: oklch(var(--accent)); }
+.text-accent-foreground { color: oklch(var(--accent-foreground)); }
+.bg-card { background-color: oklch(var(--card)); }
+.text-card-foreground { color: oklch(var(--card-foreground)); }
+.bg-background { background-color: oklch(var(--background)); }
+.text-foreground { color: oklch(var(--foreground)); }
+.border-input { border-color: oklch(var(--input)); }
+.ring-ring { --tw-ring-color: oklch(var(--ring)); }
+.rounded-lg { border-radius: var(--radius); }
+.rounded-md { border-radius: calc(var(--radius) - 2px); }
+.rounded-sm { border-radius: calc(var(--radius) - 4px); }`;
+}
 
 // Title bar component that uses Sandpack context
 function EditorTitleBar({
@@ -791,23 +899,23 @@ function EditorTitleBar({
   };
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 bg-[#1e1e1e] border-b border-[#333]">
+    <div className="flex items-center justify-between px-4 py-2 bg-card border-b border-border">
       <div className="flex items-center gap-2">
         {activePlayground ? (
           <>
-            <span className="text-sm font-medium text-white">{activePlayground.name}</span>
-            <span className="text-xs text-gray-500">
+            <span className="text-sm font-medium text-foreground">{activePlayground.name}</span>
+            <span className="text-xs text-muted-foreground">
               Last saved {new Date(activePlayground.createdAt).toLocaleTimeString()}
             </span>
           </>
         ) : (
-          <span className="text-sm text-gray-400">Unsaved playground</span>
+          <span className="text-sm text-muted-foreground">Unsaved playground</span>
         )}
       </div>
       <div className="flex items-center gap-2">
         <button
           onClick={handleSave}
-          className="flex items-center gap-1.5 px-3 py-1 text-sm rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1 text-sm rounded-md bg-foreground text-background hover:opacity-90 transition-opacity"
         >
           <Save className="h-3.5 w-3.5" />
           {activePlayground ? "Save" : "Save as..."}
@@ -815,7 +923,7 @@ function EditorTitleBar({
         {activePlayground && (
           <button
             onClick={handleSaveAsNew}
-            className="flex items-center gap-1.5 px-3 py-1 text-sm rounded bg-[#333] text-gray-300 hover:bg-[#444] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1 text-sm rounded-md border border-border bg-background text-foreground hover:bg-muted transition-colors"
           >
             Save as new
           </button>
@@ -826,6 +934,7 @@ function EditorTitleBar({
 }
 
 export default function PlaygroundPage() {
+  const { theme: activeTheme, isDark } = useRampTheme();
   const [activeExample, setActiveExample] = useState<keyof typeof examples>("all");
   const [currentCode, setCurrentCode] = useState(examples.all.code);
   const [savedPlaygrounds, setSavedPlaygrounds] = useState<SavedPlayground[]>([]);
@@ -835,6 +944,32 @@ export default function PlaygroundPage() {
   const [sandpackKey, setSandpackKey] = useState(0);
   const [pendingCode, setPendingCode] = useState<string | null>(null);
   const [activePlayground, setActivePlayground] = useState<SavedPlayground | null>(null);
+
+  // Derive the Sandpack iframe's CSS + HTML from the active theme so the
+  // playground always mirrors whichever theme (and mode) the user picked in
+  // the nav. Bumps sandpackKey when the theme changes so the iframe rebuilds.
+  const playgroundMode = isDark ? "dark" : "light";
+  const { playgroundIndexHtml, playgroundStylesCss } = useMemo(() => {
+    const lightVars = formatThemeVars(activeTheme, "light");
+    const darkVars = formatThemeVars(activeTheme, "dark");
+    const comps = {
+      buttonShape: activeTheme.components.buttonShape ?? "default",
+      inputStyle: activeTheme.components.inputStyle ?? "outlined",
+      cardStyle: activeTheme.components.cardStyle ?? "flat",
+    };
+    return {
+      playgroundIndexHtml: buildPlaygroundIndexHtml(lightVars, darkVars, playgroundMode, comps),
+      playgroundStylesCss: buildPlaygroundStylesCss(lightVars, darkVars),
+    };
+  }, [activeTheme, playgroundMode]);
+
+  // Theme changes flow through the `files` prop (new styles.css content) and
+  // Sandpack rebuilds without a remount — instant swap. Mode changes however
+  // flip the <html class="dark"> in public/index.html, which Sandpack doesn't
+  // hot-replace, so we force a re-mount on mode change only.
+  useEffect(() => {
+    setSandpackKey((k) => k + 1);
+  }, [playgroundMode]);
 
   // Load saved playgrounds from localStorage on mount
   useEffect(() => {
@@ -1019,9 +1154,13 @@ export default function PlaygroundPage() {
           <SandpackProvider
             key={sandpackKey}
             template="react-ts"
-            theme="dark"
+            theme={isDark ? "dark" : "light"}
             options={{
               externalResources: ["https://cdn.tailwindcss.com"],
+              classes: {
+                "sp-wrapper": "sp-ramp-wrapper",
+                "sp-preview-container": "sp-ramp-preview",
+              },
             }}
             customSetup={{
               dependencies: {
@@ -1034,46 +1173,7 @@ export default function PlaygroundPage() {
             }}
             files={{
               "/App.tsx": currentCode,
-              "/public/index.html": [
-                '<!DOCTYPE html>',
-                '<html lang="en">',
-                '  <head>',
-                '    <meta charset="UTF-8">',
-                '    <meta name="viewport" content="width=device-width, initial-scale=1.0">',
-                '    <title>RDS Playground</title>',
-                '    <script src="https://cdn.tailwindcss.com"></script>',
-                '    <script>',
-                '      tailwind.config = {',
-                '        theme: {',
-                '          extend: {',
-                '            colors: {',
-                '              border: "oklch(var(--border))",',
-                '              input: "oklch(var(--input))",',
-                '              ring: "oklch(var(--ring))",',
-                '              background: "oklch(var(--background))",',
-                '              foreground: "oklch(var(--foreground))",',
-                '              primary: { DEFAULT: "oklch(var(--primary))", foreground: "oklch(var(--primary-foreground))" },',
-                '              secondary: { DEFAULT: "oklch(var(--secondary))", foreground: "oklch(var(--secondary-foreground))" },',
-                '              destructive: { DEFAULT: "oklch(var(--destructive))", foreground: "oklch(var(--destructive-foreground))" },',
-                '              muted: { DEFAULT: "oklch(var(--muted))", foreground: "oklch(var(--muted-foreground))" },',
-                '              accent: { DEFAULT: "oklch(var(--accent))", foreground: "oklch(var(--accent-foreground))" },',
-                '              card: { DEFAULT: "oklch(var(--card))", foreground: "oklch(var(--card-foreground))" },',
-                '            },',
-                '            borderRadius: {',
-                '              lg: "var(--radius)",',
-                '              md: "calc(var(--radius) - 2px)",',
-                '              sm: "calc(var(--radius) - 4px)",',
-                '            },',
-                '          },',
-                '        },',
-                '      }',
-                '    </script>',
-                '  </head>',
-                '  <body>',
-                '    <div id="root"></div>',
-                '  </body>',
-                '</html>',
-              ].join('\n'),
+              "/public/index.html": playgroundIndexHtml,
               "/index.tsx": [
                 'import React from "react";',
                 'import ReactDOM from "react-dom/client";',
@@ -1082,51 +1182,7 @@ export default function PlaygroundPage() {
                 '',
                 'ReactDOM.createRoot(document.getElementById("root")!).render(<App />);',
               ].join('\n'),
-              "/styles.css": [
-                ':root {',
-                '  --background: 0 0% 100%;',
-                '  --foreground: 240 10% 3.9%;',
-                '  --card: 0 0% 100%;',
-                '  --card-foreground: 240 10% 3.9%;',
-                '  --primary: 175 84% 32%;',
-                '  --primary-foreground: 0 0% 100%;',
-                '  --secondary: 240 4.8% 95.9%;',
-                '  --secondary-foreground: 240 5.9% 10%;',
-                '  --muted: 240 4.8% 95.9%;',
-                '  --muted-foreground: 240 3.8% 46.1%;',
-                '  --accent: 175 40% 94%;',
-                '  --accent-foreground: 240 5.9% 10%;',
-                '  --destructive: 0 84.2% 60.2%;',
-                '  --destructive-foreground: 0 0% 98%;',
-                '  --border: 240 5.9% 90%;',
-                '  --input: 240 5.9% 90%;',
-                '  --ring: 175 84% 32%;',
-                '  --radius: 0.5rem;',
-                '}',
-                '*, *::before, *::after { box-sizing: border-box; border-color: oklch(var(--border)); }',
-                'body { background-color: oklch(var(--background)); color: oklch(var(--foreground)); font-family: system-ui, -apple-system, sans-serif; margin: 0; }',
-                '.bg-primary { background-color: oklch(var(--primary)); }',
-                '.text-primary { color: oklch(var(--primary)); }',
-                '.text-primary-foreground { color: oklch(var(--primary-foreground)); }',
-                '.bg-secondary { background-color: oklch(var(--secondary)); }',
-                '.text-secondary-foreground { color: oklch(var(--secondary-foreground)); }',
-                '.bg-destructive { background-color: oklch(var(--destructive)); }',
-                '.text-destructive { color: oklch(var(--destructive)); }',
-                '.text-destructive-foreground { color: oklch(var(--destructive-foreground)); }',
-                '.bg-muted { background-color: oklch(var(--muted)); }',
-                '.text-muted-foreground { color: oklch(var(--muted-foreground)); }',
-                '.bg-accent { background-color: oklch(var(--accent)); }',
-                '.text-accent-foreground { color: oklch(var(--accent-foreground)); }',
-                '.bg-card { background-color: oklch(var(--card)); }',
-                '.text-card-foreground { color: oklch(var(--card-foreground)); }',
-                '.bg-background { background-color: oklch(var(--background)); }',
-                '.text-foreground { color: oklch(var(--foreground)); }',
-                '.border-input { border-color: oklch(var(--input)); }',
-                '.ring-ring { --tw-ring-color: oklch(var(--ring)); }',
-                '.rounded-lg { border-radius: var(--radius); }',
-                '.rounded-md { border-radius: calc(var(--radius) - 2px); }',
-                '.rounded-sm { border-radius: calc(var(--radius) - 4px); }',
-              ].join('\n'),
+              "/styles.css": playgroundStylesCss,
               ...componentFiles,
             }}
           >

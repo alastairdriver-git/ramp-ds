@@ -26,7 +26,7 @@ export const blocksList: Block[] = [
       titleSize: "xl",
       title: "Welcome to Ramp",
       subtitle:
-        "Modern energy management platform for monitoring, optimizing, and controlling your energy systems",
+        "Modern design system — pick three hues, get an entire OKLCH-based design language",
       cta1: { text: "Get Started", variant: "default", href: "/signup" },
       cta2: { text: "Learn More", variant: "outline", href: "/docs" },
     },
@@ -35,7 +35,7 @@ export const blocksList: Block[] = [
   alignment="center"
   titleSize="xl"
   title="Welcome to Ramp"
-  subtitle="Modern energy management platform for monitoring, optimizing, and controlling your energy systems"
+  subtitle="Modern design system — pick three hues, get an entire OKLCH-based design language"
   cta1={{ text: "Get Started", variant: "default", href: "/signup" }}
   cta2={{ text: "Learn More", variant: "outline", href: "/docs" }}
 />`,
@@ -52,9 +52,9 @@ export const blocksList: Block[] = [
       container: "wide",
       alignment: "left",
       titleSize: "lg",
-      title: "Energy Management Simplified",
+      title: "Design, Shipped",
       subtitle:
-        "Monitor, optimize, and control your energy systems from a single platform",
+        "Build beautiful, accessible interfaces from a single package",
       cta1: { text: "Get Started", variant: "default" },
       cta2: { text: "Watch Demo", variant: "outline" },
     },
@@ -64,8 +64,8 @@ export const blocksList: Block[] = [
   container="wide"
   alignment="left"
   titleSize="lg"
-  title="Energy Management Simplified"
-  subtitle="Monitor, optimize, and control your energy systems from a single platform"
+  title="Design, Shipped"
+  subtitle="Build beautiful, accessible interfaces from a single package"
   cta1={{ text: "Get Started", variant: "default" }}
   cta2={{ text: "Watch Demo", variant: "outline" }}
 >
@@ -89,8 +89,8 @@ export const blocksList: Block[] = [
       background: "gradient",
       alignment: "center",
       titleSize: "xl",
-      title: "Transform Your Energy Management",
-      subtitle: "Join thousands of businesses optimizing their energy usage",
+      title: "Ship Your Product Faster",
+      subtitle: "Join teams shipping with Ramp DS",
       cta1: { text: "Start Free Trial", variant: "default" },
     },
     codeExample: `<SectionBlock
@@ -98,8 +98,8 @@ export const blocksList: Block[] = [
   background="gradient"
   alignment="center"
   titleSize="xl"
-  title="Transform Your Energy Management"
-  subtitle="Join thousands of businesses optimizing their energy usage"
+  title="Ship Your Product Faster"
+  subtitle="Join teams shipping with Ramp DS"
   cta1={{ text: "Start Free Trial", variant: "default" }}
 />`,
   },
@@ -131,8 +131,8 @@ export const blocksList: Block[] = [
     <AccordionItem value="1">
       <AccordionTrigger>What is Ramp?</AccordionTrigger>
       <AccordionContent>
-        Ramp is a comprehensive energy management platform that helps you monitor,
-        optimize, and control your energy systems from a single dashboard.
+        Ramp is a comprehensive design system that helps you monitor,
+        build beautiful, accessible interfaces from a single dashboard.
       </AccordionContent>
     </AccordionItem>
     <AccordionItem value="2">
@@ -166,7 +166,7 @@ export const blocksList: Block[] = [
       alignment: "center",
       titleSize: "lg",
       title: "Ready to get started?",
-      subtitle: "Join thousands of energy managers using Ramp today",
+      subtitle: "Join teams building with Ramp DS",
       cta1: { text: "Start Free Trial", variant: "secondary" },
       cta2: { text: "Contact Sales", variant: "outline" },
     },
@@ -176,7 +176,7 @@ export const blocksList: Block[] = [
   alignment="center"
   titleSize="lg"
   title="Ready to get started?"
-  subtitle="Join thousands of energy managers using Ramp today"
+  subtitle="Join teams building with Ramp DS"
   cta1={{ text: "Start Free Trial", variant: "secondary" }}
   cta2={{ text: "Contact Sales", variant: "outline" }}
 />`,
@@ -220,7 +220,7 @@ export const blocksList: Block[] = [
       titleSize: "lg",
       title: "Why Choose Ramp?",
       subtitle:
-        "Discover the features that make Ramp the leading energy management platform",
+        "Discover the features that make Ramp the leading generator-first design system",
     },
     contentExample: "grid",
     codeExample: `<SectionBlock
@@ -228,7 +228,7 @@ export const blocksList: Block[] = [
   alignment="left"
   titleSize="lg"
   title="Why Choose Ramp?"
-  subtitle="Discover the features that make Ramp the leading energy management platform"
+  subtitle="Discover the features that make Ramp the leading generator-first design system"
 >
   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
     {/* Add your custom content here */}

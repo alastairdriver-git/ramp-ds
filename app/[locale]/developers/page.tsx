@@ -254,7 +254,7 @@ export default function DevelopersPage() {
       "power_kw": 7.4,
       "location": {
         "site_id": "site_xyz",
-        "name": "Stockholm HQ"
+        "name": "HQ"
       }
     }
   ],

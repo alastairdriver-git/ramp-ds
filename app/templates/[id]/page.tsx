@@ -197,7 +197,7 @@ export default function TemplatePage({ params }: TemplatePageProps) {
 // Helper function to determine which components are used in each template
 function getComponentsForTemplate(templateId: string): string[] {
   const componentMap: Record<string, string[]> = {
-    "energy-dashboard": ["Card", "Badge", "Button", "Chart", "Progress"],
+    "usage-dashboard": ["Card", "Badge", "Button", "Chart", "Progress"],
     "site-overview": ["Card", "Badge", "Button"],
     "analytics-dashboard": ["Card", "Chart", "Badge", "Button", "Select"],
     "settings-page": ["Card", "Input", "Label", "Button", "Tabs", "Separator"],

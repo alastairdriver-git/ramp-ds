@@ -12,12 +12,12 @@ export interface Template {
 export const templatesList: Template[] = [
   // Dashboard Templates
   {
-    id: "energy-dashboard",
-    name: "Energy Dashboard",
-    description: "Complete energy monitoring dashboard with real-time metrics, charts, and device management.",
+    id: "usage-dashboard",
+    name: "Usage Dashboard",
+    description: "A metrics dashboard showcasing cards, charts, tables, and key project KPIs.",
     category: "Dashboard",
-    tags: ["Dashboard", "Energy", "Analytics"],
-    href: "/templates/energy-dashboard",
+    tags: ["Dashboard", "Analytics"],
+    href: "/templates/usage-dashboard",
     featured: true,
   },
   {
@@ -86,9 +86,9 @@ export const templatesList: Template[] = [
   {
     id: "site-details",
     name: "Site Details",
-    description: "Detailed site information page with tabs, metrics, and energy flow diagram.",
+    description: "A detail page pattern with tabs, progress, and key stats.",
     category: "Data Display",
-    tags: ["Details", "Energy", "Tabs"],
+    tags: ["Details", "Tabs"],
     href: "/templates/site-details",
   },
 
@@ -96,7 +96,7 @@ export const templatesList: Template[] = [
   {
     id: "ai-assistant",
     name: "AI Assistant",
-    description: "AI-powered chat interface for energy system management and support.",
+    description: "AI-powered chat interface for exploring the design system and answering questions.",
     category: "Communication",
     tags: ["AI", "Chat", "Support"],
     href: "/templates/ai-assistant",
@@ -142,7 +142,7 @@ export const templateCategories = [
 
 export const templateTags = [
   "Dashboard",
-  "Energy",
+  
   "Analytics",
   "Charts",
   "Map",

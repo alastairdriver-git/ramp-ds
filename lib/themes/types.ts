@@ -193,7 +193,7 @@ export type { ModeName, OKLCHTriplet, Ramp } from "./oklch";
  */
 export const FONTS = {
   // Sans
-  geist: "var(--font-sans), system-ui, sans-serif", // default — Geist is mounted on --font-sans
+  geist: "var(--font-geist), system-ui, sans-serif",
   inter: "var(--font-inter), system-ui, sans-serif",
   manrope: "var(--font-manrope), system-ui, sans-serif",
   figtree: "var(--font-figtree), system-ui, sans-serif",

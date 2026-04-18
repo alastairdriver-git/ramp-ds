@@ -183,8 +183,8 @@ export {
   getTheme,
   listThemes,
   // Built-in inputs (for round-trip editing in the theme builder)
-  rampInput,
-  paperInput,
+  calmInput,
+  energyInput,
   BUILT_IN_INPUTS,
   // User-theme CRUD
   listUserThemes,

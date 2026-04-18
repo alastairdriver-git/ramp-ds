@@ -63,8 +63,8 @@ export default async function BlockDetailPage({ params }: BlockDetailPageProps) 
             <AccordionItem value="1">
               <AccordionTrigger>What is Ramp?</AccordionTrigger>
               <AccordionContent>
-                Ramp is a comprehensive energy management platform that helps you
-                monitor, optimize, and control your energy systems from a single
+                Ramp is a comprehensive design system that helps you
+                build beautiful, accessible interfaces from a single
                 dashboard.
               </AccordionContent>
             </AccordionItem>
@@ -97,14 +97,14 @@ export default async function BlockDetailPage({ params }: BlockDetailPageProps) 
           <div className="grid gap-6 md:grid-cols-3 mt-8">
             {[
               {
-                title: "Real-time Monitoring",
+                title: "Beautiful by Default",
                 description:
-                  "Track energy usage, production, and costs in real-time",
+                  "Track projects, deploys, and usage in real-time",
               },
               {
                 title: "Smart Optimization",
                 description:
-                  "AI-powered recommendations to reduce energy costs",
+                  "AI-powered suggestions to improve your workflow",
               },
               {
                 title: "Easy Integration",

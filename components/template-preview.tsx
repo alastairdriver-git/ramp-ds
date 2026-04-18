@@ -108,7 +108,7 @@ export function TemplatePreview({ templateId }: { templateId: string }) {
         <div className="flex items-center justify-between pb-2 border-b">
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-primary" />
-            <span className="text-xs font-medium">Stockholm Home</span>
+            <span className="text-xs font-medium">Central Office</span>
           </div>
         </div>
 
@@ -251,7 +251,7 @@ export function TemplatePreview({ templateId }: { templateId: string }) {
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Location</span>
-              <span>Stockholm, SE</span>
+              <span>Remote</span>
             </div>
           </div>
         </Card>
@@ -340,7 +340,7 @@ export function TemplatePreview({ templateId }: { templateId: string }) {
       <div className="w-full h-full bg-background p-4 space-y-3 overflow-hidden">
         <div className="flex items-center gap-2 pb-2 border-b">
           <Home className="h-4 w-4 text-primary" />
-          <span className="text-xs font-medium">Stockholm Home</span>
+          <span className="text-xs font-medium">Central Office</span>
         </div>
 
         <div className="flex gap-1 text-xs border-b">
@@ -352,7 +352,7 @@ export function TemplatePreview({ templateId }: { templateId: string }) {
         <div className="grid grid-cols-2 gap-2">
           <Card className="p-2">
             <div className="text-xs text-muted-foreground">Location</div>
-            <div className="text-xs font-medium">Stockholm, SE</div>
+            <div className="text-xs font-medium">Remote</div>
           </Card>
           <Card className="p-2">
             <div className="text-xs text-muted-foreground">Capacity</div>
@@ -442,7 +442,7 @@ export function TemplatePreview({ templateId }: { templateId: string }) {
         {/* Hero */}
         <div className="text-center space-y-2 pb-3 border-b">
           <div className="text-sm font-bold">Transform Your Energy</div>
-          <div className="text-xs text-muted-foreground">Modern energy management platform</div>
+          <div className="text-xs text-muted-foreground">Modern design system</div>
           <div className="flex gap-2 justify-center">
             <Button size="sm" className="h-6 text-xs px-3">Get Started</Button>
             <Button size="sm" variant="outline" className="h-6 text-xs px-3">Learn More</Button>
