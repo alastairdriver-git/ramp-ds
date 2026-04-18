@@ -87,19 +87,19 @@ export default function CardPage() {
           Examples
         </h2>
 
-        <h3 className="text-lg font-medium">Device Card</h3>
+        <h3 className="text-lg font-medium">Project Card</h3>
         <ComponentPreview
           code={`<Card>
   <CardHeader>
     <div className="flex items-center justify-between">
-      <CardTitle>Solar Inverter</CardTitle>
-      <Badge variant="success">Online</Badge>
+      <CardTitle>Marketing Site</CardTitle>
+      <Badge variant="success">Live</Badge>
     </div>
-    <CardDescription>SolarEdge SE7600H</CardDescription>
+    <CardDescription>Deployed from main, 2 hours ago</CardDescription>
   </CardHeader>
   <CardContent>
-    <div className="text-2xl font-bold">5.2 kW</div>
-    <p className="text-sm text-muted-foreground">Current output</p>
+    <div className="text-2xl font-bold">1,284</div>
+    <p className="text-sm text-muted-foreground">Visits today</p>
   </CardContent>
   <CardFooter>
     <Button variant="outline" size="sm">View Details</Button>
@@ -109,14 +109,14 @@ export default function CardPage() {
           <Card className="w-full max-w-sm">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle>Solar Inverter</CardTitle>
-                <Badge variant="success">Online</Badge>
+                <CardTitle>Marketing Site</CardTitle>
+                <Badge variant="success">Live</Badge>
               </div>
-              <CardDescription>SolarEdge SE7600H</CardDescription>
+              <CardDescription>Deployed from main, 2 hours ago</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">5.2 kW</div>
-              <p className="text-sm text-muted-foreground">Current output</p>
+              <div className="text-2xl font-bold">1,284</div>
+              <p className="text-sm text-muted-foreground">Visits today</p>
             </CardContent>
             <CardFooter>
               <Button variant="outline" size="sm">View Details</Button>
@@ -153,8 +153,8 @@ export default function CardPage() {
         <ComponentPreview
           code={`<Card>
   <CardHeader className="pb-2">
-    <CardDescription>Today's Production</CardDescription>
-    <CardTitle className="text-3xl">24.5 kWh</CardTitle>
+    <CardDescription>Active users today</CardDescription>
+    <CardTitle className="text-3xl">6,210</CardTitle>
   </CardHeader>
   <CardContent>
     <p className="text-xs text-muted-foreground">
@@ -165,8 +165,8 @@ export default function CardPage() {
         >
           <Card className="w-full max-w-sm">
             <CardHeader className="pb-2">
-              <CardDescription>Today's Production</CardDescription>
-              <CardTitle className="text-3xl">24.5 kWh</CardTitle>
+              <CardDescription>Active users today</CardDescription>
+              <CardTitle className="text-3xl">6,210</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-xs text-muted-foreground">
@@ -181,11 +181,11 @@ export default function CardPage() {
           code={`<Card>
   <CardHeader>
     <CardTitle>Settings</CardTitle>
-    <CardDescription>Manage your device preferences.</CardDescription>
+    <CardDescription>Manage your workspace preferences.</CardDescription>
   </CardHeader>
   <CardContent>
     <p className="text-sm text-muted-foreground">
-      Configure how your device operates and connects to the grid.
+      Configure how your workspace behaves and connects to external services.
     </p>
   </CardContent>
   <CardFooter className="flex justify-between">
@@ -197,11 +197,11 @@ export default function CardPage() {
           <Card className="w-full max-w-sm">
             <CardHeader>
               <CardTitle>Settings</CardTitle>
-              <CardDescription>Manage your device preferences.</CardDescription>
+              <CardDescription>Manage your workspace preferences.</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Configure how your device operates and connects to the grid.
+                Configure how your workspace behaves and connects to external services.
               </p>
             </CardContent>
             <CardFooter className="flex justify-between">

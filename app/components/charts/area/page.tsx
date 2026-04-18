@@ -18,26 +18,26 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ComponentNav } from "@/components/component-nav";
 
-const energyData = [
-  { month: "Jan", solar: 186, grid: 80, battery: 45 },
-  { month: "Feb", solar: 205, grid: 65, battery: 52 },
-  { month: "Mar", solar: 237, grid: 50, battery: 61 },
-  { month: "Apr", solar: 273, grid: 40, battery: 70 },
-  { month: "May", solar: 309, grid: 30, battery: 82 },
-  { month: "Jun", solar: 314, grid: 25, battery: 89 },
+const trafficData = [
+  { month: "Jan", desktop: 186, grid: 80, tablet: 45 },
+  { month: "Feb", desktop: 205, grid: 65, tablet: 52 },
+  { month: "Mar", desktop: 237, grid: 50, tablet: 61 },
+  { month: "Apr", desktop: 273, grid: 40, tablet: 70 },
+  { month: "May", desktop: 309, grid: 30, tablet: 82 },
+  { month: "Jun", desktop: 314, grid: 25, tablet: 89 },
 ];
 
 const chartConfig = {
-  solar: {
-    label: "Solar",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
   },
-  grid: {
-    label: "Grid",
+  mobile: {
+    label: "Mobile",
     color: "hsl(220, 14%, 50%)",
   },
-  battery: {
-    label: "Battery",
+  tablet: {
+    label: "Tablet",
     color: "hsl(48, 100%, 50%)",
   },
 } satisfies ChartConfig;
@@ -59,22 +59,22 @@ export default function AreaChartPage() {
         </h2>
         <Card>
           <CardHeader>
-            <CardTitle>Energy Production</CardTitle>
-            <CardDescription>Monthly solar energy production in kWh</CardDescription>
+            <CardTitle>Traffic by Device</CardTitle>
+            <CardDescription>Monthly desktop visitors</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <AreaChart data={energyData}>
+              <AreaChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <Area
                   type="monotone"
-                  dataKey="solar"
-                  fill="var(--color-solar)"
+                  dataKey="desktop"
+                  fill="var(--color-desktop)"
                   fillOpacity={0.3}
-                  stroke="var(--color-solar)"
+                  stroke="var(--color-desktop)"
                   strokeWidth={2}
                 />
               </AreaChart>
@@ -93,12 +93,12 @@ export default function AreaChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Energy Mix</CardTitle>
-            <CardDescription>Solar, grid, and battery contribution over time</CardDescription>
+            <CardTitle>Device Mix</CardTitle>
+            <CardDescription>Desktop, mobile, and tablet split over time</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <AreaChart data={energyData}>
+              <AreaChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
@@ -106,27 +106,27 @@ export default function AreaChartPage() {
                 <ChartLegend content={<ChartLegendContent />} />
                 <Area
                   type="monotone"
-                  dataKey="battery"
+                  dataKey="tablet"
                   stackId="1"
-                  fill="var(--color-battery)"
+                  fill="var(--color-tablet)"
                   fillOpacity={0.6}
-                  stroke="var(--color-battery)"
+                  stroke="var(--color-tablet)"
                 />
                 <Area
                   type="monotone"
-                  dataKey="grid"
+                  dataKey="mobile"
                   stackId="1"
-                  fill="var(--color-grid)"
+                  fill="var(--color-mobile)"
                   fillOpacity={0.6}
-                  stroke="var(--color-grid)"
+                  stroke="var(--color-mobile)"
                 />
                 <Area
                   type="monotone"
-                  dataKey="solar"
+                  dataKey="desktop"
                   stackId="1"
-                  fill="var(--color-solar)"
+                  fill="var(--color-desktop)"
                   fillOpacity={0.6}
-                  stroke="var(--color-solar)"
+                  stroke="var(--color-desktop)"
                 />
               </AreaChart>
             </ChartContainer>
@@ -144,12 +144,12 @@ export default function AreaChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Solar Production</CardTitle>
+            <CardTitle>Desktop Traffic</CardTitle>
             <CardDescription>With gradient fill effect</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <AreaChart data={energyData}>
+              <AreaChart data={trafficData}>
                 <defs>
                   <linearGradient id="solarGradient" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0.5} />
@@ -162,9 +162,9 @@ export default function AreaChartPage() {
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <Area
                   type="monotone"
-                  dataKey="solar"
+                  dataKey="desktop"
                   fill="url(#solarGradient)"
-                  stroke="var(--color-solar)"
+                  stroke="var(--color-desktop)"
                   strokeWidth={2}
                 />
               </AreaChart>
@@ -183,22 +183,22 @@ export default function AreaChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Grid Import</CardTitle>
-            <CardDescription>Step-wise grid import visualization</CardDescription>
+            <CardTitle>Mobile Traffic</CardTitle>
+            <CardDescription>Step-wise mobile traffic visualization</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <AreaChart data={energyData}>
+              <AreaChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <Area
                   type="step"
-                  dataKey="grid"
-                  fill="var(--color-grid)"
+                  dataKey="mobile"
+                  fill="var(--color-mobile)"
                   fillOpacity={0.3}
-                  stroke="var(--color-grid)"
+                  stroke="var(--color-mobile)"
                   strokeWidth={2}
                 />
               </AreaChart>
@@ -218,7 +218,7 @@ export default function AreaChartPage() {
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const chartConfig = {
-  solar: { label: "Solar", color: "hsl(142, 76%, 36%)" },
+  desktop: { label: "Desktop", color: "hsl(142, 76%, 36%)" },
 }
 
 <ChartContainer config={chartConfig} className="min-h-[300px]">
@@ -229,10 +229,10 @@ const chartConfig = {
     <ChartTooltip content={<ChartTooltipContent />} />
     <Area
       type="monotone"
-      dataKey="solar"
-      fill="var(--color-solar)"
+      dataKey="desktop"
+      fill="var(--color-desktop)"
       fillOpacity={0.3}
-      stroke="var(--color-solar)"
+      stroke="var(--color-desktop)"
     />
   </AreaChart>
 </ChartContainer>`}</code>

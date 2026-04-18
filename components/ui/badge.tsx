@@ -15,8 +15,8 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
         outline: "text-foreground",
-        // Sourceful solid variants
-        energy:
+        // Semantic solid variants
+        highlight:
           "border-transparent bg-rds-yellow-400 text-rds-gray-900 shadow hover:bg-rds-yellow-500",
         success:
           "border-transparent bg-rds-green-500 text-rds-gray-900 shadow hover:bg-rds-green-600",
@@ -24,7 +24,7 @@ const badgeVariants = cva(
           "border-transparent bg-orange-500 text-white shadow hover:bg-orange-600",
         info:
           "border-transparent bg-blue-500 text-white shadow hover:bg-blue-600",
-        // Sourceful soft variants - colored text with tinted background
+        // Semantic soft variants — colored text on tinted background
         "success-soft":
           "border-rds-green-500/20 bg-rds-green-500/10 text-rds-green-600 dark:text-rds-green-400",
         "warning-soft":
@@ -33,7 +33,7 @@ const badgeVariants = cva(
           "border-destructive/20 bg-destructive/10 text-destructive dark:text-red-400",
         "info-soft":
           "border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400",
-        "energy-soft":
+        "highlight-soft":
           "border-rds-yellow-500/20 bg-rds-yellow-400/10 text-rds-yellow-600 dark:text-rds-yellow-400",
         // Outline variants - just border and text, no background
         "success-outline":

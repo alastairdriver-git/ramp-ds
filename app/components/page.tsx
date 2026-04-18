@@ -38,12 +38,7 @@ const componentDescriptions: Record<string, string> = {
   Collapsible: "An interactive component which expands and collapses.",
   Sheet: "A panel that slides out from the side of the screen.",
   "Scroll Area": "Augments native scroll functionality for custom styling.",
-  "Sites Map": "Interactive Mapbox map for visualizing energy site locations.",
-  "Energy Flow": "React Flow diagram showing real-time energy distribution.",
-  "AI Chat": "Conversational AI interface for energy system management.",
-  "EMS Schedule": "Energy management system schedule visualization.",
-  "Electricity Price": "Real-time electricity pricing display.",
-  "Weather Card": "Weather information card component.",
+  "AI Chat": "Conversational AI interface for exploring the design system.",
 };
 
 export default function ComponentsPage() {

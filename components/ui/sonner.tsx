@@ -1,16 +1,19 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { Toaster as Sonner } from "sonner";
+import { useMaybeRampTheme } from "@/components/ramp-theme-provider";
 
 type ToasterProps = React.ComponentProps<typeof Sonner>;
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme();
+  const ctx = useMaybeRampTheme();
+  // Sonner only understands "light" | "dark" | "system". Map our 4-way mode
+  // onto that: super-* collapses to its standard sibling.
+  const theme: ToasterProps["theme"] = ctx?.isDark ? "dark" : "light";
 
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme={theme}
       className="toaster group"
       toastOptions={{
         classNames: {

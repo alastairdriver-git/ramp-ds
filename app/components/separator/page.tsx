@@ -52,9 +52,9 @@ export default function SeparatorPage() {
         <ComponentPreview
           code={`<div>
   <div className="space-y-1">
-    <h4 className="text-sm font-medium leading-none">Solar Dashboard</h4>
+    <h4 className="text-sm font-medium leading-none">Dashboard</h4>
     <p className="text-sm text-muted-foreground">
-      Monitor your energy production.
+      Keep track of what's shipping.
     </p>
   </div>
   <Separator className="my-4" />
@@ -69,9 +69,9 @@ export default function SeparatorPage() {
         >
           <div className="w-full max-w-sm">
             <div className="space-y-1">
-              <h4 className="text-sm font-medium leading-none">Solar Dashboard</h4>
+              <h4 className="text-sm font-medium leading-none">Dashboard</h4>
               <p className="text-sm text-muted-foreground">
-                Monitor your energy production.
+                Keep track of what's shipping.
               </p>
             </div>
             <Separator className="my-4" />
@@ -95,35 +95,35 @@ export default function SeparatorPage() {
         <ComponentPreview
           code={`<div className="space-y-4">
   <div>
-    <h4 className="font-medium">Energy Production</h4>
-    <p className="text-sm text-muted-foreground">Today: 24.5 kWh</p>
+    <h4 className="font-medium">Active Users</h4>
+    <p className="text-sm text-muted-foreground">Today: 1,284</p>
   </div>
   <Separator />
   <div>
-    <h4 className="font-medium">Energy Consumption</h4>
-    <p className="text-sm text-muted-foreground">Today: 18.2 kWh</p>
+    <h4 className="font-medium">Sessions</h4>
+    <p className="text-sm text-muted-foreground">Today: 6,210</p>
   </div>
   <Separator />
   <div>
-    <h4 className="font-medium">Net Export</h4>
-    <p className="text-sm text-muted-foreground">Today: 6.3 kWh</p>
+    <h4 className="font-medium">New Signups</h4>
+    <p className="text-sm text-muted-foreground">Today: 42</p>
   </div>
 </div>`}
         >
           <div className="space-y-4 w-full max-w-sm">
             <div>
-              <h4 className="font-medium">Energy Production</h4>
-              <p className="text-sm text-muted-foreground">Today: 24.5 kWh</p>
+              <h4 className="font-medium">Active Users</h4>
+              <p className="text-sm text-muted-foreground">Today: 1,284</p>
             </div>
             <Separator />
             <div>
-              <h4 className="font-medium">Energy Consumption</h4>
-              <p className="text-sm text-muted-foreground">Today: 18.2 kWh</p>
+              <h4 className="font-medium">Sessions</h4>
+              <p className="text-sm text-muted-foreground">Today: 6,210</p>
             </div>
             <Separator />
             <div>
-              <h4 className="font-medium">Net Export</h4>
-              <p className="text-sm text-muted-foreground">Today: 6.3 kWh</p>
+              <h4 className="font-medium">New Signups</h4>
+              <p className="text-sm text-muted-foreground">Today: 42</p>
             </div>
           </div>
         </ComponentPreview>
@@ -131,7 +131,7 @@ export default function SeparatorPage() {
         <h3 className="text-lg font-medium">Vertical</h3>
         <ComponentPreview
           code={`<div className="flex h-5 items-center space-x-4 text-sm">
-  <div>Devices</div>
+  <div>Projects</div>
   <Separator orientation="vertical" />
   <div>Analytics</div>
   <Separator orientation="vertical" />
@@ -141,7 +141,7 @@ export default function SeparatorPage() {
 </div>`}
         >
           <div className="flex h-5 items-center space-x-4 text-sm">
-            <div>Devices</div>
+            <div>Projects</div>
             <Separator orientation="vertical" />
             <div>Analytics</div>
             <Separator orientation="vertical" />
@@ -155,36 +155,36 @@ export default function SeparatorPage() {
         <ComponentPreview
           code={`<div className="rounded-lg border p-4 space-y-4">
   <div className="flex justify-between items-center">
-    <span className="font-medium">Solar Inverter #1</span>
-    <span className="text-sm text-muted-foreground">Online</span>
+    <span className="font-medium">Marketing Site</span>
+    <span className="text-sm text-muted-foreground">Live</span>
   </div>
   <Separator />
   <div className="grid grid-cols-2 gap-4 text-sm">
     <div>
-      <div className="text-muted-foreground">Power</div>
-      <div className="font-medium">4.2 kW</div>
+      <div className="text-muted-foreground">Version</div>
+      <div className="font-medium">v2.4</div>
     </div>
     <div>
-      <div className="text-muted-foreground">Today</div>
-      <div className="font-medium">18.5 kWh</div>
+      <div className="text-muted-foreground">Visits</div>
+      <div className="font-medium">1,284</div>
     </div>
   </div>
 </div>`}
         >
           <div className="rounded-lg border p-4 space-y-4 w-full max-w-sm">
             <div className="flex justify-between items-center">
-              <span className="font-medium">Solar Inverter #1</span>
-              <span className="text-sm text-muted-foreground">Online</span>
+              <span className="font-medium">Marketing Site</span>
+              <span className="text-sm text-muted-foreground">Live</span>
             </div>
             <Separator />
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <div className="text-muted-foreground">Power</div>
-                <div className="font-medium">4.2 kW</div>
+                <div className="text-muted-foreground">Version</div>
+                <div className="font-medium">v2.4</div>
               </div>
               <div>
-                <div className="text-muted-foreground">Today</div>
-                <div className="font-medium">18.5 kWh</div>
+                <div className="text-muted-foreground">Visits</div>
+                <div className="font-medium">1,284</div>
               </div>
             </div>
           </div>

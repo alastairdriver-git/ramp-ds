@@ -79,14 +79,6 @@ import "@ramp-ds/ui/styles.css"`}</code>
             <h3 className="font-medium mb-1">Form Patterns</h3>
             <p className="text-sm text-muted-foreground">Validation, layout, and best practices for forms</p>
           </a>
-          <a href="/components/energy-flow" className="block rounded-lg border p-4 hover:bg-muted transition-colors">
-            <h3 className="font-medium mb-1">Energy Flow</h3>
-            <p className="text-sm text-muted-foreground">Visualize real-time energy distribution</p>
-          </a>
-          <a href="/components/sites-map" className="block rounded-lg border p-4 hover:bg-muted transition-colors">
-            <h3 className="font-medium mb-1">Sites Map</h3>
-            <p className="text-sm text-muted-foreground">Interactive maps for site locations</p>
-          </a>
           <a href="/components/ai-chat" className="block rounded-lg border p-4 hover:bg-muted transition-colors">
             <h3 className="font-medium mb-1">AI Chat</h3>
             <p className="text-sm text-muted-foreground">Conversational AI interface component</p>

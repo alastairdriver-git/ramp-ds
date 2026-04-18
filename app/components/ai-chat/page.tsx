@@ -3,32 +3,32 @@
 import { useState } from "react";
 import { AIChat, type ChatMessage } from "@/components/ui/ai-chat";
 import { ComponentNav } from "@/components/component-nav";
-import { Battery, Zap, Sun, Home } from "lucide-react";
+import { Palette, Sparkles, Component, BookOpen } from "lucide-react";
 
-// Sample conversation
+// Sample conversation — a designer exploring the DS
 const sampleMessages: ChatMessage[] = [
   {
     id: "1",
     role: "user",
-    content: "What's my current solar production?",
+    content: "What's the primary color in the Ramp theme?",
     timestamp: new Date(Date.now() - 60000),
   },
   {
     id: "2",
     role: "assistant",
-    content: "Your solar panels are currently producing **3.5 kW** of power. This is about 70% of their peak capacity.\n\nHere's a breakdown:\n- Panel efficiency: 92%\n- Weather conditions: Partly cloudy\n- Expected production today: ~25 kWh",
+    content: "The Ramp theme uses **teal** as the primary color:\n\n- Light mode: `hsl(175 84% 32%)` — deep teal\n- Dark mode: `hsl(175 80% 45%)` — brighter teal\n\nYou can reference it in components with the `--primary` CSS variable or Tailwind's `text-primary` / `bg-primary` utilities. It's also used for focus rings, links, and the `default` button variant.",
     timestamp: new Date(Date.now() - 55000),
   },
   {
     id: "3",
     role: "user",
-    content: "How can I optimize my energy usage?",
+    content: "How do I make a button pill-shaped across the whole site?",
     timestamp: new Date(Date.now() - 30000),
   },
   {
     id: "4",
     role: "assistant",
-    content: "Here are some recommendations to optimize your energy usage:\n\n1. **Shift heavy loads to solar hours** - Run dishwasher and laundry between 10am-3pm\n2. **Pre-cool your home** - Lower AC before peak rates kick in\n3. **Charge battery during low rates** - Set battery to charge from grid after midnight\n4. **Enable smart EV charging** - Schedule your car to charge during off-peak hours\n\nWould you like me to set up any of these automations?",
+    content: "Two options:\n\n1. **Set it per-theme** — Add `buttonShape: \"pill\"` to your theme's `components` object. The `Paper` preset already does this.\n2. **Override on one button** — Pass `className=\"rounded-full\"` to `<Button>`.\n\nThe theme-level approach is preferred because it keeps the shape consistent across every `<Button>` without touching call sites. The `RampThemeProvider` sets `data-button-shape` on the root, and `globals.css` reads it to override the `rds-button` class's radius.",
     timestamp: new Date(Date.now() - 25000),
   },
 ];
@@ -54,7 +54,7 @@ export default function AIChatPage() {
     const aiMessage: ChatMessage = {
       id: (Date.now() + 1).toString(),
       role: "assistant",
-      content: `I received your message: "${message}"\n\nThis is a demo response. In a real implementation, this would connect to an AI backend to process your query about your energy system.`,
+      content: `I received your message: "${message}"\n\nThis is a demo response. In a real implementation, this would connect to an AI backend to answer questions about the design system — components, tokens, themes, or usage patterns.`,
       timestamp: new Date(),
     };
     setMessages((prev) => [...prev, aiMessage]);
@@ -66,7 +66,7 @@ export default function AIChatPage() {
       <div>
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">AI Chat</h1>
         <p className="text-lg text-muted-foreground mt-2">
-          Conversational AI interface for energy system management.
+          Conversational AI interface for exploring and building with the design system.
         </p>
       </div>
 
@@ -108,10 +108,10 @@ export default function AIChatPage() {
           messages={[]}
           onSendMessage={() => {}}
           suggestedPrompts={[
-            { icon: <Sun className="w-4 h-4" />, text: "Solar forecast for today" },
-            { icon: <Battery className="w-4 h-4" />, text: "Battery status" },
-            { icon: <Home className="w-4 h-4" />, text: "Home consumption" },
-            { icon: <Zap className="w-4 h-4" />, text: "Grid prices now" },
+            { icon: <Palette className="w-4 h-4" />, text: "Show me the color tokens" },
+            { icon: <Component className="w-4 h-4" />, text: "List all form components" },
+            { icon: <Sparkles className="w-4 h-4" />, text: "Create a new theme preset" },
+            { icon: <BookOpen className="w-4 h-4" />, text: "How do I install the package?" },
           ]}
           className="min-h-[350px]"
         />
@@ -179,10 +179,10 @@ const handleSendMessage = async (message: string) => {
   messages={messages}
   onSendMessage={handleSendMessage}
   isLoading={isLoading}
-  placeholder="Ask about your energy system..."
+  placeholder="Ask about components, tokens, or themes..."
   suggestedPrompts={[
-    { icon: <Zap />, text: "Solar production" },
-    { icon: <Battery />, text: "Battery status" },
+    { icon: <Palette />, text: "Color tokens" },
+    { icon: <Component />, text: "Form components" },
   ]}
 />`}</code>
           </pre>

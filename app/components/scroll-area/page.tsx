@@ -25,20 +25,20 @@ const scrollAreaProps = [
   },
 ];
 
-const devices = [
-  { name: "Solar Inverter #1", status: "Online", power: "4.2 kW" },
-  { name: "Solar Inverter #2", status: "Online", power: "3.8 kW" },
-  { name: "Battery Storage", status: "Charging", power: "2.1 kW" },
-  { name: "EV Charger", status: "Idle", power: "0 kW" },
-  { name: "Smart Meter", status: "Online", power: "-" },
-  { name: "Heat Pump", status: "Running", power: "1.5 kW" },
-  { name: "Solar Inverter #3", status: "Offline", power: "0 kW" },
-  { name: "Wind Turbine", status: "Online", power: "0.8 kW" },
+const projects = [
+  { name: "Marketing Site", status: "Live", power: "v2.4" },
+  { name: "Mobile App", status: "Live", power: "v1.8" },
+  { name: "Admin Dashboard", status: "Deploying", power: "v3.1" },
+  { name: "API Gateway", status: "Live", power: "v0.9" },
+  { name: "Docs Portal", status: "Live", power: "v1.2" },
+  { name: "Design System", status: "Live", power: "v0.2" },
+  { name: "Analytics Worker", status: "Paused", power: "—" },
+  { name: "Feature Flags", status: "Live", power: "v4.0" },
 ];
 
 const tags = [
-  "Solar", "Battery", "EV", "Grid", "Inverter", "Monitor",
-  "Schedule", "Export", "Import", "Peak", "Off-Peak", "Smart",
+  "Design", "Engineering", "Product", "Research", "Ops", "Marketing",
+  "Content", "Infra", "Bug", "Feature", "Docs", "Polish",
 ];
 
 export default function ScrollAreaPage() {
@@ -94,21 +94,21 @@ export default function ScrollAreaPage() {
           Examples
         </h2>
 
-        <h3 className="text-lg font-medium">Device List</h3>
+        <h3 className="text-lg font-medium">Project List</h3>
         <ComponentPreview
           code={`<ScrollArea className="h-72 w-full max-w-sm rounded-md border">
   <div className="p-4">
-    <h4 className="mb-4 text-sm font-medium">Connected Devices</h4>
-    {devices.map((device, i) => (
-      <div key={device.name}>
+    <h4 className="mb-4 text-sm font-medium">Projects</h4>
+    {projects.map((project, i) => (
+      <div key={project.name}>
         <div className="flex justify-between py-2">
           <div>
-            <div className="text-sm font-medium">{device.name}</div>
-            <div className="text-xs text-muted-foreground">{device.status}</div>
+            <div className="text-sm font-medium">{project.name}</div>
+            <div className="text-xs text-muted-foreground">{project.status}</div>
           </div>
-          <div className="text-sm text-right">{device.power}</div>
+          <div className="text-sm text-right">{project.power}</div>
         </div>
-        {i < devices.length - 1 && <Separator />}
+        {i < projects.length - 1 && <Separator />}
       </div>
     ))}
   </div>
@@ -116,17 +116,17 @@ export default function ScrollAreaPage() {
         >
           <ScrollArea className="h-72 w-full max-w-sm rounded-md border">
             <div className="p-4">
-              <h4 className="mb-4 text-sm font-medium">Connected Devices</h4>
-              {devices.map((device, i) => (
-                <div key={device.name}>
+              <h4 className="mb-4 text-sm font-medium">Projects</h4>
+              {projects.map((project, i) => (
+                <div key={project.name}>
                   <div className="flex justify-between py-2">
                     <div>
-                      <div className="text-sm font-medium">{device.name}</div>
-                      <div className="text-xs text-muted-foreground">{device.status}</div>
+                      <div className="text-sm font-medium">{project.name}</div>
+                      <div className="text-xs text-muted-foreground">{project.status}</div>
                     </div>
-                    <div className="text-sm text-right">{device.power}</div>
+                    <div className="text-sm text-right">{project.power}</div>
                   </div>
-                  {i < devices.length - 1 && <Separator />}
+                  {i < projects.length - 1 && <Separator />}
                 </div>
               ))}
             </div>
@@ -169,24 +169,24 @@ export default function ScrollAreaPage() {
           code={`<ScrollArea className="h-[200px] rounded-md border p-4">
   <div className="space-y-4">
     <p>
-      Monitor your energy production and consumption in real-time.
-      Our dashboard provides comprehensive insights into your
-      renewable energy system's performance.
+      The Ramp Design System is a collection of production-ready
+      React components, design tokens, and patterns for building
+      consistent, accessible interfaces.
     </p>
     <p>
-      Track solar generation, battery storage levels, and grid
-      import/export data all in one place. Set up alerts for
-      unusual patterns or when you reach energy goals.
+      Every theme — built-in or user-built — flows through a
+      generator that turns three hues into a full OKLCH-based
+      palette with matching typography, spacing, and motion presets.
     </p>
     <p>
-      The system automatically optimizes energy flow between your
-      solar panels, battery, and the grid to maximize savings
-      and minimize your carbon footprint.
+      Components are built on Radix UI primitives for accessibility
+      and Tailwind CSS for styling. Drop them straight into any
+      Next.js or React project via the npm package.
     </p>
     <p>
-      Access historical data and trends to understand your
-      energy patterns over time. Export reports for analysis
-      or share with your energy provider.
+      Switch themes at runtime, persist user themes to localStorage,
+      and ship custom design languages without touching component
+      code. Every skin lives in one ThemeInput object.
     </p>
   </div>
 </ScrollArea>`}
@@ -194,24 +194,24 @@ export default function ScrollAreaPage() {
           <ScrollArea className="h-[200px] w-full max-w-md rounded-md border p-4">
             <div className="space-y-4">
               <p>
-                Monitor your energy production and consumption in real-time.
-                Our dashboard provides comprehensive insights into your
-                renewable energy system&apos;s performance.
+                The Ramp Design System is a collection of production-ready
+                React components, design tokens, and patterns for building
+                consistent, accessible interfaces.
               </p>
               <p>
-                Track solar generation, battery storage levels, and grid
-                import/export data all in one place. Set up alerts for
-                unusual patterns or when you reach energy goals.
+                Every theme — built-in or user-built — flows through a
+                generator that turns three hues into a full OKLCH-based
+                palette with matching typography, spacing, and motion presets.
               </p>
               <p>
-                The system automatically optimizes energy flow between your
-                solar panels, battery, and the grid to maximize savings
-                and minimize your carbon footprint.
+                Components are built on Radix UI primitives for accessibility
+                and Tailwind CSS for styling. Drop them straight into any
+                Next.js or React project via the npm package.
               </p>
               <p>
-                Access historical data and trends to understand your
-                energy patterns over time. Export reports for analysis
-                or share with your energy provider.
+                Switch themes at runtime, persist user themes to localStorage,
+                and ship custom design languages without touching component
+                code. Every skin lives in one ThemeInput object.
               </p>
             </div>
           </ScrollArea>

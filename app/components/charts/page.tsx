@@ -37,9 +37,9 @@ const sampleData = [
 ];
 
 const pieData = [
-  { name: "solar", value: 65, fill: "hsl(142, 76%, 36%)" },
-  { name: "grid", value: 25, fill: "hsl(220, 14%, 50%)" },
-  { name: "battery", value: 10, fill: "hsl(48, 100%, 50%)" },
+  { name: "desktop", value: 65, fill: "hsl(142, 76%, 36%)" },
+  { name: "mobile", value: 25, fill: "hsl(220, 14%, 50%)" },
+  { name: "tablet", value: 10, fill: "hsl(48, 100%, 50%)" },
 ];
 
 const radarData = [
@@ -206,8 +206,8 @@ export default function ChartsOverviewPage() {
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
 
 const chartConfig = {
-  solar: {
-    label: "Solar",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
   },
 }
@@ -219,7 +219,7 @@ export function MyChart() {
         <XAxis dataKey="month" />
         <YAxis />
         <ChartTooltip content={<ChartTooltipContent />} />
-        <Bar dataKey="solar" fill="var(--color-solar)" radius={4} />
+        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
       </BarChart>
     </ChartContainer>
   )
@@ -237,7 +237,7 @@ export function MyChart() {
           <li>Automatic dark mode support via CSS variables</li>
           <li>Accessible with keyboard navigation</li>
           <li>Customizable tooltips and legends</li>
-          <li>Energy-themed color palette included</li>
+          <li>Traffic-themed color palette included</li>
           <li>Responsive by default</li>
         </ul>
       </div>

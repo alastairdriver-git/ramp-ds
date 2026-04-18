@@ -125,14 +125,14 @@ import { toast } from "sonner"`}</code>
         <ComponentPreview
           code={`<Button
   variant="outline"
-  onClick={() => toast.warning("Battery level low")}
+  onClick={() => toast.warning("Storage almost full")}
 >
   Warning Toast
 </Button>`}
         >
           <Button
             variant="outline"
-            onClick={() => toast.warning("Battery level low")}
+            onClick={() => toast.warning("Storage almost full")}
           >
             Warning Toast
           </Button>
@@ -142,14 +142,14 @@ import { toast } from "sonner"`}</code>
         <ComponentPreview
           code={`<Button
   variant="outline"
-  onClick={() => toast.info("New firmware available")}
+  onClick={() => toast.info("New version available")}
 >
   Info Toast
 </Button>`}
         >
           <Button
             variant="outline"
-            onClick={() => toast.info("New firmware available")}
+            onClick={() => toast.info("New version available")}
           >
             Info Toast
           </Button>
@@ -160,8 +160,8 @@ import { toast } from "sonner"`}</code>
           code={`<Button
   variant="outline"
   onClick={() =>
-    toast("Device Added", {
-      description: "Solar Inverter #3 has been added to your system.",
+    toast("Member invited", {
+      description: "Jordan has been added to the workspace.",
     })
   }
 >
@@ -171,8 +171,8 @@ import { toast } from "sonner"`}</code>
           <Button
             variant="outline"
             onClick={() =>
-              toast("Device Added", {
-                description: "Solar Inverter #3 has been added to your system.",
+              toast("Member invited", {
+                description: "Jordan has been added to the workspace.",
               })
             }
           >
@@ -186,7 +186,7 @@ import { toast } from "sonner"`}</code>
   variant="outline"
   onClick={() =>
     toast("Settings saved", {
-      description: "Your device configuration has been updated.",
+      description: "Your changes have been saved.",
       action: {
         label: "Undo",
         onClick: () => console.log("Undo clicked"),
@@ -201,7 +201,7 @@ import { toast } from "sonner"`}</code>
             variant="outline"
             onClick={() =>
               toast("Settings saved", {
-                description: "Your device configuration has been updated.",
+                description: "Your changes have been saved.",
                 action: {
                   label: "Undo",
                   onClick: () => console.log("Undo clicked"),
@@ -219,13 +219,13 @@ import { toast } from "sonner"`}</code>
   variant="outline"
   onClick={() => {
     const promise = new Promise((resolve) =>
-      setTimeout(() => resolve({ name: "Solar Inverter" }), 2000)
+      setTimeout(() => resolve({ name: "Production" }), 2000)
     );
 
     toast.promise(promise, {
-      loading: "Connecting to device...",
-      success: (data) => \`Connected to \${data.name}\`,
-      error: "Failed to connect",
+      loading: "Deploying...",
+      success: (data) => \`Deployed to \${data.name}\`,
+      error: "Deploy failed",
     });
   }}
 >
@@ -236,13 +236,13 @@ import { toast } from "sonner"`}</code>
             variant="outline"
             onClick={() => {
               const promise = new Promise<{ name: string }>((resolve) =>
-                setTimeout(() => resolve({ name: "Solar Inverter" }), 2000)
+                setTimeout(() => resolve({ name: "Production" }), 2000)
               );
 
               toast.promise(promise, {
-                loading: "Connecting to device...",
-                success: (data) => `Connected to ${data.name}`,
-                error: "Failed to connect",
+                loading: "Deploying...",
+                success: (data) => `Deployed to ${data.name}`,
+                error: "Deploy failed",
               });
             }}
           >

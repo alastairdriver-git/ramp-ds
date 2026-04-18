@@ -127,7 +127,7 @@ export default function CheckboxPage() {
   <div className="grid gap-1.5 leading-none">
     <Label htmlFor="notifications">Enable notifications</Label>
     <p className="text-sm text-muted-foreground">
-      Receive updates about your energy usage.
+      Get notified about product updates and releases.
     </p>
   </div>
 </div>`}
@@ -137,7 +137,7 @@ export default function CheckboxPage() {
             <div className="grid gap-1.5 leading-none">
               <Label htmlFor="notifications">Enable notifications</Label>
               <p className="text-sm text-muted-foreground">
-                Receive updates about your energy usage.
+                Get notified about product updates and releases.
               </p>
             </div>
           </div>

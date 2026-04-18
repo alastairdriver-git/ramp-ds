@@ -229,8 +229,8 @@ const defaultStyles = [
   '  --ring: 175 84% 32%;',
   '  --radius: 0.5rem;',
   '}',
-  '*, *::before, *::after { box-sizing: border-box; border-color: hsl(var(--border)); }',
-  'body { background-color: hsl(var(--background)); color: hsl(var(--foreground)); font-family: system-ui, -apple-system, sans-serif; margin: 0; }',
+  '*, *::before, *::after { box-sizing: border-box; border-color: oklch(var(--border)); }',
+  'body { background-color: oklch(var(--background)); color: oklch(var(--foreground)); font-family: system-ui, -apple-system, sans-serif; margin: 0; }',
 ].join('\n');
 
 export function CodeEditor({

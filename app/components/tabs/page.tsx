@@ -189,56 +189,56 @@ export default function TabsPage() {
           </Tabs>
         </ComponentPreview>
 
-        <h3 className="text-lg font-medium">Energy Sources</h3>
+        <h3 className="text-lg font-medium">With Content Panels</h3>
         <ComponentPreview
-          code={`<Tabs defaultValue="solar">
+          code={`<Tabs defaultValue="overview">
   <TabsList>
-    <TabsTrigger value="solar">Solar</TabsTrigger>
-    <TabsTrigger value="battery">Battery</TabsTrigger>
-    <TabsTrigger value="grid">Grid</TabsTrigger>
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="activity">Activity</TabsTrigger>
+    <TabsTrigger value="members">Members</TabsTrigger>
   </TabsList>
-  <TabsContent value="solar">
+  <TabsContent value="overview">
     <div className="rounded-lg border p-4 mt-2">
-      <div className="text-2xl font-bold">5.2 kW</div>
-      <p className="text-sm text-muted-foreground">Current solar production</p>
+      <div className="text-2xl font-bold">1,284</div>
+      <p className="text-sm text-muted-foreground">Total events this month</p>
     </div>
   </TabsContent>
-  <TabsContent value="battery">
+  <TabsContent value="activity">
     <div className="rounded-lg border p-4 mt-2">
-      <div className="text-2xl font-bold">85%</div>
-      <p className="text-sm text-muted-foreground">Battery charge level</p>
+      <div className="text-2xl font-bold">92%</div>
+      <p className="text-sm text-muted-foreground">Active users this week</p>
     </div>
   </TabsContent>
-  <TabsContent value="grid">
+  <TabsContent value="members">
     <div className="rounded-lg border p-4 mt-2">
-      <div className="text-2xl font-bold">0.8 kW</div>
-      <p className="text-sm text-muted-foreground">Exporting to grid</p>
+      <div className="text-2xl font-bold">24</div>
+      <p className="text-sm text-muted-foreground">People in the workspace</p>
     </div>
   </TabsContent>
 </Tabs>`}
         >
-          <Tabs defaultValue="solar" className="w-full max-w-md">
+          <Tabs defaultValue="overview" className="w-full max-w-md">
             <TabsList>
-              <TabsTrigger value="solar">Solar</TabsTrigger>
-              <TabsTrigger value="battery">Battery</TabsTrigger>
-              <TabsTrigger value="grid">Grid</TabsTrigger>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="activity">Activity</TabsTrigger>
+              <TabsTrigger value="members">Members</TabsTrigger>
             </TabsList>
-            <TabsContent value="solar">
+            <TabsContent value="overview">
               <div className="rounded-lg border p-4 mt-2">
-                <div className="text-2xl font-bold">5.2 kW</div>
-                <p className="text-sm text-muted-foreground">Current solar production</p>
+                <div className="text-2xl font-bold">1,284</div>
+                <p className="text-sm text-muted-foreground">Total events this month</p>
               </div>
             </TabsContent>
-            <TabsContent value="battery">
+            <TabsContent value="activity">
               <div className="rounded-lg border p-4 mt-2">
-                <div className="text-2xl font-bold">85%</div>
-                <p className="text-sm text-muted-foreground">Battery charge level</p>
+                <div className="text-2xl font-bold">92%</div>
+                <p className="text-sm text-muted-foreground">Active users this week</p>
               </div>
             </TabsContent>
-            <TabsContent value="grid">
+            <TabsContent value="members">
               <div className="rounded-lg border p-4 mt-2">
-                <div className="text-2xl font-bold">0.8 kW</div>
-                <p className="text-sm text-muted-foreground">Exporting to grid</p>
+                <div className="text-2xl font-bold">24</div>
+                <p className="text-sm text-muted-foreground">People in the workspace</p>
               </div>
             </TabsContent>
           </Tabs>

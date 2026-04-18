@@ -54,7 +54,7 @@ const sliderProps = [
 
 export default function SliderPage() {
   const [brightness, setBrightness] = useState([50]);
-  const [chargeLimit, setChargeLimit] = useState([80]);
+  const [quality, setQuality] = useState([80]);
 
   return (
     <div className="space-y-6">
@@ -134,41 +134,41 @@ export default function SliderPage() {
           </div>
         </ComponentPreview>
 
-        <h3 className="text-lg font-medium">Charge Limit</h3>
+        <h3 className="text-lg font-medium">Stepped Slider</h3>
         <ComponentPreview
-          code={`const [chargeLimit, setChargeLimit] = useState([80]);
+          code={`const [quality, setQuality] = useState([80]);
 
 <div className="space-y-4">
   <div className="flex justify-between">
-    <Label>Charge Limit</Label>
-    <span className="text-sm text-muted-foreground">{chargeLimit}%</span>
+    <Label>Export Quality</Label>
+    <span className="text-sm text-muted-foreground">{quality}%</span>
   </div>
   <Slider
-    value={chargeLimit}
-    onValueChange={setChargeLimit}
+    value={quality}
+    onValueChange={setQuality}
     min={50}
     max={100}
     step={5}
   />
   <p className="text-sm text-muted-foreground">
-    Limiting charge to 80% can extend battery life.
+    Higher quality increases file size.
   </p>
 </div>`}
         >
           <div className="space-y-4 w-full max-w-sm">
             <div className="flex justify-between">
-              <Label>Charge Limit</Label>
-              <span className="text-sm text-muted-foreground">{chargeLimit}%</span>
+              <Label>Export Quality</Label>
+              <span className="text-sm text-muted-foreground">{quality}%</span>
             </div>
             <Slider
-              value={chargeLimit}
-              onValueChange={setChargeLimit}
+              value={quality}
+              onValueChange={setQuality}
               min={50}
               max={100}
               step={5}
             />
             <p className="text-sm text-muted-foreground">
-              Limiting charge to 80% can extend battery life.
+              Higher quality increases file size.
             </p>
           </div>
         </ComponentPreview>

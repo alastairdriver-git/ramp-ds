@@ -120,10 +120,10 @@ export default function TextareaPage() {
         <h3 className="text-lg font-medium">With Helper Text</h3>
         <ComponentPreview
           code={`<div className="space-y-2">
-  <Label htmlFor="notes">Device Notes</Label>
+  <Label htmlFor="notes">Project Notes</Label>
   <Textarea
     id="notes"
-    placeholder="Add notes about this device..."
+    placeholder="Add notes about this project..."
     rows={4}
   />
   <p className="text-sm text-muted-foreground">
@@ -132,10 +132,10 @@ export default function TextareaPage() {
 </div>`}
         >
           <div className="space-y-2 w-full max-w-sm">
-            <Label htmlFor="notes">Device Notes</Label>
+            <Label htmlFor="notes">Project Notes</Label>
             <Textarea
               id="notes"
-              placeholder="Add notes about this device..."
+              placeholder="Add notes about this project..."
               rows={4}
             />
             <p className="text-sm text-muted-foreground">

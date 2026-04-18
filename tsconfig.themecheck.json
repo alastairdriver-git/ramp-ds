@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "lib/themes/**/*.ts",
+    "lib/index.ts",
+    "components/ramp-theme-provider.tsx",
+    "components/ramp-theme-switcher.tsx",
+    "components/ramp-mode-switcher.tsx",
+    "components/theme-toggle.tsx",
+    "components/site-header.tsx",
+    "components/mobile-nav.tsx",
+    "components/marketing-nav.tsx",
+    "components/ui/sonner.tsx",
+    "app/layout.tsx",
+    "app/docs/theming/page.tsx"
+  ],
+  "exclude": ["node_modules", ".next"]
+}

@@ -4,12 +4,12 @@ import { ComponentNav } from "@/components/component-nav";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ComponentPreview } from "@/components/component-preview";
 import { PropsTable } from "@/components/props-table";
-import { AlertCircle, CheckCircle2, Info, Zap, AlertTriangle } from "lucide-react";
+import { AlertCircle, CheckCircle2, Info, Zap, AlertTriangle, Sparkles } from "lucide-react";
 
 const alertProps = [
   {
     name: "variant",
-    type: '"default" | "destructive" | "success" | "warning" | "info" | "energy"',
+    type: '"default" | "destructive" | "success" | "warning" | "info" | "highlight"',
     default: '"default"',
     description: "The visual style of the alert.",
   },
@@ -112,7 +112,7 @@ export default function AlertPage() {
   <CheckCircle2 className="h-4 w-4" />
   <AlertTitle>Success</AlertTitle>
   <AlertDescription>
-    Your device has been connected successfully.
+    Your changes have been saved.
   </AlertDescription>
 </Alert>`}
         >
@@ -120,7 +120,7 @@ export default function AlertPage() {
             <CheckCircle2 className="h-4 w-4" />
             <AlertTitle>Success</AlertTitle>
             <AlertDescription>
-              Your device has been connected successfully.
+              Your changes have been saved.
             </AlertDescription>
           </Alert>
         </ComponentPreview>
@@ -131,7 +131,7 @@ export default function AlertPage() {
   <AlertTriangle className="h-4 w-4" />
   <AlertTitle>Warning</AlertTitle>
   <AlertDescription>
-    Your battery is running low. Connect to charger soon.
+    Your session will expire in 5 minutes. Save your work.
   </AlertDescription>
 </Alert>`}
         >
@@ -139,7 +139,7 @@ export default function AlertPage() {
             <AlertTriangle className="h-4 w-4" />
             <AlertTitle>Warning</AlertTitle>
             <AlertDescription>
-              Your battery is running low. Connect to charger soon.
+              Your session will expire in 5 minutes. Save your work.
             </AlertDescription>
           </Alert>
         </ComponentPreview>
@@ -150,7 +150,7 @@ export default function AlertPage() {
   <Info className="h-4 w-4" />
   <AlertTitle>Did you know?</AlertTitle>
   <AlertDescription>
-    Solar production peaks between 10am and 2pm.
+    Press ⌘K anywhere to open the command palette.
   </AlertDescription>
 </Alert>`}
         >
@@ -158,26 +158,26 @@ export default function AlertPage() {
             <Info className="h-4 w-4" />
             <AlertTitle>Did you know?</AlertTitle>
             <AlertDescription>
-              Solar production peaks between 10am and 2pm.
+              Press ⌘K anywhere to open the command palette.
             </AlertDescription>
           </Alert>
         </ComponentPreview>
 
-        <h3 className="text-lg font-medium">Energy</h3>
+        <h3 className="text-lg font-medium">Highlight</h3>
         <ComponentPreview
-          code={`<Alert variant="energy">
-  <Zap className="h-4 w-4" />
-  <AlertTitle>Energy Update</AlertTitle>
+          code={`<Alert variant="highlight">
+  <Sparkles className="h-4 w-4" />
+  <AlertTitle>New feature</AlertTitle>
   <AlertDescription>
-    Grid prices are low right now. Good time to charge!
+    The theme switcher is now live — try swapping to Paper.
   </AlertDescription>
 </Alert>`}
         >
-          <Alert variant="energy" className="w-full max-w-lg">
-            <Zap className="h-4 w-4" />
-            <AlertTitle>Energy Update</AlertTitle>
+          <Alert variant="highlight" className="w-full max-w-lg">
+            <Sparkles className="h-4 w-4" />
+            <AlertTitle>New feature</AlertTitle>
             <AlertDescription>
-              Grid prices are low right now. Good time to charge!
+              The theme switcher is now live — try swapping to Paper.
             </AlertDescription>
           </Alert>
         </ComponentPreview>

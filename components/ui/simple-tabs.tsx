@@ -106,8 +106,8 @@ const SimpleTabs = React.forwardRef<HTMLDivElement, SimpleTabsProps>(
                     className={cn(
                       "relative flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap",
                       isActive
-                        ? "text-rds-green-600 dark:text-rds-green-400"
-                        : "text-rds-gray-500 dark:text-rds-gray-400 hover:text-rds-gray-700 dark:hover:text-rds-gray-300",
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground",
                       tab.disabled && "opacity-50 cursor-not-allowed"
                     )}
                   >
@@ -115,7 +115,7 @@ const SimpleTabs = React.forwardRef<HTMLDivElement, SimpleTabsProps>(
                     {tab.label}
                     {isActive && (
                       <span
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-rds-green-500"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
                         aria-hidden="true"
                       />
                     )}
@@ -260,8 +260,8 @@ const SimpleTabsTrigger = React.forwardRef<
       className={cn(
         "relative flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap",
         isActive
-          ? "text-rds-green-600 dark:text-rds-green-400"
-          : "text-rds-gray-500 dark:text-rds-gray-400 hover:text-rds-gray-700 dark:hover:text-rds-gray-300",
+          ? "text-primary"
+          : "text-muted-foreground hover:text-foreground",
         disabled && "opacity-50 cursor-not-allowed",
         className
       )}
@@ -270,7 +270,7 @@ const SimpleTabsTrigger = React.forwardRef<
       {children}
       {isActive && (
         <span
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-rds-green-500"
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
           aria-hidden="true"
         />
       )}

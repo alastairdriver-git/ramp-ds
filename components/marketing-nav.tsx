@@ -3,17 +3,11 @@
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/src/i18n/routing";
-import { Menu, ChevronDown, ExternalLink } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu } from "lucide-react";
+import { useRampTheme } from "@/components/ramp-theme-provider";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Sheet,
   SheetContent,
@@ -25,8 +19,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function MarketingNav() {
   const t = useTranslations("common.nav");
-  const tButtons = useTranslations("common.buttons");
-  const { theme, setTheme } = useTheme();
+  const { isDark, setMode } = useRampTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -43,36 +36,19 @@ export function MarketingNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const products = [
-    {
-      name: t("platform"),
-      href: "/platform",
-      description: "Local energy coordination infrastructure",
-    },
-    {
-      name: t("zap"),
-      href: "/zap",
-      description: "€39 gateway with 200ms response",
-    },
-  ];
-
-  const useCases = [
-    { name: t("homeowners"), href: "/use-cases/homeowners" },
-    { name: t("utilities"), href: "/use-cases/utilities" },
-    { name: t("oems"), href: "/use-cases/oems" },
-    { name: t("installers"), href: "/use-cases/installers" },
-  ];
-
-  const developers = [
-    { name: "Developer Portal", href: "https://developer.sourceful.energy", external: true },
-    { name: "API Reference", href: "https://developer.sourceful.energy/api", external: true },
-    { name: "Design System", href: "https://design.sourceful.energy", external: true },
-    { name: "Hardware Docs", href: "https://developer.sourceful.energy/hardware", external: true },
+  // Marketing-side links. The product-catalog style nav is gone now —
+  // this site is a Design System + AI playground, not a product marketing site.
+  const dsLinks = [
+    { name: "Components", href: "/components", external: false },
+    { name: "Docs", href: "/docs", external: false },
+    { name: "Templates", href: "/templates", external: false },
+    { name: "Playground", href: "/play", external: false },
+    { name: "Brand", href: "/brand", external: false },
     { name: "Community", href: "/community", external: false },
   ];
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setMode(isDark ? "light" : "dark");
   };
 
   return (
@@ -90,80 +66,17 @@ export function MarketingNav() {
           <Logo variant="full" size="sm" />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation — flattened. Ramp DS is not a multi-product site
+            any more, so the old Products/UseCases dropdowns are gone. */}
         <div className="hidden lg:flex items-center gap-1">
-          {/* Products Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="gap-1">
-                Products
-                <ChevronDown className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-[240px]">
-              {products.map((item) => (
-                <Link key={item.name} href={item.href} className="block">
-                  <DropdownMenuItem className="flex-col !items-start gap-1 py-2 cursor-pointer">
-                    <span className="font-medium">{item.name}</span>
-                    <span className="text-xs text-muted-foreground">{item.description}</span>
-                  </DropdownMenuItem>
-                </Link>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* Developers Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="gap-1">
-                {t("developers")}
-                <ChevronDown className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-[200px]">
-              {developers.map((item) => (
-                <DropdownMenuItem key={item.name} asChild>
-                  {item.external ? (
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between"
-                    >
-                      {item.name}
-                      <ExternalLink className="h-3 w-3 text-muted-foreground" />
-                    </a>
-                  ) : (
-                    <Link href={item.href}>{item.name}</Link>
-                  )}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* Use Cases Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="gap-1">
-                {t("useCases")}
-                <ChevronDown className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
-              {useCases.map((item) => (
-                <DropdownMenuItem key={item.name} asChild>
-                  <Link href={item.href}>{item.name}</Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* About Link */}
+          {dsLinks.map((item) => (
+            <Button key={item.href} variant="ghost" asChild>
+              <Link href={item.href}>{item.name}</Link>
+            </Button>
+          ))}
           <Button variant="ghost" asChild>
             <Link href="/about">{t("about")}</Link>
           </Button>
-
-          {/* Company Link */}
           <Button variant="ghost" asChild>
             <Link href="/contact">{t("contact")}</Link>
           </Button>
@@ -176,29 +89,24 @@ export function MarketingNav() {
 
           {/* Theme toggle */}
           {mounted && (
-            <Button variant="ghost" size="icon" onClick={toggleTheme} className="hidden md:flex">
-              {theme === "light" ? (
+            <Button variant="ghost" size="icon" onClick={toggleTheme} className="hidden md:flex" aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}>
+              {isDark ? (
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               ) : (
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
               )}
             </Button>
           )}
 
-          {/* CTA Buttons */}
+          {/* CTA — single button to the npm package page. */}
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost" asChild>
-              <a href="https://developer.sourceful.energy" target="_blank" rel="noopener noreferrer">
-                Dev Portal
-              </a>
-            </Button>
             <Button asChild>
-              <a href="https://store.sourceful.energy/products/rds-energy-zap" target="_blank" rel="noopener noreferrer">
-                {tButtons("getTheZap")}
+              <a href="https://www.npmjs.com/package/@ramp-ds/ui" target="_blank" rel="noopener noreferrer">
+                Install @ramp-ds/ui
               </a>
             </Button>
           </div>
@@ -214,100 +122,36 @@ export function MarketingNav() {
               <SheetHeader>
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
-              <div className="mt-6 flex flex-col space-y-6">
-                {/* Products */}
-                <div>
-                  <h3 className="font-semibold mb-3">Products</h3>
-                  <div className="space-y-2">
-                    {products.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block py-2 text-muted-foreground hover:text-foreground"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Developers */}
-                <div>
-                  <h3 className="font-semibold mb-3">{t("developers")}</h3>
-                  <div className="space-y-2">
-                    {developers.map((item) => (
-                      item.external ? (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 py-2 text-muted-foreground hover:text-foreground"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {item.name}
-                          <ExternalLink className="h-3 w-3" />
-                        </a>
-                      ) : (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className="block py-2 text-muted-foreground hover:text-foreground"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
-                      )
-                    ))}
-                  </div>
-                </div>
-
-                {/* Use Cases */}
-                <div>
-                  <h3 className="font-semibold mb-3">{t("useCases")}</h3>
-                  <div className="space-y-2">
-                    {useCases.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block py-2 text-muted-foreground hover:text-foreground"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                {/* About */}
+              <div className="mt-6 flex flex-col space-y-4">
+                {dsLinks.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="font-medium py-2 hover:text-primary"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
                 <Link
                   href="/about"
-                  className="font-semibold hover:text-primary"
+                  className="font-medium py-2 hover:text-primary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t("about")}
                 </Link>
-
-                {/* Contact */}
                 <Link
                   href="/contact"
-                  className="font-semibold hover:text-primary"
+                  className="font-medium py-2 hover:text-primary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t("contact")}
                 </Link>
 
-                {/* CTA Buttons */}
-                <div className="pt-4 border-t space-y-3">
-                  <Button variant="outline" className="w-full" asChild>
-                    <a href="https://developer.sourceful.energy" target="_blank" rel="noopener noreferrer">
-                      Dev Portal
-                    </a>
-                  </Button>
+                <div className="pt-4 border-t">
                   <Button className="w-full" asChild>
-                    <a href="https://store.sourceful.energy/products/rds-energy-zap" target="_blank" rel="noopener noreferrer">
-                      {tButtons("getTheZap")}
+                    <a href="https://www.npmjs.com/package/@ramp-ds/ui" target="_blank" rel="noopener noreferrer">
+                      Install @ramp-ds/ui
                     </a>
                   </Button>
                 </div>

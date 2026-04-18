@@ -22,20 +22,20 @@ const tableProps = [
   },
 ];
 
-const devices = [
-  { id: "INV001", name: "Solar Inverter #1", status: "Online", power: "4.2 kW", today: "18.5 kWh" },
-  { id: "INV002", name: "Solar Inverter #2", status: "Online", power: "3.8 kW", today: "16.2 kWh" },
-  { id: "BAT001", name: "Battery Storage", status: "Charging", power: "2.1 kW", today: "12.4 kWh" },
-  { id: "EVC001", name: "EV Charger", status: "Idle", power: "0 kW", today: "8.0 kWh" },
-  { id: "MTR001", name: "Smart Meter", status: "Online", power: "-", today: "-" },
+const projects = [
+  { id: "PRJ001", name: "Marketing Site", status: "Live", power: "v2.4", today: "1,482 visits" },
+  { id: "PRJ002", name: "Mobile App", status: "Live", power: "v1.8", today: "6,210 sessions" },
+  { id: "PRJ003", name: "Admin Dashboard", status: "Deploying", power: "v3.1", today: "—" },
+  { id: "PRJ004", name: "API Gateway", status: "Live", power: "v0.9", today: "2.1M requests" },
+  { id: "PRJ005", name: "Docs Portal", status: "Live", power: "—", today: "—" },
 ];
 
-const energyData = [
-  { date: "2024-01-15", production: "24.5 kWh", consumption: "18.2 kWh", export: "6.3 kWh" },
-  { date: "2024-01-14", production: "22.1 kWh", consumption: "19.8 kWh", export: "2.3 kWh" },
-  { date: "2024-01-13", production: "28.3 kWh", consumption: "16.5 kWh", export: "11.8 kWh" },
-  { date: "2024-01-12", production: "18.9 kWh", consumption: "21.2 kWh", export: "-2.3 kWh" },
-  { date: "2024-01-11", production: "26.7 kWh", consumption: "17.4 kWh", export: "9.3 kWh" },
+const usageData = [
+  { date: "2024-01-15", deploys: "8", requests: "2.1M", errors: "14" },
+  { date: "2024-01-14", deploys: "5", requests: "1.8M", errors: "21" },
+  { date: "2024-01-13", deploys: "12", requests: "2.4M", errors: "6" },
+  { date: "2024-01-12", deploys: "3", requests: "1.5M", errors: "38" },
+  { date: "2024-01-11", deploys: "9", requests: "2.0M", errors: "11" },
 ];
 
 export default function TablePage() {
@@ -74,7 +74,7 @@ export default function TablePage() {
         </h2>
         <ComponentPreview
           code={`<Table>
-  <TableCaption>A list of your connected devices.</TableCaption>
+  <TableCaption>A list of your recent projects.</TableCaption>
   <TableHeader>
     <TableRow>
       <TableHead>Device</TableHead>
@@ -84,15 +84,15 @@ export default function TablePage() {
   </TableHeader>
   <TableBody>
     <TableRow>
-      <TableCell>Solar Inverter</TableCell>
-      <TableCell>Online</TableCell>
-      <TableCell className="text-right">4.2 kW</TableCell>
+      <TableCell>Marketing Site</TableCell>
+      <TableCell>Live</TableCell>
+      <TableCell className="text-right">v2.4</TableCell>
     </TableRow>
   </TableBody>
 </Table>`}
         >
           <Table>
-            <TableCaption>A list of your connected devices.</TableCaption>
+            <TableCaption>A list of your recent projects.</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead>Device</TableHead>
@@ -102,9 +102,9 @@ export default function TablePage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell>Solar Inverter</TableCell>
-                <TableCell>Online</TableCell>
-                <TableCell className="text-right">4.2 kW</TableCell>
+                <TableCell>Marketing Site</TableCell>
+                <TableCell>Live</TableCell>
+                <TableCell className="text-right">v2.4</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -116,59 +116,59 @@ export default function TablePage() {
           Examples
         </h2>
 
-        <h3 className="text-lg font-medium">Device List</h3>
+        <h3 className="text-lg font-medium">Project List</h3>
         <ComponentPreview
           code={`<Table>
-  <TableCaption>Connected energy devices</TableCaption>
+  <TableCaption>Your recent projects</TableCaption>
   <TableHeader>
     <TableRow>
       <TableHead className="w-[100px]">ID</TableHead>
-      <TableHead>Device</TableHead>
+      <TableHead>Project</TableHead>
       <TableHead>Status</TableHead>
-      <TableHead className="text-right">Power</TableHead>
+      <TableHead className="text-right">Version</TableHead>
       <TableHead className="text-right">Today</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
-    {devices.map((device) => (
-      <TableRow key={device.id}>
-        <TableCell className="font-mono">{device.id}</TableCell>
-        <TableCell className="font-medium">{device.name}</TableCell>
+    {projects.map((project) => (
+      <TableRow key={project.id}>
+        <TableCell className="font-mono">{project.id}</TableCell>
+        <TableCell className="font-medium">{project.name}</TableCell>
         <TableCell>
-          <Badge variant={device.status === "Online" ? "success" : "secondary"}>
-            {device.status}
+          <Badge variant={project.status === "Live" ? "success" : "secondary"}>
+            {project.status}
           </Badge>
         </TableCell>
-        <TableCell className="text-right">{device.power}</TableCell>
-        <TableCell className="text-right">{device.today}</TableCell>
+        <TableCell className="text-right">{project.power}</TableCell>
+        <TableCell className="text-right">{project.today}</TableCell>
       </TableRow>
     ))}
   </TableBody>
 </Table>`}
         >
           <Table>
-            <TableCaption>Connected energy devices</TableCaption>
+            <TableCaption>Your recent projects</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">ID</TableHead>
-                <TableHead>Device</TableHead>
+                <TableHead>Project</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead className="text-right">Power</TableHead>
+                <TableHead className="text-right">Version</TableHead>
                 <TableHead className="text-right">Today</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {devices.map((device) => (
-                <TableRow key={device.id}>
-                  <TableCell className="font-mono">{device.id}</TableCell>
-                  <TableCell className="font-medium">{device.name}</TableCell>
+              {projects.map((project) => (
+                <TableRow key={project.id}>
+                  <TableCell className="font-mono">{project.id}</TableCell>
+                  <TableCell className="font-medium">{project.name}</TableCell>
                   <TableCell>
-                    <Badge variant={device.status === "Online" ? "success" : "secondary"}>
-                      {device.status}
+                    <Badge variant={project.status === "Live" ? "success" : "secondary"}>
+                      {project.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-right">{device.power}</TableCell>
-                  <TableCell className="text-right">{device.today}</TableCell>
+                  <TableCell className="text-right">{project.power}</TableCell>
+                  <TableCell className="text-right">{project.today}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -178,61 +178,61 @@ export default function TablePage() {
         <h3 className="text-lg font-medium">With Footer</h3>
         <ComponentPreview
           code={`<Table>
-  <TableCaption>Daily energy summary</TableCaption>
+  <TableCaption>Daily activity summary</TableCaption>
   <TableHeader>
     <TableRow>
       <TableHead>Date</TableHead>
-      <TableHead className="text-right">Production</TableHead>
-      <TableHead className="text-right">Consumption</TableHead>
-      <TableHead className="text-right">Net Export</TableHead>
+      <TableHead className="text-right">Deploys</TableHead>
+      <TableHead className="text-right">Requests</TableHead>
+      <TableHead className="text-right">Errors</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
-    {energyData.map((row) => (
+    {usageData.map((row) => (
       <TableRow key={row.date}>
         <TableCell>{row.date}</TableCell>
-        <TableCell className="text-right">{row.production}</TableCell>
-        <TableCell className="text-right">{row.consumption}</TableCell>
-        <TableCell className="text-right">{row.export}</TableCell>
+        <TableCell className="text-right">{row.deploys}</TableCell>
+        <TableCell className="text-right">{row.requests}</TableCell>
+        <TableCell className="text-right">{row.errors}</TableCell>
       </TableRow>
     ))}
   </TableBody>
   <TableFooter>
     <TableRow>
       <TableCell>Total (5 days)</TableCell>
-      <TableCell className="text-right">120.5 kWh</TableCell>
-      <TableCell className="text-right">93.1 kWh</TableCell>
-      <TableCell className="text-right">27.4 kWh</TableCell>
+      <TableCell className="text-right">37</TableCell>
+      <TableCell className="text-right">9.8M</TableCell>
+      <TableCell className="text-right">90</TableCell>
     </TableRow>
   </TableFooter>
 </Table>`}
         >
           <Table>
-            <TableCaption>Daily energy summary</TableCaption>
+            <TableCaption>Daily activity summary</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead>Date</TableHead>
-                <TableHead className="text-right">Production</TableHead>
-                <TableHead className="text-right">Consumption</TableHead>
-                <TableHead className="text-right">Net Export</TableHead>
+                <TableHead className="text-right">Deploys</TableHead>
+                <TableHead className="text-right">Requests</TableHead>
+                <TableHead className="text-right">Errors</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {energyData.map((row) => (
+              {usageData.map((row) => (
                 <TableRow key={row.date}>
                   <TableCell>{row.date}</TableCell>
-                  <TableCell className="text-right">{row.production}</TableCell>
-                  <TableCell className="text-right">{row.consumption}</TableCell>
-                  <TableCell className="text-right">{row.export}</TableCell>
+                  <TableCell className="text-right">{row.deploys}</TableCell>
+                  <TableCell className="text-right">{row.requests}</TableCell>
+                  <TableCell className="text-right">{row.errors}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
             <TableFooter>
               <TableRow>
                 <TableCell>Total (5 days)</TableCell>
-                <TableCell className="text-right">120.5 kWh</TableCell>
-                <TableCell className="text-right">93.1 kWh</TableCell>
-                <TableCell className="text-right">27.4 kWh</TableCell>
+                <TableCell className="text-right">37</TableCell>
+                <TableCell className="text-right">9.8M</TableCell>
+                <TableCell className="text-right">90</TableCell>
               </TableRow>
             </TableFooter>
           </Table>
@@ -249,20 +249,20 @@ export default function TablePage() {
   </TableHeader>
   <TableBody>
     <TableRow>
-      <TableCell>Current Power</TableCell>
-      <TableCell className="text-right font-medium">4.2 kW</TableCell>
+      <TableCell>Active users</TableCell>
+      <TableCell className="text-right font-medium">1,284</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Today's Production</TableCell>
-      <TableCell className="text-right font-medium">18.5 kWh</TableCell>
+      <TableCell>Today's sessions</TableCell>
+      <TableCell className="text-right font-medium">6,210</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Monthly Total</TableCell>
-      <TableCell className="text-right font-medium">542 kWh</TableCell>
+      <TableCell>This month</TableCell>
+      <TableCell className="text-right font-medium">186,420</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Lifetime</TableCell>
-      <TableCell className="text-right font-medium">12.4 MWh</TableCell>
+      <TableCell>All-time</TableCell>
+      <TableCell className="text-right font-medium">12.4M</TableCell>
     </TableRow>
   </TableBody>
 </Table>`}
@@ -276,20 +276,20 @@ export default function TablePage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell>Current Power</TableCell>
-                <TableCell className="text-right font-medium">4.2 kW</TableCell>
+                <TableCell>Active users</TableCell>
+                <TableCell className="text-right font-medium">1,284</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Today&apos;s Production</TableCell>
-                <TableCell className="text-right font-medium">18.5 kWh</TableCell>
+                <TableCell>Today&apos;s sessions</TableCell>
+                <TableCell className="text-right font-medium">6,210</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Monthly Total</TableCell>
-                <TableCell className="text-right font-medium">542 kWh</TableCell>
+                <TableCell>This month</TableCell>
+                <TableCell className="text-right font-medium">186,420</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Lifetime</TableCell>
-                <TableCell className="text-right font-medium">12.4 MWh</TableCell>
+                <TableCell>All-time</TableCell>
+                <TableCell className="text-right font-medium">12.4M</TableCell>
               </TableRow>
             </TableBody>
           </Table>

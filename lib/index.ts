@@ -159,3 +159,51 @@ export { cn } from "./utils";
 
 // Providers
 export { LenisProvider } from "../components/lenis-provider";
+
+// Theme system — runtime skinning (OKLCH generator-based)
+export {
+  RampThemeProvider,
+  useRampTheme,
+  useMaybeRampTheme,
+  RAMP_PRE_HYDRATION_SCRIPT,
+  ALL_MODES,
+  type RampThemeProviderProps,
+} from "../components/ramp-theme-provider";
+export { RampThemeSwitcher } from "../components/ramp-theme-switcher";
+export { RampModeSwitcher } from "../components/ramp-mode-switcher";
+export { ThemeToggle } from "../components/theme-toggle";
+export {
+  // Generator + core
+  generateTheme,
+  themeToCSSVars,
+  applyThemeToRoot,
+  // Registry
+  builtInThemes,
+  defaultThemeId,
+  getTheme,
+  listThemes,
+  // Built-in inputs (for round-trip editing in the theme builder)
+  rampInput,
+  paperInput,
+  BUILT_IN_INPUTS,
+  // User-theme CRUD
+  listUserThemes,
+  loadUserThemeInput,
+  saveUserTheme,
+  deleteUserTheme,
+  duplicateTheme,
+  // Types
+  type GeneratedTheme,
+  type ThemeInput,
+  type ModeName,
+  type Ramp,
+  type OKLCHTriplet,
+  type FontKey,
+  type TypeScalePreset,
+  type SpacingDensity,
+  type RadiusStyle,
+  type ShadowIntensity,
+  type ButtonShape,
+  type InputStyle,
+  type CardStyle,
+} from "./themes";

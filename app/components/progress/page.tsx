@@ -113,11 +113,11 @@ useEffect(() => {
           </div>
         </ComponentPreview>
 
-        <h3 className="text-lg font-medium">Battery Level</h3>
+        <h3 className="text-lg font-medium">With Label</h3>
         <ComponentPreview
           code={`<div className="space-y-2">
   <div className="flex justify-between text-sm">
-    <Label>Battery</Label>
+    <Label>Loading</Label>
     <span className="text-muted-foreground">85%</span>
   </div>
   <Progress value={85} className="h-2" />
@@ -125,7 +125,7 @@ useEffect(() => {
         >
           <div className="space-y-2 w-full max-w-sm">
             <div className="flex justify-between text-sm">
-              <Label>Battery</Label>
+              <Label>Loading</Label>
               <span className="text-muted-foreground">85%</span>
             </div>
             <Progress value={85} className="h-2" />
@@ -137,21 +137,21 @@ useEffect(() => {
           code={`<div className="space-y-4">
   <div className="space-y-2">
     <div className="flex justify-between text-sm">
-      <Label>Solar</Label>
+      <Label>Storage</Label>
       <span className="text-muted-foreground">92%</span>
     </div>
     <Progress value={92} />
   </div>
   <div className="space-y-2">
     <div className="flex justify-between text-sm">
-      <Label>Grid</Label>
+      <Label>CPU</Label>
       <span className="text-muted-foreground">45%</span>
     </div>
     <Progress value={45} />
   </div>
   <div className="space-y-2">
     <div className="flex justify-between text-sm">
-      <Label>Battery</Label>
+      <Label>Memory</Label>
       <span className="text-muted-foreground">78%</span>
     </div>
     <Progress value={78} />
@@ -161,21 +161,21 @@ useEffect(() => {
           <div className="space-y-4 w-full max-w-sm">
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <Label>Solar</Label>
+                <Label>Storage</Label>
                 <span className="text-muted-foreground">92%</span>
               </div>
               <Progress value={92} />
             </div>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <Label>Grid</Label>
+                <Label>CPU</Label>
                 <span className="text-muted-foreground">45%</span>
               </div>
               <Progress value={45} />
             </div>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <Label>Battery</Label>
+                <Label>Memory</Label>
                 <span className="text-muted-foreground">78%</span>
               </div>
               <Progress value={78} />
@@ -187,7 +187,7 @@ useEffect(() => {
         <ComponentPreview
           code={`<div className="space-y-2">
   <div className="flex justify-between text-sm">
-    <Label>Uploading firmware...</Label>
+    <Label>Uploading file...</Label>
     <span className="text-muted-foreground">2.4 MB / 8 MB</span>
   </div>
   <Progress value={30} />
@@ -195,7 +195,7 @@ useEffect(() => {
         >
           <div className="space-y-2 w-full max-w-sm">
             <div className="flex justify-between text-sm">
-              <Label>Uploading firmware...</Label>
+              <Label>Uploading file...</Label>
               <span className="text-muted-foreground">2.4 MB / 8 MB</span>
             </div>
             <Progress value={30} />

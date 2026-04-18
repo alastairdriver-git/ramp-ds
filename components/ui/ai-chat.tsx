@@ -24,15 +24,15 @@ interface AIChatProps {
 }
 
 const DEFAULT_SUGGESTED_PROMPTS = [
-  { icon: <Zap className="w-4 h-4" />, text: "What's my solar production?" },
-  { icon: <Sparkles className="w-4 h-4" />, text: "How can I optimize energy?" },
+  { icon: <Sparkles className="w-4 h-4" />, text: "Ask me anything" },
+  { icon: <Zap className="w-4 h-4" />, text: "Quick summary" },
 ];
 
 export function AIChat({
   messages = [],
   onSendMessage,
   isLoading = false,
-  placeholder = "Ask about your energy system...",
+  placeholder = "Ask a question...",
   suggestedPrompts = DEFAULT_SUGGESTED_PROMPTS,
   className,
 }: AIChatProps) {
@@ -140,10 +140,10 @@ export function AIChat({
                 </motion.div>
 
                 <h3 className="text-lg font-semibold text-rds-gray-900 dark:text-white mb-2">
-                  Sourceful AI Assistant
+                  How can I help?
                 </h3>
                 <p className="text-sm text-rds-gray-500 dark:text-rds-gray-400 max-w-xs mb-6">
-                  Ask me anything about your energy system. I can help you monitor, analyze, and control your devices.
+                  Ask a question or pick a prompt to get started.
                 </p>
 
                 {/* Suggested prompts */}

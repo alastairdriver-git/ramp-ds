@@ -30,13 +30,13 @@ export function ComponentPreview({
           <TabsList className="h-10 bg-transparent p-0">
             <TabsTrigger
               value="preview"
-              className="rounded-none border-b-2 border-transparent data-[state=active]:border-rds-green-500 data-[state=active]:bg-transparent"
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:bg-transparent"
             >
               Preview
             </TabsTrigger>
             <TabsTrigger
               value="code"
-              className="rounded-none border-b-2 border-transparent data-[state=active]:border-rds-green-500 data-[state=active]:bg-transparent"
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:bg-transparent"
             >
               Code
             </TabsTrigger>

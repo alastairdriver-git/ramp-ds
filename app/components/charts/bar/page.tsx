@@ -19,33 +19,33 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ComponentNav } from "@/components/component-nav";
 
-const energyData = [
-  { month: "Jan", solar: 186, grid: 80 },
-  { month: "Feb", solar: 205, grid: 65 },
-  { month: "Mar", solar: 237, grid: 50 },
-  { month: "Apr", solar: 273, grid: 40 },
-  { month: "May", solar: 309, grid: 30 },
-  { month: "Jun", solar: 314, grid: 25 },
+const trafficData = [
+  { month: "Jan", desktop: 186, grid: 80 },
+  { month: "Feb", desktop: 205, grid: 65 },
+  { month: "Mar", desktop: 237, grid: 50 },
+  { month: "Apr", desktop: 273, grid: 40 },
+  { month: "May", desktop: 309, grid: 30 },
+  { month: "Jun", desktop: 314, grid: 25 },
 ];
 
 const horizontalData = [
-  { source: "Solar", value: 314 },
+  { source: "Desktop", value: 314 },
   { source: "Wind", value: 186 },
   { source: "Hydro", value: 95 },
-  { source: "Grid", value: 65 },
+  { source: "Mobile", value: 65 },
 ];
 
 const chartConfig = {
-  solar: {
-    label: "Solar",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
   },
-  grid: {
-    label: "Grid",
+  mobile: {
+    label: "Mobile",
     color: "hsl(220, 14%, 50%)",
   },
   value: {
-    label: "Energy",
+    label: "Traffic",
     color: "hsl(142, 76%, 36%)",
   },
 } satisfies ChartConfig;
@@ -67,17 +67,17 @@ export default function BarChartPage() {
         </h2>
         <Card>
           <CardHeader>
-            <CardTitle>Monthly Solar Production</CardTitle>
-            <CardDescription>Energy generated in kWh per month</CardDescription>
+            <CardTitle>Monthly Desktop Production</CardTitle>
+            <CardDescription>Monthly desktop visitors</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <BarChart data={energyData}>
+              <BarChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="solar" fill="var(--color-solar)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ChartContainer>
           </CardContent>
@@ -94,19 +94,19 @@ export default function BarChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Solar vs Grid</CardTitle>
-            <CardDescription>Monthly comparison of energy sources</CardDescription>
+            <CardTitle>Desktop vs Grid</CardTitle>
+            <CardDescription>Monthly comparison of traffic sources</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <BarChart data={energyData}>
+              <BarChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <ChartLegend content={<ChartLegendContent />} />
-                <Bar dataKey="solar" fill="var(--color-solar)" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="grid" fill="var(--color-grid)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ChartContainer>
           </CardContent>
@@ -123,19 +123,19 @@ export default function BarChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Total Energy Mix</CardTitle>
-            <CardDescription>Stacked view of solar and grid import</CardDescription>
+            <CardTitle>Total Device Mix</CardTitle>
+            <CardDescription>Stacked view of desktop and mobile</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <BarChart data={energyData}>
+              <BarChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <ChartLegend content={<ChartLegendContent />} />
-                <Bar dataKey="grid" stackId="a" fill="var(--color-grid)" />
-                <Bar dataKey="solar" stackId="a" fill="var(--color-solar)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="mobile" stackId="a" fill="var(--color-mobile)" />
+                <Bar dataKey="desktop" stackId="a" fill="var(--color-desktop)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ChartContainer>
           </CardContent>
@@ -152,8 +152,8 @@ export default function BarChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Energy by Source</CardTitle>
-            <CardDescription>Total energy contribution by source type</CardDescription>
+            <CardTitle>Traffic by Source</CardTitle>
+            <CardDescription>Total traffic contribution by source type</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[250px] w-full">
@@ -182,11 +182,11 @@ export default function BarChartPage() {
           With Negative Values
         </h2>
         <p className="text-muted-foreground">
-          Display both positive and negative values (e.g., energy import/export).
+          Display both positive and negative values (e.g., traffic import/export).
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Net Energy Flow</CardTitle>
+            <CardTitle>Net Traffic Flow</CardTitle>
             <CardDescription>Positive = export, Negative = import</CardDescription>
           </CardHeader>
           <CardContent>
@@ -240,13 +240,13 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
     <XAxis dataKey="month" />
     <YAxis />
     <ChartTooltip content={<ChartTooltipContent />} />
-    <Bar dataKey="solar" fill="var(--color-solar)" radius={[4, 4, 0, 0]} />
+    <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[4, 4, 0, 0]} />
   </BarChart>
 </ChartContainer>
 
 {/* Stacked bars */}
-<Bar dataKey="grid" stackId="a" fill="var(--color-grid)" />
-<Bar dataKey="solar" stackId="a" fill="var(--color-solar)" />
+<Bar dataKey="mobile" stackId="a" fill="var(--color-mobile)" />
+<Bar dataKey="desktop" stackId="a" fill="var(--color-desktop)" />
 
 {/* Horizontal layout */}
 <BarChart data={data} layout="vertical">

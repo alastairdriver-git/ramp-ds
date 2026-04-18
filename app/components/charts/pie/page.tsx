@@ -18,9 +18,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ComponentNav } from "@/components/component-nav";
 
 const energyMixData = [
-  { name: "solar", value: 65, fill: "var(--color-solar)" },
-  { name: "grid", value: 25, fill: "var(--color-grid)" },
-  { name: "battery", value: 10, fill: "var(--color-battery)" },
+  { name: "desktop", value: 65, fill: "var(--color-desktop)" },
+  { name: "mobile", value: 25, fill: "var(--color-mobile)" },
+  { name: "tablet", value: 10, fill: "var(--color-tablet)" },
 ];
 
 const detailedData = [
@@ -28,28 +28,28 @@ const detailedData = [
   { name: "community", value: 20, fill: "hsl(142, 60%, 50%)" },
   { name: "gridPeak", value: 15, fill: "hsl(220, 14%, 40%)" },
   { name: "gridOffPeak", value: 10, fill: "hsl(220, 14%, 60%)" },
-  { name: "battery", value: 10, fill: "hsl(48, 100%, 50%)" },
+  { name: "tablet", value: 10, fill: "hsl(48, 100%, 50%)" },
 ];
 
 const chartConfig = {
-  solar: {
-    label: "Solar",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
   },
-  grid: {
-    label: "Grid",
+  mobile: {
+    label: "Mobile",
     color: "hsl(220, 14%, 50%)",
   },
-  battery: {
-    label: "Battery",
+  tablet: {
+    label: "Tablet",
     color: "hsl(48, 100%, 50%)",
   },
   rooftop: {
-    label: "Rooftop Solar",
+    label: "Desktop Chrome",
     color: "hsl(142, 76%, 36%)",
   },
   community: {
-    label: "Community Solar",
+    label: "Desktop Safari",
     color: "hsl(142, 60%, 50%)",
   },
   gridPeak: {
@@ -81,8 +81,8 @@ export default function PieChartPage() {
         </h2>
         <Card>
           <CardHeader>
-            <CardTitle>Energy Mix</CardTitle>
-            <CardDescription>Distribution of energy sources</CardDescription>
+            <CardTitle>Device Mix</CardTitle>
+            <CardDescription>Distribution of traffic sources</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
@@ -114,7 +114,7 @@ export default function PieChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Energy Distribution</CardTitle>
+            <CardTitle>Traffic Distribution</CardTitle>
             <CardDescription>With center label showing total</CardDescription>
           </CardHeader>
           <CardContent>
@@ -178,8 +178,8 @@ export default function PieChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Solar Percentage</CardTitle>
-            <CardDescription>Proportion of solar in energy mix</CardDescription>
+            <CardTitle>Desktop Percentage</CardTitle>
+            <CardDescription>Proportion of desktop in device mix</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
@@ -213,7 +213,7 @@ export default function PieChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Detailed Energy Sources</CardTitle>
+            <CardTitle>Detailed Traffic Sources</CardTitle>
             <CardDescription>Breakdown by source type</CardDescription>
           </CardHeader>
           <CardContent>
@@ -250,16 +250,16 @@ export default function PieChartPage() {
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Summer</CardTitle>
-              <CardDescription>High solar production</CardDescription>
+              <CardDescription>High desktop production</CardDescription>
             </CardHeader>
             <CardContent>
               <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
                 <PieChart>
                   <Pie
                     data={[
-                      { name: "solar", value: 75, fill: "var(--color-solar)" },
-                      { name: "grid", value: 20, fill: "var(--color-grid)" },
-                      { name: "battery", value: 5, fill: "var(--color-battery)" },
+                      { name: "desktop", value: 75, fill: "var(--color-desktop)" },
+                      { name: "mobile", value: 20, fill: "var(--color-mobile)" },
+                      { name: "tablet", value: 5, fill: "var(--color-tablet)" },
                     ]}
                     dataKey="value"
                     nameKey="name"
@@ -275,16 +275,16 @@ export default function PieChartPage() {
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Winter</CardTitle>
-              <CardDescription>Lower solar production</CardDescription>
+              <CardDescription>Lower desktop production</CardDescription>
             </CardHeader>
             <CardContent>
               <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
                 <PieChart>
                   <Pie
                     data={[
-                      { name: "solar", value: 35, fill: "var(--color-solar)" },
-                      { name: "grid", value: 55, fill: "var(--color-grid)" },
-                      { name: "battery", value: 10, fill: "var(--color-battery)" },
+                      { name: "desktop", value: 35, fill: "var(--color-desktop)" },
+                      { name: "mobile", value: 55, fill: "var(--color-mobile)" },
+                      { name: "tablet", value: 10, fill: "var(--color-tablet)" },
                     ]}
                     dataKey="value"
                     nameKey="name"
@@ -311,8 +311,8 @@ export default function PieChartPage() {
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const data = [
-  { name: "solar", value: 65, fill: "var(--color-solar)" },
-  { name: "grid", value: 25, fill: "var(--color-grid)" },
+  { name: "desktop", value: 65, fill: "var(--color-desktop)" },
+  { name: "mobile", value: 25, fill: "var(--color-mobile)" },
 ]
 
 <ChartContainer config={chartConfig} className="min-h-[300px]">

@@ -78,11 +78,11 @@ export default function HoverCardPage() {
                 <div className="space-y-1">
                   <h4 className="text-sm font-semibold">John Doe</h4>
                   <p className="text-sm text-muted-foreground">
-                    Energy Systems Engineer at Sourceful
+                    Product Designer at Ramp
                   </p>
                   <div className="flex gap-4 pt-2 text-xs text-muted-foreground">
-                    <span>5 sites</span>
-                    <span>12 devices</span>
+                    <span>12 projects</span>
+                    <span>4 teams</span>
                   </div>
                 </div>
               </div>

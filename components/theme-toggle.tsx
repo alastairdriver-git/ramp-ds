@@ -1,20 +1,25 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Sun, Moon } from "lucide-react";
+import { useRampTheme } from "@/components/ramp-theme-provider";
 
+/**
+ * Binary light/dark toggle — flips between `light` and `dark` modes.
+ * For the full 4-way picker (including super-light / super-dark), use
+ * <RampModeSwitcher /> instead.
+ */
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-
+  const { isDark, setMode } = useRampTheme();
   return (
     <Button
       variant="ghost"
       size="sm"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setMode(isDark ? "light" : "dark")}
       className="gap-2"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      {theme === "dark" ? (
+      {isDark ? (
         <>
           <Sun className="h-4 w-4" />
           <span className="hidden sm:inline">Light</span>

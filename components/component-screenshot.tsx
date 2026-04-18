@@ -24,14 +24,9 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Calendar } from "@/components/ui/calendar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { AlertCircle, Bold, Italic, Underline, Sun, Moon } from "lucide-react";
+import { AlertCircle, Bold, Italic, Underline } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis } from "recharts";
-import { SitesMap } from "@/components/ui/sites-map";
-import { EnergyFlow } from "@/components/ui/energy-flow";
 import { AIChat } from "@/components/ui/ai-chat";
-import { EMSSchedule } from "@/components/ui/ems-schedule";
-import { ElectricityPrice } from "@/components/ui/electricity-price";
-import { WeatherCard } from "@/components/ui/weather-card";
 
 const chartData = [
   { month: "Jan", value: 186 },
@@ -42,7 +37,7 @@ const chartData = [
 const chartConfig = {
   value: {
     label: "Value",
-    color: "hsl(var(--primary))",
+    color: "oklch(var(--primary))",
   },
 };
 
@@ -345,60 +340,13 @@ export function ComponentScreenshot({ name }: { name: string }) {
         </div>
       </ScrollArea>
     ),
-    "Sites Map": (
-      <div className="w-[240px] h-[160px] bg-muted rounded-lg flex items-center justify-center text-xs text-muted-foreground">
-        Interactive Map Preview
-      </div>
-    ),
-    "Energy Flow": (
-      <div className="w-[240px] h-[160px] bg-muted rounded-lg flex items-center justify-center text-xs text-muted-foreground">
-        Energy Flow Diagram
-      </div>
-    ),
     "AI Chat": (
       <div className="w-[240px] h-[160px] border rounded-lg p-3 flex flex-col justify-between">
         <div className="space-y-2">
           <div className="bg-primary/10 rounded-lg p-2 text-xs">Hi, how can I help?</div>
-          <div className="bg-muted rounded-lg p-2 text-xs ml-6">Show energy data</div>
+          <div className="bg-muted rounded-lg p-2 text-xs ml-6">Show me the Card component</div>
         </div>
         <Input placeholder="Type a message..." className="h-8 text-xs" />
-      </div>
-    ),
-    "EMS Schedule": (
-      <div className="w-[240px] h-[120px] border rounded-lg p-3">
-        <div className="text-xs font-medium mb-2">Schedule</div>
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-16 bg-primary rounded" />
-            <span className="text-xs">06:00</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-24 bg-yellow-400 rounded" />
-            <span className="text-xs">12:00</span>
-          </div>
-        </div>
-      </div>
-    ),
-    "Electricity Price": (
-      <div className="w-[240px] h-[120px] border rounded-lg p-3">
-        <div className="text-xs font-medium mb-2">Electricity Price</div>
-        <div className="flex items-end justify-between h-16">
-          {[40, 60, 45, 70, 55, 80].map((height, i) => (
-            <div key={i} className="w-6 bg-primary rounded-t" style={{ height: `${height}%` }} />
-          ))}
-        </div>
-      </div>
-    ),
-    "Weather Card": (
-      <div className="w-[240px] border rounded-lg p-3">
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-xs text-muted-foreground">Stockholm</div>
-            <div className="text-2xl font-bold">22°</div>
-          </div>
-          <Sun className="h-8 w-8 text-yellow-400" />
-        </div>
-        <div className="text-xs text-muted-foreground mt-2">Partly cloudy</div>
       </div>
     ),
   };

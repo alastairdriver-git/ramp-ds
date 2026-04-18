@@ -7,9 +7,9 @@ import { Loader2, Check, X, Circle, Zap, AlertTriangle } from "lucide-react";
 const badgeProps = [
   {
     name: "variant",
-    type: '"default" | "secondary" | "destructive" | "outline" | "energy" | "success" | "warning" | "info" | "*-soft" | "*-outline"',
+    type: '"default" | "secondary" | "destructive" | "outline" | "highlight" | "success" | "warning" | "info" | "*-soft" | "*-outline"',
     default: '"default"',
-    description: "The visual style of the badge. Soft and outline variants available for success, warning, destructive, info, energy.",
+    description: "The visual style of the badge. Soft and outline variants available for success, warning, destructive, info, highlight.",
   },
   {
     name: "rounded",
@@ -70,7 +70,7 @@ export default function BadgePage() {
   <Badge variant="success">Success</Badge>
   <Badge variant="warning">Warning</Badge>
   <Badge variant="info">Info</Badge>
-  <Badge variant="energy">Energy</Badge>
+  <Badge variant="highlight">Highlight</Badge>
 </div>`}
         >
           <div className="flex flex-wrap gap-2">
@@ -81,7 +81,7 @@ export default function BadgePage() {
             <Badge variant="success">Success</Badge>
             <Badge variant="warning">Warning</Badge>
             <Badge variant="info">Info</Badge>
-            <Badge variant="energy">Energy</Badge>
+            <Badge variant="highlight">Highlight</Badge>
           </div>
         </ComponentPreview>
 
@@ -92,7 +92,7 @@ export default function BadgePage() {
   <Badge variant="warning-soft">Warning</Badge>
   <Badge variant="destructive-soft">Error</Badge>
   <Badge variant="info-soft">Info</Badge>
-  <Badge variant="energy-soft">Energy</Badge>
+  <Badge variant="highlight-soft">Highlight</Badge>
 </div>`}
         >
           <div className="flex flex-wrap gap-2">
@@ -100,7 +100,7 @@ export default function BadgePage() {
             <Badge variant="warning-soft">Warning</Badge>
             <Badge variant="destructive-soft">Error</Badge>
             <Badge variant="info-soft">Info</Badge>
-            <Badge variant="energy-soft">Energy</Badge>
+            <Badge variant="highlight-soft">Highlight</Badge>
           </div>
         </ComponentPreview>
 
@@ -150,7 +150,7 @@ export default function BadgePage() {
   <Badge variant="warning-soft">
     <AlertTriangle /> Warning
   </Badge>
-  <Badge variant="energy-soft">
+  <Badge variant="highlight-soft">
     <Zap /> Active
   </Badge>
 </div>`}
@@ -165,7 +165,7 @@ export default function BadgePage() {
             <Badge variant="warning-soft">
               <AlertTriangle /> Warning
             </Badge>
-            <Badge variant="energy-soft">
+            <Badge variant="highlight-soft">
               <Zap /> Active
             </Badge>
           </div>
@@ -225,18 +225,18 @@ export default function BadgePage() {
           </div>
         </ComponentPreview>
 
-        <h3 className="text-lg font-medium">Device Types</h3>
+        <h3 className="text-lg font-medium">Category Tags</h3>
         <ComponentPreview
           code={`<div className="flex flex-wrap gap-2">
-  <Badge variant="energy">Solar</Badge>
-  <Badge variant="info">Battery</Badge>
-  <Badge variant="secondary">EV Charger</Badge>
+  <Badge variant="highlight">New</Badge>
+  <Badge variant="info">Beta</Badge>
+  <Badge variant="secondary">v2.0</Badge>
 </div>`}
         >
           <div className="flex flex-wrap gap-2">
-            <Badge variant="energy">Solar</Badge>
-            <Badge variant="info">Battery</Badge>
-            <Badge variant="secondary">EV Charger</Badge>
+            <Badge variant="highlight">New</Badge>
+            <Badge variant="info">Beta</Badge>
+            <Badge variant="secondary">v2.0</Badge>
           </div>
         </ComponentPreview>
 

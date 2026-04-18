@@ -2,25 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Logo } from "@/components/logo";
 import { SearchCommand, SearchTrigger } from "@/components/search-command";
 import { MobileNav } from "@/components/mobile-nav";
-import { BlockThemeSelector } from "@/components/block-theme-selector";
+import { RampThemeSwitcher } from "@/components/ramp-theme-switcher";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Keyboard shortcut for search (⌘K or Ctrl+K)
   useEffect(() => {
@@ -34,10 +26,6 @@ export function SiteHeader() {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
 
   const navItems = [
     { href: "/docs", label: "Docs" },
@@ -80,16 +68,8 @@ export function SiteHeader() {
             <SearchTrigger onClick={() => setSearchOpen(true)} />
 
             <div className="hidden md:flex items-center gap-2">
-              <BlockThemeSelector />
-              {mounted && (
-                <Button variant="ghost" size="icon" onClick={toggleTheme}>
-                  {theme === "light" ? (
-                    <Moon className="h-4 w-4" />
-                  ) : (
-                    <Sun className="h-4 w-4" />
-                  )}
-                </Button>
-              )}
+              <RampThemeSwitcher />
+              <ThemeToggle />
             </div>
             <MobileNav />
           </div>

@@ -39,7 +39,7 @@ const chartData = [
 const chartConfig = {
   value: {
     label: "Energy",
-    color: "hsl(var(--primary))",
+    color: "oklch(var(--primary))",
   },
 };
 

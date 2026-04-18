@@ -198,14 +198,14 @@ export default function TemplatePage({ params }: TemplatePageProps) {
 function getComponentsForTemplate(templateId: string): string[] {
   const componentMap: Record<string, string[]> = {
     "energy-dashboard": ["Card", "Badge", "Button", "Chart", "Progress"],
-    "site-overview": ["Card", "Badge", "SitesMap", "Button"],
+    "site-overview": ["Card", "Badge", "Button"],
     "analytics-dashboard": ["Card", "Chart", "Badge", "Button", "Select"],
     "settings-page": ["Card", "Input", "Label", "Button", "Tabs", "Separator"],
     "user-profile": ["Card", "Avatar", "Badge", "Button", "Input"],
     "login-page": ["Card", "Input", "Label", "Button"],
     "signup-page": ["Card", "Input", "Label", "Button", "Checkbox"],
     "device-list": ["Card", "Badge", "Button", "Table", "Input"],
-    "site-details": ["Card", "Tabs", "Badge", "Progress", "EnergyFlow"],
+    "site-details": ["Card", "Tabs", "Badge", "Progress"],
     "ai-assistant": ["Card", "Input", "Badge", "AIChat", "Button"],
     "notifications-center": ["Card", "Badge", "Button", "Separator"],
     "product-landing": ["SectionBlock", "CardBlock", "Button", "Badge"],

@@ -20,9 +20,9 @@ const progressData = [
 ];
 
 const multiData = [
-  { name: "solar", value: 85, fill: "hsl(142, 76%, 36%)" },
+  { name: "desktop", value: 85, fill: "hsl(142, 76%, 36%)" },
   { name: "wind", value: 65, fill: "hsl(200, 80%, 50%)" },
-  { name: "grid", value: 45, fill: "hsl(220, 14%, 50%)" },
+  { name: "mobile", value: 45, fill: "hsl(220, 14%, 50%)" },
 ];
 
 const chartConfig = {
@@ -30,16 +30,16 @@ const chartConfig = {
     label: "Progress",
     color: "hsl(142, 76%, 36%)",
   },
-  solar: {
-    label: "Solar",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
   },
   wind: {
     label: "Wind",
     color: "hsl(200, 80%, 50%)",
   },
-  grid: {
-    label: "Grid",
+  mobile: {
+    label: "Mobile",
     color: "hsl(220, 14%, 50%)",
   },
 } satisfies ChartConfig;
@@ -65,7 +65,7 @@ export default function RadialChartPage() {
         <Card>
           <CardHeader>
             <CardTitle>Daily Goal</CardTitle>
-            <CardDescription>Energy production target completion</CardDescription>
+            <CardDescription>Traffic production target completion</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[250px] w-full">
@@ -133,7 +133,7 @@ export default function RadialChartPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Energy Sources</CardTitle>
+            <CardTitle>Traffic Sources</CardTitle>
             <CardDescription>Production efficiency by source</CardDescription>
           </CardHeader>
           <CardContent>
@@ -247,10 +247,10 @@ export default function RadialChartPage() {
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label: "Solar", value: 92, color: "hsl(142, 76%, 36%)" },
+            { label: "Desktop", value: 92, color: "hsl(142, 76%, 36%)" },
             { label: "Wind", value: 78, color: "hsl(200, 80%, 50%)" },
-            { label: "Battery", value: 65, color: "hsl(48, 100%, 50%)" },
-            { label: "Grid", value: 34, color: "hsl(220, 14%, 50%)" },
+            { label: "Tablet", value: 65, color: "hsl(48, 100%, 50%)" },
+            { label: "Mobile", value: 34, color: "hsl(220, 14%, 50%)" },
           ].map((item) => (
             <Card key={item.label}>
               <CardContent className="pt-4">

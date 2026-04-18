@@ -26,10 +26,10 @@ const weeklyData = [
 ];
 
 const chartConfig = {
-  solar: { label: "Solar", color: "hsl(var(--primary))" },
-  consumption: { label: "Consumption", color: "hsl(var(--muted-foreground))" },
+  solar: { label: "Solar", color: "oklch(var(--primary))" },
+  consumption: { label: "Consumption", color: "oklch(var(--muted-foreground))" },
   grid: { label: "Grid", color: "#3b82f6" },
-  production: { label: "Production", color: "hsl(var(--primary))" },
+  production: { label: "Production", color: "oklch(var(--primary))" },
   export: { label: "Export", color: "#facc15" },
   savings: { label: "Savings", color: "#22c55e" },
 } satisfies ChartConfig;

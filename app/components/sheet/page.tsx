@@ -121,27 +121,27 @@ export default function SheetPage() {
           Examples
         </h2>
 
-        <h3 className="text-lg font-medium">Device Settings</h3>
+        <h3 className="text-lg font-medium">Project Settings</h3>
         <ComponentPreview
           code={`<Sheet>
   <SheetTrigger asChild>
-    <Button>Device Settings</Button>
+    <Button>Project Settings</Button>
   </SheetTrigger>
   <SheetContent>
     <SheetHeader>
-      <SheetTitle>Device Settings</SheetTitle>
+      <SheetTitle>Project Settings</SheetTitle>
       <SheetDescription>
-        Configure your solar inverter settings.
+        Configure your project settings.
       </SheetDescription>
     </SheetHeader>
     <div className="grid gap-4 py-4">
       <div className="grid gap-2">
-        <Label htmlFor="name">Device Name</Label>
-        <Input id="name" defaultValue="Solar Inverter #1" />
+        <Label htmlFor="name">Project Name</Label>
+        <Input id="name" defaultValue="Marketing Site" />
       </div>
       <div className="grid gap-2">
-        <Label htmlFor="max-power">Max Power (kW)</Label>
-        <Input id="max-power" type="number" defaultValue="10" />
+        <Label htmlFor="team-size">Team Size</Label>
+        <Input id="team-size" type="number" defaultValue="10" />
       </div>
     </div>
     <SheetFooter>
@@ -152,23 +152,23 @@ export default function SheetPage() {
         >
           <Sheet>
             <SheetTrigger asChild>
-              <Button>Device Settings</Button>
+              <Button>Project Settings</Button>
             </SheetTrigger>
             <SheetContent>
               <SheetHeader>
-                <SheetTitle>Device Settings</SheetTitle>
+                <SheetTitle>Project Settings</SheetTitle>
                 <SheetDescription>
-                  Configure your solar inverter settings.
+                  Configure your project settings.
                 </SheetDescription>
               </SheetHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Device Name</Label>
-                  <Input id="name" defaultValue="Solar Inverter #1" />
+                  <Label htmlFor="name">Project Name</Label>
+                  <Input id="name" defaultValue="Marketing Site" />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="max-power">Max Power (kW)</Label>
-                  <Input id="max-power" type="number" defaultValue="10" />
+                  <Label htmlFor="team-size">Team Size</Label>
+                  <Input id="team-size" type="number" defaultValue="10" />
                 </div>
               </div>
               <SheetFooter>
@@ -188,12 +188,12 @@ export default function SheetPage() {
     <SheetHeader>
       <SheetTitle>Navigation</SheetTitle>
       <SheetDescription>
-        Browse your energy dashboard.
+        Browse your workspace.
       </SheetDescription>
     </SheetHeader>
     <nav className="grid gap-2 py-4">
       <Button variant="ghost" className="justify-start">Dashboard</Button>
-      <Button variant="ghost" className="justify-start">Devices</Button>
+      <Button variant="ghost" className="justify-start">Projects</Button>
       <Button variant="ghost" className="justify-start">Analytics</Button>
       <Button variant="ghost" className="justify-start">Settings</Button>
     </nav>
@@ -208,12 +208,12 @@ export default function SheetPage() {
               <SheetHeader>
                 <SheetTitle>Navigation</SheetTitle>
                 <SheetDescription>
-                  Browse your energy dashboard.
+                  Browse your workspace.
                 </SheetDescription>
               </SheetHeader>
               <nav className="grid gap-2 py-4">
                 <Button variant="ghost" className="justify-start">Dashboard</Button>
-                <Button variant="ghost" className="justify-start">Devices</Button>
+                <Button variant="ghost" className="justify-start">Projects</Button>
                 <Button variant="ghost" className="justify-start">Analytics</Button>
                 <Button variant="ghost" className="justify-start">Settings</Button>
               </nav>

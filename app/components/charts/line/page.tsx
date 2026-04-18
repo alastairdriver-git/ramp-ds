@@ -19,36 +19,36 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ComponentNav } from "@/components/component-nav";
 
-const energyData = [
-  { time: "00:00", solar: 0, consumption: 45 },
-  { time: "04:00", solar: 0, consumption: 38 },
-  { time: "08:00", solar: 120, consumption: 85 },
-  { time: "12:00", solar: 280, consumption: 95 },
-  { time: "16:00", solar: 180, consumption: 120 },
-  { time: "20:00", solar: 20, consumption: 150 },
-  { time: "24:00", solar: 0, consumption: 60 },
+const trafficData = [
+  { time: "00:00", desktop: 0, consumption: 45 },
+  { time: "04:00", desktop: 0, consumption: 38 },
+  { time: "08:00", desktop: 120, consumption: 85 },
+  { time: "12:00", desktop: 280, consumption: 95 },
+  { time: "16:00", desktop: 180, consumption: 120 },
+  { time: "20:00", desktop: 20, consumption: 150 },
+  { time: "24:00", desktop: 0, consumption: 60 },
 ];
 
 const monthlyData = [
-  { month: "Jan", solar: 186, grid: 80 },
-  { month: "Feb", solar: 205, grid: 65 },
-  { month: "Mar", solar: 237, grid: 50 },
-  { month: "Apr", solar: 273, grid: 40 },
-  { month: "May", solar: 309, grid: 30 },
-  { month: "Jun", solar: 314, grid: 25 },
+  { month: "Jan", desktop: 186, grid: 80 },
+  { month: "Feb", desktop: 205, grid: 65 },
+  { month: "Mar", desktop: 237, grid: 50 },
+  { month: "Apr", desktop: 273, grid: 40 },
+  { month: "May", desktop: 309, grid: 30 },
+  { month: "Jun", desktop: 314, grid: 25 },
 ];
 
 const chartConfig = {
-  solar: {
-    label: "Solar",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
   },
   consumption: {
     label: "Consumption",
     color: "hsl(0, 84%, 60%)",
   },
-  grid: {
-    label: "Grid",
+  mobile: {
+    label: "Mobile",
     color: "hsl(220, 14%, 50%)",
   },
 } satisfies ChartConfig;
@@ -70,20 +70,20 @@ export default function LineChartPage() {
         </h2>
         <Card>
           <CardHeader>
-            <CardTitle>Daily Solar Production</CardTitle>
-            <CardDescription>Solar output throughout the day in watts</CardDescription>
+            <CardTitle>Daily Desktop Production</CardTitle>
+            <CardDescription>Desktop output throughout the day in watts</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <LineChart data={energyData}>
+              <LineChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="time" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <Line
                   type="monotone"
-                  dataKey="solar"
-                  stroke="var(--color-solar)"
+                  dataKey="desktop"
+                  stroke="var(--color-desktop)"
                   strokeWidth={2}
                   dot={false}
                 />
@@ -104,11 +104,11 @@ export default function LineChartPage() {
         <Card>
           <CardHeader>
             <CardTitle>Production vs Consumption</CardTitle>
-            <CardDescription>Solar production compared to household consumption</CardDescription>
+            <CardDescription>Desktop production compared to household consumption</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <LineChart data={energyData}>
+              <LineChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="time" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
@@ -116,8 +116,8 @@ export default function LineChartPage() {
                 <ChartLegend content={<ChartLegendContent />} />
                 <Line
                   type="monotone"
-                  dataKey="solar"
-                  stroke="var(--color-solar)"
+                  dataKey="desktop"
+                  stroke="var(--color-desktop)"
                   strokeWidth={2}
                   dot={false}
                 />
@@ -145,7 +145,7 @@ export default function LineChartPage() {
         <Card>
           <CardHeader>
             <CardTitle>Monthly Trend</CardTitle>
-            <CardDescription>Solar vs grid import with data points</CardDescription>
+            <CardDescription>Desktop vs mobile with data points</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
@@ -157,18 +157,18 @@ export default function LineChartPage() {
                 <ChartLegend content={<ChartLegendContent />} />
                 <Line
                   type="monotone"
-                  dataKey="solar"
-                  stroke="var(--color-solar)"
+                  dataKey="desktop"
+                  stroke="var(--color-desktop)"
                   strokeWidth={2}
-                  dot={{ fill: "var(--color-solar)", strokeWidth: 2 }}
+                  dot={{ fill: "var(--color-desktop)", strokeWidth: 2 }}
                   activeDot={{ r: 6 }}
                 />
                 <Line
                   type="monotone"
-                  dataKey="grid"
-                  stroke="var(--color-grid)"
+                  dataKey="mobile"
+                  stroke="var(--color-mobile)"
                   strokeWidth={2}
-                  dot={{ fill: "var(--color-grid)", strokeWidth: 2 }}
+                  dot={{ fill: "var(--color-mobile)", strokeWidth: 2 }}
                   activeDot={{ r: 6 }}
                 />
               </LineChart>
@@ -192,7 +192,7 @@ export default function LineChartPage() {
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <LineChart data={energyData}>
+              <LineChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="time" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
@@ -200,8 +200,8 @@ export default function LineChartPage() {
                 <ReferenceLine y={100} stroke="hsl(48, 100%, 50%)" strokeDasharray="5 5" label={{ value: "Target", fill: "hsl(48, 100%, 40%)", fontSize: 12 }} />
                 <Line
                   type="monotone"
-                  dataKey="solar"
-                  stroke="var(--color-solar)"
+                  dataKey="desktop"
+                  stroke="var(--color-desktop)"
                   strokeWidth={2}
                   dot={false}
                 />
@@ -229,7 +229,7 @@ export default function LineChartPage() {
                 <LineChart data={monthlyData}>
                   <XAxis dataKey="month" tickLine={false} axisLine={false} />
                   <YAxis tickLine={false} axisLine={false} hide />
-                  <Line type="monotone" dataKey="solar" stroke="var(--color-solar)" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
                 </LineChart>
               </ChartContainer>
             </CardContent>
@@ -243,7 +243,7 @@ export default function LineChartPage() {
                 <LineChart data={monthlyData}>
                   <XAxis dataKey="month" tickLine={false} axisLine={false} />
                   <YAxis tickLine={false} axisLine={false} hide />
-                  <Line type="linear" dataKey="solar" stroke="var(--color-solar)" strokeWidth={2} dot={false} />
+                  <Line type="linear" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
                 </LineChart>
               </ChartContainer>
             </CardContent>
@@ -269,8 +269,8 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
     <ChartTooltip content={<ChartTooltipContent />} />
     <Line
       type="monotone"       {/* or "linear", "step" */}
-      dataKey="solar"
-      stroke="var(--color-solar)"
+      dataKey="desktop"
+      stroke="var(--color-desktop)"
       strokeWidth={2}
       dot={false}           {/* hide dots, or customize */}
       activeDot={{ r: 6 }}  {/* hover dot size */}

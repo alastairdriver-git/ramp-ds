@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Github, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useRampTheme } from "@/components/ramp-theme-provider";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -31,10 +31,10 @@ const navItems = [
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { isDark, setMode } = useRampTheme();
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setMode(isDark ? "light" : "dark");
   };
 
   return (
@@ -71,15 +71,15 @@ export function MobileNav() {
         <div className="flex items-center gap-2 mt-8 pt-8 border-t">
           <FeedbackButton />
           <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === "light" ? (
-              <Moon className="h-5 w-5" />
-            ) : (
+            {isDark ? (
               <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
             )}
           </Button>
           <Button variant="ghost" size="icon" asChild>
             <a
-              href="https://github.com/srcfl/srcful-design-system"
+              href="https://github.com/alastairdriver-git/ramp-ds"
               target="_blank"
               rel="noopener noreferrer"
             >

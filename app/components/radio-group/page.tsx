@@ -88,35 +88,35 @@ export default function RadioGroupPage() {
           Examples
         </h2>
 
-        <h3 className="text-lg font-medium">Charging Mode</h3>
+        <h3 className="text-lg font-medium">Plan Selection</h3>
         <ComponentPreview
-          code={`<RadioGroup defaultValue="smart">
+          code={`<RadioGroup defaultValue="pro">
   <div className="flex items-center space-x-2">
-    <RadioGroupItem value="smart" id="smart" />
-    <Label htmlFor="smart">Smart Charging</Label>
+    <RadioGroupItem value="free" id="free" />
+    <Label htmlFor="free">Free</Label>
   </div>
   <div className="flex items-center space-x-2">
-    <RadioGroupItem value="fast" id="fast" />
-    <Label htmlFor="fast">Fast Charging</Label>
+    <RadioGroupItem value="pro" id="pro" />
+    <Label htmlFor="pro">Pro</Label>
   </div>
   <div className="flex items-center space-x-2">
-    <RadioGroupItem value="eco" id="eco" />
-    <Label htmlFor="eco">Eco Mode</Label>
+    <RadioGroupItem value="team" id="team" />
+    <Label htmlFor="team">Team</Label>
   </div>
 </RadioGroup>`}
         >
-          <RadioGroup defaultValue="smart">
+          <RadioGroup defaultValue="pro">
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="smart" id="smart" />
-              <Label htmlFor="smart">Smart Charging</Label>
+              <RadioGroupItem value="free" id="free" />
+              <Label htmlFor="free">Free</Label>
             </div>
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="fast" id="fast" />
-              <Label htmlFor="fast">Fast Charging</Label>
+              <RadioGroupItem value="pro" id="pro" />
+              <Label htmlFor="pro">Pro</Label>
             </div>
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="eco" id="eco" />
-              <Label htmlFor="eco">Eco Mode</Label>
+              <RadioGroupItem value="team" id="team" />
+              <Label htmlFor="team">Team</Label>
             </div>
           </RadioGroup>
         </ComponentPreview>
@@ -129,7 +129,7 @@ export default function RadioGroupPage() {
     <div className="grid gap-1.5 leading-none">
       <Label htmlFor="automatic">Automatic</Label>
       <p className="text-sm text-muted-foreground">
-        System decides based on grid conditions.
+        System picks the best option based on your activity.
       </p>
     </div>
   </div>
@@ -138,7 +138,7 @@ export default function RadioGroupPage() {
     <div className="grid gap-1.5 leading-none">
       <Label htmlFor="manual">Manual</Label>
       <p className="text-sm text-muted-foreground">
-        You control when to charge and discharge.
+        You decide when updates are applied.
       </p>
     </div>
   </div>
@@ -147,7 +147,7 @@ export default function RadioGroupPage() {
     <div className="grid gap-1.5 leading-none">
       <Label htmlFor="scheduled">Scheduled</Label>
       <p className="text-sm text-muted-foreground">
-        Set specific times for charging.
+        Set specific times for updates to run.
       </p>
     </div>
   </div>
@@ -159,7 +159,7 @@ export default function RadioGroupPage() {
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="automatic">Automatic</Label>
                 <p className="text-sm text-muted-foreground">
-                  System decides based on grid conditions.
+                  System picks the best option based on your activity.
                 </p>
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function RadioGroupPage() {
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="manual">Manual</Label>
                 <p className="text-sm text-muted-foreground">
-                  You control when to charge and discharge.
+                  You decide when updates are applied.
                 </p>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function RadioGroupPage() {
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="scheduled">Scheduled</Label>
                 <p className="text-sm text-muted-foreground">
-                  Set specific times for charging.
+                  Set specific times for updates to run.
                 </p>
               </div>
             </div>

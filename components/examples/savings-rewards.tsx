@@ -464,7 +464,7 @@ export function SavingsRewardsExample() {
                       />
                     }
                   />
-                  <ReferenceLine yAxisId="power" y={0} stroke="hsl(var(--muted-foreground))" strokeWidth={1} />
+                  <ReferenceLine yAxisId="power" y={0} stroke="oklch(var(--muted-foreground))" strokeWidth={1} />
                   <Area
                     yAxisId="power"
                     type="monotone"

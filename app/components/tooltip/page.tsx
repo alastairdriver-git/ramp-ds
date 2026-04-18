@@ -241,7 +241,7 @@ export default function TooltipPage() {
         </Button>
       </TooltipTrigger>
       <TooltipContent>
-        <p>Energy status</p>
+        <p>Activity</p>
       </TooltipContent>
     </Tooltip>
     <Tooltip>
@@ -276,7 +276,7 @@ export default function TooltipPage() {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Energy status</p>
+                  <p>Activity</p>
                 </TooltipContent>
               </Tooltip>
               <Tooltip>

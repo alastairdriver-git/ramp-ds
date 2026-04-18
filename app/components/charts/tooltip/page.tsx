@@ -19,42 +19,42 @@ import {
 } from "recharts";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ComponentNav } from "@/components/component-nav";
-import { Zap, Sun, Battery } from "lucide-react";
+import { Monitor, Smartphone, Tablet } from "lucide-react";
 
-const energyData = [
-  { month: "Jan", solar: 186, grid: 80, battery: 45 },
-  { month: "Feb", solar: 205, grid: 65, battery: 52 },
-  { month: "Mar", solar: 237, grid: 50, battery: 61 },
-  { month: "Apr", solar: 273, grid: 40, battery: 70 },
-  { month: "May", solar: 309, grid: 30, battery: 82 },
-  { month: "Jun", solar: 314, grid: 25, battery: 89 },
+const trafficData = [
+  { month: "Jan", desktop: 186, mobile: 80, tablet: 45 },
+  { month: "Feb", desktop: 205, mobile: 65, tablet: 52 },
+  { month: "Mar", desktop: 237, mobile: 50, tablet: 61 },
+  { month: "Apr", desktop: 273, mobile: 40, tablet: 70 },
+  { month: "May", desktop: 309, mobile: 30, tablet: 82 },
+  { month: "Jun", desktop: 314, mobile: 25, tablet: 89 },
 ];
 
 const chartConfig = {
-  solar: {
-    label: "Solar Production",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
-    icon: Sun,
+    icon: Monitor,
   },
-  grid: {
-    label: "Grid Import",
+  mobile: {
+    label: "Mobile",
     color: "hsl(220, 14%, 50%)",
-    icon: Zap,
+    icon: Smartphone,
   },
-  battery: {
-    label: "Battery Storage",
+  tablet: {
+    label: "Tablet",
     color: "hsl(48, 100%, 50%)",
-    icon: Battery,
+    icon: Tablet,
   },
 } satisfies ChartConfig;
 
 const simpleConfig = {
-  solar: {
-    label: "Solar",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
   },
-  grid: {
-    label: "Grid",
+  mobile: {
+    label: "Mobile",
     color: "hsl(220, 14%, 50%)",
   },
 } satisfies ChartConfig;
@@ -79,17 +79,17 @@ export default function TooltipPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Energy Data</CardTitle>
+            <CardTitle>Traffic</CardTitle>
             <CardDescription>Hover over bars to see values</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={simpleConfig} className="min-h-[250px] w-full">
-              <BarChart data={energyData}>
+              <BarChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="solar" fill="var(--color-solar)" radius={4} />
+                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
               </BarChart>
             </ChartContainer>
           </CardContent>
@@ -111,11 +111,11 @@ export default function TooltipPage() {
             </CardHeader>
             <CardContent>
               <ChartContainer config={simpleConfig} className="min-h-[200px] w-full">
-                <LineChart data={energyData}>
+                <LineChart data={trafficData}>
                   <XAxis dataKey="month" tickLine={false} axisLine={false} />
                   <ChartTooltip content={<ChartTooltipContent indicator="dot" />} />
-                  <Line type="monotone" dataKey="solar" stroke="var(--color-solar)" strokeWidth={2} dot={false} />
-                  <Line type="monotone" dataKey="grid" stroke="var(--color-grid)" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="mobile" stroke="var(--color-mobile)" strokeWidth={2} dot={false} />
                 </LineChart>
               </ChartContainer>
             </CardContent>
@@ -126,11 +126,11 @@ export default function TooltipPage() {
             </CardHeader>
             <CardContent>
               <ChartContainer config={simpleConfig} className="min-h-[200px] w-full">
-                <LineChart data={energyData}>
+                <LineChart data={trafficData}>
                   <XAxis dataKey="month" tickLine={false} axisLine={false} />
                   <ChartTooltip content={<ChartTooltipContent indicator="line" />} />
-                  <Line type="monotone" dataKey="solar" stroke="var(--color-solar)" strokeWidth={2} dot={false} />
-                  <Line type="monotone" dataKey="grid" stroke="var(--color-grid)" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="mobile" stroke="var(--color-mobile)" strokeWidth={2} dot={false} />
                 </LineChart>
               </ChartContainer>
             </CardContent>
@@ -141,11 +141,11 @@ export default function TooltipPage() {
             </CardHeader>
             <CardContent>
               <ChartContainer config={simpleConfig} className="min-h-[200px] w-full">
-                <LineChart data={energyData}>
+                <LineChart data={trafficData}>
                   <XAxis dataKey="month" tickLine={false} axisLine={false} />
                   <ChartTooltip content={<ChartTooltipContent indicator="dashed" />} />
-                  <Line type="monotone" dataKey="solar" stroke="var(--color-solar)" strokeWidth={2} dot={false} />
-                  <Line type="monotone" dataKey="grid" stroke="var(--color-grid)" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="mobile" stroke="var(--color-mobile)" strokeWidth={2} dot={false} />
                 </LineChart>
               </ChartContainer>
             </CardContent>
@@ -163,17 +163,17 @@ export default function TooltipPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Solar Only</CardTitle>
+            <CardTitle>Desktop Only</CardTitle>
             <CardDescription>Tooltip without label header</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={simpleConfig} className="min-h-[250px] w-full">
-              <BarChart data={energyData}>
+              <BarChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-                <Bar dataKey="solar" fill="var(--color-solar)" radius={4} />
+                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
               </BarChart>
             </ChartContainer>
           </CardContent>
@@ -190,38 +190,38 @@ export default function TooltipPage() {
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Energy Mix</CardTitle>
+            <CardTitle>Device Mix</CardTitle>
             <CardDescription>Icons appear in tooltip and legend</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
-              <BarChart data={energyData}>
+              <BarChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <ChartLegend content={<ChartLegendContent />} />
-                <Bar dataKey="solar" fill="var(--color-solar)" radius={4} />
-                <Bar dataKey="grid" fill="var(--color-grid)" radius={4} />
-                <Bar dataKey="battery" fill="var(--color-battery)" radius={4} />
+                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+                <Bar dataKey="tablet" fill="var(--color-tablet)" radius={4} />
               </BarChart>
             </ChartContainer>
           </CardContent>
         </Card>
         <div className="rounded-lg bg-rds-gray-100 dark:bg-rds-gray-800 border border-rds-gray-200 dark:border-transparent p-4 font-mono text-sm text-rds-gray-900 dark:text-white overflow-x-auto">
           <pre>
-            <code>{`import { Sun, Zap, Battery } from "lucide-react"
+            <code>{`import { Monitor, Smartphone, Tablet } from "lucide-react"
 
 const chartConfig = {
-  solar: {
-    label: "Solar Production",
+  desktop: {
+    label: "Desktop",
     color: "hsl(142, 76%, 36%)",
-    icon: Sun,  // Icons show in tooltip
+    icon: Monitor,  // Icons show in tooltip
   },
-  grid: {
-    label: "Grid Import",
+  mobile: {
+    label: "Mobile",
     color: "hsl(220, 14%, 50%)",
-    icon: Zap,
+    icon: Smartphone,
   },
 }`}</code>
           </pre>
@@ -243,7 +243,7 @@ const chartConfig = {
           </CardHeader>
           <CardContent>
             <ChartContainer config={simpleConfig} className="min-h-[250px] w-full">
-              <LineChart data={energyData}>
+              <LineChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
@@ -254,7 +254,7 @@ const chartConfig = {
                     />
                   }
                 />
-                <Line type="monotone" dataKey="solar" stroke="var(--color-solar)" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
               </LineChart>
             </ChartContainer>
           </CardContent>
@@ -276,14 +276,14 @@ const chartConfig = {
             </CardHeader>
             <CardContent>
               <ChartContainer config={simpleConfig} className="min-h-[250px] w-full">
-                <BarChart data={energyData}>
+                <BarChart data={trafficData}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="month" tickLine={false} axisLine={false} />
                   <YAxis tickLine={false} axisLine={false} />
                   <ChartTooltip content={<ChartTooltipContent />} />
                   <ChartLegend verticalAlign="top" content={<ChartLegendContent />} />
-                  <Bar dataKey="solar" fill="var(--color-solar)" radius={4} />
-                  <Bar dataKey="grid" fill="var(--color-grid)" radius={4} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                  <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
                 </BarChart>
               </ChartContainer>
             </CardContent>
@@ -294,14 +294,14 @@ const chartConfig = {
             </CardHeader>
             <CardContent>
               <ChartContainer config={simpleConfig} className="min-h-[250px] w-full">
-                <BarChart data={energyData}>
+                <BarChart data={trafficData}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="month" tickLine={false} axisLine={false} />
                   <YAxis tickLine={false} axisLine={false} />
                   <ChartTooltip content={<ChartTooltipContent />} />
                   <ChartLegend verticalAlign="bottom" content={<ChartLegendContent />} />
-                  <Bar dataKey="solar" fill="var(--color-solar)" radius={4} />
-                  <Bar dataKey="grid" fill="var(--color-grid)" radius={4} />
+                  <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                  <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
                 </BarChart>
               </ChartContainer>
             </CardContent>

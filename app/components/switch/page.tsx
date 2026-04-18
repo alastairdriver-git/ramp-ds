@@ -124,22 +124,22 @@ export default function SwitchPage() {
         <ComponentPreview
           code={`<div className="flex items-center justify-between rounded-lg border p-4">
   <div className="space-y-0.5">
-    <Label htmlFor="smart-charging">Smart Charging</Label>
+    <Label htmlFor="auto-sync">Auto-sync</Label>
     <p className="text-sm text-muted-foreground">
-      Optimize charging based on grid conditions.
+      Keep your work in sync across every device.
     </p>
   </div>
-  <Switch id="smart-charging" />
+  <Switch id="auto-sync" />
 </div>`}
         >
           <div className="flex items-center justify-between rounded-lg border p-4 w-full max-w-md">
             <div className="space-y-0.5">
-              <Label htmlFor="smart-charging">Smart Charging</Label>
+              <Label htmlFor="auto-sync">Auto-sync</Label>
               <p className="text-sm text-muted-foreground">
-                Optimize charging based on grid conditions.
+                Keep your work in sync across every device.
               </p>
             </div>
-            <Switch id="smart-charging" />
+            <Switch id="auto-sync" />
           </div>
         </ComponentPreview>
       </div>

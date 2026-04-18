@@ -109,29 +109,29 @@ export default function SelectPage() {
         <h3 className="text-lg font-medium">With Label</h3>
         <ComponentPreview
           code={`<div className="space-y-2">
-  <Label>Device Type</Label>
+  <Label>Project Visibility</Label>
   <Select>
     <SelectTrigger>
-      <SelectValue placeholder="Select device" />
+      <SelectValue placeholder="Select visibility" />
     </SelectTrigger>
     <SelectContent>
-      <SelectItem value="inverter">Inverter</SelectItem>
-      <SelectItem value="battery">Battery</SelectItem>
-      <SelectItem value="ev-charger">EV Charger</SelectItem>
+      <SelectItem value="public">Public</SelectItem>
+      <SelectItem value="private">Private</SelectItem>
+      <SelectItem value="team">Team only</SelectItem>
     </SelectContent>
   </Select>
 </div>`}
         >
           <div className="space-y-2 w-full max-w-sm">
-            <Label>Device Type</Label>
+            <Label>Project Visibility</Label>
             <Select>
               <SelectTrigger>
-                <SelectValue placeholder="Select device" />
+                <SelectValue placeholder="Select visibility" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="inverter">Inverter</SelectItem>
-                <SelectItem value="battery">Battery</SelectItem>
-                <SelectItem value="ev-charger">EV Charger</SelectItem>
+                <SelectItem value="public">Public</SelectItem>
+                <SelectItem value="private">Private</SelectItem>
+                <SelectItem value="team">Team only</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -139,25 +139,25 @@ export default function SelectPage() {
 
         <h3 className="text-lg font-medium">With Default Value</h3>
         <ComponentPreview
-          code={`<Select defaultValue="solar">
+          code={`<Select defaultValue="sm">
   <SelectTrigger className="w-[180px]">
     <SelectValue />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="solar">Solar</SelectItem>
-    <SelectItem value="wind">Wind</SelectItem>
-    <SelectItem value="hydro">Hydro</SelectItem>
+    <SelectItem value="sm">Small</SelectItem>
+    <SelectItem value="md">Medium</SelectItem>
+    <SelectItem value="lg">Large</SelectItem>
   </SelectContent>
 </Select>`}
         >
-          <Select defaultValue="solar">
+          <Select defaultValue="sm">
             <SelectTrigger className="w-[180px]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="solar">Solar</SelectItem>
-              <SelectItem value="wind">Wind</SelectItem>
-              <SelectItem value="hydro">Hydro</SelectItem>
+              <SelectItem value="sm">Small</SelectItem>
+              <SelectItem value="md">Medium</SelectItem>
+              <SelectItem value="lg">Large</SelectItem>
             </SelectContent>
           </Select>
         </ComponentPreview>

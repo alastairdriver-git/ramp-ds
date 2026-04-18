@@ -118,14 +118,14 @@ export default function DropdownMenuPage() {
           Examples
         </h2>
 
-        <h3 className="text-lg font-medium">Device Actions</h3>
+        <h3 className="text-lg font-medium">Project Actions</h3>
         <ComponentPreview
           code={`<DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">Device Actions</Button>
+    <Button variant="outline">Project Actions</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="w-56">
-    <DropdownMenuLabel>Solar Inverter #1</DropdownMenuLabel>
+    <DropdownMenuLabel>Marketing Site</DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuItem>
       View Details
@@ -138,17 +138,17 @@ export default function DropdownMenuPage() {
     <DropdownMenuItem>Export Data</DropdownMenuItem>
     <DropdownMenuSeparator />
     <DropdownMenuItem className="text-destructive">
-      Remove Device
+      Delete Project
     </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>`}
         >
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">Device Actions</Button>
+              <Button variant="outline">Project Actions</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
-              <DropdownMenuLabel>Solar Inverter #1</DropdownMenuLabel>
+              <DropdownMenuLabel>Marketing Site</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 View Details
@@ -161,7 +161,7 @@ export default function DropdownMenuPage() {
               <DropdownMenuItem>Export Data</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="text-destructive">
-                Remove Device
+                Delete Project
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

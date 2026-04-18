@@ -296,7 +296,7 @@ export default function App() {
         <Badge variant="success">Online</Badge>
         <Badge variant="warning">Pending</Badge>
         <Badge variant="info">New</Badge>
-        <Badge variant="energy">2.4 kWh</Badge>
+        <Badge variant="highlight">New</Badge>
       </div>
     </div>
   )
@@ -640,34 +640,34 @@ const indexHtml = `<!DOCTYPE html>
         theme: {
           extend: {
             colors: {
-              border: "hsl(var(--border))",
-              input: "hsl(var(--input))",
-              ring: "hsl(var(--ring))",
-              background: "hsl(var(--background))",
-              foreground: "hsl(var(--foreground))",
+              border: "oklch(var(--border))",
+              input: "oklch(var(--input))",
+              ring: "oklch(var(--ring))",
+              background: "oklch(var(--background))",
+              foreground: "oklch(var(--foreground))",
               primary: {
-                DEFAULT: "hsl(var(--primary))",
-                foreground: "hsl(var(--primary-foreground))",
+                DEFAULT: "oklch(var(--primary))",
+                foreground: "oklch(var(--primary-foreground))",
               },
               secondary: {
-                DEFAULT: "hsl(var(--secondary))",
-                foreground: "hsl(var(--secondary-foreground))",
+                DEFAULT: "oklch(var(--secondary))",
+                foreground: "oklch(var(--secondary-foreground))",
               },
               destructive: {
-                DEFAULT: "hsl(var(--destructive))",
-                foreground: "hsl(var(--destructive-foreground))",
+                DEFAULT: "oklch(var(--destructive))",
+                foreground: "oklch(var(--destructive-foreground))",
               },
               muted: {
-                DEFAULT: "hsl(var(--muted))",
-                foreground: "hsl(var(--muted-foreground))",
+                DEFAULT: "oklch(var(--muted))",
+                foreground: "oklch(var(--muted-foreground))",
               },
               accent: {
-                DEFAULT: "hsl(var(--accent))",
-                foreground: "hsl(var(--accent-foreground))",
+                DEFAULT: "oklch(var(--accent))",
+                foreground: "oklch(var(--accent-foreground))",
               },
               card: {
-                DEFAULT: "hsl(var(--card))",
-                foreground: "hsl(var(--card-foreground))",
+                DEFAULT: "oklch(var(--card))",
+                foreground: "oklch(var(--card-foreground))",
               },
             },
             borderRadius: {
@@ -700,10 +700,10 @@ const indexHtml = `<!DOCTYPE html>
         --ring: 175 84% 32%;
         --radius: 0.5rem;
       }
-      * { border-color: hsl(var(--border)); }
+      * { border-color: oklch(var(--border)); }
       body {
-        background-color: hsl(var(--background));
-        color: hsl(var(--foreground));
+        background-color: oklch(var(--background));
+        color: oklch(var(--foreground));
         font-family: system-ui, -apple-system, sans-serif;
       }
     </style>
@@ -759,12 +759,12 @@ const baseStyles = `:root {
 }
 
 * {
-  border-color: hsl(var(--border));
+  border-color: oklch(var(--border));
 }
 
 body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: oklch(var(--background));
+  color: oklch(var(--foreground));
   font-family: system-ui, -apple-system, sans-serif;
 }`;
 
@@ -1047,17 +1047,17 @@ export default function PlaygroundPage() {
                 '        theme: {',
                 '          extend: {',
                 '            colors: {',
-                '              border: "hsl(var(--border))",',
-                '              input: "hsl(var(--input))",',
-                '              ring: "hsl(var(--ring))",',
-                '              background: "hsl(var(--background))",',
-                '              foreground: "hsl(var(--foreground))",',
-                '              primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },',
-                '              secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },',
-                '              destructive: { DEFAULT: "hsl(var(--destructive))", foreground: "hsl(var(--destructive-foreground))" },',
-                '              muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },',
-                '              accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },',
-                '              card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },',
+                '              border: "oklch(var(--border))",',
+                '              input: "oklch(var(--input))",',
+                '              ring: "oklch(var(--ring))",',
+                '              background: "oklch(var(--background))",',
+                '              foreground: "oklch(var(--foreground))",',
+                '              primary: { DEFAULT: "oklch(var(--primary))", foreground: "oklch(var(--primary-foreground))" },',
+                '              secondary: { DEFAULT: "oklch(var(--secondary))", foreground: "oklch(var(--secondary-foreground))" },',
+                '              destructive: { DEFAULT: "oklch(var(--destructive))", foreground: "oklch(var(--destructive-foreground))" },',
+                '              muted: { DEFAULT: "oklch(var(--muted))", foreground: "oklch(var(--muted-foreground))" },',
+                '              accent: { DEFAULT: "oklch(var(--accent))", foreground: "oklch(var(--accent-foreground))" },',
+                '              card: { DEFAULT: "oklch(var(--card))", foreground: "oklch(var(--card-foreground))" },',
                 '            },',
                 '            borderRadius: {',
                 '              lg: "var(--radius)",',
@@ -1103,26 +1103,26 @@ export default function PlaygroundPage() {
                 '  --ring: 175 84% 32%;',
                 '  --radius: 0.5rem;',
                 '}',
-                '*, *::before, *::after { box-sizing: border-box; border-color: hsl(var(--border)); }',
-                'body { background-color: hsl(var(--background)); color: hsl(var(--foreground)); font-family: system-ui, -apple-system, sans-serif; margin: 0; }',
-                '.bg-primary { background-color: hsl(var(--primary)); }',
-                '.text-primary { color: hsl(var(--primary)); }',
-                '.text-primary-foreground { color: hsl(var(--primary-foreground)); }',
-                '.bg-secondary { background-color: hsl(var(--secondary)); }',
-                '.text-secondary-foreground { color: hsl(var(--secondary-foreground)); }',
-                '.bg-destructive { background-color: hsl(var(--destructive)); }',
-                '.text-destructive { color: hsl(var(--destructive)); }',
-                '.text-destructive-foreground { color: hsl(var(--destructive-foreground)); }',
-                '.bg-muted { background-color: hsl(var(--muted)); }',
-                '.text-muted-foreground { color: hsl(var(--muted-foreground)); }',
-                '.bg-accent { background-color: hsl(var(--accent)); }',
-                '.text-accent-foreground { color: hsl(var(--accent-foreground)); }',
-                '.bg-card { background-color: hsl(var(--card)); }',
-                '.text-card-foreground { color: hsl(var(--card-foreground)); }',
-                '.bg-background { background-color: hsl(var(--background)); }',
-                '.text-foreground { color: hsl(var(--foreground)); }',
-                '.border-input { border-color: hsl(var(--input)); }',
-                '.ring-ring { --tw-ring-color: hsl(var(--ring)); }',
+                '*, *::before, *::after { box-sizing: border-box; border-color: oklch(var(--border)); }',
+                'body { background-color: oklch(var(--background)); color: oklch(var(--foreground)); font-family: system-ui, -apple-system, sans-serif; margin: 0; }',
+                '.bg-primary { background-color: oklch(var(--primary)); }',
+                '.text-primary { color: oklch(var(--primary)); }',
+                '.text-primary-foreground { color: oklch(var(--primary-foreground)); }',
+                '.bg-secondary { background-color: oklch(var(--secondary)); }',
+                '.text-secondary-foreground { color: oklch(var(--secondary-foreground)); }',
+                '.bg-destructive { background-color: oklch(var(--destructive)); }',
+                '.text-destructive { color: oklch(var(--destructive)); }',
+                '.text-destructive-foreground { color: oklch(var(--destructive-foreground)); }',
+                '.bg-muted { background-color: oklch(var(--muted)); }',
+                '.text-muted-foreground { color: oklch(var(--muted-foreground)); }',
+                '.bg-accent { background-color: oklch(var(--accent)); }',
+                '.text-accent-foreground { color: oklch(var(--accent-foreground)); }',
+                '.bg-card { background-color: oklch(var(--card)); }',
+                '.text-card-foreground { color: oklch(var(--card-foreground)); }',
+                '.bg-background { background-color: oklch(var(--background)); }',
+                '.text-foreground { color: oklch(var(--foreground)); }',
+                '.border-input { border-color: oklch(var(--input)); }',
+                '.ring-ring { --tw-ring-color: oklch(var(--ring)); }',
                 '.rounded-lg { border-radius: var(--radius); }',
                 '.rounded-md { border-radius: calc(var(--radius) - 2px); }',
                 '.rounded-sm { border-radius: calc(var(--radius) - 4px); }',

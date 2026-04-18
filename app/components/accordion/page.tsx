@@ -109,52 +109,53 @@ export default function AccordionPage() {
         <ComponentPreview
           code={`<Accordion type="single" collapsible>
   <AccordionItem value="q1">
-    <AccordionTrigger>What is Sourceful?</AccordionTrigger>
+    <AccordionTrigger>What is Ramp DS?</AccordionTrigger>
     <AccordionContent>
-      Sourceful is a platform for coordinating distributed energy resources.
-      We help connect solar panels, batteries, and EV chargers to create
-      a smarter, more sustainable grid.
+      Ramp DS is a design system built around a generator-first theme
+      engine — pick three hues and every component re-skins around them.
+      Ships as an npm package with full TypeScript typings.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem value="q2">
-    <AccordionTrigger>How do I connect my device?</AccordionTrigger>
+    <AccordionTrigger>How do I get started?</AccordionTrigger>
     <AccordionContent>
-      You can connect your device by going to Settings &gt; Devices &gt; Add Device.
-      Follow the on-screen instructions to complete the setup.
+      Install the npm package with "npm install @ramp-ds/ui". Import the styles
+      in your root layout and wrap your app with RampThemeProvider.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem value="q3">
     <AccordionTrigger>What data do you collect?</AccordionTrigger>
     <AccordionContent>
-      We collect energy production and consumption data from your devices.
-      This data is used to optimize energy usage and provide insights.
-      Your data is never sold to third parties.
+      Ramp DS runs entirely client-side. The library makes no network requests,
+      collects no telemetry, and has no tracking. Your users' data stays
+      between your app and your backend.
     </AccordionContent>
   </AccordionItem>
 </Accordion>`}
         >
           <Accordion type="single" collapsible className="w-full max-w-lg">
             <AccordionItem value="q1">
-              <AccordionTrigger>What is Sourceful?</AccordionTrigger>
+              <AccordionTrigger>What is Ramp DS?</AccordionTrigger>
               <AccordionContent>
-                Sourceful is a platform for coordinating distributed energy resources.
-                We help connect solar panels, batteries, and EV chargers to create
-                a smarter, more sustainable grid.
+                Ramp DS is a design system built around a generator-first theme
+                engine — pick three hues and every component re-skins around them.
+                Ships as an npm package with full TypeScript typings.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="q2">
-              <AccordionTrigger>How do I connect my device?</AccordionTrigger>
+              <AccordionTrigger>How do I get started?</AccordionTrigger>
               <AccordionContent>
-                You can connect your device by going to Settings &gt; Devices &gt; Add Device.
-                Follow the on-screen instructions to complete the setup.
+                Install the npm package with &quot;npm install @ramp-ds/ui&quot;.
+                Import the styles in your root layout and wrap your app with
+                RampThemeProvider.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="q3">
               <AccordionTrigger>What data do you collect?</AccordionTrigger>
               <AccordionContent>
-                We collect energy production and consumption data from your devices.
-                This data is used to optimize energy usage and provide insights.
-                Your data is never sold to third parties.
+                Ramp DS runs entirely client-side. The library makes no network requests,
+                collects no telemetry, and has no tracking. Your users' data stays
+                between your app and your backend.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -163,43 +164,43 @@ export default function AccordionPage() {
         <h3 className="text-lg font-medium">Multiple Open</h3>
         <ComponentPreview
           code={`<Accordion type="multiple">
-  <AccordionItem value="solar">
-    <AccordionTrigger>Solar Production</AccordionTrigger>
+  <AccordionItem value="activity">
+    <AccordionTrigger>Activity</AccordionTrigger>
     <AccordionContent>
-      Your solar panels produced 24.5 kWh today.
+      You shipped 12 commits across 3 repositories this week.
     </AccordionContent>
   </AccordionItem>
-  <AccordionItem value="battery">
-    <AccordionTrigger>Battery Status</AccordionTrigger>
+  <AccordionItem value="usage">
+    <AccordionTrigger>Usage</AccordionTrigger>
     <AccordionContent>
-      Battery is at 85% capacity. Estimated 6 hours of backup.
+      85% of your monthly quota used. Resets on the 1st.
     </AccordionContent>
   </AccordionItem>
-  <AccordionItem value="grid">
-    <AccordionTrigger>Grid Connection</AccordionTrigger>
+  <AccordionItem value="billing">
+    <AccordionTrigger>Billing</AccordionTrigger>
     <AccordionContent>
-      Currently exporting 0.8 kW to the grid.
+      Next invoice: $24.00 on December 1st.
     </AccordionContent>
   </AccordionItem>
 </Accordion>`}
         >
           <Accordion type="multiple" className="w-full max-w-lg">
-            <AccordionItem value="solar">
-              <AccordionTrigger>Solar Production</AccordionTrigger>
+            <AccordionItem value="activity">
+              <AccordionTrigger>Activity</AccordionTrigger>
               <AccordionContent>
-                Your solar panels produced 24.5 kWh today.
+                You shipped 12 commits across 3 repositories this week.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="battery">
-              <AccordionTrigger>Battery Status</AccordionTrigger>
+            <AccordionItem value="usage">
+              <AccordionTrigger>Usage</AccordionTrigger>
               <AccordionContent>
-                Battery is at 85% capacity. Estimated 6 hours of backup.
+                85% of your monthly quota used. Resets on the 1st.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="grid">
-              <AccordionTrigger>Grid Connection</AccordionTrigger>
+            <AccordionItem value="billing">
+              <AccordionTrigger>Billing</AccordionTrigger>
               <AccordionContent>
-                Currently exporting 0.8 kW to the grid.
+                Next invoice: $24.00 on December 1st.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

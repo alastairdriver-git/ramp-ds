@@ -256,67 +256,69 @@
   --rds-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ----------------------------------------
-     ShadCN Semantic Tokens (Light Mode)
+     Semantic Tokens (OKLCH)
+     Values are bare "L C H" triplets, wrapped at call-time with
+     oklch(var(--x) / <alpha-value>) via tailwind.config.ts.
+     These defaults mirror the Ramp built-in theme (hue 175, teal).
+     The RampThemeProvider overrides them at runtime for theme switching.
      ---------------------------------------- */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 9%; /* Gray 900 */
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 9%;
-  --primary: 175 84% 32%; /* Teal #0d9488 for light mode */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 95%; /* Gray 100 */
-  --secondary-foreground: 0 0% 32%; /* Gray 600 */
-  --muted: 0 0% 95%;
-  --muted-foreground: 0 0% 45%; /* Gray 500 */
-  --accent: 175 40% 94%; /* Light teal tint */
-  --accent-foreground: 175 84% 25%;
-  --destructive: 0 97% 53%; /* Red #FF0D0D */
-  --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 90%; /* Gray 200 */
-  --input: 0 0% 90%;
-  --ring: 175 84% 32%; /* Teal #0d9488 */
+  --background: 0.985 0.0012 175;         /* neutral 50 */
+  --foreground: 0.170 0.0032 175;         /* neutral 950 */
+  --card: 1 0 0;                           /* pure white */
+  --card-foreground: 0.170 0.0032 175;
+  --popover: 1 0 0;
+  --popover-foreground: 0.170 0.0032 175;
+  --primary: 0.610 0.170 175;              /* primary 500 — teal */
+  --primary-foreground: 0.985 0.015 175;
+  --secondary: 0.955 0.0032 175;           /* neutral 100 */
+  --secondary-foreground: 0.415 0.012 175; /* neutral 700 */
+  --muted: 0.955 0.0032 175;
+  --muted-foreground: 0.610 0.0136 175;    /* neutral 500 */
+  --accent: 0.610 0.170 175;               /* accent 500 */
+  --accent-foreground: 0.985 0.015 175;
+  --destructive: 0.560 0.220 27;
+  --destructive-foreground: 0.990 0.005 27;
+  --border: 0.895 0.006 175;               /* neutral 200 */
+  --input: 0.895 0.006 175;
+  --ring: 0.610 0.170 175;
   --radius: 0.5rem;
 
-  /* Semantic color tokens for light mode */
-  --success: 142 76% 36%; /* #16a34a for light bg */
-  --warning: 25 100% 50%; /* Orange */
-  --info: 207 90% 54%; /* Blue */
-  --energy: 50 100% 50%; /* Yellow */
-  --teal: 181 80% 26%; /* Darker teal for light bg */
+  /* Fixed semantic colors (not hue-derived, for accessibility consistency) */
+  --success: 0.610 0.180 145;
+  --warning: 0.720 0.180 60;
+  --info: 0.580 0.200 240;
+  --highlight: 0.860 0.180 95;
 }
 
 .dark {
   /* ----------------------------------------
-     ShadCN Semantic Tokens (Dark Mode)
+     Semantic Tokens — dark mode defaults.
+     Also mirrors the Ramp theme. Provider overrides at runtime.
      ---------------------------------------- */
-  --background: 0 0% 4%; /* Gray 950 */
-  --foreground: 0 0% 100%;
-  --card: 0 0% 9%; /* Gray 900 */
-  --card-foreground: 0 0% 100%;
-  --popover: 0 0% 9%;
-  --popover-foreground: 0 0% 100%;
-  --primary: 175 80% 45%; /* Bright Teal #14b8a6 */
-  --primary-foreground: 0 0% 0%;
-  --secondary: 0 0% 15%; /* Gray 800 */
-  --secondary-foreground: 0 0% 83%;
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 64%;
-  --accent: 175 30% 15%; /* Dark teal tint */
-  --accent-foreground: 175 80% 70%;
-  --destructive: 0 97% 53%; /* Red #FF0D0D */
-  --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
-  --ring: 175 80% 45%; /* Bright Teal #14b8a6 */
+  --background: 0.170 0.0032 175;          /* neutral 950 */
+  --foreground: 0.985 0.0012 175;
+  --card: 0.245 0.0064 175;                /* neutral 900 */
+  --card-foreground: 0.985 0.0012 175;
+  --popover: 0.245 0.0064 175;
+  --popover-foreground: 0.985 0.0012 175;
+  --primary: 0.720 0.140 175;              /* primary 400 — brighter for dark */
+  --primary-foreground: 0.170 0.040 175;
+  --secondary: 0.325 0.0096 175;           /* neutral 800 */
+  --secondary-foreground: 0.895 0.006 175; /* neutral 200 */
+  --muted: 0.325 0.0096 175;
+  --muted-foreground: 0.720 0.0112 175;    /* neutral 400 */
+  --accent: 0.720 0.140 175;
+  --accent-foreground: 0.170 0.040 175;
+  --destructive: 0.680 0.220 27;
+  --destructive-foreground: 0.990 0.005 27;
+  --border: 0.325 0.0096 175;
+  --input: 0.325 0.0096 175;
+  --ring: 0.720 0.140 175;
 
-  /* Semantic color tokens for dark mode */
-  --success: 151 100% 50%; /* Bright neon green for dark bg */
-  --warning: 25 100% 50%; /* Orange */
-  --info: 207 90% 54%; /* Blue */
-  --energy: 50 100% 50%; /* Yellow */
-  --teal: 181 80% 40%; /* Brighter teal for dark bg */
+  --success: 0.720 0.180 145;
+  --warning: 0.800 0.180 60;
+  --info: 0.700 0.200 240;
+  --highlight: 0.880 0.180 95;
 }
 
 @layer base {
@@ -338,10 +340,64 @@
     line-height: var(--text-body-line);
   }
 
+  /* Theme-driven heading font.
+     Naked <h1>–<h4> elements pick up the active theme's display font
+     (falls back to sans if the theme doesn't set one). Utility classes
+     like .text-h1 still win if they set their own font, since classes
+     outrank tag selectors. */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display, var(--font-sans));
+    font-weight: var(--font-heading-weight, 600);
+    letter-spacing: var(--font-heading-tracking, -0.01em);
+  }
+
   /* Link styles */
   a:not([class]) {
     @apply text-primary underline-offset-4 hover:underline;
   }
+}
+
+/* ============================================
+   THEME-DRIVEN COMPONENT SHAPES
+   Keyed off data attributes that RampThemeProvider sets on <html>.
+   Each rule is an additive opt-in — themes that don't set a style get
+   the component's default look.
+   ============================================ */
+
+/* Card styles */
+[data-card-style="outlined"] .rds-card {
+  box-shadow: none;
+}
+
+[data-card-style="flat"] .rds-card {
+  box-shadow: none;
+  border-color: transparent;
+  background-color: oklch(var(--muted));
+}
+
+[data-card-style="elevated"] .rds-card {
+  box-shadow: var(--rds-shadow-lg);
+  border-color: transparent;
+}
+
+[data-card-style="glass"] .rds-card {
+  background-color: oklch(var(--card) / 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: oklch(var(--border) / 0.5);
+  box-shadow: var(--rds-shadow-md);
+}
+
+/* Button shapes — themes can set buttonShape: "pill" | "square" | "sharp".
+   The Button component's radius comes from --radius (shadcn), so we override
+   border-radius directly on the rds-button class when a shape is set. */
+[data-button-shape="pill"] .rds-button {
+  border-radius: 9999px;
+}
+
+[data-button-shape="square"] .rds-button,
+[data-button-shape="sharp"] .rds-button {
+  border-radius: 0;
 }
 
 /* ============================================
@@ -435,7 +491,7 @@
   .text-caption {
     font-size: var(--text-caption);
     line-height: var(--text-caption-line);
-    color: hsl(var(--muted-foreground));
+    color: oklch(var(--muted-foreground));
   }
 
   /* Overline */
@@ -450,7 +506,7 @@
   .text-code {
     font-family: var(--font-mono);
     font-size: 0.875em;
-    background-color: hsl(var(--muted));
+    background-color: oklch(var(--muted));
     padding: 0.125rem 0.375rem;
     border-radius: 0.25rem;
   }
@@ -459,12 +515,12 @@
   .text-lead {
     font-size: var(--text-body-lg);
     line-height: var(--text-body-line);
-    color: hsl(var(--muted-foreground));
+    color: oklch(var(--muted-foreground));
   }
 
   /* Muted text */
   .text-muted {
-    color: hsl(var(--muted-foreground));
+    color: oklch(var(--muted-foreground));
   }
 }
 
@@ -523,9 +579,9 @@
     animation: shimmer 2s linear infinite;
     background: linear-gradient(
       90deg,
-      hsl(var(--muted)) 0%,
-      hsl(var(--muted-foreground) / 0.1) 50%,
-      hsl(var(--muted)) 100%
+      oklch(var(--muted)) 0%,
+      oklch(var(--muted-foreground) / 0.1) 50%,
+      oklch(var(--muted)) 100%
     );
     background-size: 200% 100%;
   }
@@ -600,11 +656,11 @@
 @keyframes energyPulse {
   0%, 100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 hsl(var(--accent) / 0.4);
+    box-shadow: 0 0 0 0 oklch(var(--accent) / 0.4);
   }
   50% {
     opacity: 0.8;
-    box-shadow: 0 0 0 8px hsl(var(--accent) / 0);
+    box-shadow: 0 0 0 8px oklch(var(--accent) / 0);
   }
 }
 
@@ -615,10 +671,10 @@
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 4px 1px hsl(var(--primary) / 0.2);
+    box-shadow: 0 0 4px 1px oklch(var(--primary) / 0.2);
   }
   50% {
-    box-shadow: 0 0 8px 2px hsl(var(--primary) / 0.35);
+    box-shadow: 0 0 8px 2px oklch(var(--primary) / 0.35);
   }
 }
 
@@ -723,7 +779,7 @@
 
 /* Gradient fade for hero */
 .hero-gradient {
-  background: linear-gradient(to bottom, transparent 0%, hsl(var(--background)) 70%, hsl(var(--background)) 100%);
+  background: linear-gradient(to bottom, transparent 0%, oklch(var(--background)) 70%, oklch(var(--background)) 100%);
 }
 
 /* ============================================

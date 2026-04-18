@@ -112,23 +112,23 @@ export default function DialogPage() {
           Examples
         </h2>
 
-        <h3 className="text-lg font-medium">Add Device</h3>
+        <h3 className="text-lg font-medium">Add Project</h3>
         <ComponentPreview
           code={`<Dialog>
   <DialogTrigger asChild>
-    <Button>Add Device</Button>
+    <Button>Add Project</Button>
   </DialogTrigger>
   <DialogContent className="sm:max-w-[425px]">
     <DialogHeader>
-      <DialogTitle>Add New Device</DialogTitle>
+      <DialogTitle>Add New Project</DialogTitle>
       <DialogDescription>
-        Enter the details of your energy device.
+        Enter the details of your new project.
       </DialogDescription>
     </DialogHeader>
     <div className="grid gap-4 py-4">
       <div className="space-y-2">
-        <Label htmlFor="name">Device Name</Label>
-        <Input id="name" placeholder="e.g. Solar Inverter" />
+        <Label htmlFor="name">Project Name</Label>
+        <Input id="name" placeholder="e.g. Marketing Site" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="serial">Serial Number</Label>
@@ -136,26 +136,26 @@ export default function DialogPage() {
       </div>
     </div>
     <DialogFooter>
-      <Button type="submit">Add Device</Button>
+      <Button type="submit">Add Project</Button>
     </DialogFooter>
   </DialogContent>
 </Dialog>`}
         >
           <Dialog>
             <DialogTrigger asChild>
-              <Button>Add Device</Button>
+              <Button>Add Project</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle>Add New Device</DialogTitle>
+                <DialogTitle>Add New Project</DialogTitle>
                 <DialogDescription>
-                  Enter the details of your energy device.
+                  Enter the details of your new project.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Device Name</Label>
-                  <Input id="name" placeholder="e.g. Solar Inverter" />
+                  <Label htmlFor="name">Project Name</Label>
+                  <Input id="name" placeholder="e.g. Marketing Site" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="serial">Serial Number</Label>
@@ -163,7 +163,7 @@ export default function DialogPage() {
                 </div>
               </div>
               <DialogFooter>
-                <Button type="submit">Add Device</Button>
+                <Button type="submit">Add Project</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -173,14 +173,14 @@ export default function DialogPage() {
         <ComponentPreview
           code={`<Dialog>
   <DialogTrigger asChild>
-    <Button variant="destructive">Delete Device</Button>
+    <Button variant="destructive">Delete Project</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Are you sure?</DialogTitle>
       <DialogDescription>
         This action cannot be undone. This will permanently delete your
-        device and remove all associated data.
+        project and remove all associated data.
       </DialogDescription>
     </DialogHeader>
     <DialogFooter>
@@ -192,14 +192,14 @@ export default function DialogPage() {
         >
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="destructive">Delete Device</Button>
+              <Button variant="destructive">Delete Project</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Are you sure?</DialogTitle>
                 <DialogDescription>
                   This action cannot be undone. This will permanently delete your
-                  device and remove all associated data.
+                  project and remove all associated data.
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter>
@@ -218,15 +218,15 @@ export default function DialogPage() {
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
-      <DialogTitle>Device Settings</DialogTitle>
+      <DialogTitle>Project Settings</DialogTitle>
       <DialogDescription>
-        Configure your device preferences.
+        Configure your project preferences.
       </DialogDescription>
     </DialogHeader>
     <div className="grid gap-4 py-4">
       <div className="space-y-2">
-        <Label htmlFor="max-power">Max Power Output (kW)</Label>
-        <Input id="max-power" type="number" defaultValue="10" />
+        <Label htmlFor="max-size">Max Team Size</Label>
+        <Input id="max-size" type="number" defaultValue="10" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="timezone">Timezone</Label>
@@ -246,15 +246,15 @@ export default function DialogPage() {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Device Settings</DialogTitle>
+                <DialogTitle>Project Settings</DialogTitle>
                 <DialogDescription>
-                  Configure your device preferences.
+                  Configure your project preferences.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="space-y-2">
-                  <Label htmlFor="max-power">Max Power Output (kW)</Label>
-                  <Input id="max-power" type="number" defaultValue="10" />
+                  <Label htmlFor="max-size">Max Team Size</Label>
+                  <Input id="max-size" type="number" defaultValue="10" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="timezone">Timezone</Label>

@@ -66,13 +66,13 @@ export default function LabelPage() {
         <h3 className="text-lg font-medium">With Input</h3>
         <ComponentPreview
           code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label htmlFor="device-name">Device Name</Label>
-  <Input id="device-name" placeholder="e.g. Solar Inverter #1" />
+  <Label htmlFor="project-name">Project Name</Label>
+  <Input id="project-name" placeholder="e.g. Marketing Site" />
 </div>`}
         >
           <div className="grid w-full max-w-sm gap-1.5">
-            <Label htmlFor="device-name">Device Name</Label>
-            <Input id="device-name" placeholder="e.g. Solar Inverter #1" />
+            <Label htmlFor="project-name">Project Name</Label>
+            <Input id="project-name" placeholder="e.g. Marketing Site" />
           </div>
         </ComponentPreview>
 

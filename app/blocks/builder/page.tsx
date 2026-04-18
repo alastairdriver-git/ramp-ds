@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTheme } from "next-themes";
+import { useRampTheme } from "@/components/ramp-theme-provider";
 import { SectionBlock } from "@/components/ui/section-block";
 import { getBlockTheme, getBlockThemeOptions, applyBlockTheme, type BlockThemeId } from "@/lib/block-themes";
 import type { SectionBlockProps } from "@/components/ui/section-block";
@@ -79,7 +79,7 @@ interface BlockConfig {
 }
 
 export default function BlockBuilderPage() {
-  const { theme: systemTheme, setTheme } = useTheme();
+  const { isDark, setMode } = useRampTheme();
   const [blockTheme, setBlockTheme] = useState<BlockThemeId>("default");
   const [displayFont, setDisplayFont] = useState<string>("var(--font-sans)");
   const [headingFont, setHeadingFont] = useState<string>("var(--font-sans)");
@@ -116,7 +116,7 @@ export default function BlockBuilderPage() {
   // Get current theme config and styles
   const currentTheme = getBlockTheme(blockTheme);
   const themeStyles = {
-    ...applyBlockTheme(currentTheme, systemTheme === "dark"),
+    ...applyBlockTheme(currentTheme, isDark),
     "--font-display": displayFont,
     "--font-heading": headingFont,
     "--font-body": bodyFont,
@@ -351,9 +351,9 @@ export default function BlockBuilderPage() {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => setTheme(systemTheme === "dark" ? "light" : "dark")}
+                onClick={() => setMode(isDark ? "light" : "dark")}
               >
-                {systemTheme === "dark" ? (
+                {isDark ? (
                   <Sun className="h-4 w-4" />
                 ) : (
                   <Moon className="h-4 w-4" />
